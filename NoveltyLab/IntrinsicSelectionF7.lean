@@ -49,6 +49,38 @@ def rejectionChecks : Bool :=
     mul d d == identity &&
     entry (mul d (mul (swap k) d)) i j == 3
 
+def permutationEntries (a : Matrix) : Prop :=
+  ∀ i j : Fin 8, entry a i.val j.val = 0 ∨ entry a i.val j.val = 1
+
+def rejectingSwap (index : Nat) : Nat :=
+  if index == 0 then 3 else if index < 3 then 1 else 0
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+/-- Every declared nonidentity defect sends a row permutation to a matrix
+with a non-permutation entry. This is a proposition, not a Boolean flag.
+-/
+theorem nonidentity_rejections : ∀ index : Fin 7,
+    let d := defects[index.val + 1]?.getD []
+    ¬ permutationEntries (mul d (mul (swap (rejectingSwap index.val)) d)) := by
+  decide
+
+def replacement (k : Nat) : Matrix := matrix fun i j =>
+  if i == k then 6 else if i == j then 1 else 0
+
+def replacementChecks : Bool :=
+  (List.range 8).all (fun i => orthogonal (replacement i) &&
+    mul (replacement i) (replacement i) == identity) &&
+  (List.range 7).all (fun k => (List.range 8).all fun i =>
+    let moved := if i == k then k+1 else if i == k+1 then k else i
+    mul (swap k) (mul (replacement i) (swap k)) == replacement moved)
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+/-- Full F7 replacement Gram identities, involutions and relabeling identities. -/
+theorem replacement_certificates : replacementChecks = true := by
+  decide
+
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
 /-- Kernel-checked finite bridge, Gram, involution, and seven rejection identities.

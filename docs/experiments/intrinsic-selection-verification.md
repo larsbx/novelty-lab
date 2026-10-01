@@ -31,9 +31,15 @@ The implementation compares sorted-row matrix keys and exact integer
 multiplicities. With quotient descent, this identity is necessary and
 sufficient for a bijective multigraph automorphism on the full fiber.
 
-These are elementary proof outlines for reducing the global property to
-matrix identities. They are not independently reviewed abstract theorems
-or Lean proofs. Executable certificates recompute every identity over F7.
+The cancellation reduction and indexed multiplicity-preserving matching
+are now kernel-proved in NoveltyLab/IntrinsicSelection.lean, with explicit
+associativity and right-cancellation hypotheses. The finite F7 bridge,
+Gram, involution, permutation-relabeling and rejection identities are
+kernel-proved in NoveltyLab/IntrinsicSelectionF7.lean using decide, without
+native_decide or added axioms. Python independently binds the eight declared
+Lean patterns to its Cayley-Dickson computation and checks a mutated pattern.
+This does not yet instantiate a general GL matrix theory in Lean or formally
+prove the Python checker's whole implementation correct.
 
 ## Intrinsic uniqueness remains open
 
@@ -58,7 +64,8 @@ Negative controls: every nonidentity basis defect, modified certificates,
 altered matrix entries, and changed multiplicities. Quotient failures are
 replayed directly using equivalent inputs with inequivalent outputs.
 
-The repository verification workflow discovers these tests; the existing
-Lean oracle workflow is also required. A passing Lean workflow does not
-certify this new oracle: Lean proofs of the reduction, matrix identities,
-and intrinsic uniqueness remain pending.
+Main.lean imports the proof module, so the required Lean build compiles the
+proofs rather than merely running the previous oracle. The generic matrix
+group instantiation, general-field replacement formulas, complete placement
+classification and intrinsic uniqueness remain pending. The conditional
+unique-survivor-fixed lemma does not assert that such a survivor exists.
