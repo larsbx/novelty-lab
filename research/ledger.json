@@ -157,6 +157,92 @@
         ]
       ],
       "tags": []
+    },
+    "DefectCensus": {
+      "id": "sha256:e94e001d3620e1c65ec32588c8fe3521ded6101f0774395f30b2a836140824d4",
+      "kind": "bounded_experiment",
+      "statement": "no violation of inverse, isometry, fixes_xy, kernel, det_one, fixes_Q, or rank_law in data/n2/defect-census-v1.json",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "ell in {3, 5, 7, 11}; 400 seeded random admissible pairs per ell plus degenerate pairs with y in span{1, x}"
+        ],
+        [
+          "replay",
+          "python experiments/n2/defect_census.py --check"
+        ],
+        [
+          "digest",
+          "sha256:411511f2791e7d11463a59885da1c5b42a647fe557758965a718fc4b4faeb83e"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectFixesQuaternionSubalgebra": {
+      "id": "sha256:4fcf07840acf9f584505f8bcd6171e856fd1dc27e0c68b6f4b7b3c817a6ee169",
+      "kind": "pending_dependency",
+      "statement": "Delta(x, y) fixes Q = span{1, x, y, xy} pointwise for N(x)N(y) != 0, hence preserves Q-perp when Q is nondegenerate",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "argument via Artin's theorem in docs/candidates/N2.md; not reviewed"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectSpecialOrthogonal": {
+      "id": "sha256:5e6f6938197ee495f8b20d0e0930dfaf81fee49f21084b25989f34c19c1f5d29",
+      "kind": "pending_dependency",
+      "statement": "det Delta(x, y) = 1 for N(x)N(y) != 0",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "supported only by DefectCensus; the real-case connectedness proof of N2-T01 does not transfer to F_ell"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectRankLaw": {
+      "id": "sha256:98b1fcc586d90ce755d341aacb93da44f555216e9ad13a8023dab9ea8d8e1930",
+      "kind": "pending_dependency",
+      "statement": "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4fcf07840acf9f584505f8bcd6171e856fd1dc27e0c68b6f4b7b3c817a6ee169",
+          "Delta(x, y) fixes Q = span{1, x, y, xy} pointwise for N(x)N(y) != 0, hence preserves Q-perp when Q is nondegenerate",
+          "rank(Delta - I) <= 8 - dim Q",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "conjecture supported only by DefectCensus; the dim Q = 4 upper bound follows from DefectFixesQuaternionSubalgebra"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectStratifiedCollisions": {
+      "id": "sha256:7b32d6799e3a6a884740de1e2c47f5e840a142cc4b67cd00107520132c056b86",
+      "kind": "pending_dependency",
+      "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants"
+        ]
+      ],
+      "tags": []
     }
   }
 }

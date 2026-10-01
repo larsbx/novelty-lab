@@ -8,6 +8,11 @@
 EXTENDS ProofArchitecture
 
 ResultSet == {
+    "DefectCensus",
+    "DefectFixesQuaternionSubalgebra",
+    "DefectRankLaw",
+    "DefectSpecialOrthogonal",
+    "DefectStratifiedCollisions",
     "DivisionCertificateSoundness",
     "HilbertSymbolFormula",
     "HurwitzShellCount",
@@ -19,7 +24,12 @@ ResultSet == {
 }
 
 RequiresDef == [r \in ResultSet |->
-    CASE r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
+    CASE r = "DefectCensus" -> {}
+      [] r = "DefectFixesQuaternionSubalgebra" -> {}
+      [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra"}
+      [] r = "DefectSpecialOrthogonal" -> {}
+      [] r = "DefectStratifiedCollisions" -> {}
+      [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
       [] r = "HilbertSymbolFormula" -> {}
       [] r = "HurwitzShellCount" -> {}
       [] r = "HurwitzShellCountFinite" -> {}
@@ -35,6 +45,7 @@ ProvedDef == {
 ImportedDef == {}
 
 BoundedDef == {
+    "DefectCensus",
     "N3BaselineGrid"
 }
 
@@ -45,6 +56,11 @@ ImportsAssumed == ImportedDef
 
 (* Observables: one per result, asserting that it is not established. A model *)
 (* lists those its assumptions leave unreachable; TLC then checks the closure.  *)
+DefectCensusNotEstablished == "DefectCensus" \notin established
+DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
+DefectRankLawNotEstablished == "DefectRankLaw" \notin established
+DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin established
+DefectStratifiedCollisionsNotEstablished == "DefectStratifiedCollisions" \notin established
 DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \notin established
 HilbertSymbolFormulaNotEstablished == "HilbertSymbolFormula" \notin established
 HurwitzShellCountNotEstablished == "HurwitzShellCount" \notin established

@@ -77,6 +77,13 @@ separately:
 python experiments/n1/search.py -1 -1 > cert.json   # non-authoritative
 ```
 
+The N2 defect census checks N2-T03 and the pending defect records on
+finite samples (`docs/candidates/N2.md`):
+
+```sh
+python experiments/n2/defect_census.py --check
+```
+
 The N3 data generator emits a complete occupancy vector, and the analyzer
 consumes it:
 
