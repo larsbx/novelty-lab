@@ -57,6 +57,14 @@
       "claim": "N4 can be folded into N1 before an explicit discrepancy theorem and constants are pinned.",
       "reason": "Certificate infrastructure can be reused, but the mathematical verification dependencies are independent.",
       "salvage": "Keep N4 separate and reuse only the certificate envelope."
+    },
+    {
+      "id": "KILL-08",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "Finite hypercomplex closure is achieved exactly when navigation words are stratified by D and Burnside moments predict all quotient fibers.",
+      "reason": "Closure under multiplication is part of the algebra definition, D using square roots may not be defined over F_q, defect strata need not be group orbits, and Burnside counts orbit fibers only after a genuine action and invariant map are supplied.",
+      "salvage": "Use square-root-free Delta, define its generated finite orthogonal action, require invariance explicitly, and treat defect-flatness or holonomy as the falsifiable property."
     }
   ]
 }
