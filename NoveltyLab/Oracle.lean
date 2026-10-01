@@ -29,13 +29,17 @@ def mul (p : Nat) (t : MulTable) (x y : Vec) : Vec :=
 def assoc (p : Nat) (t : MulTable) (x y z : Vec) : Vec :=
   sub p (mul p t x (mul p t y z)) (mul p t (mul p t x y) z)
 
+def pentagonEdges (p : Nat) (t : MulTable) (a b c d : Vec) : Array Vec :=
+  #[
+    mul p t (assoc p t a b c) d,
+    assoc p t a (mul p t b c) d,
+    mul p t a (assoc p t b c d),
+    neg p (assoc p t a b (mul p t c d)),
+    neg p (assoc p t (mul p t a b) c d)
+  ]
+
 def pentagonBoundary (p : Nat) (t : MulTable) (a b c d : Vec) : Vec :=
-  let e₀ := mul p t (assoc p t a b c) d
-  let e₁ := assoc p t a (mul p t b c) d
-  let e₂ := mul p t a (assoc p t b c d)
-  let e₃ := neg p (assoc p t a b (mul p t c d))
-  let e₄ := neg p (assoc p t (mul p t a b) c d)
-  add p (add p (add p e₀ e₁) (add p e₂ e₃)) e₄
+  (pentagonEdges p t a b c d).foldl (add p) (Array.replicate a.size 0)
 
 def isZero (x : Vec) : Bool := x.all (fun a => a == 0)
 
@@ -47,7 +51,7 @@ def checkPentagon (p : Nat) (t : MulTable) (a b c d : Vec) : Bool :=
 
 def scalarTable : MulTable := #[#[#[1]]]
 
-def selfCheck : Bool :=
+def scalarSelfCheck : Bool :=
   checkPentagon 5 scalarTable #[2] #[3] #[4] #[1]
 
 end NoveltyLab.Oracle
