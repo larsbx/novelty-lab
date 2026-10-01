@@ -115,6 +115,20 @@
         "N2-V08"
       ],
       "proof_artifact": "docs/lean-oracle.md"
+    },
+    {
+      "id": "N2-T06",
+      "candidate": "N2",
+      "statement": "For every n>6 over an odd finite field with char not dividing n, the split octonion norm admits a minimal (n-6)-dimensional discriminant-matching complement whose orthogonal sum is isometric to the n-dimensional Descartes curvature space; octonion defect operators extended by identity yield an embedding into its orthogonal group canonical up to conjugacy. For n=6 this holds exactly when -2/6 is a square.",
+      "claim_class": "proved result",
+      "novelty_status": "classical Witt construction; defect-to-packing application unassessed",
+      "hypotheses": [
+        "N2-H11"
+      ],
+      "obligations": [
+        "N2-V09"
+      ],
+      "proof_artifact": "docs/theorems/witt-soddy-bridge.md#n2-t06"
     }
   ]
 }

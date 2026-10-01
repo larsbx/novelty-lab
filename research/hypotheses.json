@@ -256,6 +256,16 @@
         "NoveltyLab/OctonionF3.lean",
         "docs/lean-oracle.md"
       ]
+    },
+    {
+      "id": "N2-H11",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "F_q has odd characteristic not dividing n, n>=6, C is the split eight-dimensional octonion norm space with determinant square class 1, and Q_D,n is the normalized Descartes form.",
+      "scope": "Witt-stabilized Soddy-Gossett bridge",
+      "verified_by": [
+        "docs/theorems/witt-soddy-bridge.md#n2-t06"
+      ]
     }
   ]
 }
