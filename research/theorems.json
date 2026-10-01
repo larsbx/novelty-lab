@@ -87,6 +87,20 @@
         "N2-V06"
       ],
       "proof_artifact": "docs/theorems/finite-defect-geometry.md#n2-t03"
+    },
+    {
+      "id": "N2-T04",
+      "candidate": "N2",
+      "statement": "In any algebra, [a,b,c]d+[a,bc,d]+a[b,c,d]-[a,b,cd]-[ab,c,d]=0; equivalently, the signed associator defects around the five parenthesizations of a four-letter word form an exact closed boundary.",
+      "claim_class": "proved result",
+      "novelty_status": "classical associator identity; finite boundary interpretation unassessed",
+      "hypotheses": [
+        "N2-H09"
+      ],
+      "obligations": [
+        "N2-V07"
+      ],
+      "proof_artifact": "docs/theorems/pentagon-boundary.md#n2-t04"
     }
   ]
 }
