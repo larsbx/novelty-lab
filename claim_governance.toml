@@ -7,7 +7,7 @@
 name = "larsbx/novelty-lab"
 
 [scan]
-prose = ["README.md", "docs/**/*.md"]
+prose = ["README.md", "docs/**/*.md", "paper/**/*.tex", "paper/**/*.md"]
 source = ["kernel/**/*.py", "experiments/**/*.py", "scripts/*.py", "tools/*.py"]
 exclude = ["vendor/**"]
 
