@@ -68,6 +68,24 @@
         "Prior literature already constructs the same finite rebracketing holonomy with arithmetic collision moments."
       ],
       "next_gate": "Classify when individual pentagon edges vanish and when defect-operator transports yield nontrivial conjugacy-invariant strata despite the additive boundary closing."
+    },
+    {
+      "id": "NC-SG-01",
+      "title": "Witt-stabilized defect Apollonian action",
+      "foundation": [
+        "N2-T03",
+        "N2-T06",
+        "N3-T02"
+      ],
+      "status": "candidate contribution",
+      "core": "Extend finite octonion defects by identity on the minimal discriminant-matching complement, transport them to the higher-dimensional Descartes form, and compare their conjugacy-invariant orbit strata with reduced Apollonian orbits and ACC configuration fibers.",
+      "novel_delta": "The quadratic-form stabilization and Apollonian actions are classical; the candidate delta is the canonical-up-to-conjugacy defect enrichment and its certified collision statistics.",
+      "falsifiers": [
+        "The transported defect subgroup has exactly the same orbits as the reduced Apollonian group in every tested admissible dimension and field.",
+        "The action preserves the curvature null cone but does not preserve or meaningfully stratify the full ACC configuration variety.",
+        "Prior work already constructs an equivalent octonionic defect enrichment of higher-dimensional Descartes groups."
+      ],
+      "next_gate": "Construct explicit Gram-matrix isometries for n=6,7,8 over small fields and compare defect, Apollonian, and combined subgroup orders and orbits."
     }
   ]
 }
