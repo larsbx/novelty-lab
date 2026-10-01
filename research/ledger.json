@@ -123,7 +123,7 @@
       "tags": []
     },
     "N3BaselineGrid": {
-      "id": "sha256:bbf6f701fe8401c6b5cf36a7ca49908ef39f600ce55920788eba5eb48bdf8ea1",
+      "id": "sha256:b65c0506fcc199d2031cd9635d5307a5c6771920f77a06a509f2f64bf94ab42b",
       "kind": "bounded_experiment",
       "statement": "descriptive collision statistics of data/n3/grid-v1.json",
       "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
@@ -139,7 +139,7 @@
         ],
         [
           "digest",
-          "sha256:e12b952de76b927cbb4ff60a043f52a9ff5ea03e2b245d808c9ab50cf83948d3"
+          "sha256:563ef59c1ee03fb72417f4ec6de81c77c58ad66661176206b035b9391499293f"
         ]
       ],
       "tags": []

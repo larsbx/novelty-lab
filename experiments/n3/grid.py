@@ -3,7 +3,8 @@
 
 For each odd prime ell in ELLS, the first COUNT primes n ≥ (ell^3 - ell)/24 with
 ell ∤ n (the left-orbit collision regime λ ≈ 1), under both unit actions.
-Deterministic; `--check` compares with the committed output byte for byte.
+Deterministic across Python versions (floats pass through `stable`);
+`--check` compares with the committed output byte for byte.
 
 Usage: grid.py [--check]     writes or checks data/n3/grid-v1.json
 """
@@ -26,6 +27,15 @@ FIELDS = ("bins", "shell_size", "lambda", "dispersion_index", "total_variation",
           "observed_histogram", "input_sha256")
 
 
+def stable(value):
+    """Floats to 10 decimal places and 12 significant digits. Float sums differ in
+    the last bits across Python versions (3.12 compensates them), and a statistic
+    that is exactly 0 can come out as 0.0 or as 1e-31 noise."""
+    if isinstance(value, float):
+        return float(f"{round(value, 10):.12g}") + 0.0
+    return [stable(v) for v in value] if isinstance(value, list) else value
+
+
 def primes_from(start: int, ell: int):
     n = max(start, 2)
     while True:
@@ -41,7 +51,7 @@ def rows() -> list[dict]:
         for n in [next(gen) for _ in range(COUNT)]:
             for action in ACTIONS:
                 stats = analyze(occupancy(n, ell, action))
-                out.append({"n": n, "ell": ell, "unit_action": action, **{k: stats[k] for k in FIELDS}})
+                out.append({"n": n, "ell": ell, "unit_action": action, **{k: stable(stats[k]) for k in FIELDS}})
     return out
 
 
