@@ -20,11 +20,69 @@ The execution order is N1 → N3 → N2 → N4. See
 [the calibration policy](docs/calibration.md) and the per-candidate dossiers in
 [docs/candidates](docs/candidates).
 
+## Layout
+
+| Path | Authority |
+|---|---|
+| `kernel/n1/` | canonical N1 certificate checker (exact arithmetic over ℚ) |
+| `experiments/` | non-authoritative search and data generation |
+| `data/` | committed experimental outputs, hashed in the ledger |
+| `schemas/` | versioned certificate formats |
+| `research/candidates.json` | programme registry (calibration ladder) |
+| `research/ledger.json` | proof-record ledger: the single source of `docs/ledger-index.md`, `tla/`, and the generated claims in `claim_governance.toml` |
+| `vendor/` | pinned external code, never edited here |
+
 ## Reproducible checks
 
 ```sh
 python scripts/check_registry.py
+python vendor/vendoring/check_vendored_sync.py
+PYTHONPATH=vendor python -m proof_records.generate_ledgers research/ledger.json --claims claim_governance.toml --check
+PYTHONPATH=vendor python -m claim_governance.cli
 python -m unittest discover -s tests -v
+```
+
+After editing `research/ledger.json`, run `python tools/seal_ledger.py`
+(recomputes the content-addressed record identifiers; an edge may name its
+target as `@Name`), then drop `--check` from the generator command to
+regenerate its surfaces. The TLC models in `tla/` run with
+`ProofArchitecture.tla` on the library path:
+`java -DTLA-Library=vendor/proof_records -jar tla2tools.jar -config tla/MCNoveltyLedgerOpen.cfg tla/MCNoveltyLedgerOpen.tla`.
+
+## Vendored code
+
+`vendored.toml` pins each package under `vendor/` to an upstream commit and
+the SHA-256 of every file; `vendor/vendoring/check_vendored_sync.py` fails CI
+on any drift or unpinned source file. To update: copy the package directory
+byte for byte from upstream, then run
+`python vendor/vendoring/check_vendored_sync.py pin NAME COMMIT`. Never patch
+a vendored file locally; fix it upstream and re-vendor.
+
+| Package | Upstream | Use here |
+|---|---|---|
+| `proof_records` (Python files and `ProofArchitecture.tla`) | `larsbx/finite-math-kernels` `kernel/proof_records` | record identity, closure, ledger generation |
+| `claim_governance` | `larsbx/finite-math-kernels` `tools/claim_governance` | enforces `claim_governance.toml` |
+| `vendoring` | `larsbx/finite-math-kernels` `tools/vendoring` | the checker above |
+
+The Mojo kernels in `finite-math-kernels` (`finite_exact`, `quadratic_orbit`,
+…), the Julia oracles in `julia-oracle-lab`, and the Haskell `meta_test`
+framework are not vendored. Nothing here is written in those languages, and
+exact ℚ arithmetic is Python's `int`/`Fraction`. Vendor one only when a
+consumer in this repository exists.
+
+N1 certificates (`docs/n1-specification.md`) are searched and checked
+separately:
+
+```sh
+python experiments/n1/search.py -1 -1 > cert.json   # non-authoritative
+```
+
+The N3 data generator emits a complete occupancy vector, and the analyzer
+consumes it:
+
+```sh
+python experiments/n3/hurwitz_shell.py 97 13 left > data.json
+python experiments/n3/analyze_collisions.py data.json
 ```
 
 The N3 analyzer consumes a JSON object whose `multiplicities` field is the

@@ -1,0 +1,162 @@
+{
+  "format": "finite_proof_records ledger 1",
+  "repository": "larsbx/novelty-lab",
+  "module": "NoveltyLedger",
+  "tla_dir": "tla",
+  "index_path": "docs/ledger-index.md",
+  "status_classes": {
+    "verified_finite_computation": "finite-domain",
+    "bounded_experiment": "experimental",
+    "pending_dependency": "open"
+  },
+  "status_labels": {
+    "finite-domain": "verified finite computation",
+    "experimental": "experimental result",
+    "open": "pending",
+    "proved": "proved result",
+    "imported": "imported",
+    "conditional": "conditional",
+    "retired": "retired"
+  },
+  "records": {
+    "HilbertSymbolFormula": {
+      "id": "sha256:3f4abd8270e9432530411af2c7f5634604d42f95e6d0db9705c346c868418599",
+      "kind": "pending_dependency",
+      "statement": "(a, b)_v is given at every place v of Q by the explicit formulas implemented in kernel/n1/hilbert.py",
+      "scope": "nonzero rationals a, b; places of Q",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "imported from Serre, A Course in Arithmetic, Ch. III, Thm. 1; citation and hypotheses await human review"
+        ]
+      ],
+      "tags": []
+    },
+    "QuaternionSplitIffConic": {
+      "id": "sha256:7a0449b83512a971207bdbb7ea43e06ca5ef22ee2c31bdb57a76cd870526a7e1",
+      "kind": "pending_dependency",
+      "statement": "(a, b)_Q has a zero divisor iff z^2 = a x^2 + b y^2 has a nonzero rational solution; a local symbol -1 at any place excludes one",
+      "scope": "quaternion algebras (a, b)_Q, a, b nonzero rationals",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "classical; citation and hypotheses await human review"
+        ]
+      ],
+      "tags": []
+    },
+    "DivisionCertificateSoundness": {
+      "id": "sha256:16a03506e98ab3878d853994e875a0d7049ea7821f328b7a80e57c27fec35a0a",
+      "kind": "pending_dependency",
+      "statement": "kernel/n1/certificate.py accepts a division certificate only for a division algebra",
+      "scope": "quaternion algebras (a, b)_Q, a, b nonzero rationals",
+      "depends_on": [
+        [
+          "sha256:3f4abd8270e9432530411af2c7f5634604d42f95e6d0db9705c346c868418599",
+          "(a, b)_v is given at every place v of Q by the explicit formulas implemented in kernel/n1/hilbert.py",
+          "kernel/n1/certificate.py:_division",
+          "scope=nonzero rationals a, b; places of Q",
+          "accepted"
+        ],
+        [
+          "sha256:7a0449b83512a971207bdbb7ea43e06ca5ef22ee2c31bdb57a76cd870526a7e1",
+          "(a, b)_Q has a zero divisor iff z^2 = a x^2 + b y^2 has a nonzero rational solution; a local symbol -1 at any place excludes one",
+          "kernel/n1/certificate.py:_division",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "repository argument from the two imported results; proof not yet written or reviewed"
+        ]
+      ],
+      "tags": []
+    },
+    "ZeroDivisorCertificateSoundness": {
+      "id": "sha256:4e77b2a8d24caf2b7f98750327074f648bdb016d735a2af737a3f34cb2bc699f",
+      "kind": "pending_dependency",
+      "statement": "kernel/n1/certificate.py accepts a zero_divisor certificate only for an algebra that is not a division algebra",
+      "scope": "Cayley-Dickson algebras A_n over Q under cayley-dickson/v1, n <= 8",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "elementary (exact multiplication exhibits xy = 0 with x, y nonzero); proof not yet reviewed"
+        ]
+      ],
+      "tags": []
+    },
+    "HurwitzShellCount": {
+      "id": "sha256:8b96a1e9ea571bd2658fa4156421175a0279ccd9f06daa287a74fc373f6a3949",
+      "kind": "pending_dependency",
+      "statement": "|S_n| = 24 sigma_1(odd part of n) for every n >= 1",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "classical (Hurwitz); citation awaits human review"
+        ]
+      ],
+      "tags": []
+    },
+    "HurwitzShellCountFinite": {
+      "id": "sha256:756cac5fc7b6aa310d4e218bba8f858f888cd7185e6736865e6f3a028bd5083e",
+      "kind": "verified_finite_computation",
+      "statement": "|S_n| = 24 sigma_1(odd part of n) for 1 <= n <= 200",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "replay",
+          "python -m unittest discover -s tests -p test_n3_hurwitz_shell.py"
+        ],
+        [
+          "digest",
+          "sha256:946ce17ea3f74cc2e3d43d1618f4cf6da768f6a5bea9ce0eeea286424d70c639"
+        ]
+      ],
+      "tags": []
+    },
+    "N3BaselineGrid": {
+      "id": "sha256:bbf6f701fe8401c6b5cf36a7ca49908ef39f600ce55920788eba5eb48bdf8ea1",
+      "kind": "bounded_experiment",
+      "statement": "descriptive collision statistics of data/n3/grid-v1.json",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "ell in {5, 7, 11, 13}; first 4 primes n >= (ell^3 - ell)/24 with ell not dividing n; unit_action in {none, left}"
+        ],
+        [
+          "replay",
+          "python experiments/n3/grid.py --check"
+        ],
+        [
+          "digest",
+          "sha256:e12b952de76b927cbb4ff60a043f52a9ff5ea03e2b245d808c9ab50cf83948d3"
+        ]
+      ],
+      "tags": []
+    },
+    "N3PoissonHeuristic": {
+      "id": "sha256:a7edc1e039bcc0ab0328ea6a8d98b6f62717d4d9acdc6158efc4d42d1149fbd0",
+      "kind": "pending_dependency",
+      "statement": "fiber occupancies of S_n modulo ell are asymptotically Poisson in the collision regime",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "heuristic; no theorem route established (docs/candidates/N3.md)"
+        ]
+      ],
+      "tags": []
+    }
+  }
+}

@@ -1,0 +1,645 @@
+{
+ "claim_status": "experimental descriptive statistic; not a Poisson theorem",
+ "convention": "hurwitz-mod-ell/v1",
+ "rows": [
+  {
+   "bins": 120,
+   "dispersion_index": 0.3999999999999986,
+   "ell": 5,
+   "input_sha256": "cfe98244b5433101ad107564a047e8b2d73c6ebf717f5115b9bc597825beb20f",
+   "lambda": 1.6,
+   "n": 7,
+   "observed_histogram": [
+    24,
+    0,
+    96
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 65.43526470757654,
+   "shell_size": 192,
+   "total_variation": 0.32493094678610407,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.40000000000000013,
+   "ell": 5,
+   "input_sha256": "18656547bfd6ccaa3c73c9a5416b72970c4337f8843b46cf4e519729ae1b8b6b",
+   "lambda": 1.6,
+   "n": 7,
+   "observed_histogram": [
+    1,
+    0,
+    4
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 8,
+   "total_variation": 0.32493094678610407,
+   "unit_action": "left"
+  },
+  {
+   "bins": 120,
+   "dispersion_index": 0.6000000000000011,
+   "ell": 5,
+   "input_sha256": "62eb04d3c3da766d9e01b85aa470718438f9d638e86a470222c85ca91c64762a",
+   "lambda": 2.4,
+   "n": 11,
+   "observed_histogram": [
+    24,
+    0,
+    0,
+    96
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 111.39500478720942,
+   "shell_size": 288,
+   "total_variation": 0.47899079336809813,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.6000000000000001,
+   "ell": 5,
+   "input_sha256": "29f92399afc1dd72b5324ba9f092fa434b47347e5040e3cc5286068fc38c6b71",
+   "lambda": 2.4,
+   "n": 11,
+   "observed_histogram": [
+    1,
+    0,
+    0,
+    4
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 12,
+   "total_variation": 0.47899079336809813,
+   "unit_action": "left"
+  },
+  {
+   "bins": 120,
+   "dispersion_index": 0.9142857142857111,
+   "ell": 5,
+   "input_sha256": "291c432d4d639adb6aecb95c2b269925c56c8539ee0894cc637d9d46fe490ae0",
+   "lambda": 2.8,
+   "n": 13,
+   "observed_histogram": [
+    0,
+    0,
+    96,
+    0,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 7,
+   "pearson_pooled": 275.9018744542634,
+   "shell_size": 336,
+   "total_variation": 0.6965142411449045,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.9142857142857147,
+   "ell": 5,
+   "input_sha256": "fecf1a3cbe5544cc36efa1f3a0734d6ffd138ca011d30427762db20ed71c31a6",
+   "lambda": 2.8,
+   "n": 13,
+   "observed_histogram": [
+    0,
+    0,
+    4,
+    0,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 14,
+   "total_variation": 0.6965142411449045,
+   "unit_action": "left"
+  },
+  {
+   "bins": 120,
+   "dispersion_index": 0.4000000000000007,
+   "ell": 5,
+   "input_sha256": "896bf684ab5f49b5287206dea925bd4c793282a7fbee49b6cd1df4dfa924ff4a",
+   "lambda": 3.6,
+   "n": 17,
+   "observed_histogram": [
+    0,
+    0,
+    0,
+    96,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 6,
+   "pearson_pooled": 272.25667189246093,
+   "shell_size": 432,
+   "total_variation": 0.631649268097229,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.4,
+   "ell": 5,
+   "input_sha256": "426512fc0f8cdd78c68cb6f0b7f9983eb9360335775f6054be98c84c11daeb5d",
+   "lambda": 3.6,
+   "n": 17,
+   "observed_histogram": [
+    0,
+    0,
+    0,
+    4,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 18,
+   "total_variation": 0.631649268097229,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 1.047619047619049,
+   "ell": 7,
+   "input_sha256": "1e171fca6a0ad632e582fff727c7282f2a7bc045a1050f1b4e822a9bd298c310",
+   "lambda": 1.2857142857142858,
+   "n": 17,
+   "observed_histogram": [
+    96,
+    144,
+    0,
+    96
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 133.30913822802358,
+   "shell_size": 432,
+   "total_variation": 0.22849690588770122,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 1.0476190476190474,
+   "ell": 7,
+   "input_sha256": "edc44be3c369daa39d4128ad538108a76ef87832eac9e1eb20d3043e40cc7515",
+   "lambda": 1.2857142857142858,
+   "n": 17,
+   "observed_histogram": [
+    4,
+    6,
+    0,
+    4
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 0.40859332864309195,
+   "shell_size": 18,
+   "total_variation": 0.22849690588770127,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 1.1714285714285722,
+   "ell": 7,
+   "input_sha256": "61a008d95960b75ad8b97783c504d2d5c3e1cb976d6f18278bbf69529d43c5f6",
+   "lambda": 1.4285714285714286,
+   "n": 19,
+   "observed_histogram": [
+    144,
+    0,
+    96,
+    96
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 191.81709733169,
+   "shell_size": 480,
+   "total_variation": 0.3423586234882511,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 1.1714285714285715,
+   "ell": 7,
+   "input_sha256": "581e76dad06d6d2eaf1c63258e1b1ef7a44f1c4163ccc2bb0c57d7fed1f5ac29",
+   "lambda": 1.4285714285714286,
+   "n": 19,
+   "observed_histogram": [
+    6,
+    0,
+    4,
+    4
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 1.3548735524676676,
+   "shell_size": 20,
+   "total_variation": 0.3423586234882511,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 0.2857142857142857,
+   "ell": 7,
+   "input_sha256": "7f8e3947e312c504b4cabe468313fc15240023901299678f54b1b34f81a59272",
+   "lambda": 1.7142857142857142,
+   "n": 23,
+   "observed_histogram": [
+    48,
+    0,
+    288
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 184.99386897836837,
+   "shell_size": 576,
+   "total_variation": 0.3459648472587279,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 0.28571428571428575,
+   "ell": 7,
+   "input_sha256": "6bcdfcccb30a3f803d1278f5595d0c44fea8c60dfa911bffb75acb4a3312f962",
+   "lambda": 1.7142857142857142,
+   "n": 23,
+   "observed_histogram": [
+    2,
+    0,
+    12
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 6.706085475493119,
+   "shell_size": 24,
+   "total_variation": 0.3459648472587279,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 0.6571428571428553,
+   "ell": 7,
+   "input_sha256": "37f863373d2203da2a8e63b09f13eb2831a28a8b2349974bf27ca15311b3e38a",
+   "lambda": 2.142857142857143,
+   "n": 29,
+   "observed_histogram": [
+    24,
+    0,
+    288,
+    0,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 7,
+   "pearson_pooled": 671.9998719157718,
+   "shell_size": 720,
+   "total_variation": 0.6369276888620159,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 0.6571428571428568,
+   "ell": 7,
+   "input_sha256": "9213dee205328449c47afa0b8530627d908e812f522af0dd3e2ebd25484404af",
+   "lambda": 2.142857142857143,
+   "n": 29,
+   "observed_histogram": [
+    1,
+    0,
+    12,
+    0,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 5.315788737217952,
+   "shell_size": 30,
+   "total_variation": 0.6369276888620159,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.7090909090909264,
+   "ell": 11,
+   "input_sha256": "f8620e0e2420712f5215372fd0c0944e94ce96910c728160b9f0f8c44d4d8a0d",
+   "lambda": 1.0909090909090908,
+   "n": 59,
+   "observed_histogram": [
+    264,
+    864,
+    0,
+    192
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 666.1229849390281,
+   "shell_size": 1440,
+   "total_variation": 0.3357918956955236,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.7090909090909101,
+   "ell": 11,
+   "input_sha256": "3fbe2801a3f765529d86588eb3add171fcaace61a20798dba5ddd979624375c9",
+   "lambda": 1.0909090909090908,
+   "n": 59,
+   "observed_histogram": [
+    11,
+    36,
+    0,
+    8
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 27.755124372459502,
+   "shell_size": 60,
+   "total_variation": 0.33579189569552353,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.743695014662771,
+   "ell": 11,
+   "input_sha256": "5e7b9d5250f03903ce7172050c025b56f38c76571fb0403cd6278d620dadfcbd",
+   "lambda": 1.1272727272727272,
+   "n": 61,
+   "observed_histogram": [
+    240,
+    768,
+    288,
+    0,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 6,
+   "pearson_pooled": 416.3839465782171,
+   "shell_size": 1488,
+   "total_variation": 0.24613825863073405,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.7436950146627579,
+   "ell": 11,
+   "input_sha256": "230454017276d99e371f13d007c83cc8c0567247f84672cc94cc6ca8fed1ae30",
+   "lambda": 1.1272727272727272,
+   "n": 61,
+   "observed_histogram": [
+    10,
+    32,
+    12,
+    0,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 14.496636156805211,
+   "shell_size": 62,
+   "total_variation": 0.24613825863073407,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.9401069518716726,
+   "ell": 11,
+   "input_sha256": "87480c0d3618e2346293a8851752fafb049f425f9fb15310a72e4359f5bd4489",
+   "lambda": 1.2363636363636363,
+   "n": 67,
+   "observed_histogram": [
+    216,
+    864,
+    96,
+    0,
+    144
+   ],
+   "pearson_groups": 5,
+   "pearson_pooled": 832.5120321995435,
+   "shell_size": 1632,
+   "total_variation": 0.36753941802710954,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.9401069518716588,
+   "ell": 11,
+   "input_sha256": "9343c3519edbea4604dfb98bf5d94acf6e85f2579ccea2c3bc3f66ccf2510165",
+   "lambda": 1.2363636363636363,
+   "n": 67,
+   "observed_histogram": [
+    9,
+    36,
+    4,
+    0,
+    6
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 22.096116522863273,
+   "shell_size": 68,
+   "total_variation": 0.36753941802710943,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.6909090909090764,
+   "ell": 11,
+   "input_sha256": "2b4fa5e5b797f528b1cd5c0bd6d2d453bbf77dde0e72ef6f3b159b294d4c474f",
+   "lambda": 1.309090909090909,
+   "n": 71,
+   "observed_histogram": [
+    456,
+    0,
+    864
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 765.7791964979039,
+   "shell_size": 1728,
+   "total_variation": 0.35354023707236326,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.6909090909090913,
+   "ell": 11,
+   "input_sha256": "136501dea93e0b4aa9a4eec3a5267b9528068db0d17ce390b0f9b5cf444121f4",
+   "lambda": 1.309090909090909,
+   "n": 71,
+   "observed_histogram": [
+    19,
+    0,
+    36
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 31.907466520746002,
+   "shell_size": 72,
+   "total_variation": 0.35354023707236326,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 1.2087912087911918,
+   "ell": 13,
+   "input_sha256": "7f4797e36109065b6b8f72c0a35b676a741ea9069eea36aedcb67b945a1f9f97",
+   "lambda": 1.0769230769230769,
+   "n": 97,
+   "observed_histogram": [
+    672,
+    1056,
+    288,
+    0,
+    144,
+    0,
+    24
+   ],
+   "pearson_groups": 6,
+   "pearson_pooled": 557.3935751699502,
+   "shell_size": 2352,
+   "total_variation": 0.17363450670010877,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 1.2087912087912096,
+   "ell": 13,
+   "input_sha256": "4585308690ccc7e8eb5988a830593ac7c808b421d4aa2d8dba9c8cebab12c0af",
+   "lambda": 1.0769230769230769,
+   "n": 97,
+   "observed_histogram": [
+    28,
+    44,
+    12,
+    0,
+    6,
+    0,
+    1
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 5.965448303285412,
+   "shell_size": 98,
+   "total_variation": 0.1736345067001088,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 0.8202973497091256,
+   "ell": 13,
+   "input_sha256": "2fe443f73150c2e4c866e3180fdec16fada87fa77f1dedc3083c6ab3b7cdae46",
+   "lambda": 1.120879120879121,
+   "n": 101,
+   "observed_histogram": [
+    696,
+    720,
+    576,
+    192
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 50.37856235102343,
+   "shell_size": 2448,
+   "total_variation": 0.058952299375951145,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 0.8202973497091152,
+   "ell": 13,
+   "input_sha256": "be321fdaebd375f2df1056b1fbf8d7d153d0ea08e0f65e3b2c3b752c09f2c57b",
+   "lambda": 1.120879120879121,
+   "n": 101,
+   "observed_histogram": [
+    29,
+    30,
+    24,
+    8
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 2.0991067646259762,
+   "shell_size": 102,
+   "total_variation": 0.05895229937595112,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 1.0879120879120927,
+   "ell": 13,
+   "input_sha256": "f5bce25d52eab0748a47fbdb84d997a91c0c20d8e4d4f367c4fbe2f356869d45",
+   "lambda": 1.1428571428571428,
+   "n": 103,
+   "observed_histogram": [
+    792,
+    576,
+    672,
+    0,
+    144
+   ],
+   "pearson_groups": 5,
+   "pearson_pooled": 453.35459752864,
+   "shell_size": 2496,
+   "total_variation": 0.18006761390020432,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 1.0879120879120878,
+   "ell": 13,
+   "input_sha256": "8b5d696205eee50a5e021f6cb7ec38aaf61d8ace8cdadebaa9671485755c6a90",
+   "lambda": 1.1428571428571428,
+   "n": 103,
+   "observed_histogram": [
+    33,
+    24,
+    28,
+    0,
+    6
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 8.9102746338436,
+   "shell_size": 104,
+   "total_variation": 0.18006761390020432,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 1.3687423687424136,
+   "ell": 13,
+   "input_sha256": "c7948d980cb73a8f44cb5012f1a0c84277a8e97cbbcda00487edf282df15815c",
+   "lambda": 1.1868131868131868,
+   "n": 107,
+   "observed_histogram": [
+    984,
+    288,
+    576,
+    192,
+    144
+   ],
+   "pearson_groups": 5,
+   "pearson_pooled": 569.718323593145,
+   "shell_size": 2592,
+   "total_variation": 0.23033812241170729,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 1.368742368742371,
+   "ell": 13,
+   "input_sha256": "b3bbea5380ae46226eeac28b96413ebafa8a13fecd5f8800828209d315a8ca9b",
+   "lambda": 1.1868131868131868,
+   "n": 107,
+   "observed_histogram": [
+    41,
+    12,
+    24,
+    8,
+    6
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 21.65024857290792,
+   "shell_size": 108,
+   "total_variation": 0.23033812241170717,
+   "unit_action": "left"
+  }
+ ],
+ "schema": "novelty-lab/n3-grid/v1"
+}

@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "updated": "2026-10-01",
+  "ledger": "research/ledger.json",
   "policy": "docs/calibration.md",
   "candidates": [
     {
