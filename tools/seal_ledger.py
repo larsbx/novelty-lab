@@ -25,7 +25,13 @@ from proof_records.records import identity  # noqa: E402
 def seal(data: dict) -> dict:
     records = data["records"]
     name_of = {r["id"]: name for name, r in records.items() if r.get("id")}
-    target = lambda ref: ref[1:] if ref.startswith("@") else name_of[ref]  # noqa: E731
+
+    def target(ref: str) -> str:
+        name = ref[1:] if ref.startswith("@") else name_of.get(ref)
+        if name not in records:
+            raise ValueError(f"edge target {ref!r} names no record; write it as @Name")
+        return name
+
     sealed: dict[str, str] = {}
 
     def visit(name: str, path: tuple[str, ...] = ()) -> str:

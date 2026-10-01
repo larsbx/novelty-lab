@@ -8,6 +8,8 @@
 EXTENDS ProofArchitecture
 
 ResultSet == {
+    "ArtinTheorem",
+    "CompositionIdentities",
     "DefectCensus",
     "DefectFixesQuaternionSubalgebra",
     "DefectRankLaw",
@@ -24,8 +26,10 @@ ResultSet == {
 }
 
 RequiresDef == [r \in ResultSet |->
-    CASE r = "DefectCensus" -> {}
-      [] r = "DefectFixesQuaternionSubalgebra" -> {}
+    CASE r = "ArtinTheorem" -> {}
+      [] r = "CompositionIdentities" -> {}
+      [] r = "DefectCensus" -> {}
+      [] r = "DefectFixesQuaternionSubalgebra" -> {"CompositionIdentities", "ArtinTheorem"}
       [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra"}
       [] r = "DefectSpecialOrthogonal" -> {}
       [] r = "DefectStratifiedCollisions" -> {}
@@ -39,10 +43,14 @@ RequiresDef == [r \in ResultSet |->
       [] r = "ZeroDivisorCertificateSoundness" -> {}]
 
 ProvedDef == {
+    "DefectFixesQuaternionSubalgebra",
     "HurwitzShellCountFinite"
 }
 
-ImportedDef == {}
+ImportedDef == {
+    "ArtinTheorem",
+    "CompositionIdentities"
+}
 
 BoundedDef == {
     "DefectCensus",
@@ -56,6 +64,8 @@ ImportsAssumed == ImportedDef
 
 (* Observables: one per result, asserting that it is not established. A model *)
 (* lists those its assumptions leave unreachable; TLC then checks the closure.  *)
+ArtinTheoremNotEstablished == "ArtinTheorem" \notin established
+CompositionIdentitiesNotEstablished == "CompositionIdentities" \notin established
 DefectCensusNotEstablished == "DefectCensus" \notin established
 DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
 DefectRankLawNotEstablished == "DefectRankLaw" \notin established
