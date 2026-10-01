@@ -244,7 +244,7 @@
       "tags": []
     },
     "DefectRankLaw": {
-      "id": "sha256:5edcf430d1f0164b1879abfd8beeb7fa7a24a81d1b6f42f6361d68e1892554d4",
+      "id": "sha256:2e7a3980e984ff7dbbdba5cf27685acc59a7da5557f2041b8999f63aed31a0a4",
       "kind": "pending_dependency",
       "statement": "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -260,7 +260,7 @@
       "evidence": [
         [
           "reason",
-          "case dim Q <= 2 proved in paper/associator-defects/main.tex (Proposition 3.9, awaiting review); upper bound is DefectFixesQuaternionSubalgebra (5); equality for dim Q in {3, 4} is open, supported only by DefectCensus"
+          "case dim Q <= 2 proved in paper/associator-defects/main.tex (Proposition 3.9, awaiting review); verified exhaustively over F_3 by RankLawExhaustiveF3 together with the scalar-shift and rescaling reduction in experiments/n2/rank_law.py; open over other fields"
         ]
       ],
       "tags": []
@@ -319,6 +319,24 @@
         [
           "hypotheses",
           "C is alternative by CompositionIdentities"
+        ]
+      ],
+      "tags": []
+    },
+    "RankLawExhaustiveF3": {
+      "id": "sha256:d29f47ae3be7f97cc93b9ce21470eb55328bed103589eebe506c5f7feba93948",
+      "kind": "verified_finite_computation",
+      "statement": "rank([x, y, -]) = 2 max(0, dim span{1, x, y, xy} - 2) for every unordered pair of distinct points of the projective space of trace-zero elements",
+      "scope": "split octonions C over F_3, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "replay",
+          "python experiments/n2/rank_law.py --check"
+        ],
+        [
+          "digest",
+          "sha256:fb14676def9375b246801fda8e77f8fc3b04a1e4c14f2abecf5feec0143c1336"
         ]
       ],
       "tags": []

@@ -25,6 +25,7 @@ from source rather than committing them.
 | Prop. 3.5 (det Lₓ = N(x)⁴, det Δ = 1) | proved in the paper | ledger `DefectSpecialOrthogonal` (pending review); `tests/test_n2_defect_theorem.py::TestDeterminant` |
 | Prop. 3.9 (dim Q ≤ 2 ⇒ Δ = I) | proved in the paper | ledger `DefectRankLaw` (first case; pending review) |
 | Conj. 3.8 | conjecture | ledger `DefectRankLaw`, `DefectCensus`; Table 1 |
+| Prop. 5.1 (rank law over 𝔽₃) | verified finite computation | ledger `RankLawExhaustiveF3`; `data/n2/rank-law-v1.json` via `experiments/n2/rank_law.py`; `tests/test_rank_law.py` |
 | (4), Obs. 4.1 | proved (classical) | `research/theorems.json` N2-T04; `docs/theorems/pentagon-boundary.md` |
 | Table 1 | bounded experiment | `data/n2/defect-census-v1.json` via `experiments/n2/defect_census.py` |
 | Table 2 | bounded experiment | `data/n2/oracle-mutants-v1.json` via `scripts/lean_mutation_suite.py` |

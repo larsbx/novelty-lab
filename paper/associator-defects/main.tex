@@ -287,8 +287,9 @@ $N(x)N(y)\neq0$. Then $\rank(\Delta(x,y)-I)=2$ if $\dim Q=3$ and $\rank(\Delta(x
 \end{conjecture}
 
 The first case is a theorem (Proposition~\ref{prop:flat}), and
-Theorem~\ref{thm:fixed}(d) gives the upper bound in the third. The evidence for
-the remaining equalities is the census in Section~\ref{sec:census}.
+Theorem~\ref{thm:fixed}(d) gives the upper bound in the third. Over $\F_3$ the
+conjecture holds for every pair (Proposition~\ref{prop:f3}). Elsewhere the evidence
+for the remaining equalities is the census in Section~\ref{sec:census}.
 
 \begin{proposition}\label{prop:flat}
 If $\dim Q\le2$, then $\Delta(x,y)=I$.
@@ -358,9 +359,31 @@ Table~\ref{tab:census} reports the strata. No check failed. On the
 $\dim Q=4$ stratum, $\tr\Delta$ takes every value in $\F_\ell$, so the trace is
 not determined by $\dim Q$. Whether the class of $\Delta|_{Q^\perp}$ carries
 arithmetic information beyond classical conjugacy data is the open question of
-Section~\ref{sec:open}. The stratum $\dim Q=3$ is rare (six pairs in total)
-and absent for $\ell\ge7$, so the middle case of Conjecture~\ref{conj:rank}
-rests on little evidence.
+Section~\ref{sec:open}. Under uniform sampling the stratum $\dim Q=3$ is rare
+(six pairs in total) and absent for $\ell\ge7$, so the census says little about
+the middle case of Conjecture~\ref{conj:rank}. Over $\F_3$ that gap is closed by
+exhaustion.
+
+\begin{proposition}[exhaustive verification]\label{prop:f3}
+Conjecture~\ref{conj:rank} holds for every pair $x,y$ in the split octonion
+algebra over $\F_3$.
+\end{proposition}
+
+\begin{proof}
+Put $\varphi_{x,y}(z)=\assoc xyz$. If $N(xy)\neq0$, then $\Delta w=w$ if and only
+if $L_{xy}^{-1}w\in\ker\varphi_{x,y}$, so
+$\rank(\Delta-I)=\rank\varphi_{x,y}$. Both $\varphi_{x,y}$ (up to a nonzero
+scalar) and $Q$ are unchanged by $x\mapsto\lambda x+\alpha$,
+$y\mapsto\mu y+\beta$ with $\lambda\mu\neq0$, because the associator is
+trilinear and vanishes on scalars. They are also unchanged by swapping $x$ and
+$y$. If $1,x,y$ are linearly dependent, Proposition~\ref{prop:flat} applies.
+Otherwise the pair reduces to two distinct points of the projective space of
+trace-zero elements, which has $(3^7-1)/2=1093$ points. A computation in exact
+arithmetic over all $\binom{1093}{2}=596{,}778$ unordered pairs finds
+$\rank\varphi=2$ for each of the $21{,}840$ pairs with $\dim Q=3$ and
+$\rank\varphi=4$ for each of the $574{,}938$ pairs with $\dim Q=4$
+(\texttt{experiments/n2/rank\_law.py}).
+\end{proof}
 
 \begin{table}[t]
 \centering
@@ -465,8 +488,11 @@ methodology.
 \section{Limitations and open problems}\label{sec:open}
 
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Rank law.} Prove or refute Conjecture~\ref{conj:rank}. The case
-  $\dim Q=3$ needs targeted rather than uniform sampling.
+\item \emph{Rank law.} Prove Conjecture~\ref{conj:rank} over every field. It
+  holds over $\F_3$ (Proposition~\ref{prop:f3}). When $B|_Q$ is nondegenerate,
+  Cayley--Dickson doubling $\C=Q\oplus Qv$ suggests a uniform argument through
+  $\varphi(uv)=(u\,[y,x])v$ for $u\in Q$. The case of degenerate $Q$ needs
+  a different idea.
 \item \emph{Defect-stratified statistics.} For navigation words in generators
   drawn from a prime-norm shell modulo $\ell$, do collision moments
   conditioned on the conjugacy class of $\Delta|_{Q^\perp}$ in $\SO(Q^\perp)$
@@ -496,6 +522,7 @@ Census (Table~\ref{tab:census}) & \texttt{python experiments/n2/defect\_census.p
 Theorem replay & \texttt{python -m unittest discover -s tests -p 'test\_n2\_defect*.py'} \\
 Lean oracle & \texttt{lake build \&\& lake exe oracle-selfcheck} \\
 Mutants (Table~\ref{tab:mutants}) & \texttt{python scripts/lean\_mutation\_suite.py --check} \\
+Rank law (Prop.~\ref{prop:f3}) & \texttt{python experiments/n2/rank\_law.py --check} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule
 \end{tabular}

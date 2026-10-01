@@ -21,3 +21,4 @@ jobs:
       - run: python -m claim_governance.cli
         env: {PYTHONPATH: vendor}
       - run: python -m unittest discover -s tests -v
+      - run: python experiments/n2/rank_law.py --check
