@@ -1,5 +1,8 @@
 import copy
 import json
+import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -53,3 +56,21 @@ class TestClaimProvenance(unittest.TestCase):
         del self.theorems["theorems"][0]["ledger_record"]
         with self.assertRaisesRegex(ValueError, "missing ledger link"):
             self.check_mutant(theorems=self.theorems)
+
+    def test_pending_theorem_rejects_failed_obligation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copytree(ROOT / "research", root / "research")
+            for name in ("docs", "vendor", "NoveltyLab", "experiments", "data", "kernel", "tests", ".github"):
+                (root / name).symlink_to(ROOT / name, target_is_directory=True)
+            shutil.copytree(ROOT / "scripts", root / "scripts")
+            command = [sys.executable, str(root / "scripts/check_registry.py")]
+            baseline = subprocess.run(command, capture_output=True, text=True)
+            self.assertEqual(baseline.returncode, 0, baseline.stdout + baseline.stderr)
+            path = root / "research/obligations.json"
+            obligations = json.loads(path.read_text())
+            next(v for v in obligations["obligations"] if v["id"] == "N1-V06")["status"] = "failed"
+            path.write_text(json.dumps(obligations))
+            mutant = subprocess.run(command, capture_output=True, text=True)
+            self.assertNotEqual(mutant.returncode, 0)
+            self.assertIn("AssertionError", mutant.stderr)

@@ -38,7 +38,7 @@ for t in theorems:
     assert t["novelty_status"].strip() and not t["novelty_status"].startswith("novel result")
     assert t["hypotheses"] and t["obligations"]
     assert all(h in hyp and hyp[h]["status"]=="verified" and hyp[h]["candidate"]==cid for h in t["hypotheses"])
-    assert all(v in obl and obl[v]["candidate"]==cid and (t["claim_class"]=="pending" or obl[v]["status"]=="verified") for v in t["obligations"])
+    assert all(v in obl and obl[v]["candidate"]==cid and (obl[v]["status"] in {"open","verified"} if t["claim_class"]=="pending" else obl[v]["status"]=="verified") for v in t["obligations"])
 for r in retired:
     assert r["candidate"] in candidate_ids and r["status"]=="killed" and r["claim"].strip() and r["reason"].strip() and r["salvage"].strip()
 for n in novelty:
