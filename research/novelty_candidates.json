@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-01",
+  "policy": "A candidate contribution is not a novelty claim until its prior-art and differentiation gates close.",
+  "contributions": [
+    {
+      "id": "NC-N2-01",
+      "title": "Associator-defect navigation observable",
+      "foundation": [
+        "N2-T01",
+        "N2-T02"
+      ],
+      "status": "candidate contribution",
+      "core": "Replace the failed multiplicative parametrization x->L_x by matrix generators U_x together with D(x,y)=U_x U_y U_xy^{-1}, an SO(7)-stabilizer-valued exact defect observable.",
+      "novel_delta": "Potentially new as a navigation invariant coupling word synthesis to non-associativity; the underlying octonion and triality identities are classical.",
+      "falsifiers": [
+        "Prior work uses the same D(x,y) with the same stabilizer and navigation interpretation.",
+        "D carries no information beyond already-tabulated associator data for the selected generating shell."
+      ],
+      "next_gate": "Compute defect conjugacy/spectral classes for prime shells and search octonion/triality literature by the exact operator formula."
+    },
+    {
+      "id": "NC-N3-01",
+      "title": "Stabilizer-certified shell collision law",
+      "foundation": [
+        "N3-T01",
+        "N3-T02"
+      ],
+      "status": "candidate contribution",
+      "core": "Attach a finite group-action certificate to every shell pushforward and compute quotient multiplicities by Burnside before any Poisson comparison.",
+      "novel_delta": "The group-action theorem is classical; the candidate artifact contribution is the auditable correction layer for arithmetic shell collision experiments.",
+      "falsifiers": [
+        "Existing shell equidistribution software already exposes equivalent stabilizer certificates and factorial moments.",
+        "The relevant Hurwitz action is free and the correction reduces identically to a known normalization."
+      ],
+      "next_gate": "Implement the actual Hurwitz unit action and certify fixed-point tables for small n and ell."
+    },
+    {
+      "id": "NC-X-01",
+      "title": "Defect-stratified arithmetic navigation statistics",
+      "foundation": [
+        "N2-T02",
+        "N3-T02"
+      ],
+      "status": "candidate contribution",
+      "core": "Reduce octonionic navigation words modulo ell, stratify collisions by exact associator-defect class, and test expansion and synthesis separately within defect strata.",
+      "novel_delta": "This combines non-associative defect geometry with arithmetic collision statistics; no matching construction was found in the bounded initial search.",
+      "falsifiers": [
+        "A prior golden-gate or triality construction already uses equivalent defect-stratified quotient statistics.",
+        "Defect strata are determined trivially by existing group conjugacy data and yield no new distributional signal."
+      ],
+      "next_gate": "Define an integral defect invariant avoiding square roots, then run a small-prime census."
+    }
+  ]
+}

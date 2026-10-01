@@ -205,6 +205,26 @@
       "verified_by": [
         "docs/theorems/bridge-theorems.md#n3-t01"
       ]
+    },
+    {
+      "id": "N2-H07",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "A is the real division octonion algebra; x and y are nonzero, so x, y, and xy admit normalized left multiplications.",
+      "scope": "associator-defect operator",
+      "verified_by": [
+        "docs/theorems/derived-contributions.md#n2-t02"
+      ]
+    },
+    {
+      "id": "N3-H07",
+      "candidate": "N3",
+      "status": "verified",
+      "statement": "A finite group G acts on a finite set X and r:X->S is G-invariant.",
+      "scope": "orbit-corrected collision moments",
+      "verified_by": [
+        "docs/theorems/derived-contributions.md#n3-t02"
+      ]
     }
   ]
 }

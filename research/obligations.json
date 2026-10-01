@@ -203,6 +203,36 @@
         "scripts/verify_bridge_theorems.py",
         "tests/test_bridge_theorems.py"
       ]
+    },
+    {
+      "id": "N2-V05",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H06",
+        "N2-H07"
+      ],
+      "description": "Prove the associator-defect operator is orthogonal, orientation-preserving, fixes the normalized xy direction, and vanishes exactly on the left-nucleus condition for x,y.",
+      "evidence": [
+        "docs/theorems/derived-contributions.md#n2-t02"
+      ]
+    },
+    {
+      "id": "N3-V05",
+      "candidate": "N3",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N3-H06",
+        "N3-H07"
+      ],
+      "description": "Derive orbit occupancy through Burnside and prove quotient factorial moments count same-image orbit tuples.",
+      "evidence": [
+        "docs/theorems/derived-contributions.md#n3-t02",
+        "scripts/verify_orbit_collisions.py",
+        "tests/test_orbit_collisions.py"
+      ]
     }
   ]
 }
