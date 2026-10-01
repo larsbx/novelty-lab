@@ -1,8 +1,10 @@
-import NoveltyLab.Oracle
-import NoveltyLab.OctonionF3
+import NoveltyLab.SelfCheck
 
-def main : IO Unit :=
-  if NoveltyLab.Oracle.scalarSelfCheck && NoveltyLab.OctonionF3.selfCheck then
-    IO.println "Lean scalar and F3 octonion oracle checks passed"
+open NoveltyLab.SelfCheck in
+def main : IO Unit := do
+  for (name, ok) in checks do
+    IO.println s!"{if ok then "ok  " else "FAIL"} {name}"
+  if selfCheck then
+    IO.println s!"Lean oracle self-check passed ({checks.length} checks)"
   else
     throw (IO.userError "Lean oracle self-check failed")

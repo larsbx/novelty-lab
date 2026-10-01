@@ -1,6 +1,7 @@
 import importlib.util, pathlib, unittest
 P=pathlib.Path(__file__).parents[1]/"scripts/verify_bridge_theorems.py"
 S=importlib.util.spec_from_file_location("bridges",P); M=importlib.util.module_from_spec(S); S.loader.exec_module(M)
+GUARDS_CONTRACT = "research/theorems.json N3-T01 falling-factorial identity, exhaustive on small maps"
 class TestBridgeTheorems(unittest.TestCase):
     def test_exhaustive_small_maps(self):
         self.assertGreater(M.verify(max_x=4,max_s=3,max_k=4),100)

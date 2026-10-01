@@ -259,7 +259,10 @@
       "evidence": [
         "docs/theorems/pentagon-boundary.md#n2-t04",
         "experiments/n2/pentagon.py",
-        "NoveltyLab/Oracle.lean"
+        "NoveltyLab/Oracle.lean",
+        "NoveltyLab/Fixture.lean",
+        "NoveltyLab/SelfCheck.lean",
+        "experiments/n2/lean_fixture.py"
       ]
     },
     {

@@ -1,6 +1,7 @@
 import importlib.util, pathlib, unittest
 P=pathlib.Path(__file__).parents[1]/"experiments/n2/pentagon.py"
 S=importlib.util.spec_from_file_location("pentagon",P); M=importlib.util.module_from_spec(S); S.loader.exec_module(M)
+GUARDS_CONTRACT = "research/theorems.json N2-T04 pentagon boundary closes on the Cayley-Dickson experiment"
 class TestPentagon(unittest.TestCase):
     def test_basis_exhaustion(self):
         r=M.experiment(3)

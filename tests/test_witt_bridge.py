@@ -1,6 +1,7 @@
 import importlib.util, pathlib, unittest
 P=pathlib.Path(__file__).parents[1]/"experiments/soddy/witt_bridge.py"
 S=importlib.util.spec_from_file_location("wb",P); M=importlib.util.module_from_spec(S); S.loader.exec_module(M)
+GUARDS_CONTRACT = "research/theorems.json Witt-stabilized Soddy bridge square-class gates on experiments/soddy/witt_bridge.py"
 class TestWittBridge(unittest.TestCase):
     def test_dimension_six_square_class_gate(self):
         self.assertTrue(M.bridge_descriptor(6,7)["available"])

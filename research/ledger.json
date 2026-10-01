@@ -1,0 +1,315 @@
+{
+  "format": "finite_proof_records ledger 1",
+  "repository": "larsbx/novelty-lab",
+  "module": "NoveltyLedger",
+  "tla_dir": "tla",
+  "index_path": "docs/ledger-index.md",
+  "status_classes": {
+    "verified_finite_computation": "finite-domain",
+    "bounded_experiment": "experimental",
+    "pending_dependency": "open"
+  },
+  "status_labels": {
+    "finite-domain": "verified finite computation",
+    "experimental": "experimental result",
+    "open": "pending",
+    "proved": "proved result",
+    "imported": "imported",
+    "conditional": "conditional",
+    "retired": "retired"
+  },
+  "records": {
+    "HilbertSymbolFormula": {
+      "id": "sha256:3f4abd8270e9432530411af2c7f5634604d42f95e6d0db9705c346c868418599",
+      "kind": "pending_dependency",
+      "statement": "(a, b)_v is given at every place v of Q by the explicit formulas implemented in kernel/n1/hilbert.py",
+      "scope": "nonzero rationals a, b; places of Q",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "imported from Serre, A Course in Arithmetic, Ch. III, Thm. 1; citation and hypotheses await human review"
+        ]
+      ],
+      "tags": []
+    },
+    "QuaternionSplitIffConic": {
+      "id": "sha256:7a0449b83512a971207bdbb7ea43e06ca5ef22ee2c31bdb57a76cd870526a7e1",
+      "kind": "pending_dependency",
+      "statement": "(a, b)_Q has a zero divisor iff z^2 = a x^2 + b y^2 has a nonzero rational solution; a local symbol -1 at any place excludes one",
+      "scope": "quaternion algebras (a, b)_Q, a, b nonzero rationals",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "classical; citation and hypotheses await human review"
+        ]
+      ],
+      "tags": []
+    },
+    "DivisionCertificateSoundness": {
+      "id": "sha256:16a03506e98ab3878d853994e875a0d7049ea7821f328b7a80e57c27fec35a0a",
+      "kind": "pending_dependency",
+      "statement": "kernel/n1/certificate.py accepts a division certificate only for a division algebra",
+      "scope": "quaternion algebras (a, b)_Q, a, b nonzero rationals",
+      "depends_on": [
+        [
+          "sha256:3f4abd8270e9432530411af2c7f5634604d42f95e6d0db9705c346c868418599",
+          "(a, b)_v is given at every place v of Q by the explicit formulas implemented in kernel/n1/hilbert.py",
+          "kernel/n1/certificate.py:_division",
+          "scope=nonzero rationals a, b; places of Q",
+          "accepted"
+        ],
+        [
+          "sha256:7a0449b83512a971207bdbb7ea43e06ca5ef22ee2c31bdb57a76cd870526a7e1",
+          "(a, b)_Q has a zero divisor iff z^2 = a x^2 + b y^2 has a nonzero rational solution; a local symbol -1 at any place excludes one",
+          "kernel/n1/certificate.py:_division",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "repository argument from the two imported results; proof not yet written or reviewed"
+        ]
+      ],
+      "tags": []
+    },
+    "ZeroDivisorCertificateSoundness": {
+      "id": "sha256:4e77b2a8d24caf2b7f98750327074f648bdb016d735a2af737a3f34cb2bc699f",
+      "kind": "pending_dependency",
+      "statement": "kernel/n1/certificate.py accepts a zero_divisor certificate only for an algebra that is not a division algebra",
+      "scope": "Cayley-Dickson algebras A_n over Q under cayley-dickson/v1, n <= 8",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "elementary (exact multiplication exhibits xy = 0 with x, y nonzero); proof not yet reviewed"
+        ]
+      ],
+      "tags": []
+    },
+    "HurwitzShellCount": {
+      "id": "sha256:8b96a1e9ea571bd2658fa4156421175a0279ccd9f06daa287a74fc373f6a3949",
+      "kind": "pending_dependency",
+      "statement": "|S_n| = 24 sigma_1(odd part of n) for every n >= 1",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "classical (Hurwitz); citation awaits human review"
+        ]
+      ],
+      "tags": []
+    },
+    "HurwitzShellCountFinite": {
+      "id": "sha256:756cac5fc7b6aa310d4e218bba8f858f888cd7185e6736865e6f3a028bd5083e",
+      "kind": "verified_finite_computation",
+      "statement": "|S_n| = 24 sigma_1(odd part of n) for 1 <= n <= 200",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "replay",
+          "python -m unittest discover -s tests -p test_n3_hurwitz_shell.py"
+        ],
+        [
+          "digest",
+          "sha256:946ce17ea3f74cc2e3d43d1618f4cf6da768f6a5bea9ce0eeea286424d70c639"
+        ]
+      ],
+      "tags": []
+    },
+    "N3BaselineGrid": {
+      "id": "sha256:b65c0506fcc199d2031cd9635d5307a5c6771920f77a06a509f2f64bf94ab42b",
+      "kind": "bounded_experiment",
+      "statement": "descriptive collision statistics of data/n3/grid-v1.json",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "ell in {5, 7, 11, 13}; first 4 primes n >= (ell^3 - ell)/24 with ell not dividing n; unit_action in {none, left}"
+        ],
+        [
+          "replay",
+          "python experiments/n3/grid.py --check"
+        ],
+        [
+          "digest",
+          "sha256:563ef59c1ee03fb72417f4ec6de81c77c58ad66661176206b035b9391499293f"
+        ]
+      ],
+      "tags": []
+    },
+    "N3PoissonHeuristic": {
+      "id": "sha256:a7edc1e039bcc0ab0328ea6a8d98b6f62717d4d9acdc6158efc4d42d1149fbd0",
+      "kind": "pending_dependency",
+      "statement": "fiber occupancies of S_n modulo ell are asymptotically Poisson in the collision regime",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "heuristic; no theorem route established (docs/candidates/N3.md)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectCensus": {
+      "id": "sha256:e94e001d3620e1c65ec32588c8fe3521ded6101f0774395f30b2a836140824d4",
+      "kind": "bounded_experiment",
+      "statement": "no violation of inverse, isometry, fixes_xy, kernel, det_one, fixes_Q, or rank_law in data/n2/defect-census-v1.json",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "ell in {3, 5, 7, 11}; 400 seeded random admissible pairs per ell plus degenerate pairs with y in span{1, x}"
+        ],
+        [
+          "replay",
+          "python experiments/n2/defect_census.py --check"
+        ],
+        [
+          "digest",
+          "sha256:411511f2791e7d11463a59885da1c5b42a647fe557758965a718fc4b4faeb83e"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectFixesQuaternionSubalgebra": {
+      "id": "sha256:40dc1bd9c51ad2817e837337907761088a948814dacb436f51605748fdc6a855",
+      "kind": "repository_theorem",
+      "statement": "for N(x)N(y) != 0, Delta(x, y) fixes pointwise the unital subalgebra A generated by x and y, which contains Q = span{1, x, y, xy}; Delta preserves W-perp for every subspace W of A; and rank(Delta - I) <= 8 - dim Q",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "docs/theorems/defect-fixes-subalgebra.md#proof (1), (2), (3)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:ec65e9c7d7b6150dec25403182690e41466daf07cc9eb28555d340232cd74b0b",
+          "the subalgebra generated by any two elements of an alternative algebra is associative",
+          "docs/theorems/defect-fixes-subalgebra.md#proof (2)",
+          "scope=alternative algebras over a field",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "source",
+          "docs/theorems/defect-fixes-subalgebra.md"
+        ],
+        [
+          "proof_reviewed",
+          "true"
+        ],
+        [
+          "review",
+          "promotion directed by the repository owner (larsbx) on 2026-10-01; proof written by Claude; no independent second reviewer"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectSpecialOrthogonal": {
+      "id": "sha256:5e6f6938197ee495f8b20d0e0930dfaf81fee49f21084b25989f34c19c1f5d29",
+      "kind": "pending_dependency",
+      "statement": "det Delta(x, y) = 1 for N(x)N(y) != 0",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "supported only by DefectCensus; the real-case connectedness proof of N2-T01 does not transfer to F_ell"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectRankLaw": {
+      "id": "sha256:ab86029b87aca52291daecc575f78c3cd5eccd245e8bc24c4d0ccd1008ad5cd5",
+      "kind": "pending_dependency",
+      "statement": "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:40dc1bd9c51ad2817e837337907761088a948814dacb436f51605748fdc6a855",
+          "for N(x)N(y) != 0, Delta(x, y) fixes pointwise the unital subalgebra A generated by x and y, which contains Q = span{1, x, y, xy}; Delta preserves W-perp for every subspace W of A; and rank(Delta - I) <= 8 - dim Q",
+          "upper bound rank(Delta - I) <= 8 - dim Q",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "conjecture supported only by DefectCensus; the upper bound is DefectFixesQuaternionSubalgebra (5), equality is open"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectStratifiedCollisions": {
+      "id": "sha256:7b32d6799e3a6a884740de1e2c47f5e840a142cc4b67cd00107520132c056b86",
+      "kind": "pending_dependency",
+      "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants"
+        ]
+      ],
+      "tags": []
+    },
+    "CompositionIdentities": {
+      "id": "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+      "kind": "imported_theorem",
+      "statement": "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C = A_3 of cayley-dickson/v1 with nonzero parameters over F_ell, ell odd, is an octonion algebra by construction; replayed in tests/test_n2_defect_theorem.py"
+        ]
+      ],
+      "tags": []
+    },
+    "ArtinTheorem": {
+      "id": "sha256:ec65e9c7d7b6150dec25403182690e41466daf07cc9eb28555d340232cd74b0b",
+      "kind": "imported_theorem",
+      "statement": "the subalgebra generated by any two elements of an alternative algebra is associative",
+      "scope": "alternative algebras over a field",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "E. Artin; R. D. Schafer, An Introduction to Nonassociative Algebras (1966), Ch. III"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C is alternative by CompositionIdentities"
+        ]
+      ],
+      "tags": []
+    }
+  }
+}

@@ -23,6 +23,31 @@ Cayley–Dickson doublings. Its canonical SHA-256 digest is
 `747ace028b8a34fb95f5b7c39e99f3004e39ad4fb3401a7caa3b6e3a4e2e2f4b`,
 also recorded by the Lean model.
 
+## Self-check suite (`NoveltyLab/SelfCheck.lean`)
+
+`lake exe oracle-selfcheck` prints every named check, and CI runs it after the
+build. The suite contains:
+
+- the scalar sanity case;
+- the 𝔽₃ certificate above (`OctonionF3.selfCheck`), plus a check that each of its edges is the
+  difference of the two parenthesizations it joins;
+- the generated 𝔽₅ fixture (`NoveltyLab/Fixture.lean`, written by
+  `experiments/n2/lean_fixture.py` from `experiments/n2/pentagon.py`).
+
+The fixture holds a second 8×8×8 Cayley–Dickson tensor and three quadruples.
+Two of them have all five edges nonzero. For each case the suite requires:
+
+- the boundary closes;
+- the edges equal the values Python computed;
+- each edge equals its vertex difference;
+- negating any nonzero edge breaks the boundary;
+- in discriminating cases, moving the outer factor of [a,b,c]d or a[b,c,d]
+  to the other side breaks the boundary.
+
+Six mutations of `Oracle.lean` (edge signs, factor order, argument order,
+a globally negated associator, a transposed tensor) were each confirmed to
+fail the suite. See `docs/theorems/pentagon-boundary.md`.
+
 ## Boundary
 
 This is an executable finite certificate, not a kernel-level Lean proof that

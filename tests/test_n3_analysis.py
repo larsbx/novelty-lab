@@ -1,5 +1,6 @@
 import importlib.util, pathlib, unittest
 P=pathlib.Path(__file__).parents[1]/"experiments/n3/analyze_collisions.py"
+GUARDS_CONTRACT = "analyze_collisions.py descriptive statistics are deterministic and refuse malformed input"
 S=importlib.util.spec_from_file_location("n3",P); M=importlib.util.module_from_spec(S); S.loader.exec_module(M)
 class TestN3(unittest.TestCase):
     def test_constant_occupancy(self):
