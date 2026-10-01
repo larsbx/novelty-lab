@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-01",
+  "obligations": [
+    {
+      "id": "N1-V01",
+      "candidate": "N1",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N1-H01",
+        "N1-H02",
+        "N1-H03",
+        "N1-H04",
+        "N1-H05"
+      ],
+      "description": "Pin and verify the complete n=2 local criterion and certificate completeness.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V02",
+      "candidate": "N1",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N1-H01",
+        "N1-H02",
+        "N1-H03",
+        "N1-H06"
+      ],
+      "description": "Pin the exact n=3 Pfister local-global theorem and sign/place certificate.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V03",
+      "candidate": "N1",
+      "class": "formal",
+      "status": "open",
+      "depends_on": [
+        "N1-H03",
+        "N1-H07"
+      ],
+      "description": "Prove or refute the claimed parameter-uniform n>=4 zero-divisor identity.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V04",
+      "candidate": "N1",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N1-H03",
+        "N1-H08"
+      ],
+      "description": "Implement an independent exact zero-divisor certificate checker.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V05",
+      "candidate": "N1",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [],
+      "description": "Audit current Lean/mathlib coverage without inferring absence from search failure.",
+      "evidence": []
+    },
+    {
+      "id": "N2-V01",
+      "candidate": "N2",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N2-H01",
+        "N2-H02"
+      ],
+      "description": "Record nearest prior art for integral octonion actions, triality, buildings, and golden gates.",
+      "evidence": []
+    },
+    {
+      "id": "N2-V02",
+      "candidate": "N2",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N2-H01",
+        "N2-H02",
+        "N2-H03",
+        "N2-H04"
+      ],
+      "description": "Verify exact form preservation, group membership, and generated subgroup orders on small primes.",
+      "evidence": []
+    },
+    {
+      "id": "N2-V03",
+      "candidate": "N2",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N2-H05"
+      ],
+      "description": "Cross-check eigenvalues by independent dense and character/random-walk calculations.",
+      "evidence": []
+    },
+    {
+      "id": "N3-V01",
+      "candidate": "N3",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N3-H01"
+      ],
+      "description": "Check exact shell counts against the selected theta-series coefficient on small n.",
+      "evidence": []
+    },
+    {
+      "id": "N3-V02",
+      "candidate": "N3",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N3-H01",
+        "N3-H02",
+        "N3-H03",
+        "N3-H04"
+      ],
+      "description": "Generate complete occupancy vectors and verify mass conservation before fitting.",
+      "evidence": []
+    },
+    {
+      "id": "N3-V03",
+      "candidate": "N3",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N3-H05"
+      ],
+      "description": "Identify exact level, character, and uniformity available for the moment theta series.",
+      "evidence": []
+    },
+    {
+      "id": "N4-V01",
+      "candidate": "N4",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N4-H01",
+        "N4-H02",
+        "N4-H03"
+      ],
+      "description": "Complete a source-to-local hypothesis and constant ledger for one concrete bound.",
+      "evidence": []
+    },
+    {
+      "id": "N4-V02",
+      "candidate": "N4",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N4-H01",
+        "N4-H02",
+        "N4-H03"
+      ],
+      "description": "Independently recompute the finite inequality with outward-safe exact rounding.",
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-01",
+  "statuses": [
+    "proposed",
+    "pinned",
+    "verified",
+    "refuted"
+  ],
+  "hypotheses": [
+    {
+      "id": "N1-H01",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "The base K is a number field and char(K) != 2.",
+      "scope": "all N1 decisions",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H02",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "Every Cayley-Dickson parameter a_i is a specified nonzero element of K.",
+      "scope": "all N1 decisions",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H03",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "A single multiplication, conjugation, norm, and sign convention for CD(K; a_1,...,a_n) is fixed.",
+      "scope": "all N1 certificates",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H04",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "For n=2, the selected construction is the quaternion central simple algebra to which the cited Hilbert-symbol criterion applies.",
+      "scope": "n=2",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H05",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "The local invariant certificate includes every relevant finite and infinite place and satisfies reciprocity.",
+      "scope": "n=2",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H06",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "For n=3, the norm form is the explicitly ordered three-fold Pfister form used by the cited local-global criterion.",
+      "scope": "n=3",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H07",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "Any n>=4 universal zero-divisor identity is valid for the chosen generalized doubling convention, arbitrary admitted nonzero parameters, and every admitted base field.",
+      "scope": "n>=4",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H08",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "A split certificate supplies nonzero operands whose exact product is zero; any search-size bound is stated separately.",
+      "scope": "split output",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H01",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "The integral octonion order, multiplication table, conjugation, and E8 norm identification are fixed exactly.",
+      "scope": "all N2 experiments",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H02",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "Each generator model states whether it is an integral similitude, real normalized map, triality triple, spin element, or projective reduction.",
+      "scope": "generator construction",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H03",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "Every reduction prime avoids the discriminant and denominators of the selected integral model.",
+      "scope": "finite reduction",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H04",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "The finite target group, quadratic-form type, center quotient, and determinant/spinor-norm conditions are fixed.",
+      "scope": "finite quotient comparison",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H05",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "The spectral operator records direction, inverse closure, generator multiplicity, and normalization.",
+      "scope": "spectral experiment",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H01",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The Hurwitz order, norm convention, shell definition, and parity restrictions on n are fixed.",
+      "scope": "all N3 results",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H02",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The reduction map to matrices and the passage to the stated finite projective group are well-defined.",
+      "scope": "pushforward",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H03",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The unit action and the factor represented by the divisor 2 in the proposed intensity are derived rather than assumed.",
+      "scope": "Poisson intensity",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H04",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The occupancy vector includes every target fiber, including zero multiplicities.",
+      "scope": "finite statistics",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H05",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "Any asymptotic specifies a joint sequence (n,ell), admissibility conditions, and the mode of convergence.",
+      "scope": "asymptotic conjecture",
+      "verified_by": []
+    },
+    {
+      "id": "N4-H01",
+      "candidate": "N4",
+      "status": "proposed",
+      "statement": "The discrepancy measure, test-function class, normalization, and finite target are fixed.",
+      "scope": "all N4 bounds",
+      "verified_by": []
+    },
+    {
+      "id": "N4-H02",
+      "candidate": "N4",
+      "status": "proposed",
+      "statement": "A source theorem with explicit constants is pinned and every source hypothesis is mapped to a verified local hypothesis.",
+      "scope": "source reduction",
+      "verified_by": []
+    },
+    {
+      "id": "N4-H03",
+      "candidate": "N4",
+      "status": "proposed",
+      "statement": "All bad primes, local factors, conductors, levels, and numerical rounding directions are recorded.",
+      "scope": "constant extraction",
+      "verified_by": []
+    }
+  ]
+}
