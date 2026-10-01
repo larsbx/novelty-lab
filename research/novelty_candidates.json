@@ -49,10 +49,10 @@
       "foundation": ["N2-T03", "N2-T06", "N3-T02"],
       "status": "candidate contribution",
       "core": "Extend finite octonion defects by identity on the minimal discriminant-matching complement, transport them to the higher-dimensional Descartes form, and compare their conjugacy-invariant orbit strata with reduced Apollonian orbits and ACC configuration fibers. In EXP-SG-001, the explicit n=6, F_7 bridge Phi=I+J gives projective seed-orbit sizes 8 (defect), 168 (Apollonian), and 2240 (combined).",
-      "novel_delta": "The quadratic-form stabilization and Apollonian actions are classical; the candidate delta is the canonical-up-to-conjugacy defect enrichment and its certified collision statistics.",
+      "novel_delta": "The quadratic-form stabilization and Apollonian actions are classical. Only the defect subgroup alone is canonical up to conjugacy: two valid bridges give combined seed orbits 2240 and 137600 with the Apollonian subgroup fixed. The surviving candidate is a framed defect-Apollonian pair up to simultaneous conjugacy, not a canonical unframed enrichment.",
       "falsifiers": ["The transported defect subgroup has exactly the same orbits as the reduced Apollonian group in every tested admissible dimension and field.", "The action preserves the curvature null cone but does not preserve or meaningfully stratify the full ACC configuration variety.", "Prior work already constructs an equivalent octonionic defect enrichment of higher-dimensional Descartes groups."],
       "evidence": ["EXP-SG-001"],
-      "next_gate": "Repeat at primes 13 and 19 and stabilized dimensions n=7,8; enumerate all null-cone seed classes and compare subgroup orders, intersections, and full ACC configuration fibers."
+      "next_gate": "Specify a relative framing or a bridge-selection rule compatible with the Apollonian normalizer before claiming canonical joint statistics; then compare subgroup orders, intersections, seed classes, and full ACC fibers across fields and dimensions."
     }
   ]
 }

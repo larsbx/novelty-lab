@@ -50,6 +50,34 @@ sampling is used. Every generator is independently checked to satisfy
 
 ## Interpretation and next falsifiers
 
+### Relative-framing counterexample
+
+The defect subgroup alone is transported canonically up to orthogonal
+conjugacy. Its comparison with a **fixed** Apollonian subgroup is not.
+Let `u=(1,1,1,0,0,0,0,0)` in octonion norm coordinates and set
+`h=I-2uu^T/(u^T u)`. Here `u^T u=3`, so the reflection is defined over F7.
+Both `Phi` and `Phi*h` satisfy the same bridge Gram identity. Keep the
+Descartes seed and Apollonian generators fixed and move only the defect
+generators by `c=Phi*h*Phi^-1`. Exhaustive orbit computation gives:
+
+| Bridge | Defect seed orbit | Combined seed orbit |
+|---|---:|---:|
+| `Phi` | 8 | 2240 |
+| `Phi*h` | 8 | 137600 |
+
+Thus the joint orbit statistic does not descend to the unframed isometry
+class. Simultaneously conjugating **both** subgroups and the seed does
+preserve it; changing the defect embedding alone need not.
+The surviving construction is a framed pair of subgroups, considered up
+to simultaneous conjugacy. A canonical unframed pairing requires an extra
+selection rule or a proof that the allowed bridge changes normalize the
+Apollonian subgroup. Neither has been supplied.
+
+Reproduce the counterexample with
+`from experiments.soddy.n6_f7_orbits import framing_audit; framing_audit()`.
+This is an exact finite falsifier of bridge-independent joint orbit sizes,
+not a theorem-level promotion or a packing/configuration realization.
+
 The defect action is not orbit-equivalent to the Apollonian action in this
 instance: the orbit sizes differ. The combined action is strictly larger than
 either orbit on the selected seed. This keeps `NC-SG-01` alive but does not

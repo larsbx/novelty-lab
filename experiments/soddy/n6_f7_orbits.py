@@ -176,6 +176,38 @@ def run():
     }
 
 
+def framing_audit():
+    """Two valid bridges need not give equivalent joint actions with fixed A.
+
+    Reflect the octonion norm coordinates in u=(1,1,1,0,...,0).
+    Both Phi and Phi*h are isometries. Only the defect group is moved;
+    the Descartes seed and Apollonian generators remain fixed.
+    """
+    phi, phi_inv = bridge_isometry()
+    u = (1, 1, 1, 0, 0, 0, 0, 0)
+    scale = 2 * pow(sum(x*x for x in u) % MOD, -1, MOD) % MOD
+    h = [[(int(i == j) - scale*u[i]*u[j]) % MOD
+          for j in range(DIM)] for i in range(DIM)]
+    c = mat_mul(phi, mat_mul(h, phi_inv))
+    alternate_phi = mat_mul(phi, h)
+    q = descartes_gram()
+    if mat_mul(transpose(alternate_phi), mat_mul(q, alternate_phi)) != eye():
+        raise ValueError("alternate bridge is not an isometry")
+    if mat_mul(c, c) != eye() or not gram_preserved(c, q):
+        raise ValueError("bridge transition is not an orthogonal involution")
+    defects = defect_generators()
+    moved = [mat_mul(c, mat_mul(d, c)) for d in defects]
+    if not all(gram_preserved(d, q) for d in moved):
+        raise ValueError("transported generator violates the Gram identity")
+    seed = (1, 2, 0, 0, 0, 0, 0, 0)
+    apollonian = apollonian_generators()
+    return {
+        "original_combined_orbit": len(orbit(defects + apollonian, seed)),
+        "alternate_combined_orbit": len(orbit(moved + apollonian, seed)),
+        "alternate_defect_orbit": len(orbit(moved, seed)),
+    }
+
+
 if __name__ == "__main__":
     import json
     print(json.dumps(run(), indent=2, sort_keys=True))

@@ -11,6 +11,13 @@ SPEC.loader.exec_module(EXP)
 
 
 class TestN6F7OrbitComparison(unittest.TestCase):
+    def test_joint_action_requires_a_relative_framing(self):
+        self.assertEqual(EXP.framing_audit(), {
+            "original_combined_orbit": 2240,
+            "alternate_combined_orbit": 137600,
+            "alternate_defect_orbit": 8,
+        })
+
     def test_explicit_bridge_isometry(self):
         q = EXP.descartes_gram()
         phi, phi_inv = EXP.bridge_isometry()
