@@ -244,7 +244,7 @@
       "tags": []
     },
     "DefectRankLaw": {
-      "id": "sha256:2e7a3980e984ff7dbbdba5cf27685acc59a7da5557f2041b8999f63aed31a0a4",
+      "id": "sha256:34ec739bf3825a0f0656cdef4f2d8d9a5e149d754afca04df10a40355b8d5fc0",
       "kind": "pending_dependency",
       "statement": "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -260,7 +260,7 @@
       "evidence": [
         [
           "reason",
-          "case dim Q <= 2 proved in paper/associator-defects/main.tex (Proposition 3.9, awaiting review); verified exhaustively over F_3 by RankLawExhaustiveF3 together with the scalar-shift and rescaling reduction in experiments/n2/rank_law.py; open over other fields"
+          "dim Q <= 2 proved (Proposition 3.9) and nondegenerate dim Q = 4 proved (RankLawNondegenerate), both in paper/associator-defects/main.tex and awaiting review; verified for every pair over F_3 (RankLawExhaustiveF3 with the reduction in experiments/n2/rank_law.py); open for degenerate Q over other fields"
         ]
       ],
       "tags": []
@@ -324,7 +324,7 @@
       "tags": []
     },
     "RankLawExhaustiveF3": {
-      "id": "sha256:d29f47ae3be7f97cc93b9ce21470eb55328bed103589eebe506c5f7feba93948",
+      "id": "sha256:6a9abd494605a68efb238b4817ddeee37db44aca607b982e9d02df1a3e331967",
       "kind": "verified_finite_computation",
       "statement": "rank([x, y, -]) = 2 max(0, dim span{1, x, y, xy} - 2) for every unordered pair of distinct points of the projective space of trace-zero elements",
       "scope": "split octonions C over F_3, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -336,7 +336,58 @@
         ],
         [
           "digest",
-          "sha256:fb14676def9375b246801fda8e77f8fc3b04a1e4c14f2abecf5feec0143c1336"
+          "sha256:ee601624a3bb96902ea850308dbbedeb227eeb5afcb903e35eb18aae52129c7c"
+        ]
+      ],
+      "tags": []
+    },
+    "QuaternionDoubling": {
+      "id": "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+      "kind": "imported_theorem",
+      "statement": "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied only to D = Q = span{1, x, y, xy} with dim Q = 4 and B|Q nondegenerate; the identity a(bv) = (ba)v and v in Q-perp are replayed in tests/test_rank_law_nondegenerate.py"
+        ]
+      ],
+      "tags": []
+    },
+    "RankLawNondegenerate": {
+      "id": "sha256:5be54cb7cb4e1968630a5aae290be4502aa99968cc0a4402080fb36b255dc107",
+      "kind": "pending_dependency",
+      "statement": "if dim Q = 4 and B|Q is nondegenerate then ker [x, y, -] = Q, so rank(Delta(x, y) - I) = 4 when N(x)N(y) != 0",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemma 3.10, Theorem 3.12",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+          "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+          "paper/associator-defects/main.tex Theorem 3.12",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemmas 3.10, 3.11, Theorem 3.12); awaiting independent review"
         ]
       ],
       "tags": []

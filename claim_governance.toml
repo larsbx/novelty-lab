@@ -313,6 +313,20 @@ anchor = '| N3PoissonHeuristic |'
 window_lines = 0
 
 [[claim]]
+name = "QuaternionDoubling"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"QuaternionDoubling"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| QuaternionDoubling |'
+window_lines = 0
+
+[[claim]]
 name = "QuaternionSplitIffConic"
 status = "open"
 [[claim.surfaces]]
@@ -338,6 +352,20 @@ expect = "present"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| RankLawExhaustiveF3 |'
+window_lines = 0
+
+[[claim]]
+name = "RankLawNondegenerate"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"RankLawNondegenerate"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| RankLawNondegenerate |'
 window_lines = 0
 
 [[claim]]

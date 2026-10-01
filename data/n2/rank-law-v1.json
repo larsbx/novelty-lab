@@ -7,13 +7,21 @@
    "projective_points": 1093,
    "strata": [
     {
+     "Q_nondegenerate": false,
      "dim_Q": 3,
      "pairs": 21840,
      "rank_phi": 2
     },
     {
+     "Q_nondegenerate": false,
      "dim_Q": 4,
-     "pairs": 574938,
+     "pairs": 176904,
+     "rank_phi": 4
+    },
+    {
+     "Q_nondegenerate": true,
+     "dim_Q": 4,
+     "pairs": 398034,
      "rank_phi": 4
     }
    ],
