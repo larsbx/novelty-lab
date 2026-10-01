@@ -162,6 +162,47 @@
       ],
       "description": "Independently recompute the finite inequality with outward-safe exact rounding.",
       "evidence": []
+    },
+    {
+      "id": "N1-V06",
+      "candidate": "N1",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N1-H09"
+      ],
+      "description": "Prove soundness of an explicit nonzero zero-product witness.",
+      "evidence": [
+        "docs/theorems/bridge-theorems.md#n1-t01"
+      ]
+    },
+    {
+      "id": "N2-V04",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H06"
+      ],
+      "description": "Derive the determinant and orthogonality of normalized left multiplication.",
+      "evidence": [
+        "docs/theorems/bridge-theorems.md#n2-t01"
+      ]
+    },
+    {
+      "id": "N3-V04",
+      "candidate": "N3",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N3-H06"
+      ],
+      "description": "Prove factorial collision moments by fiber decomposition and exhaust finite regressions.",
+      "evidence": [
+        "docs/theorems/bridge-theorems.md#n3-t01",
+        "scripts/verify_bridge_theorems.py",
+        "tests/test_bridge_theorems.py"
+      ]
     }
   ]
 }

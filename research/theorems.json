@@ -1,5 +1,48 @@
 {
   "schema_version": 1,
   "updated": "2026-10-01",
-  "theorems": []
+  "theorems": [
+    {
+      "id": "N1-T01",
+      "candidate": "N1",
+      "statement": "If A is a division algebra and a,b in A are nonzero, then ab is nonzero. Equivalently, an exact witness a!=0, b!=0, ab=0 certifies that A is not a division algebra.",
+      "claim_class": "proved result",
+      "novelty_status": "classical; not novel",
+      "hypotheses": [
+        "N1-H09"
+      ],
+      "obligations": [
+        "N1-V06"
+      ],
+      "proof_artifact": "docs/theorems/bridge-theorems.md#n1-t01"
+    },
+    {
+      "id": "N2-T01",
+      "candidate": "N2",
+      "statement": "For nonzero x in an eight-dimensional real positive-definite composition algebra, L_x/sqrt(N(x)) is in SO(8).",
+      "claim_class": "proved result",
+      "novelty_status": "classical consequence; not novel",
+      "hypotheses": [
+        "N2-H06"
+      ],
+      "obligations": [
+        "N2-V04"
+      ],
+      "proof_artifact": "docs/theorems/bridge-theorems.md#n2-t01"
+    },
+    {
+      "id": "N3-T01",
+      "candidate": "N3",
+      "statement": "For finite r:X->S with fiber sizes m_s, sum_s (m_s)_k equals the number of ordered k-tuples of pairwise distinct elements of X having equal r-image.",
+      "claim_class": "proved result",
+      "novelty_status": "bridge novelty unassessed; identity is elementary",
+      "hypotheses": [
+        "N3-H06"
+      ],
+      "obligations": [
+        "N3-V04"
+      ],
+      "proof_artifact": "docs/theorems/bridge-theorems.md#n3-t01"
+    }
+  ]
 }

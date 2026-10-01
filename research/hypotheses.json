@@ -175,6 +175,36 @@
       "statement": "All bad primes, local factors, conductors, levels, and numerical rounding directions are recorded.",
       "scope": "constant extraction",
       "verified_by": []
+    },
+    {
+      "id": "N1-H09",
+      "candidate": "N1",
+      "status": "verified",
+      "statement": "A division algebra has no pair of nonzero elements with zero product.",
+      "scope": "zero-divisor certificate soundness",
+      "verified_by": [
+        "docs/theorems/bridge-theorems.md#n1-t01"
+      ]
+    },
+    {
+      "id": "N2-H06",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "A is an eight-dimensional real positive-definite composition algebra and N(xy)=N(x)N(y).",
+      "scope": "normalized left-multiplication theorem",
+      "verified_by": [
+        "docs/theorems/bridge-theorems.md#n2-t01"
+      ]
+    },
+    {
+      "id": "N3-H06",
+      "candidate": "N3",
+      "status": "verified",
+      "statement": "X and S are finite sets, r:X->S is a map, and m_s is the cardinality of the fiber r^{-1}(s).",
+      "scope": "collision-moment bridge",
+      "verified_by": [
+        "docs/theorems/bridge-theorems.md#n3-t01"
+      ]
     }
   ]
 }
