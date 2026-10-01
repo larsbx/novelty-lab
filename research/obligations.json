@@ -261,6 +261,21 @@
         "experiments/n2/pentagon.py",
         "NoveltyLab/Oracle.lean"
       ]
+    },
+    {
+      "id": "N2-V08",
+      "candidate": "N2",
+      "class": "certificate",
+      "status": "verified",
+      "depends_on": [
+        "N2-H10"
+      ],
+      "description": "Execute Lean checks for primality of 3, unit laws, alternativity by trilinear coefficient identities, norm composition by quadratic coefficient identities, the nonflat pentagon witness, and cross-language tensor provenance.",
+      "evidence": [
+        "NoveltyLab/OctonionF3.lean",
+        "scripts/check_f3_table.py",
+        ".github/workflows/lean-oracle.yml"
+      ]
     }
   ]
 }

@@ -101,6 +101,20 @@
         "N2-V07"
       ],
       "proof_artifact": "docs/theorems/pentagon-boundary.md#n2-t04"
+    },
+    {
+      "id": "N2-T05",
+      "candidate": "N2",
+      "statement": "The committed eight-dimensional multiplication tensor over F3 passes the executable certificate for a unital alternative composition algebra and the recorded nonflat pentagon witness.",
+      "claim_class": "artifact contribution",
+      "novelty_status": "verified finite artifact; novelty not claimed",
+      "hypotheses": [
+        "N2-H10"
+      ],
+      "obligations": [
+        "N2-V08"
+      ],
+      "proof_artifact": "docs/lean-oracle.md"
     }
   ]
 }

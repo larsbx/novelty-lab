@@ -16,3 +16,4 @@ jobs:
           build: true
           test: false
           lint: false
+      - run: lake exe oracle-selfcheck

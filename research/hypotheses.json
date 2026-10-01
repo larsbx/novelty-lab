@@ -245,6 +245,17 @@
       "verified_by": [
         "docs/theorems/pentagon-boundary.md#n2-t04"
       ]
+    },
+    {
+      "id": "N2-H10",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "The committed F3 multiplication tensor is interpreted with quadratic norm N(x)=sum_i x_i^2 and basis e0,...,e7.",
+      "scope": "F3 tensor certificate",
+      "verified_by": [
+        "NoveltyLab/OctonionF3.lean",
+        "docs/lean-oracle.md"
+      ]
     }
   ]
 }
