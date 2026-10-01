@@ -63,6 +63,7 @@ with a non-permutation entry. This is a proposition, not a Boolean flag.
 theorem nonidentity_rejections : ∀ index : Fin 7,
     let d := defects[index.val + 1]?.getD []
     ¬ permutationEntries (mul d (mul (swap (rejectingSwap index.val)) d)) := by
+  unfold permutationEntries
   decide
 
 def replacement (k : Nat) : Matrix := matrix fun i j =>
