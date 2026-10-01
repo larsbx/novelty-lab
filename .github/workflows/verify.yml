@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: python scripts/check_f3_table.py
       - run: python scripts/check_registry.py
       - run: python vendor/vendoring/check_vendored_sync.py
       - run: python -m proof_records.generate_ledgers research/ledger.json --claims claim_governance.toml --check

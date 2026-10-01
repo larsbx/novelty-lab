@@ -34,15 +34,17 @@ for v in obligations:
 for t in theorems:
     cid=t["candidate"]; assert cid in candidate_ids and t["id"].startswith(cid+"-T")
     assert t["statement"].strip() and t["proof_artifact"].strip(); artifact(t["proof_artifact"])
-    assert t["claim_class"] in {"proved result","artifact contribution"}
+    assert t["claim_class"] in {"pending","proved result","artifact contribution"}
     assert t["novelty_status"].strip() and not t["novelty_status"].startswith("novel result")
     assert t["hypotheses"] and t["obligations"]
     assert all(h in hyp and hyp[h]["status"]=="verified" and hyp[h]["candidate"]==cid for h in t["hypotheses"])
-    assert all(v in obl and obl[v]["status"]=="verified" and obl[v]["candidate"]==cid for v in t["obligations"])
+    assert all(v in obl and obl[v]["candidate"]==cid and (obl[v]["status"] in {"open","verified"} if t["claim_class"]=="pending" else obl[v]["status"]=="verified") for v in t["obligations"])
 for r in retired:
     assert r["candidate"] in candidate_ids and r["status"]=="killed" and r["claim"].strip() and r["reason"].strip() and r["salvage"].strip()
 for n in novelty:
     assert n["status"]=="candidate contribution"
     assert n["foundation"] and all(t in thm for t in n["foundation"])
     assert n["core"].strip() and n["novel_delta"].strip() and n["falsifiers"] and n["next_gate"].strip()
+from check_claim_provenance import check_provenance
+check_provenance(ROOT)
 print(f"validated {len(candidate_ids)} candidates, {len(hyp)} hypotheses, {len(obl)} obligations, {len(theorems)} theorems, {len(retired)} killed claims, {len(novelty)} novelty candidates")

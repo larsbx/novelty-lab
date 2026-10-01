@@ -8,3 +8,7 @@ name = "NoveltyLab"
 [[lean_exe]]
 name = "oracle-selfcheck"
 root = "Main"
+
+[[lean_exe]]
+name = "export-f3"
+root = "ExportF3"

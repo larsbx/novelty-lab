@@ -21,7 +21,17 @@ The executable checks:
 Python independently reconstructs the tensor by three scalar
 Cayley–Dickson doublings. Its canonical SHA-256 digest is
 `747ace028b8a34fb95f5b7c39e99f3004e39ad4fb3401a7caa3b6e3a4e2e2f4b`,
-also recorded by the Lean model.
+computed from the tensor read directly from the Lean `productIndex` and
+`productCoeff` literal arrays. `verify.yml` executes this independent replay.
+The reader refuses unsupported syntax, malformed dimensions, and out-of-range
+entries; it does not normalize mismatches away.
+
+`lake exe export-f3` emits canonical JSON from the evaluated
+`OctonionF3.table` through `provenanceSerialization`. The `lean-oracle` workflow
+compares those exact bytes (plus the output newline) with Python's canonical
+serialization before accepting the digest. There is no independent Lean digest
+literal. Discovered negative regressions change one index, one coefficient,
+and one exported tensor entry and require provenance verification to fail.
 
 ## Self-check suite (`NoveltyLab/SelfCheck.lean`)
 

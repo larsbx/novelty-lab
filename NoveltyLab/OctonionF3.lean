@@ -75,8 +75,14 @@ def witnessCheck : Bool :=
   witnessEdges[2]! == basis 7 &&
   witnessEdges[4]! == neg 3 (basis 7)
 
-def provenanceDigest : String :=
-  "747ace028b8a34fb95f5b7c39e99f3004e39ad4fb3401a7caa3b6e3a4e2e2f4b"
+/-- Canonical JSON derived from the actual tensor evaluated by this module.
+    Python hashes these bytes and compares them with its independent replay. -/
+def provenanceSerialization : String :=
+  let vector := fun (v : Vec) =>
+    "[" ++ String.intercalate "," (v.toList.map toString) ++ "]"
+  let rows := table.toList.map fun row =>
+    "[" ++ String.intercalate "," (row.toList.map vector) ++ "]"
+  "{\"modulus\":3,\"table\":[" ++ String.intercalate "," rows ++ "]}"
 
 def selfCheck : Bool :=
   primeTrial 3 && wellSized 8 table && unitChecks &&

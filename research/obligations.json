@@ -167,14 +167,12 @@
       "id": "N1-V06",
       "candidate": "N1",
       "class": "proof",
-      "status": "verified",
+      "status": "open",
       "depends_on": [
         "N1-H09"
       ],
-      "description": "Prove soundness of an explicit nonzero zero-product witness.",
-      "evidence": [
-        "docs/theorems/bridge-theorems.md#n1-t01"
-      ]
+      "description": "Independently review the written zero-product soundness proof and its correspondence to the exact certificate checker.",
+      "evidence": []
     },
     {
       "id": "N2-V04",

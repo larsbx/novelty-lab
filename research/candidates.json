@@ -19,7 +19,7 @@
       "claims": [
         "Classical algorithms; formal artifact novelty is unverified.",
         "The n>=4 universal-zero-divisor claim must be stated with exact Cayley–Dickson and characteristic hypotheses.",
-        "Promoted sub-result N1-T01: explicit zero-product certificates are sound; completeness remains open."
+        "Sub-result N1-T01: a zero-product soundness argument is written; independent proof review is pending and completeness remains open."
       ]
     },
     {
