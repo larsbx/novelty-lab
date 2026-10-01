@@ -5,7 +5,8 @@ EXTENDS NoveltyLedger
 Reachable == {
     "ArtinTheorem",
     "CompositionIdentities",
-    "HurwitzShellCountFinite"
+    "HurwitzShellCountFinite",
+    "RankLawExhaustiveF3"
 }
 EventuallyReachable == <>(established = Reachable)
 ====

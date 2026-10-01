@@ -22,6 +22,7 @@ ResultSet == {
     "N3BaselineGrid",
     "N3PoissonHeuristic",
     "QuaternionSplitIffConic",
+    "RankLawExhaustiveF3",
     "ZeroDivisorCertificateSoundness"
 }
 
@@ -40,10 +41,12 @@ RequiresDef == [r \in ResultSet |->
       [] r = "N3BaselineGrid" -> {}
       [] r = "N3PoissonHeuristic" -> {}
       [] r = "QuaternionSplitIffConic" -> {}
+      [] r = "RankLawExhaustiveF3" -> {}
       [] r = "ZeroDivisorCertificateSoundness" -> {}]
 
 ProvedDef == {
-    "HurwitzShellCountFinite"
+    "HurwitzShellCountFinite",
+    "RankLawExhaustiveF3"
 }
 
 ImportedDef == {
@@ -77,6 +80,7 @@ HurwitzShellCountFiniteNotEstablished == "HurwitzShellCountFinite" \notin establ
 N3BaselineGridNotEstablished == "N3BaselineGrid" \notin established
 N3PoissonHeuristicNotEstablished == "N3PoissonHeuristic" \notin established
 QuaternionSplitIffConicNotEstablished == "QuaternionSplitIffConic" \notin established
+RankLawExhaustiveF3NotEstablished == "RankLawExhaustiveF3" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established
 
 ====

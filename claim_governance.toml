@@ -327,6 +327,20 @@ anchor = '| QuaternionSplitIffConic |'
 window_lines = 0
 
 [[claim]]
+name = "RankLawExhaustiveF3"
+status = "finite-domain"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"RankLawExhaustiveF3"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| RankLawExhaustiveF3 |'
+window_lines = 0
+
+[[claim]]
 name = "ZeroDivisorCertificateSoundness"
 status = "open"
 aliases = ["N1-T01"]
