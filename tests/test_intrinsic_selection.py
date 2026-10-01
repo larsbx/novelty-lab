@@ -1,4 +1,7 @@
 import copy
+import ast
+import pathlib
+import re
 import unittest
 
 from experiments.soddy import intrinsic_selection as selection
@@ -9,6 +12,24 @@ GUARDS_CONTRACT = "global F7 linear quotient adjacency certificates and fail-clo
 
 
 class TestIntrinsicSelection(unittest.TestCase):
+    def test_lean_patterns_match_independent_cayley_dickson_replay(self):
+        source = (pathlib.Path(__file__).parents[1] /
+                  "NoveltyLab/IntrinsicSelectionF7.lean").read_text()
+        match = re.search(r"def patterns : List \(List Nat\) :=\s*(\[.*?\])\s*\n\s*def diagonal", source, re.S)
+        self.assertIsNotNone(match)
+        rows = ast.literal_eval(match.group(1))
+        phi, inv = arithmetic.bridge_isometry()
+        declared = [arithmetic.mat_mul(phi, arithmetic.mat_mul(
+            [[row[i] if i == j else 0 for j in range(8)] for i in range(8)],
+            inv)) for row in rows]
+        self.assertEqual(declared, arithmetic.defect_generators())
+        changed = copy.deepcopy(rows)
+        changed[1][4] = 1
+        altered = [arithmetic.mat_mul(phi, arithmetic.mat_mul(
+            [[row[i] if i == j else 0 for j in range(8)] for i in range(8)],
+            inv)) for row in changed]
+        self.assertNotEqual(altered, arithmetic.defect_generators())
+
     def test_identity_and_relabelings_pass(self):
         for b in [arithmetic.eye()] + [configuration.adjacent_swap(i)
                                       for i in range(7)]:
