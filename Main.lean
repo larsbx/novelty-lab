@@ -1,4 +1,5 @@
 import NoveltyLab.SelfCheck
+import NoveltyLab.IntrinsicSelectionF7
 
 open NoveltyLab.SelfCheck in
 def main : IO Unit := do
