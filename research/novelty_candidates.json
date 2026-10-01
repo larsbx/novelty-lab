@@ -56,7 +56,8 @@
       "title": "Finite associator-defect holonomy",
       "foundation": [
         "N2-T03",
-        "N3-T02"
+        "N3-T02",
+        "N2-T04"
       ],
       "status": "candidate contribution",
       "core": "View binary parenthesizations of an admissible navigation word as vertices of a finite rebracketing graph; label elementary rotations by square-root-free orthogonal defect transports and compute the generated holonomy strata over F_q.",
@@ -66,7 +67,7 @@
         "The strata depend on arbitrary coordinatization rather than conjugacy-invariant data.",
         "Prior literature already constructs the same finite rebracketing holonomy with arithmetic collision moments."
       ],
-      "next_gate": "Define admissibility and edge transport for length-three and length-four words, then test path dependence around the five-cycle of parenthesizations."
+      "next_gate": "Classify when individual pentagon edges vanish and when defect-operator transports yield nontrivial conjugacy-invariant strata despite the additive boundary closing."
     }
   ]
 }

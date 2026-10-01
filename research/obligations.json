@@ -246,6 +246,21 @@
       "evidence": [
         "docs/theorems/finite-defect-geometry.md#n2-t03"
       ]
+    },
+    {
+      "id": "N2-V07",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H09"
+      ],
+      "description": "Expand the five associator terms and verify cancellation; independently replay finite instances from an explicit multiplication table.",
+      "evidence": [
+        "docs/theorems/pentagon-boundary.md#n2-t04",
+        "experiments/n2/pentagon.py",
+        "NoveltyLab/Oracle.lean"
+      ]
     }
   ]
 }
