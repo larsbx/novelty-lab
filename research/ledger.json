@@ -335,6 +335,11 @@
         "path": "docs/theorems/defect-fixes-subalgebra.md",
         "anchor": "**Status:**",
         "window_lines": 0
+      },
+      {
+        "path": "docs/candidates/N2.md",
+        "anchor": "- `DefectFixesQuaternionSubalgebra`",
+        "window_lines": 0
       }
     ],
     "ZeroDivisorCertificateSoundness": [
