@@ -3,6 +3,7 @@ import pathlib
 import unittest
 
 ROOT = pathlib.Path(__file__).parents[1]
+GUARDS_CONTRACT = "EXP-SG-001 exact finite orbit witness"
 PATH = ROOT / "experiments" / "soddy" / "n6_f7_orbits.py"
 SPEC = importlib.util.spec_from_file_location("n6_f7_orbits", PATH)
 EXP = importlib.util.module_from_spec(SPEC)
