@@ -41,3 +41,15 @@ Stop and revise rather than promote when the mathematical object is not
 well-defined, a normalization changes the target group, a unit action changes
 the sample space, a certificate omits hypotheses, or an experiment reports
 only successful cases.
+
+## Proof review and linked surfaces
+
+A written proof remains pending until its independent review is recorded.
+Owner-directed promotion alone does not set `proof_reviewed = true`. A true
+review flag requires nonempty `independent_reviewer` and `review` evidence;
+these fields record an actual review, rather than creating one.
+
+`N1-T01` links to `ZeroDivisorCertificateSoundness` through `ledger_record`.
+The registry checker compares its class with the ledger-derived status.
+The generated governance policy also checks its theorem-document and registry
+surfaces. Missing links and mismatched promotions fail verification.

@@ -166,16 +166,24 @@ window_lines = 0
 
 [[claim]]
 name = "DefectFixesQuaternionSubalgebra"
-status = "proved"
+status = "open"
 [[claim.surfaces]]
 path = "tla/NoveltyLedger.tla"
 anchor = '"DefectFixesQuaternionSubalgebra"'
 section = "ProvedDef == {"
 section_end = "}"
-expect = "present"
+expect = "absent"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| DefectFixesQuaternionSubalgebra |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/theorems/defect-fixes-subalgebra.md"
+anchor = "**Status:**"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/candidates/N2.md"
+anchor = "- `DefectFixesQuaternionSubalgebra`"
 window_lines = 0
 
 [[claim]]
@@ -321,6 +329,7 @@ window_lines = 0
 [[claim]]
 name = "ZeroDivisorCertificateSoundness"
 status = "open"
+aliases = ["N1-T01"]
 [[claim.surfaces]]
 path = "tla/NoveltyLedger.tla"
 anchor = '"ZeroDivisorCertificateSoundness"'
@@ -331,4 +340,12 @@ expect = "absent"
 path = "docs/ledger-index.md"
 anchor = '| ZeroDivisorCertificateSoundness |'
 window_lines = 0
+[[claim.surfaces]]
+path = "research/theorems.json"
+anchor = "\"id\": \"N1-T01\""
+window_lines = 4
+[[claim.surfaces]]
+path = "docs/theorems/bridge-theorems.md"
+anchor = "## N1-T01"
+window_lines = 2
 # END generated claims

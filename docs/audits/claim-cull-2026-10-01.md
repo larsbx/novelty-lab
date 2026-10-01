@@ -7,7 +7,7 @@ bounded search is not evidence of novelty.
 
 Seven fragile claims were retired in
 [`research/retired_claims.json`](../../research/retired_claims.json).
-Three scope-safe consequences were promoted in
+The original audit promoted three scope-safe consequences in
 [`research/theorems.json`](../../research/theorems.json).
 
 ## Evidence checked
@@ -43,7 +43,8 @@ Three scope-safe consequences were promoted in
 
 ## Promotion decision
 
-N1-T01, N2-T01, and N3-T01 are complete deductions under their stated
-hypotheses. They are promoted as proved results and expressly not as novel
-results. The N3 shell-to-factorial-moment handoff remains a candidate bridge
+The original audit promoted N1-T01, N2-T01, and N3-T01 as proved results.
+The provenance reconciliation keeps N1-T01 pending: its written deduction
+has no recorded independent review, matching `ZeroDivisorCertificateSoundness`.
+N2-T01 and N3-T01 retain their existing status. None is a novel result. The N3 shell-to-factorial-moment handoff remains a candidate bridge
 for novelty review.

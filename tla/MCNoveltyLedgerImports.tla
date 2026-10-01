@@ -5,7 +5,6 @@ EXTENDS NoveltyLedger
 Reachable == {
     "ArtinTheorem",
     "CompositionIdentities",
-    "DefectFixesQuaternionSubalgebra",
     "HurwitzShellCountFinite"
 }
 EventuallyReachable == <>(established = Reachable)
