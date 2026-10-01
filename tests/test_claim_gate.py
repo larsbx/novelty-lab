@@ -1,5 +1,6 @@
 import json, pathlib, subprocess, sys, unittest
 ROOT=pathlib.Path(__file__).parents[1]
+GUARDS_CONTRACT = "research registries (candidates, hypotheses, obligations, theorems) validate and promote nothing to novelty"
 class TestClaimGate(unittest.TestCase):
     def test_repository_ledgers_validate(self):
         p=subprocess.run([sys.executable,str(ROOT/"scripts/check_registry.py")],cwd=ROOT,text=True,capture_output=True)
