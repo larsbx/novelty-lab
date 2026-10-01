@@ -17,3 +17,4 @@ jobs:
           test: false
           lint: false
       - run: lake exe oracle-selfcheck
+      - run: python3 scripts/lean_mutation_suite.py --check

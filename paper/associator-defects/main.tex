@@ -495,7 +495,7 @@ Artifact & Command \\
 Census (Table~\ref{tab:census}) & \texttt{python experiments/n2/defect\_census.py --check} \\
 Theorem replay & \texttt{python -m unittest discover -s tests -p 'test\_n2\_defect*.py'} \\
 Lean oracle & \texttt{lake build \&\& lake exe oracle-selfcheck} \\
-Mutants (Table~\ref{tab:mutants}) & \texttt{python scripts/lean\_mutation\_suite.py} \\
+Mutants (Table~\ref{tab:mutants}) & \texttt{python scripts/lean\_mutation\_suite.py --check} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule
 \end{tabular}
