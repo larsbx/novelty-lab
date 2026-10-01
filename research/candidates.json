@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-01",
+  "policy": "docs/calibration.md",
+  "candidates": [
+    {
+      "id": "N1",
+      "title": "Certified division and splitting decision pipeline",
+      "status": "candidate",
+      "novelty_mode": "artifact",
+      "priority": 1,
+      "dependencies": [],
+      "gates": [
+        "mathlib-coverage-audit",
+        "hypothesis-complete-specification",
+        "independent-certificate-verifier"
+      ],
+      "claims": [
+        "Classical algorithms; formal artifact novelty is unverified.",
+        "The n>=4 universal-zero-divisor claim must be stated with exact Cayley–Dickson and characteristic hypotheses.",
+        "Promoted sub-result N1-T01: explicit zero-product certificates are sound; completeness remains open."
+      ]
+    },
+    {
+      "id": "N3",
+      "title": "Multiset collision statistics of shells modulo ell",
+      "status": "candidate",
+      "novelty_mode": "statistics",
+      "priority": 2,
+      "dependencies": [],
+      "gates": [
+        "sample-space-and-unit-orbit-specification",
+        "reproducible-baseline",
+        "theta-series-prior-art-audit"
+      ],
+      "claims": [
+        "Poisson behavior is a heuristic, not a theorem.",
+        "All finite observations must be recorded as experimental results.",
+        "Promoted sub-result N3-T01: occupancy factorial moments equal ordered distinct same-fiber tuple counts."
+      ]
+    },
+    {
+      "id": "N2",
+      "title": "Octonionic navigation",
+      "status": "candidate",
+      "novelty_mode": "non-associative-extension",
+      "priority": 3,
+      "dependencies": [],
+      "gates": [
+        "literature-audit",
+        "generator-model-well-defined",
+        "finite-quotient-order-check"
+      ],
+      "claims": [
+        "The map x -> L_x is not multiplicative in general.",
+        "S-arithmetic, spectral-gap, and golden-gate assertions are questions.",
+        "Promoted sub-result N2-T01: normalized left multiplication lies in SO(8) under positive-definite real composition hypotheses."
+      ]
+    },
+    {
+      "id": "N4",
+      "title": "Fully explicit verified discrepancy",
+      "status": "candidate",
+      "novelty_mode": "effective-certification",
+      "priority": 4,
+      "dependencies": [
+        "N1"
+      ],
+      "gates": [
+        "explicit-source-theorem",
+        "constant-ledger",
+        "formal-or-independent-verification"
+      ],
+      "claims": [
+        "Asymptotic discrepancy is classical.",
+        "Only a fully explicit certified finite bound is in scope."
+      ]
+    }
+  ]
+}
