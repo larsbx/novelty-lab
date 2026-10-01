@@ -233,6 +233,19 @@
         "scripts/verify_orbit_collisions.py",
         "tests/test_orbit_collisions.py"
       ]
+    },
+    {
+      "id": "N2-V06",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H08"
+      ],
+      "description": "Derive the square-root-free finite defect operator, its isometry, fixed vector, and associator kernel.",
+      "evidence": [
+        "docs/theorems/finite-defect-geometry.md#n2-t03"
+      ]
     }
   ]
 }

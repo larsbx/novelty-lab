@@ -50,6 +50,23 @@
         "Defect strata are determined trivially by existing group conjugacy data and yield no new distributional signal."
       ],
       "next_gate": "Define an integral defect invariant avoiding square roots, then run a small-prime census."
+    },
+    {
+      "id": "NC-N2-02",
+      "title": "Finite associator-defect holonomy",
+      "foundation": [
+        "N2-T03",
+        "N3-T02"
+      ],
+      "status": "candidate contribution",
+      "core": "View binary parenthesizations of an admissible navigation word as vertices of a finite rebracketing graph; label elementary rotations by square-root-free orthogonal defect transports and compute the generated holonomy strata over F_q.",
+      "novel_delta": "The proposed contribution is the finite, certificate-bearing associahedral holonomy layer connecting octonion associators to orbit-corrected arithmetic statistics; its ingredients are classical.",
+      "falsifiers": [
+        "The edge transports fail to compose into a well-defined action on the selected state space.",
+        "The strata depend on arbitrary coordinatization rather than conjugacy-invariant data.",
+        "Prior literature already constructs the same finite rebracketing holonomy with arithmetic collision moments."
+      ],
+      "next_gate": "Define admissibility and edge transport for length-three and length-four words, then test path dependence around the five-cycle of parenthesizations."
     }
   ]
 }

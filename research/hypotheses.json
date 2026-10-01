@@ -225,6 +225,16 @@
       "verified_by": [
         "docs/theorems/derived-contributions.md#n3-t02"
       ]
+    },
+    {
+      "id": "N2-H08",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "C is an octonion composition algebra over a finite field F_q of odd characteristic; x and y have nonzero norm.",
+      "scope": "finite-field defect operator",
+      "verified_by": [
+        "docs/theorems/finite-defect-geometry.md#n2-t03"
+      ]
     }
   ]
 }

@@ -73,6 +73,20 @@
         "N3-V05"
       ],
       "proof_artifact": "docs/theorems/derived-contributions.md#n3-t02"
+    },
+    {
+      "id": "N2-T03",
+      "candidate": "N2",
+      "statement": "For nonzero-norm x,y in an octonion composition algebra over F_q with q odd, Delta(x,y)=L_x L_y L_xy^{-1} belongs to O(C,N), fixes xy, and is identity exactly when [x,y,z]=0 for every z.",
+      "claim_class": "proved result",
+      "novelty_status": "classical ingredients; finite defect-geometry packaging unassessed",
+      "hypotheses": [
+        "N2-H08"
+      ],
+      "obligations": [
+        "N2-V06"
+      ],
+      "proof_artifact": "docs/theorems/finite-defect-geometry.md#n2-t03"
     }
   ]
 }
