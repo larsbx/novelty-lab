@@ -59,6 +59,24 @@ class TestCompositionIdentities(unittest.TestCase):
                 self.assertEqual(C.matmul(lc, lx, ell), expected)
 
 
+class TestDeterminant(unittest.TestCase):
+    """det L_x = N(x)^4, hence det Delta(x, y) = 1 (paper, Proposition on the determinant)."""
+
+    def test_left_multiplication_determinant(self):
+        for ell in ELLS:
+            rng = random.Random(100 + ell)
+            for _ in range(60):
+                x = tuple(rng.randrange(ell) for _ in range(C.DIM))
+                det = C.echelon([list(r) for r in C.left(x, ell)], ell)[1]
+                self.assertEqual(det, pow(C.norm(x, ell), 4, ell))
+
+    def test_defect_determinant_is_one(self):
+        for ell in ELLS:
+            for x, y in pairs(ell):
+                delta, _ = C.defect(x, y, ell)
+                self.assertEqual(C.echelon([list(r) for r in delta], ell)[1], 1)
+
+
 class TestTheorem(unittest.TestCase):
     def test_delta_fixes_the_generated_subalgebra(self):
         """(2) on words of length <= 3, which lie in A."""
