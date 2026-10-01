@@ -45,6 +45,42 @@ def projective_pure(ell: int) -> list[C.Vec]:
     return reps
 
 
+def bilinear(u: C.Vec, v: C.Vec, ell: int) -> int:
+    """The polar form B(u, v) = N(u + v) - N(u) - N(v) = 2 sum u_i v_i of this model."""
+    return 2 * sum(s * t for s, t in zip(u, v)) % ell
+
+
+def orthogonal_complement(vectors, ell: int) -> list[C.Vec]:
+    """A basis of {w : B(w, v) = 0 for every v in vectors}, by reduced row echelon form mod ell."""
+    rows, pivots = [[bilinear(v, e, ell) for e in C.BASIS] for v in vectors], []
+    for c in range(C.DIM):
+        p = next((i for i in range(len(pivots), len(rows)) if rows[i][c]), None)
+        if p is None:
+            continue
+        r = len(pivots)
+        rows[r], rows[p] = rows[p], rows[r]
+        inv = pow(rows[r][c], -1, ell)
+        rows[r] = [t * inv % ell for t in rows[r]]
+        for i in range(len(rows)):
+            if i != r and rows[i][c]:
+                f = rows[i][c]
+                rows[i] = [(s - f * t) % ell for s, t in zip(rows[i], rows[r])]
+        pivots.append(c)
+    basis = []
+    for free in (c for c in range(C.DIM) if c not in pivots):
+        w = [0] * C.DIM
+        w[free] = 1
+        for i, c in enumerate(pivots):
+            w[c] = -rows[i][free] % ell
+        basis.append(tuple(w))
+    return basis
+
+
+def gram_nondegenerate(basis, ell: int) -> bool:
+    """B restricted to span(basis) is nondegenerate (basis independent)."""
+    return C.echelon([[bilinear(u, v, ell) for v in basis] for u in basis], ell)[1] != 0
+
+
 def matsub(a: C.Mat, b: C.Mat, ell: int) -> list[list[int]]:
     return [[(a[i][j] - b[i][j]) % ell for j in range(C.DIM)] for i in range(C.DIM)]
 
@@ -58,9 +94,11 @@ def census(ell: int) -> dict:
         for y in points[i + 1:]:
             xy = C.mul(x, y, ell)
             phi = matsub(C.matmul(lx, left[y], ell), C.left(xy, ell), ell)
-            table[(C.rank((C.BASIS[0], x, y, xy), ell), C.rank(phi, ell))] += 1
-    rows = [{"dim_Q": d, "rank_phi": r, "pairs": n} for (d, r), n in sorted(table.items())]
-    violations = sum(n for (d, r), n in table.items() if r != 2 * max(0, d - 2))
+            q = (C.BASIS[0], x, y, xy)
+            dim_q = C.rank(q, ell)
+            table[(dim_q, dim_q == 4 and gram_nondegenerate(q, ell), C.rank(phi, ell))] += 1
+    rows = [{"dim_Q": d, "Q_nondegenerate": nd, "rank_phi": r, "pairs": n} for (d, nd, r), n in sorted(table.items())]
+    violations = sum(n for (d, _, r), n in table.items() if r != 2 * max(0, d - 2))
     return {"ell": ell, "projective_points": len(points), "unordered_pairs": sum(table.values()),
             "strata": rows, "violations": violations}
 

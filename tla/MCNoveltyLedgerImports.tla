@@ -6,6 +6,7 @@ Reachable == {
     "ArtinTheorem",
     "CompositionIdentities",
     "HurwitzShellCountFinite",
+    "QuaternionDoubling",
     "RankLawExhaustiveF3"
 }
 EventuallyReachable == <>(established = Reachable)

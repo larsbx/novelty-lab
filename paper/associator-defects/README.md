@@ -25,6 +25,7 @@ from source rather than committing them.
 | Prop. 3.5 (det Lₓ = N(x)⁴, det Δ = 1) | proved in the paper | ledger `DefectSpecialOrthogonal` (pending review); `tests/test_n2_defect_theorem.py::TestDeterminant` |
 | Prop. 3.9 (dim Q ≤ 2 ⇒ Δ = I) | proved in the paper | ledger `DefectRankLaw` (first case; pending review) |
 | Conj. 3.8 | conjecture | ledger `DefectRankLaw`, `DefectCensus`; Table 1 |
+| Lemma 3.10, Lemma 3.11, Thm. 3.12 (rank law for nondegenerate Q) | proved in the paper | ledger `RankLawNondegenerate` (pending review) over imported `QuaternionDoubling`; `tests/test_rank_law_nondegenerate.py` (Lemma 3.11 exhaustive over M₂(𝔽₃); doubling, kernel and commutator replayed) |
 | Prop. 5.1 (rank law over 𝔽₃) | verified finite computation | ledger `RankLawExhaustiveF3`; `data/n2/rank-law-v1.json` via `experiments/n2/rank_law.py`; `tests/test_rank_law.py` |
 | (4), Obs. 4.1 | proved (classical) | `research/theorems.json` N2-T04; `docs/theorems/pentagon-boundary.md` |
 | Table 1 | bounded experiment | `data/n2/defect-census-v1.json` via `experiments/n2/defect_census.py` |
@@ -34,8 +35,8 @@ from source rather than committing them.
 
 - [ ] Authors, affiliations and the target venue. The draft withholds names
       for double-blind review.
-- [ ] Human review of Prop. 3.5 and Prop. 3.9, then promotion of the
-      corresponding ledger records.
+- [ ] Human review of Prop. 3.5, Prop. 3.9 and Lemmas 3.10–3.11 with Thm. 3.12,
+      then promotion of the corresponding ledger records.
 - [ ] A dated prior-art search (triality, octonionic loops, defect or
       holonomy constructions), recorded as required by `docs/calibration.md`.
       Revise the novelty statement in Section 6 accordingly.

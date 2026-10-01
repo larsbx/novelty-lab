@@ -21,8 +21,10 @@ ResultSet == {
     "HurwitzShellCountFinite",
     "N3BaselineGrid",
     "N3PoissonHeuristic",
+    "QuaternionDoubling",
     "QuaternionSplitIffConic",
     "RankLawExhaustiveF3",
+    "RankLawNondegenerate",
     "ZeroDivisorCertificateSoundness"
 }
 
@@ -40,8 +42,10 @@ RequiresDef == [r \in ResultSet |->
       [] r = "HurwitzShellCountFinite" -> {}
       [] r = "N3BaselineGrid" -> {}
       [] r = "N3PoissonHeuristic" -> {}
+      [] r = "QuaternionDoubling" -> {}
       [] r = "QuaternionSplitIffConic" -> {}
       [] r = "RankLawExhaustiveF3" -> {}
+      [] r = "RankLawNondegenerate" -> {"CompositionIdentities", "QuaternionDoubling"}
       [] r = "ZeroDivisorCertificateSoundness" -> {}]
 
 ProvedDef == {
@@ -51,7 +55,8 @@ ProvedDef == {
 
 ImportedDef == {
     "ArtinTheorem",
-    "CompositionIdentities"
+    "CompositionIdentities",
+    "QuaternionDoubling"
 }
 
 BoundedDef == {
@@ -79,8 +84,10 @@ HurwitzShellCountNotEstablished == "HurwitzShellCount" \notin established
 HurwitzShellCountFiniteNotEstablished == "HurwitzShellCountFinite" \notin established
 N3BaselineGridNotEstablished == "N3BaselineGrid" \notin established
 N3PoissonHeuristicNotEstablished == "N3PoissonHeuristic" \notin established
+QuaternionDoublingNotEstablished == "QuaternionDoubling" \notin established
 QuaternionSplitIffConicNotEstablished == "QuaternionSplitIffConic" \notin established
 RankLawExhaustiveF3NotEstablished == "RankLawExhaustiveF3" \notin established
+RankLawNondegenerateNotEstablished == "RankLawNondegenerate" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established
 
 ====
