@@ -235,6 +235,16 @@
       "verified_by": [
         "docs/theorems/finite-defect-geometry.md#n2-t03"
       ]
+    },
+    {
+      "id": "N2-H09",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "A is any algebra over a commutative ring and [x,y,z]=x(yz)-(xy)z.",
+      "scope": "pentagon boundary identity",
+      "verified_by": [
+        "docs/theorems/pentagon-boundary.md#n2-t04"
+      ]
     }
   ]
 }
