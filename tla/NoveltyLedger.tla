@@ -43,7 +43,6 @@ RequiresDef == [r \in ResultSet |->
       [] r = "ZeroDivisorCertificateSoundness" -> {}]
 
 ProvedDef == {
-    "DefectFixesQuaternionSubalgebra",
     "HurwitzShellCountFinite"
 }
 

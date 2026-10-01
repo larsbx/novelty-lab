@@ -6,7 +6,7 @@
       "id": "N1-T01",
       "candidate": "N1",
       "statement": "If A is a division algebra and a,b in A are nonzero, then ab is nonzero. Equivalently, an exact witness a!=0, b!=0, ab=0 certifies that A is not a division algebra.",
-      "claim_class": "proved result",
+      "claim_class": "pending",
       "novelty_status": "classical; not novel",
       "hypotheses": [
         "N1-H09"
@@ -14,7 +14,8 @@
       "obligations": [
         "N1-V06"
       ],
-      "proof_artifact": "docs/theorems/bridge-theorems.md#n1-t01"
+      "proof_artifact": "docs/theorems/bridge-theorems.md#n1-t01",
+      "ledger_record": "ZeroDivisorCertificateSoundness"
     },
     {
       "id": "N2-T01",

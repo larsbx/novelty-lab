@@ -1,8 +1,12 @@
 # Surviving bridge theorems
 
-These results are promoted mathematically. None is promoted as a novelty claim.
+N2-T01 and N3-T01 retain their mathematical status. N1-T01 is pending
+independent review, matching `ZeroDivisorCertificateSoundness` in the ledger.
+None is promoted as a novelty claim.
 
 ## N1-T01 — zero-product witness soundness
+
+**Status:** pending (written argument; independent proof review not recorded).
 
 **Statement.** Let (A) be a division algebra, in the operational sense that
 left and right division by every nonzero element is uniquely possible. If
@@ -29,7 +33,9 @@ composition algebra with norm (N). For nonzero (xin A), define
 
 **Proof.** Polarizing the identity
 (N(xy)=N(x)N(y)) shows that
-(langle xy,xzangle=N(x)langle y,zangle). Therefore
+(langle xy,xz
+angle=N(x)langle y,z
+angle). Therefore
 (L_x^{*}L_x=N(x)I), so (U_x) is orthogonal. Its determinant is (+1):
 the map (xmapsto U_x) is continuous on (Asetminus{0}), which is
 connected because (dim_{mathbb R}A=8>1); the determinant takes values in
