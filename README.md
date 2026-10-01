@@ -30,6 +30,7 @@ The execution order is N1 → N3 → N2 → N4. See
 | `schemas/` | versioned certificate formats |
 | `research/candidates.json` | programme registry (calibration ladder) |
 | `research/ledger.json` | proof-record ledger: the single source of `docs/ledger-index.md`, `tla/`, and the generated claims in `claim_governance.toml` |
+| `paper/` | manuscripts for peer review; tables generated from `data/` (see each paper's README) |
 | `vendor/` | pinned external code, never edited here |
 
 ## Reproducible checks

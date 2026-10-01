@@ -218,7 +218,7 @@
       "tags": []
     },
     "DefectSpecialOrthogonal": {
-      "id": "sha256:5e6f6938197ee495f8b20d0e0930dfaf81fee49f21084b25989f34c19c1f5d29",
+      "id": "sha256:954eef3531c265334283599ec26002150b5a1bd5f46a0a2247582d389cd6b0a3",
       "kind": "pending_dependency",
       "statement": "det Delta(x, y) = 1 for N(x)N(y) != 0",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -226,13 +226,13 @@
       "evidence": [
         [
           "reason",
-          "supported only by DefectCensus; the real-case connectedness proof of N2-T01 does not transfer to F_ell"
+          "proof written in paper/associator-defects/main.tex (Proposition 3.5: det L_x = N(x)^4 as a polynomial identity); awaiting human review; supported by DefectCensus"
         ]
       ],
       "tags": []
     },
     "DefectRankLaw": {
-      "id": "sha256:ab86029b87aca52291daecc575f78c3cd5eccd245e8bc24c4d0ccd1008ad5cd5",
+      "id": "sha256:d3be865ed3c1b9de00cf6756733c6f9324b0f064db285d0ab236b45803cafadf",
       "kind": "pending_dependency",
       "statement": "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -248,7 +248,7 @@
       "evidence": [
         [
           "reason",
-          "conjecture supported only by DefectCensus; the upper bound is DefectFixesQuaternionSubalgebra (5), equality is open"
+          "case dim Q <= 2 proved in paper/associator-defects/main.tex (Proposition 3.9, awaiting review); upper bound is DefectFixesQuaternionSubalgebra (5); equality for dim Q in {3, 4} is open, supported only by DefectCensus"
         ]
       ],
       "tags": []
