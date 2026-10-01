@@ -69,16 +69,20 @@ def report() -> tuple[str | None, str]:
 
 def main(argv: list[str]) -> int:
     text, error = report()
-    if text is None or error:
+    if text is None:
         print(error, file=sys.stderr)
         return 1
     if argv[1:] == ["--check"]:
         current = OUT.exists() and OUT.read_text(encoding="utf-8") == text
         print("OK: mutation report is current" if current else f"stale: {OUT}; rerun without --check")
-        return 0 if current else 1
+        if error:
+            print(error, file=sys.stderr)
+        return 0 if current and not error else 1
     OUT.write_text(text, encoding="utf-8")
     print(f"wrote {OUT}")
-    return 0
+    if error:
+        print(error, file=sys.stderr)
+    return 1 if error else 0
 
 
 if __name__ == "__main__":
