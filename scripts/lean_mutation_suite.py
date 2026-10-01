@@ -6,8 +6,8 @@ rebuilds with `lake build`, runs `lake exe oracle-selfcheck`, and records the
 names of the checks reported FAIL. The original file is restored afterwards,
 whatever happens. The baseline (no mutation) must pass every check.
 
-Requires a Lean toolchain (lean-toolchain) on PATH; not part of the Python CI.
-Usage: lean_mutation_suite.py        writes data/n2/oracle-mutants-v1.json
+Requires a Lean toolchain (lean-toolchain) on PATH; the lean-oracle CI job runs `--check`.
+Usage: lean_mutation_suite.py [--check]   writes, or reruns and compares, data/n2/oracle-mutants-v1.json
 """
 from __future__ import annotations
 
@@ -41,18 +41,17 @@ def run_selfcheck() -> tuple[bool, list[str]]:
     return out.returncode == 0 and not failed, failed
 
 
-def main() -> int:
+def report() -> tuple[str | None, str]:
+    """Run the baseline and every mutant; return (rendered report or None, error)."""
     original = ORACLE.read_text(encoding="utf-8")
     passed, failed = run_selfcheck()
     if not passed:
-        print(f"baseline does not pass: {failed}", file=sys.stderr)
-        return 1
+        return None, f"baseline does not pass: {failed}"
     rows = []
     try:
         for name, old, new in MUTANTS:
             if original.count(old) != 1:
-                print(f"mutant {name!r}: fragment not found exactly once", file=sys.stderr)
-                return 1
+                return None, f"mutant {name!r}: fragment not found exactly once"
             ORACLE.write_text(original.replace(old, new), encoding="utf-8")
             survived, failed = run_selfcheck()
             rows.append({"mutant": name, "killed": not survived, "failing_checks": failed})
@@ -60,13 +59,31 @@ def main() -> int:
     finally:
         ORACLE.write_text(original, encoding="utf-8")
         run_selfcheck()
+    survivors = [r["mutant"] for r in rows if not r["killed"]]
     toolchain = (ROOT / "lean-toolchain").read_text(encoding="utf-8").strip()
-    OUT.write_text(json.dumps({"schema": "novelty-lab/oracle-mutants/v1", "lean_toolchain": toolchain,
-                               "oracle_sha256": hashlib.sha256(original.encode()).hexdigest(),
-                               "mutants": rows}, indent=1) + "\n", encoding="utf-8")
+    text = json.dumps({"schema": "novelty-lab/oracle-mutants/v1", "lean_toolchain": toolchain,
+                       "oracle_sha256": hashlib.sha256(original.encode()).hexdigest(),
+                       "mutants": rows}, indent=1) + "\n"
+    return text, f"surviving mutants: {survivors}" if survivors else ""
+
+
+def main(argv: list[str]) -> int:
+    text, error = report()
+    if text is None:
+        print(error, file=sys.stderr)
+        return 1
+    if argv[1:] == ["--check"]:
+        current = OUT.exists() and OUT.read_text(encoding="utf-8") == text
+        print("OK: mutation report is current" if current else f"stale: {OUT}; rerun without --check")
+        if error:
+            print(error, file=sys.stderr)
+        return 0 if current and not error else 1
+    OUT.write_text(text, encoding="utf-8")
     print(f"wrote {OUT}")
-    return 0 if all(r["killed"] for r in rows) else 1
+    if error:
+        print(error, file=sys.stderr)
+    return 1 if error else 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv))

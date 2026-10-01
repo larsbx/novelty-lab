@@ -43,7 +43,7 @@ from source rather than committing them.
     (cited via Zhevlakov–Slin'ko–Shestakov–Shirshov);
   - Zorn (1933) for the split octonions;
   - page ranges for Hurwitz (1898) and Mac Lane (1963).
-- [ ] Re-run `scripts/lean_mutation_suite.py` and `make_tables.py --check` on
-      the submitted commit, and update the digests in Appendix A.
+- [ ] Confirm CI ran `scripts/lean_mutation_suite.py --check` and
+      `make_tables.py --check` on the submitted commit, and update the digests in Appendix A.
 - [ ] Keep or adapt the AI-assistance statement in the acknowledgements to
       match the venue's policy.
