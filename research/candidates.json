@@ -18,7 +18,8 @@
       ],
       "claims": [
         "Classical algorithms; formal artifact novelty is unverified.",
-        "The n>=4 universal-zero-divisor claim must be stated with exact Cayley–Dickson and characteristic hypotheses."
+        "The n>=4 universal-zero-divisor claim must be stated with exact Cayley–Dickson and characteristic hypotheses.",
+        "Promoted sub-result N1-T01: explicit zero-product certificates are sound; completeness remains open."
       ]
     },
     {
@@ -35,7 +36,8 @@
       ],
       "claims": [
         "Poisson behavior is a heuristic, not a theorem.",
-        "All finite observations must be recorded as experimental results."
+        "All finite observations must be recorded as experimental results.",
+        "Promoted sub-result N3-T01: occupancy factorial moments equal ordered distinct same-fiber tuple counts."
       ]
     },
     {
@@ -52,7 +54,8 @@
       ],
       "claims": [
         "The map x -> L_x is not multiplicative in general.",
-        "S-arithmetic, spectral-gap, and golden-gate assertions are questions."
+        "S-arithmetic, spectral-gap, and golden-gate assertions are questions.",
+        "Promoted sub-result N2-T01: normalized left multiplication lies in SO(8) under positive-definite real composition hypotheses."
       ]
     },
     {
