@@ -17,3 +17,9 @@ jobs:
           test: false
           lint: false
       - run: lake exe oracle-selfcheck
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: lake exe export-f3 > /tmp/f3-tensor.json
+      - run: python scripts/check_f3_table.py --lean-export /tmp/f3-tensor.json
+      - run: python -m unittest discover -s tests -p test_f3_provenance.py -v
