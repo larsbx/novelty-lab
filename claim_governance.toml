@@ -223,6 +223,20 @@ anchor = '| DefectCharacteristicPolynomial |'
 window_lines = 0
 
 [[claim]]
+name = "DefectClassIsClassical"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectClassIsClassical"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectClassIsClassical |'
+window_lines = 0
+
+[[claim]]
 name = "DefectFixesQuaternionSubalgebra"
 status = "open"
 [[claim.surfaces]]

@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:7b32d6799e3a6a884740de1e2c47f5e840a142cc4b67cd00107520132c056b86",
+      "id": "sha256:1e86f4377baeb2dffe61ae4e643e27fccc1b1982f1939d6206e4dfea5b1215d8",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; narrowed by DefectClassIsClassical: the similarity class of Delta (tau != +-2) is Gram data of (1, x, y), so only the SO-class within a similarity class, tau = +-2, or word holonomy can carry signal"
         ]
       ],
       "tags": []
@@ -576,6 +576,35 @@
         [
           "reason",
           "proof written in paper/associator-defects/main.tex (Lemma 3.19, Theorem 3.20, Corollary 3.21) by a polynomial identity checked on the dense set N(x)N(y)N(xy - yx) != 0; awaiting independent review; replayed in tests/test_defect_charpoly.py"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectClassIsClassical": {
+      "id": "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+      "kind": "pending_dependency",
+      "statement": "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Corollary 3.22",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Corollary 3.22",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.22); awaiting independent review; replayed in tests/test_defect_class.py; triggers falsifier 2 of NC-X-01 at the level of similarity classes (KILL-09)"
         ]
       ],
       "tags": []

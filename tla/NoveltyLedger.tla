@@ -14,6 +14,7 @@ ResultSet == {
     "CompositionIdentities",
     "DefectCensus",
     "DefectCharacteristicPolynomial",
+    "DefectClassIsClassical",
     "DefectFixesQuaternionSubalgebra",
     "DefectRankLaw",
     "DefectSpecialOrthogonal",
@@ -41,6 +42,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "CompositionIdentities" -> {}
       [] r = "DefectCensus" -> {}
       [] r = "DefectCharacteristicPolynomial" -> {"CompositionIdentities", "QuaternionDoubling"}
+      [] r = "DefectClassIsClassical" -> {"DefectCharacteristicPolynomial", "CompositionIdentities"}
       [] r = "DefectFixesQuaternionSubalgebra" -> {"CompositionIdentities", "ArtinTheorem"}
       [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra", "RankLawDegenerate"}
       [] r = "DefectSpecialOrthogonal" -> {}
@@ -92,6 +94,7 @@ CompositionDimensionsNotEstablished == "CompositionDimensions" \notin establishe
 CompositionIdentitiesNotEstablished == "CompositionIdentities" \notin established
 DefectCensusNotEstablished == "DefectCensus" \notin established
 DefectCharacteristicPolynomialNotEstablished == "DefectCharacteristicPolynomial" \notin established
+DefectClassIsClassicalNotEstablished == "DefectClassIsClassical" \notin established
 DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
 DefectRankLawNotEstablished == "DefectRankLaw" \notin established
 DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin established

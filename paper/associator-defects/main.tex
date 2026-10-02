@@ -56,7 +56,9 @@ follows from Moufang's theorem and the fact that every associative subalgebra
 of an octonion algebra has dimension at most~$4$. The characteristic
 polynomial of $\Delta$ is $(X-1)^4(X^2-\tau X+1)^2$ with
 $\tau=2-N(xy-yx)/(N(x)N(y))$, and $\Delta$ is unipotent exactly when $Q$ is not a
-nondegenerate quaternion algebra. We then describe an
+nondegenerate quaternion algebra. Since $2N(xy-yx)$ is the Gram determinant of
+$(1,x,y)$, the similarity class of $\Delta$ is classical quadratic-form data
+whenever $\tau\neq\pm2$. We then describe an
 executable Lean~4 oracle for the five-term associator (Teichm\"uller) identity,
 organized as a pentagon of parenthesizations. Mutation testing shows that the
 closure of that identity is a weak test of an implementation: it is invariant
@@ -661,6 +663,32 @@ cannot be $(X-1)^8$ and $\Delta$ is not unipotent. The dimensional
 equivalence is Lemma~\ref{lem:gram}.
 \end{proof}
 
+\begin{corollary}\label{cor:classical}
+$2N(xy-yx)=\det\bigl(B(u,w)\bigr)_{u,w\in\{1,x,y\}}$. Hence, for $\nu\neq0$,
+\[
+  \tau=2-\frac{\det\bigl(B(u,w)\bigr)_{u,w\in\{1,x,y\}}}{2N(x)N(y)},
+\]
+and the characteristic polynomial of $\Delta(x,y)$ depends only on the Gram
+matrix of $(1,x,y)$. If $\tau\neq\pm2$, then $\Delta(x,y)$ is semisimple, so
+its similarity class in $\mathrm{GL}(\C)$ depends only on that Gram matrix.
+\end{corollary}
+
+\begin{proof}
+Write $x=\tfrac12T(x)1+x_0$ and $y=\tfrac12T(y)1+y_0$ with $x_0,y_0$ pure.
+Then $xy-yx=x_0y_0-y_0x_0=2x_0y_0+B(x_0,y_0)1$, and
+$N(xy-yx)=4N(x_0)N(y_0)+2B(x_0,y_0)B(x_0y_0,1)+B(x_0,y_0)^2
+=4N(x_0)N(y_0)-B(x_0,y_0)^2$, because $B(x_0y_0,1)=B(y_0,\conj{x_0})=-B(x_0,y_0)$.
+This is the Gram determinant of $(x_0,y_0)$. Since $B(1,1)=2$ and $x_0,y_0$ are
+the projections of $x,y$ to $1^\perp$, the Gram determinant of $(1,x,y)$ is
+twice it. If $\tau\neq\pm2$, the polynomial $(X-1)(X^2-\tau X+1)$ has
+distinct roots, and it annihilates $\Delta$: on $Q$ by
+Theorem~\ref{thm:fixed}(a), and on $Qv$ because $g^2-\tau g+1=0$ in $Q$
+(Corollary~\ref{cor:class}(a); note $\tau\neq2$ forces $N(c)\neq0$). A
+matrix annihilated by a polynomial with distinct roots is semisimple, and a
+semisimple matrix is determined up to similarity by its characteristic
+polynomial.
+\end{proof}
+
 \begin{remark}
 Corollary~\ref{cor:class}(a) gives a second proof of
 Theorem~\ref{thm:rank-nondeg}: $\rho-I$ is right multiplication by $g-1$,
@@ -856,20 +884,24 @@ methodology.
 \section{Limitations and open problems}\label{sec:open}
 
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Distribution of the characteristic polynomial.} By
-  Theorem~\ref{thm:charpoly}, the characteristic polynomial of $\Delta$ is
-  determined by $\tau=2-N(xy-yx)/(N(x)N(y))$. Equal $\tau$ need not imply
-  conjugacy: at $\tau=2$ the unipotent strata have different ranks, and
+\item \emph{What the defect class can still carry.} By
+  Theorem~\ref{thm:charpoly} and Corollary~\ref{cor:classical}, the
+  characteristic polynomial of $\Delta$ is determined by
+  $\tau=2-N(xy-yx)/(N(x)N(y))$, a function of the Gram matrix of $(1,x,y)$,
+  and for $\tau\neq\pm2$ so is its similarity class. Equal $\tau$ need not
+  imply conjugacy: at $\tau=2$ the unipotent strata have different ranks, and
   $\tau=-2$ admits distinct Jordan types even for nondegenerate $Q$.
-  The distribution of $\tau$ on prime-norm shells, and the additional
-  data needed to distinguish conjugacy classes with the same $\tau$,
-  remain open and inform the next question.
+  Information beyond quadratic-form data can therefore only sit in the
+  $\SO(\C,N)$-class of $\Delta$ within its similarity class, in the
+  non-semisimple cases $\tau=\pm2$, or in products of defects along words.
+  The distribution of $\tau$ on prime-norm shells, and which of these
+  sources is nontrivial, remain open.
 \item \emph{Defect-stratified statistics.} For navigation words in generators
   drawn from a prime-norm shell modulo $\ell$, do collision moments
   conditioned on the conjugacy class of $\Delta|_{Q^\perp}$ in $\SO(Q^\perp)$
-  differ from the unconditioned moments, beyond what conjugacy data in
-  $\Ort(8,\F_\ell)$ predicts? A negative answer would show that the defect is
-  classical bookkeeping only.
+  differ from those conditioned on its similarity class? By
+  Corollary~\ref{cor:classical} the latter is classical. A negative answer
+  would show that the defect is classical bookkeeping only.
 \item \emph{Formal soundness.} The oracle decides finite instances by
   evaluation. A kernel-checked theorem connecting its Boolean checks to the
   composition-algebra structures of Lean's mathematical library is not yet
@@ -895,7 +927,7 @@ Lean oracle & \texttt{lake build \&\& lake exe oracle-selfcheck} \\
 Mutants (Table~\ref{tab:mutants}) & \texttt{python scripts/lean\_mutation\_suite.py --check} \\
 Rank law (Prop.~\ref{prop:f3}) & \texttt{python experiments/n2/rank\_law.py --check} \\
 Rank-law lemmas (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_rank\_law*.py'} \\
-Characteristic polynomial (Thm.~\ref{thm:charpoly}) & \texttt{python -m unittest discover -s tests -p 'test\_defect\_charpoly.py'} \\
+Defect class (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_defect\_c*.py'} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule
 \end{tabular}
