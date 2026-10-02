@@ -193,6 +193,20 @@ anchor = '| DefectCensus |'
 window_lines = 0
 
 [[claim]]
+name = "DefectCharacteristicPolynomial"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectCharacteristicPolynomial"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectCharacteristicPolynomial |'
+window_lines = 0
+
+[[claim]]
 name = "DefectFixesQuaternionSubalgebra"
 status = "open"
 [[claim.surfaces]]

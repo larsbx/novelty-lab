@@ -53,7 +53,10 @@ $\rank(\Delta-I)=2\max(0,\dim Q-2)$, first observed in a seeded census over
 the split octonions modulo $\ell\in\{3,5,7,11\}$ and verified for every
 pair over $\F_3$. Nondegenerate $Q$ is handled by doubling. Degenerate $Q$
 follows from Moufang's theorem and the fact that every associative subalgebra
-of an octonion algebra has dimension at most~$4$. We then describe an
+of an octonion algebra has dimension at most~$4$. The characteristic
+polynomial of $\Delta$ is $(X-1)^4(X^2-\tau X+1)^2$ with
+$\tau=2-N(xy-yx)/(N(x)N(y))$, and $\Delta$ is unipotent exactly when $Q$ is not a
+nondegenerate quaternion algebra. We then describe an
 executable Lean~4 oracle for the five-term associator (Teichm\"uller) identity,
 organized as a pentagon of parenthesizations. Mutation testing shows that the
 closure of that identity is a weak test of an implementation: it is invariant
@@ -103,7 +106,10 @@ certified about it by exact computation. Our results are as follows.
   theorem and a bound on associative subalgebras (Lemma~\ref{lem:assoc},
   Theorem~\ref{thm:rank-four}, Proposition~\ref{prop:rank-three}). A census
   over small primes and an exhaustive computation over $\F_3$
-  (Proposition~\ref{prop:f3}) check it independently.
+  (Proposition~\ref{prop:f3}) check it independently. The characteristic
+  polynomial of $\Delta$ depends only on $\tau=2-N(xy-yx)/(N(x)N(y))$
+  (Theorem~\ref{thm:charpoly}), because the Gram determinant of
+  $(1,x,y,xy)$ is $N(xy-yx)^2$ (Lemma~\ref{lem:gram}).
 \item A Lean~4 oracle recomputes the five edges of the associator pentagon
   from an explicit structure tensor. A mutation analysis
   (Table~\ref{tab:mutants}) shows which checks detect which implementation
@@ -574,6 +580,88 @@ nontrivial idempotent, that is, when $\C$ is split. In a division octonion
 algebra $Q$ is never degenerate, since $\C$ has no nonzero isotropic vectors.
 \end{remark}
 
+\subsection*{The characteristic polynomial}
+The rank law leaves open which conjugacy class $\Delta$ lies in. A single
+scalar fixes its characteristic polynomial. Throughout, $c=xy-yx$ and
+$\nu=N(x)N(y)$.
+
+\begin{lemma}\label{lem:gram}
+For all $x,y\in\C$, the Gram determinant of $(1,x,y,xy)$ with respect to $B$
+equals $N(c)^2$. Hence $N(c)=0$ if $\dim Q\le3$. If $\dim Q=4$, then $B|_Q$ is
+nondegenerate if and only if $N(c)\neq0$.
+\end{lemma}
+
+\begin{proof}
+Both sides are polynomial functions of $(x,y)$, and they are unchanged by
+extending scalars to an algebraic closure. It therefore suffices to prove the
+identity on a Zariski-dense set of pairs over an infinite field. Replacing
+$x,y$ by $x-\alpha1$, $y-\beta1$, or $y$ by $y-\lambda x$, changes neither $c$
+nor the Gram determinant: $(1,x,y,xy)$ changes by a unitriangular matrix. So
+we may assume that $x$ and $y$ are pure and, when $N(x)\neq0$, that $B(x,y)=0$.
+Then $xy=-yx$ is pure and orthogonal to $x$ and $y$, since
+$B(xy,x)=N(x)B(y,1)=0$ and $B(xy,y)=N(y)B(x,1)=0$. The Gram matrix is
+$\operatorname{diag}(2,2N(x),2N(y),2N(x)N(y))$, with determinant
+$16N(x)^2N(y)^2$. Also $c=2xy$, so $N(c)^2=16N(x)^2N(y)^2$. The pairs whose
+$x$ has a trace-zero part of nonzero norm form a dense set, since $N$ is not
+identically zero on the nondegenerate space $1^\perp$. The last two statements follow because four linearly
+dependent vectors have Gram determinant $0$.
+\end{proof}
+
+\begin{theorem}\label{thm:charpoly}
+For all $x,y\in\C$, in the polynomial ring $k[Y]$,
+\[
+  \det\bigl(YI-L_xL_yL_{\conj{xy}}\bigr)
+  =(Y-\nu)^4\bigl(Y^2-(2\nu-N(c))Y+\nu^2\bigr)^2.
+\]
+Consequently, if $\nu\neq0$ and $\tau=2-N(c)/\nu$, then
+$\det(XI-\Delta(x,y))=(X-1)^4(X^2-\tau X+1)^2$ and
+$\tr\Delta(x,y)=8-2N(c)/\nu$.
+\end{theorem}
+
+\begin{proof}
+As in Lemma~\ref{lem:gram}, it suffices to prove the identity on the dense set
+where $\nu N(c)\neq0$. This set is nonempty, because $\C$ contains a
+quaternion subalgebra with an orthogonal basis $1,i,j,ij$ of nonzero norms
+\cite[Ch.~1]{springer2000}, and $N(ij-ji)=4N(i)N(j)$. There, by
+Lemma~\ref{lem:gram}, $Q$ is a nondegenerate quaternion subalgebra, and
+$\C=Q\oplus Qv$ with $a(bv)=(ba)v$ for $a,b\in Q$ by~\ref{F:double}. Let
+$M=L_xL_yL_{\conj{xy}}=\nu\Delta(x,y)$. On $Q$, $M=\nu I$ by
+Theorem~\ref{thm:fixed}(a). For $u\in Q$,
+\[
+  M(uv)=\bigl(u\,\conj{xy}\,yx\bigr)v=(uh)v,\qquad h=\conj{xy}\,yx\in Q,
+\]
+so on $Qv\cong Q$, $M$ is right multiplication by $h$. After extending scalars,
+$Q\cong M_2$ with $N=\det$. Right multiplication by $h$ then acts on each row
+of a $2\times2$ matrix by $h$, so its characteristic polynomial is
+$(Y^2-T(h)Y+N(h))^2$. Here $N(h)=\nu^2$ and
+$T(h)=B(xy,yx)=N(xy)+N(yx)-N(c)=2\nu-N(c)$. The second statement follows on
+dividing by $\nu^8$.
+\end{proof}
+
+\begin{corollary}\label{cor:class}
+Let $\nu\neq0$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item If $N(c)\neq0$, then $Q$ is a nondegenerate quaternion subalgebra, and
+  $\Delta=\mathrm{id}_Q\oplus\rho$ with $\rho(uv)=(ug)v$ and
+  $g=(xy)^{-1}yx$, a norm-one element of $Q$ with $T(g)=\tau\neq2$.
+\item If $N(c)=0$, then $\Delta$ is unipotent, and $\rank(\Delta-I)$ is
+  given by Theorem~\ref{thm:rank}. This is the case exactly when
+  $\dim Q\le3$ or $B|_Q$ is degenerate.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) Divide $M(uv)=(uh)v$ by $\nu$ and use $(xy)^{-1}=\nu^{-1}\conj{xy}$.
+Then $T(g)=\tau$ and $N(g)=1$. (b) If $\tau=2$, the characteristic polynomial
+is $(X-1)^8$. The equivalence is Lemma~\ref{lem:gram}.
+\end{proof}
+
+\begin{remark}
+Corollary~\ref{cor:class}(a) gives a second proof of
+Theorem~\ref{thm:rank-nondeg}: $\rho-I$ is right multiplication by $g-1$,
+which is invertible because $N(g-1)=N(g)-T(g)+1=2-\tau=N(c)/\nu\neq0$.
+\end{remark}
+
 \section{The associator pentagon}\label{sec:pentagon}
 
 Let $a,b,c,d$ be elements of an arbitrary (not necessarily associative)
@@ -763,11 +851,12 @@ methodology.
 \section{Limitations and open problems}\label{sec:open}
 
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Beyond the rank.} Theorem~\ref{thm:rank} determines
-  $\rank(\Delta-I)$ but not the conjugacy class of $\Delta$ in $\SO(\C,N)$.
-  On the $\dim Q=4$ stratum, $\tr\Delta$ takes every value in $\F_\ell$
-  (Section~\ref{sec:census}). Which classes occur, and how often, is
-  open.
+\item \emph{Distribution of the defect class.} By
+  Theorem~\ref{thm:charpoly} and Corollary~\ref{cor:class}, the class of
+  $\Delta$ is governed by the single scalar
+  $\tau=2-N(xy-yx)/(N(x)N(y))$. How $\tau$ is distributed when $x$ and $y$
+  are drawn from a prime-norm shell is open, and it is the input to the next
+  question.
 \item \emph{Defect-stratified statistics.} For navigation words in generators
   drawn from a prime-norm shell modulo $\ell$, do collision moments
   conditioned on the conjugacy class of $\Delta|_{Q^\perp}$ in $\SO(Q^\perp)$
@@ -799,6 +888,7 @@ Lean oracle & \texttt{lake build \&\& lake exe oracle-selfcheck} \\
 Mutants (Table~\ref{tab:mutants}) & \texttt{python scripts/lean\_mutation\_suite.py --check} \\
 Rank law (Prop.~\ref{prop:f3}) & \texttt{python experiments/n2/rank\_law.py --check} \\
 Rank-law lemmas (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_rank\_law*.py'} \\
+Characteristic polynomial (Thm.~\ref{thm:charpoly}) & \texttt{python -m unittest discover -s tests -p 'test\_defect\_charpoly.py'} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule
 \end{tabular}

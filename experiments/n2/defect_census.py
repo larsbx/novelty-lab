@@ -118,6 +118,36 @@ def rank(rows, ell: int) -> int:
     return echelon(rows, ell)[0]
 
 
+def charpoly(a, ell: int) -> tuple[int, ...]:
+    """det(Y I - a) mod ell, coefficients low -> high: similarity to upper Hessenberg form, then the
+    standard recurrence on leading principal minors. Exact over every F_ell."""
+    n, h = len(a), [[t % ell for t in r] for r in a]
+    for c in range(n - 2):
+        p = next((i for i in range(c + 1, n) if h[i][c]), None)
+        if p is None:
+            continue
+        h[c + 1], h[p] = h[p], h[c + 1]
+        for r in h:
+            r[c + 1], r[p] = r[p], r[c + 1]
+        inv = pow(h[c + 1][c], -1, ell)
+        for i in range(c + 2, n):
+            f = h[i][c] * inv % ell
+            if f:
+                h[i] = [(s - f * t) % ell for s, t in zip(h[i], h[c + 1])]
+                for r in h:
+                    r[c + 1] = (r[c + 1] + f * r[i]) % ell
+    minors = [(1,)]
+    for m in range(1, n + 1):
+        cur = [(s - h[m - 1][m - 1] * t) % ell for s, t in zip((0,) + minors[m - 1], minors[m - 1] + (0,))]
+        sub = 1
+        for i in range(m - 1, 0, -1):
+            sub = sub * h[i][i - 1] % ell
+            coef = sub * h[i - 1][m - 1] % ell
+            cur = [(s - coef * t) % ell for s, t in zip(cur, minors[i - 1] + (0,) * (m - i + 1))]
+        minors.append(tuple(cur))
+    return minors[n]
+
+
 def defect(x: Vec, y: Vec, ell: int) -> tuple[Mat, Vec]:
     xy = mul(x, y, ell)
     scale = pow(norm(xy, ell), -1, ell)
