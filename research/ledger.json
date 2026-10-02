@@ -550,6 +550,35 @@
         ]
       ],
       "tags": []
+    },
+    "DefectCharacteristicPolynomial": {
+      "id": "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+      "kind": "pending_dependency",
+      "statement": "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemma 3.19, Theorem 3.20",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+          "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+          "paper/associator-defects/main.tex Theorem 3.20 (Delta on Qv is right multiplication)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemma 3.19, Theorem 3.20, Corollary 3.21) by a polynomial identity checked on the dense set N(x)N(y)N(xy - yx) != 0; awaiting independent review; replayed in tests/test_defect_charpoly.py"
+        ]
+      ],
+      "tags": []
     }
   },
   "aliases": {
