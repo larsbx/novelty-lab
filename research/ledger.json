@@ -244,7 +244,7 @@
       "tags": []
     },
     "DefectRankLaw": {
-      "id": "sha256:34ec739bf3825a0f0656cdef4f2d8d9a5e149d754afca04df10a40355b8d5fc0",
+      "id": "sha256:983f60da617a89d199300d4f26073ff4a1ed101c4ce7408c4bb90fcdce1e70e2",
       "kind": "pending_dependency",
       "statement": "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -255,12 +255,19 @@
           "upper bound rank(Delta - I) <= 8 - dim Q",
           "same",
           "accepted"
+        ],
+        [
+          "sha256:a8dd7d5613b22d56437fa910543be98dbae2f3c3239d72fdcd26a89cfb81b795",
+          "if dim Q = 4 then ker [x, y, -] = Q, and if dim Q = 3 then rank [x, y, -] = 2, whether or not B|Q is nondegenerate",
+          "paper/associator-defects/main.tex Theorem 3.8, cases dim Q = 3 and 4",
+          "same",
+          "accepted"
         ]
       ],
       "evidence": [
         [
           "reason",
-          "dim Q <= 2 proved (Proposition 3.9) and nondegenerate dim Q = 4 proved (RankLawNondegenerate), both in paper/associator-defects/main.tex and awaiting review; verified for every pair over F_3 (RankLawExhaustiveF3 with the reduction in experiments/n2/rank_law.py); open for degenerate Q over other fields"
+          "proof written in paper/associator-defects/main.tex (Theorem 3.8 from Proposition 3.9, Theorem 3.12, Theorem 3.16, Proposition 3.17); awaiting independent review; verified for every pair over F_3 (RankLawExhaustiveF3)"
         ]
       ],
       "tags": []
@@ -388,6 +395,158 @@
         [
           "reason",
           "proof written in paper/associator-defects/main.tex (Lemmas 3.10, 3.11, Theorem 3.12); awaiting independent review"
+        ]
+      ],
+      "tags": []
+    },
+    "MoufangTheorem": {
+      "id": "sha256:3c383da4ec5991eb6950623fc73f8ccbf73220700864408b3a27e132bc451d83",
+      "kind": "imported_theorem",
+      "statement": "every alternative algebra satisfies x(y(xz)) = (xyx)z, and if [x, y, z] = 0 then x, y, z generate an associative subalgebra",
+      "scope": "alternative algebras over a field",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "R. Moufang (1935); R. D. Schafer, An Introduction to Nonassociative Algebras (1966), Ch. III"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C is alternative by CompositionIdentities"
+        ]
+      ],
+      "tags": []
+    },
+    "CompositionDimensions": {
+      "id": "sha256:972b4055bb6cdaa56a7616c213aa661eba4392aa8fa3731119eb37014647ea5b",
+      "kind": "imported_theorem",
+      "statement": "a composition algebra over a field of characteristic not 2 has dimension 1, 2, 4 or 8; one of dimension 4 is a Cayley-Dickson double of one of dimension 2; an associative one has dimension at most 4",
+      "scope": "composition algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "A. Hurwitz (1898); T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied to S/(S cap S-perp) for a unital subalgebra S, whose induced norm is nondegenerate and multiplicative (paper Lemma 3.15)"
+        ]
+      ],
+      "tags": []
+    },
+    "ZornPeirce": {
+      "id": "sha256:6695a3dce6997692d31b2e16d8314375f5342c2b6017f63b49676197b3d5eb83",
+      "kind": "imported_theorem",
+      "statement": "for an idempotent e not 0 or 1 of an octonion algebra there is an isomorphism onto Zorn's vector-matrix algebra taking e to diag(1, 0); hence C10 = {u : eu = u, ue = 0} has dimension 3, e(uu') = 0 for u, u' in C10, and uu' = 0 only if u, u' are linearly dependent",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "M. Zorn (1933); T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "the three consequences are replayed at every nontrivial idempotent of the F_3 model in tests/test_rank_law_degenerate.py"
+        ]
+      ],
+      "tags": []
+    },
+    "AssociativeSubalgebraBound": {
+      "id": "sha256:62cceda3e5892ac79bb8d1c21ce93c1069c2c763619e3f9805dea5d16322252a",
+      "kind": "pending_dependency",
+      "statement": "every unital associative subalgebra of an octonion algebra has dimension at most 4",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemma 3.15 (radical is an ideal; induced norm)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:972b4055bb6cdaa56a7616c213aa661eba4392aa8fa3731119eb37014647ea5b",
+          "a composition algebra over a field of characteristic not 2 has dimension 1, 2, 4 or 8; one of dimension 4 is a Cayley-Dickson double of one of dimension 2; an associative one has dimension at most 4",
+          "paper/associator-defects/main.tex Lemma 3.15 (dim S/R in {1, 2, 4})",
+          "scope=composition algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:6695a3dce6997692d31b2e16d8314375f5342c2b6017f63b49676197b3d5eb83",
+          "for an idempotent e not 0 or 1 of an octonion algebra there is an isomorphism onto Zorn's vector-matrix algebra taking e to diag(1, 0); hence C10 = {u : eu = u, ue = 0} has dimension 3, e(uu') = 0 for u, u' in C10, and uu' = 0 only if u, u' are linearly dependent",
+          "paper/associator-defects/main.tex Lemma 3.15 case dim S/R = 2, subcase (b)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:5be54cb7cb4e1968630a5aae290be4502aa99968cc0a4402080fb36b255dc107",
+          "if dim Q = 4 and B|Q is nondegenerate then ker [x, y, -] = Q, so rank(Delta(x, y) - I) = 4 when N(x)N(y) != 0",
+          "paper/associator-defects/main.tex Lemma 3.15 case dim S/R = 4",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemma 3.15); awaiting independent review; the critical case B = R-perp is checked for all 1,120 maximal isotropic R over F_3 in tests/test_rank_law_degenerate.py"
+        ]
+      ],
+      "tags": []
+    },
+    "RankLawDegenerate": {
+      "id": "sha256:a8dd7d5613b22d56437fa910543be98dbae2f3c3239d72fdcd26a89cfb81b795",
+      "kind": "pending_dependency",
+      "statement": "if dim Q = 4 then ker [x, y, -] = Q, and if dim Q = 3 then rank [x, y, -] = 2, whether or not B|Q is nondegenerate",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:3c383da4ec5991eb6950623fc73f8ccbf73220700864408b3a27e132bc451d83",
+          "every alternative algebra satisfies x(y(xz)) = (xyx)z, and if [x, y, z] = 0 then x, y, z generate an associative subalgebra",
+          "paper/associator-defects/main.tex Theorem 3.16, Proposition 3.17",
+          "scope=alternative algebras over a field",
+          "accepted"
+        ],
+        [
+          "sha256:ec65e9c7d7b6150dec25403182690e41466daf07cc9eb28555d340232cd74b0b",
+          "the subalgebra generated by any two elements of an alternative algebra is associative",
+          "paper/associator-defects/main.tex Theorem 3.16 (Q = A is associative)",
+          "scope=alternative algebras over a field",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemmas 3.13, 3.14",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:62cceda3e5892ac79bb8d1c21ce93c1069c2c763619e3f9805dea5d16322252a",
+          "every unital associative subalgebra of an octonion algebra has dimension at most 4",
+          "paper/associator-defects/main.tex Theorem 3.16, Proposition 3.17",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemmas 3.13-3.15, Theorem 3.16, Proposition 3.17); awaiting independent review; replayed in tests/test_rank_law_degenerate.py and confirmed for every pair over F_3 by RankLawExhaustiveF3"
         ]
       ],
       "tags": []
