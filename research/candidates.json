@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-01",
+  "updated": "2026-10-02",
   "ledger": "research/ledger.json",
   "policy": "docs/calibration.md",
   "candidates": [
@@ -75,6 +75,27 @@
       "claims": [
         "Asymptotic discrepancy is classical.",
         "Only a fully explicit certified finite bound is in scope."
+      ]
+    },
+    {
+      "id": "N5",
+      "title": "Multiset budget signatures for Nielsen witnesses",
+      "status": "candidate",
+      "novelty_mode": "effective-certification",
+      "priority": 5,
+      "dependencies": [],
+      "gates": [
+        "exact-multiset-object-and-minimizer",
+        "full-s6-recompute-under-new-minimizer",
+        "ordered-braid-state-space-certificate",
+        "hurwitz-nielsen-prior-art-audit"
+      ],
+      "claims": [
+        "Hurwitz/Nielsen moves and braid actions are classical; no novelty claim is attached to the move set.",
+        "The prime-factor multiset and index-multiset budget object is a candidate exact instrumentation layer whose novelty is unverified.",
+        "The previous logarithmic five-regime classification does not transfer automatically; the complete S6 census must be rerun under the new minimizer.",
+        "Only the label-preserving ordered-state-space reachability claim is in scope until a larger full-B4 state space is separately defined and certified.",
+        "Reduction-calculus semantics are out of scope for this candidate and remain consumer-owned rather than shared-kernel claims."
       ]
     }
   ]
