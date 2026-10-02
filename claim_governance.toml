@@ -137,6 +137,34 @@ anchor = '| ArtinTheorem |'
 window_lines = 0
 
 [[claim]]
+name = "AssociativeSubalgebraBound"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"AssociativeSubalgebraBound"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| AssociativeSubalgebraBound |'
+window_lines = 0
+
+[[claim]]
+name = "CompositionDimensions"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"CompositionDimensions"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| CompositionDimensions |'
+window_lines = 0
+
+[[claim]]
 name = "CompositionIdentities"
 status = "imported"
 [[claim.surfaces]]
@@ -285,6 +313,20 @@ anchor = '| HurwitzShellCountFinite |'
 window_lines = 0
 
 [[claim]]
+name = "MoufangTheorem"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"MoufangTheorem"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| MoufangTheorem |'
+window_lines = 0
+
+[[claim]]
 name = "N3BaselineGrid"
 status = "experimental"
 [[claim.surfaces]]
@@ -341,6 +383,20 @@ anchor = '| QuaternionSplitIffConic |'
 window_lines = 0
 
 [[claim]]
+name = "RankLawDegenerate"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"RankLawDegenerate"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| RankLawDegenerate |'
+window_lines = 0
+
+[[claim]]
 name = "RankLawExhaustiveF3"
 status = "finite-domain"
 [[claim.surfaces]]
@@ -390,4 +446,18 @@ window_lines = 4
 path = "docs/theorems/bridge-theorems.md"
 anchor = "## N1-T01"
 window_lines = 2
+
+[[claim]]
+name = "ZornPeirce"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"ZornPeirce"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| ZornPeirce |'
+window_lines = 0
 # END generated claims

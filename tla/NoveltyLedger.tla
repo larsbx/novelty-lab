@@ -9,6 +9,8 @@ EXTENDS ProofArchitecture
 
 ResultSet == {
     "ArtinTheorem",
+    "AssociativeSubalgebraBound",
+    "CompositionDimensions",
     "CompositionIdentities",
     "DefectCensus",
     "DefectFixesQuaternionSubalgebra",
@@ -19,34 +21,42 @@ ResultSet == {
     "HilbertSymbolFormula",
     "HurwitzShellCount",
     "HurwitzShellCountFinite",
+    "MoufangTheorem",
     "N3BaselineGrid",
     "N3PoissonHeuristic",
     "QuaternionDoubling",
     "QuaternionSplitIffConic",
+    "RankLawDegenerate",
     "RankLawExhaustiveF3",
     "RankLawNondegenerate",
-    "ZeroDivisorCertificateSoundness"
+    "ZeroDivisorCertificateSoundness",
+    "ZornPeirce"
 }
 
 RequiresDef == [r \in ResultSet |->
     CASE r = "ArtinTheorem" -> {}
+      [] r = "AssociativeSubalgebraBound" -> {"CompositionIdentities", "CompositionDimensions", "ZornPeirce", "RankLawNondegenerate"}
+      [] r = "CompositionDimensions" -> {}
       [] r = "CompositionIdentities" -> {}
       [] r = "DefectCensus" -> {}
       [] r = "DefectFixesQuaternionSubalgebra" -> {"CompositionIdentities", "ArtinTheorem"}
-      [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra"}
+      [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra", "RankLawDegenerate"}
       [] r = "DefectSpecialOrthogonal" -> {}
       [] r = "DefectStratifiedCollisions" -> {}
       [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
       [] r = "HilbertSymbolFormula" -> {}
       [] r = "HurwitzShellCount" -> {}
       [] r = "HurwitzShellCountFinite" -> {}
+      [] r = "MoufangTheorem" -> {}
       [] r = "N3BaselineGrid" -> {}
       [] r = "N3PoissonHeuristic" -> {}
       [] r = "QuaternionDoubling" -> {}
       [] r = "QuaternionSplitIffConic" -> {}
+      [] r = "RankLawDegenerate" -> {"MoufangTheorem", "ArtinTheorem", "CompositionIdentities", "AssociativeSubalgebraBound"}
       [] r = "RankLawExhaustiveF3" -> {}
       [] r = "RankLawNondegenerate" -> {"CompositionIdentities", "QuaternionDoubling"}
-      [] r = "ZeroDivisorCertificateSoundness" -> {}]
+      [] r = "ZeroDivisorCertificateSoundness" -> {}
+      [] r = "ZornPeirce" -> {}]
 
 ProvedDef == {
     "HurwitzShellCountFinite",
@@ -55,8 +65,11 @@ ProvedDef == {
 
 ImportedDef == {
     "ArtinTheorem",
+    "CompositionDimensions",
     "CompositionIdentities",
-    "QuaternionDoubling"
+    "MoufangTheorem",
+    "QuaternionDoubling",
+    "ZornPeirce"
 }
 
 BoundedDef == {
@@ -72,6 +85,8 @@ ImportsAssumed == ImportedDef
 (* Observables: one per result, asserting that it is not established. A model *)
 (* lists those its assumptions leave unreachable; TLC then checks the closure.  *)
 ArtinTheoremNotEstablished == "ArtinTheorem" \notin established
+AssociativeSubalgebraBoundNotEstablished == "AssociativeSubalgebraBound" \notin established
+CompositionDimensionsNotEstablished == "CompositionDimensions" \notin established
 CompositionIdentitiesNotEstablished == "CompositionIdentities" \notin established
 DefectCensusNotEstablished == "DefectCensus" \notin established
 DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
@@ -82,12 +97,15 @@ DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \no
 HilbertSymbolFormulaNotEstablished == "HilbertSymbolFormula" \notin established
 HurwitzShellCountNotEstablished == "HurwitzShellCount" \notin established
 HurwitzShellCountFiniteNotEstablished == "HurwitzShellCountFinite" \notin established
+MoufangTheoremNotEstablished == "MoufangTheorem" \notin established
 N3BaselineGridNotEstablished == "N3BaselineGrid" \notin established
 N3PoissonHeuristicNotEstablished == "N3PoissonHeuristic" \notin established
 QuaternionDoublingNotEstablished == "QuaternionDoubling" \notin established
 QuaternionSplitIffConicNotEstablished == "QuaternionSplitIffConic" \notin established
+RankLawDegenerateNotEstablished == "RankLawDegenerate" \notin established
 RankLawExhaustiveF3NotEstablished == "RankLawExhaustiveF3" \notin established
 RankLawNondegenerateNotEstablished == "RankLawNondegenerate" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established
+ZornPeirceNotEstablished == "ZornPeirce" \notin established
 
 ====

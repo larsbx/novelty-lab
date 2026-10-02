@@ -50,11 +50,13 @@ def bilinear(u: C.Vec, v: C.Vec, ell: int) -> int:
     return 2 * sum(s * t for s, t in zip(u, v)) % ell
 
 
-def orthogonal_complement(vectors, ell: int) -> list[C.Vec]:
-    """A basis of {w : B(w, v) = 0 for every v in vectors}, by reduced row echelon form mod ell."""
-    rows, pivots = [[bilinear(v, e, ell) for e in C.BASIS] for v in vectors], []
-    for c in range(C.DIM):
-        p = next((i for i in range(len(pivots), len(rows)) if rows[i][c]), None)
+def nullspace(rows, ell: int) -> list[tuple[int, ...]]:
+    """A basis of {z : sum_j row[j] z[j] = 0 mod ell for every row}, by reduced row echelon form."""
+    rows = [list(r) for r in rows]
+    width = len(rows[0]) if rows else C.DIM
+    pivots = []
+    for c in range(width):
+        p = next((i for i in range(len(pivots), len(rows)) if rows[i][c] % ell), None)
         if p is None:
             continue
         r = len(pivots)
@@ -62,18 +64,30 @@ def orthogonal_complement(vectors, ell: int) -> list[C.Vec]:
         inv = pow(rows[r][c], -1, ell)
         rows[r] = [t * inv % ell for t in rows[r]]
         for i in range(len(rows)):
-            if i != r and rows[i][c]:
+            if i != r and rows[i][c] % ell:
                 f = rows[i][c]
                 rows[i] = [(s - f * t) % ell for s, t in zip(rows[i], rows[r])]
         pivots.append(c)
     basis = []
-    for free in (c for c in range(C.DIM) if c not in pivots):
-        w = [0] * C.DIM
+    for free in (c for c in range(width) if c not in pivots):
+        w = [0] * width
         w[free] = 1
         for i, c in enumerate(pivots):
             w[c] = -rows[i][free] % ell
         basis.append(tuple(w))
     return basis
+
+
+def orthogonal_complement(vectors, ell: int) -> list[C.Vec]:
+    """A basis of {w : B(w, v) = 0 for every v in vectors}."""
+    return nullspace([[bilinear(v, e, ell) for e in C.BASIS] for v in vectors], ell)
+
+
+def radical(basis, ell: int) -> list[C.Vec]:
+    """A basis of span(basis) cap span(basis)-perp, for linearly independent basis vectors."""
+    gram = [[bilinear(u, v, ell) for v in basis] for u in basis]
+    return [tuple(sum(a * u[i] for a, u in zip(coeffs, basis)) % ell for i in range(C.DIM))
+            for coeffs in nullspace(gram, ell)]
 
 
 def gram_nondegenerate(basis, ell: int) -> bool:
