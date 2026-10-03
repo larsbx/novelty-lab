@@ -27,11 +27,17 @@ from source rather than committing them.
 | Thm. 3.8 (rank law) | proved in the paper | ledger `DefectRankLaw` (pending review); assembled from Prop. 3.9, Thm. 3.12, Thm. 3.16, Prop. 3.17; checked by Prop. 5.1 and Table 1 |
 | Lemma 3.10, Lemma 3.11, Thm. 3.12 (rank law for nondegenerate Q) | proved in the paper | ledger `RankLawNondegenerate` (pending review) over imported `QuaternionDoubling`; `tests/test_rank_law_nondegenerate.py` (Lemma 3.11 exhaustive over M₂(𝔽₃); doubling, kernel and commutator replayed) |
 | Lemmas 3.13–3.15, Thm. 3.16, Prop. 3.17 (degenerate Q) | proved in the paper | ledger `AssociativeSubalgebraBound`, `RankLawDegenerate` (pending review) over imported `MoufangTheorem`, `CompositionDimensions`, `ZornPeirce`; `tests/test_rank_law_degenerate.py` (skew-adjointness; rank L_n = 4 for every isotropic point over 𝔽₃; Peirce facts at every idempotent over 𝔽₃; all 1,120 maximal isotropic R over 𝔽₃; dim-3 kernel construction and dim-4 kernels over 𝔽₃, 𝔽₅, 𝔽₇) |
-| Lemma 3.19, Thm. 3.20, Cor. 3.21 (Gram identity, characteristic polynomial of Δ) | proved in the paper | ledger `DefectCharacteristicPolynomial` (pending review) over imported `QuaternionDoubling`; `tests/test_defect_charpoly.py` (Gram identity and the characteristic-polynomial identity on random pairs over 𝔽₃–𝔽₁₃ including ν = 0 and dim Q ≤ 3; Δ(uv) = (ug)v replayed) |
+| Lemma 3.19, Thm. 3.20, Cor. 3.21 (Gram identity, characteristic polynomial of Δ) | proved in the paper | ledger `DefectCharacteristicPolynomial` (pending human review) over imported `QuaternionDoubling`; `tests/test_defect_charpoly.py` (coverage assertions, zero-norm and unipotence boundaries, independent matrix oracle, and conjugacy counterexamples); [independent AI audit](../../docs/audits/defect-charpoly-pr19-2026-10-02.md) |
 | Prop. 5.1 (rank law over 𝔽₃) | verified finite computation | ledger `RankLawExhaustiveF3`; `data/n2/rank-law-v1.json` via `experiments/n2/rank_law.py`; `tests/test_rank_law.py` |
 | (4), Obs. 4.1 | proved (classical) | `research/theorems.json` N2-T04; `docs/theorems/pentagon-boundary.md` |
 | Table 1 | bounded experiment | `data/n2/defect-census-v1.json` via `experiments/n2/defect_census.py` |
 | Table 2 | bounded experiment | `data/n2/oracle-mutants-v1.json` via `scripts/lean_mutation_suite.py` |
+
+The [PR #19 audit](../../docs/audits/defect-charpoly-pr19-2026-10-02.md)
+records the independent checks and their exact evidence. Its follow-up
+corrects the conjugacy interpretation: equal τ can give different ranks or
+Jordan types even though it fixes the characteristic polynomial. AI audit
+and finite regression checks do not satisfy the human-review checklist below.
 
 ## Before submission
 
