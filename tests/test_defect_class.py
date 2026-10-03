@@ -6,6 +6,7 @@ from support import load
 R = load("experiments/n2/rank_law.py", "rank_law_class")
 C = R.C
 GUARDS_CLAIM = "DefectClassIsClassical"
+GUARDS_CONTRACT = "DefectReflectionFactorization"
 
 
 def rand(ell, rng):
@@ -52,6 +53,65 @@ class TestSemisimplicity(unittest.TestCase):
                 quad = [[(d2[i][j] - tau * d[i][j] + eye[i][j]) % ell for j in range(n)] for i in range(n)]
                 lin = [[(d[i][j] - eye[i][j]) % ell for j in range(n)] for i in range(n)]
                 self.assertFalse(any(any(r) for r in C.matmul(lin, quad, ell)))
+
+
+def reflection(a, ell):
+    """s_a(z) = z - B(z, a)/N(a) a, as a matrix acting on column vectors."""
+    inv = pow(C.norm(a, ell), -1, ell)
+    images = [tuple((s - R.bilinear(e, a, ell) * inv * t) % ell for s, t in zip(e, a)) for e in C.BASIS]
+    return C.transpose(images)
+
+
+def spinor_class(d, ell):
+    """Square class (+1/-1) of the discriminant of the Wall form on W = Im(d - I); +1 for d = I."""
+    m = [[(d[i][j] - int(i == j)) % ell for j in range(C.DIM)] for i in range(C.DIM)]
+    sources, images = [], []
+    for e in C.BASIS:
+        im = C.apply(m, e, ell)
+        if C.rank(images + [im], ell) > len(images):
+            sources.append(e)
+            images.append(im)
+    if not images:
+        return 1
+    disc = C.echelon([[R.bilinear(u, w, ell) for w in images] for u in sources], ell)[1]
+    assert disc, "the Wall form is nondegenerate"
+    return 1 if pow(disc, (ell - 1) // 2, ell) == 1 else -1
+
+
+class TestReflectionFactorization(unittest.TestCase):
+    def test_delta_is_a_product_of_four_reflections(self):
+        """For nondegenerate Q and v in Q-perp with N(v) != 0: Delta = s_xv s_v s_yv s_(xy)v."""
+        for ell in (3, 5, 7, 11, 13):
+            rng, done = random.Random(ell), 0
+            while done < 40:
+                x, y = rand(ell, rng), rand(ell, rng)
+                xy = C.mul(x, y, ell)
+                if not (C.norm(x, ell) and C.norm(y, ell) and commutator_norm(x, y, ell)):
+                    continue
+                v = next((w for w in R.orthogonal_complement([C.BASIS[0], x, y, xy], ell) if C.norm(w, ell)), None)
+                if v is None:
+                    continue
+                done += 1
+                factors = [reflection(C.mul(a, v, ell), ell) for a in (x, C.BASIS[0], y, xy)]
+                product = C.matmul(C.matmul(factors[0], factors[1], ell), C.matmul(factors[2], factors[3], ell), ell)
+                self.assertEqual(product, C.defect(x, y, ell)[0])
+
+    def test_spinor_norm_is_trivial_on_every_stratum(self):
+        """Wall-form discriminant of Delta is a square, including the unipotent strata N(xy - yx) = 0."""
+        for ell in (3, 5, 7, 11):
+            rng, seen = random.Random(20 + ell), {True: 0, False: 0}
+            while min(seen.values()) < 25:
+                x, y = rand(ell, rng), rand(ell, rng)
+                if rng.random() < 0.3:
+                    a, b = rng.randrange(ell), rng.randrange(1, ell)
+                    y = tuple((a * (k == 0) + b * s) % ell for k, s in enumerate(x))
+                if not (C.norm(x, ell) and C.norm(y, ell)):
+                    continue
+                unipotent = commutator_norm(x, y, ell) == 0
+                if seen[unipotent] >= 25:
+                    continue
+                seen[unipotent] += 1
+                self.assertEqual(spinor_class(C.defect(x, y, ell)[0], ell), 1)
 
 
 if __name__ == "__main__":

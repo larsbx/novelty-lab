@@ -689,6 +689,71 @@ semisimple matrix is determined up to similarity by its characteristic
 polynomial.
 \end{proof}
 
+\begin{theorem}\label{thm:reflections}
+Let $\nu N(c)\neq0$, and let $v\in Q^\perp$ with $N(v)\neq0$. Write $s_a$ for the
+reflection $z\mapsto z-N(a)^{-1}B(z,a)a$. Then
+\[
+  \Delta(x,y)=s_{xv}\,s_v\,s_{yv}\,s_{(xy)v}.
+\]
+In particular, the spinor norm of $\Delta(x,y)$ is
+$N(xv)N(v)N(yv)N((xy)v)\,k^{\times2}=N(v)^4\nu^2\,k^{\times2}$, which is trivial.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:gram}, $Q$ is a nondegenerate quaternion subalgebra, and
+$\C=Q\oplus Qv$ as in~\ref{F:double}. For $a\in Q$ with $N(a)\neq0$, the
+reflection $s_{av}$ fixes $Q$ pointwise. Since $u\mapsto uv$ is a similitude
+with multiplier $N(v)$, $B(uv,av)=N(v)B(u,a)$, so $s_{av}(uv)=(s_au)v$, where
+on the right $s_a$ is the reflection of $(Q,N)$. In the associative algebra
+$Q$, $s_a(u)=-a\conj u a/N(a)$, and so
+$s_as_b(u)=(a\conj b)\,u\,(\conj ba)/(N(a)N(b))$. Taking $(a,b)=(x,1)$ and
+then $(y,xy)$, and using $y\,\conj{xy}=N(y)\conj x$,
+\[
+  s_xs_1s_ys_{xy}(u)=\frac{x\,(N(y)\conj x)\,u\,(\conj{xy}\,yx)}{N(x)\,N(y)\,\nu}
+  =u\,\frac{\conj{xy}\,yx}{\nu}=ug,
+\]
+with $g=(xy)^{-1}yx$. By Corollary~\ref{cor:class}(a) this is $\Delta$ on
+$Qv$, and both sides are the identity on $Q$. The spinor norm of a product of
+reflections $s_{a_1}\cdots s_{a_r}$ is $\prod N(a_i)$ modulo squares, and
+$N(xv)N(v)N(yv)N((xy)v)=N(v)^4N(x)^2N(y)^2$.
+\end{proof}
+
+Theorem~\ref{thm:reflections} also exhibits $g$ as the group commutator
+$y^{-1}x^{-1}yx$ in $Q^\times$, and $\Delta|_{Qv}$ as the image of that
+commutator under right multiplication.
+
+\begin{corollary}\label{cor:so-class}
+Let $k=\F_q$, $q$ odd, and $\nu\neq0$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item The spinor norm of $\Delta(x,y)$ is trivial.
+\item If $N(c)\neq0$ and $\Delta(x,y)$ is semisimple (by
+  Corollary~\ref{cor:classical}, this holds whenever $\tau\neq-2$), then the
+  conjugacy class of $\Delta(x,y)$ in $\SO(\C,N)$ depends only on $\tau$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) If $N(c)\neq0$, this is Theorem~\ref{thm:reflections}. Otherwise
+$\Delta$ is unipotent by Corollary~\ref{cor:class}(b), so its order is a
+power of the odd characteristic, and its image under the spinor norm, a
+homomorphism to a group of order~$2$, is trivial.
+(b) By Wall's classification~\cite{wall1963}, two semisimple elements of
+$\Ort(\C,N)$ over $\F_q$ are conjugate in $\Ort(\C,N)$ if and only if they
+have the same characteristic polynomial and the restrictions of $N$ to their
+$(+1)$- and $(-1)$-eigenspaces are isometric. Here the characteristic
+polynomial is fixed by $\tau$ (Theorem~\ref{thm:charpoly}). The
+$(+1)$-eigenspace is exactly $Q$, because $N(g-1)=N(c)/\nu\neq0$. Its Gram
+determinant $N(c)^2$ is a nonzero square, and over $\F_q$ a nondegenerate
+quadratic space is determined up to isometry by its dimension and
+discriminant. If $\tau\neq-2$, there is no eigenvalue $-1$. If $\tau=-2$ and
+$\Delta$ is semisimple, the $(-1)$-eigenspace is $Q^\perp$, whose isometry
+class is then fixed by Witt cancellation. So any two such defects with the same
+$\tau$ are conjugate in $\Ort(\C,N)$. Finally, the reflection $s_1$ has
+determinant $-1$ and commutes with $\Delta$: both preserve $Q$ and $Q^\perp$,
+$\Delta$ is the identity on $Q$, and $s_1$ is the identity on
+$Q^\perp\subseteq1^\perp$. Hence $\Ort$-conjugacy implies $\SO$-conjugacy.
+\end{proof}
+
 \begin{remark}
 Corollary~\ref{cor:class}(a) gives a second proof of
 Theorem~\ref{thm:rank-nondeg}: $\rho-I$ is right multiplication by $g-1$,
@@ -888,20 +953,21 @@ methodology.
   Theorem~\ref{thm:charpoly} and Corollary~\ref{cor:classical}, the
   characteristic polynomial of $\Delta$ is determined by
   $\tau=2-N(xy-yx)/(N(x)N(y))$, a function of the Gram matrix of $(1,x,y)$,
-  and for $\tau\neq\pm2$ so is its similarity class. Equal $\tau$ need not
-  imply conjugacy: at $\tau=2$ the unipotent strata have different ranks, and
-  $\tau=-2$ admits distinct Jordan types even for nondegenerate $Q$.
-  Information beyond quadratic-form data can therefore only sit in the
-  $\SO(\C,N)$-class of $\Delta$ within its similarity class, in the
-  non-semisimple cases $\tau=\pm2$, or in products of defects along words.
-  The distribution of $\tau$ on prime-norm shells, and which of these
-  sources is nontrivial, remain open.
+  and for $\tau\neq\pm2$ so is its similarity class. Over $\F_q$ the same
+  holds for the $\SO(\C,N)$-class of a semisimple defect, and the spinor norm
+  is always trivial (Corollary~\ref{cor:so-class}). Equal $\tau$ need not
+  imply conjugacy for non-semisimple defects: at $\tau=2$ the unipotent
+  strata have different ranks, and $\tau=-2$ admits distinct Jordan types
+  even for nondegenerate $Q$. Information beyond quadratic-form data can
+  therefore only sit in the non-semisimple defects or in products of defects
+  along words. The distribution of $\tau$ on prime-norm shells, and which of
+  these sources is nontrivial, remain open.
 \item \emph{Defect-stratified statistics.} For navigation words in generators
   drawn from a prime-norm shell modulo $\ell$, do collision moments
-  conditioned on the conjugacy class of $\Delta|_{Q^\perp}$ in $\SO(Q^\perp)$
-  differ from those conditioned on its similarity class? By
-  Corollary~\ref{cor:classical} the latter is classical. A negative answer
-  would show that the defect is classical bookkeeping only.
+  conditioned on the defect classes of the words (products of defects, not
+  single defects, by Corollaries~\ref{cor:classical} and~\ref{cor:so-class})
+  differ from the unconditioned moments? A negative answer would show that
+  the defect is classical bookkeeping only.
 \item \emph{Formal soundness.} The oracle decides finite instances by
   evaluation. A kernel-checked theorem connecting its Boolean checks to the
   composition-algebra structures of Lean's mathematical library is not yet

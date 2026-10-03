@@ -31,7 +31,7 @@
       "core": "Reduce octonionic navigation words modulo ell, stratify collisions by exact associator-defect class, and test expansion and synthesis separately within defect strata.",
       "novel_delta": "This combines non-associative defect geometry with arithmetic collision statistics; no matching construction was found in the bounded initial search.",
       "falsifiers": ["A prior golden-gate or triality construction already uses equivalent defect-stratified quotient statistics.", "Defect strata are determined trivially by existing group conjugacy data and yield no new distributional signal."],
-      "next_gate": "Similarity classes of Delta are classical (KILL-09). Test whether the SO(C, N)-class of Delta within its similarity class, the cases tau = +-2, or word holonomy carry distributional signal; retire the candidate if none does."
+      "next_gate": "Single defects are classical up to SO-conjugacy (KILL-09, KILL-10). Test whether non-semisimple defects or products of defects along words carry distributional signal; retire the candidate if neither does."
     },
     {
       "id": "NC-N2-02",

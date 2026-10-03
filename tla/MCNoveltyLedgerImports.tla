@@ -10,6 +10,7 @@ Reachable == {
     "MoufangTheorem",
     "QuaternionDoubling",
     "RankLawExhaustiveF3",
+    "WallConjugacy",
     "ZornPeirce"
 }
 EventuallyReachable == <>(established = Reachable)

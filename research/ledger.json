@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:1e86f4377baeb2dffe61ae4e643e27fccc1b1982f1939d6206e4dfea5b1215d8",
+      "id": "sha256:e498af125338741d3cf391a84cbb47f3b60474c60bc7046ee48bd46dc58cf815",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; narrowed by DefectClassIsClassical: the similarity class of Delta (tau != +-2) is Gram data of (1, x, y), so only the SO-class within a similarity class, tau = +-2, or word holonomy can carry signal"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; narrowed by DefectClassIsClassical and DefectSOClassFinite: for a single defect the similarity class, the spinor norm, and (semisimple case, over F_ell) the SO-class are classical, so only non-semisimple defects or products of defects along words can carry signal"
         ]
       ],
       "tags": []
@@ -605,6 +605,93 @@
         [
           "reason",
           "proof written in paper/associator-defects/main.tex (Corollary 3.22); awaiting independent review; replayed in tests/test_defect_class.py; triggers falsifier 2 of NC-X-01 at the level of similarity classes (KILL-09)"
+        ]
+      ],
+      "tags": []
+    },
+    "WallConjugacy": {
+      "id": "sha256:9b7ff0c461023eab88ba022cb206ed4a38de515a8340ea5bbe06aed105ef6f40",
+      "kind": "imported_theorem",
+      "statement": "over F_q, q odd, two semisimple elements of an orthogonal group O(V) are conjugate in O(V) iff they have the same characteristic polynomial and isometric (+1)- and (-1)-eigenspaces",
+      "scope": "orthogonal groups of nondegenerate quadratic spaces over finite fields of odd characteristic",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "G. E. Wall, On the conjugacy classes in the unitary, symplectic and orthogonal groups, J. Austral. Math. Soc. 3 (1963) 1-62"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied to Delta(x, y) in O(C, N) over F_ell with N(xy - yx) != 0 and Delta semisimple (paper Corollary 3.24)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectReflectionFactorization": {
+      "id": "sha256:05a4921739a492bfc1792d0ad165a1968d1179747ed36779472c2e10a3750cc3",
+      "kind": "pending_dependency",
+      "statement": "if N(x)N(y)N(xy - yx) != 0 and v in Q-perp has N(v) != 0, then Delta(x, y) = s_xv s_v s_yv s_(xy)v, so Delta has trivial spinor norm",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+          "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+          "paper/associator-defects/main.tex Theorem 3.23",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Theorem 3.23 (Lemma 3.19, Corollary 3.21)",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Theorem 3.23); awaiting independent review; replayed in tests/test_defect_class.py"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectSOClassFinite": {
+      "id": "sha256:484257ed36b6de093035cd20f045f8ad8a6d706e3c1e00c3bffc3bee617cb5cc",
+      "kind": "pending_dependency",
+      "statement": "over F_ell with N(x)N(y) != 0: Delta(x, y) has trivial spinor norm, and if N(xy - yx) != 0 and Delta is semisimple its SO(C, N)-conjugacy class depends only on tau",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:05a4921739a492bfc1792d0ad165a1968d1179747ed36779472c2e10a3750cc3",
+          "if N(x)N(y)N(xy - yx) != 0 and v in Q-perp has N(v) != 0, then Delta(x, y) = s_xv s_v s_yv s_(xy)v, so Delta has trivial spinor norm",
+          "paper/associator-defects/main.tex Corollary 3.24(a)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+          "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+          "paper/associator-defects/main.tex Corollary 3.24(b)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:9b7ff0c461023eab88ba022cb206ed4a38de515a8340ea5bbe06aed105ef6f40",
+          "over F_q, q odd, two semisimple elements of an orthogonal group O(V) are conjugate in O(V) iff they have the same characteristic polynomial and isometric (+1)- and (-1)-eigenspaces",
+          "paper/associator-defects/main.tex Corollary 3.24(b)",
+          "scope=orthogonal groups of nondegenerate quadratic spaces over finite fields of odd characteristic",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.24); awaiting independent review; spinor norm replayed on all strata in tests/test_defect_class.py; triggers KILL-10"
         ]
       ],
       "tags": []

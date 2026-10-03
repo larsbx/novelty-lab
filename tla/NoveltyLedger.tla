@@ -17,6 +17,8 @@ ResultSet == {
     "DefectClassIsClassical",
     "DefectFixesQuaternionSubalgebra",
     "DefectRankLaw",
+    "DefectReflectionFactorization",
+    "DefectSOClassFinite",
     "DefectSpecialOrthogonal",
     "DefectStratifiedCollisions",
     "DivisionCertificateSoundness",
@@ -31,6 +33,7 @@ ResultSet == {
     "RankLawDegenerate",
     "RankLawExhaustiveF3",
     "RankLawNondegenerate",
+    "WallConjugacy",
     "ZeroDivisorCertificateSoundness",
     "ZornPeirce"
 }
@@ -45,6 +48,8 @@ RequiresDef == [r \in ResultSet |->
       [] r = "DefectClassIsClassical" -> {"DefectCharacteristicPolynomial", "CompositionIdentities"}
       [] r = "DefectFixesQuaternionSubalgebra" -> {"CompositionIdentities", "ArtinTheorem"}
       [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra", "RankLawDegenerate"}
+      [] r = "DefectReflectionFactorization" -> {"QuaternionDoubling", "DefectCharacteristicPolynomial"}
+      [] r = "DefectSOClassFinite" -> {"DefectReflectionFactorization", "DefectClassIsClassical", "WallConjugacy"}
       [] r = "DefectSpecialOrthogonal" -> {}
       [] r = "DefectStratifiedCollisions" -> {}
       [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
@@ -59,6 +64,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "RankLawDegenerate" -> {"MoufangTheorem", "ArtinTheorem", "CompositionIdentities", "AssociativeSubalgebraBound"}
       [] r = "RankLawExhaustiveF3" -> {}
       [] r = "RankLawNondegenerate" -> {"CompositionIdentities", "QuaternionDoubling"}
+      [] r = "WallConjugacy" -> {}
       [] r = "ZeroDivisorCertificateSoundness" -> {}
       [] r = "ZornPeirce" -> {}]
 
@@ -73,6 +79,7 @@ ImportedDef == {
     "CompositionIdentities",
     "MoufangTheorem",
     "QuaternionDoubling",
+    "WallConjugacy",
     "ZornPeirce"
 }
 
@@ -97,6 +104,8 @@ DefectCharacteristicPolynomialNotEstablished == "DefectCharacteristicPolynomial"
 DefectClassIsClassicalNotEstablished == "DefectClassIsClassical" \notin established
 DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
 DefectRankLawNotEstablished == "DefectRankLaw" \notin established
+DefectReflectionFactorizationNotEstablished == "DefectReflectionFactorization" \notin established
+DefectSOClassFiniteNotEstablished == "DefectSOClassFinite" \notin established
 DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin established
 DefectStratifiedCollisionsNotEstablished == "DefectStratifiedCollisions" \notin established
 DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \notin established
@@ -111,6 +120,7 @@ QuaternionSplitIffConicNotEstablished == "QuaternionSplitIffConic" \notin establ
 RankLawDegenerateNotEstablished == "RankLawDegenerate" \notin established
 RankLawExhaustiveF3NotEstablished == "RankLawExhaustiveF3" \notin established
 RankLawNondegenerateNotEstablished == "RankLawNondegenerate" \notin established
+WallConjugacyNotEstablished == "WallConjugacy" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established
 ZornPeirceNotEstablished == "ZornPeirce" \notin established
 

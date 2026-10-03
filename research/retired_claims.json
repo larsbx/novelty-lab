@@ -73,6 +73,14 @@
       "claim": "The similarity class of the defect Delta(x, y) carries arithmetic information beyond the quadratic-form data of the pair (x, y).",
       "reason": "Theorem 3.20 and Corollary 3.22 of paper/associator-defects: chi_Delta = (X-1)^4 (X^2 - tau X + 1)^2 with tau = 2 - det Gram_B(1, x, y)/(2 N(x) N(y)), and for tau != +-2 Delta is semisimple, so its similarity class is a function of the Gram matrix of (1, x, y).",
       "salvage": "Stratify by finer data only: the SO(C, N)-class of Delta within its similarity class (spinor-norm type), the non-semisimple cases tau = +-2, or holonomy of defect products along words (NC-N2-02)."
+    },
+    {
+      "id": "KILL-10",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "The SO(C, N)-class or spinor norm of a single defect Delta(x, y) carries information beyond its similarity class.",
+      "reason": "Theorem 3.23 and Corollary 3.24 of paper/associator-defects: Delta = s_xv s_v s_yv s_(xy)v has trivial spinor norm, and over F_q a semisimple defect with N(xy - yx) != 0 has SO-class determined by tau (Wall's classification).",
+      "salvage": "Only non-semisimple single defects (tau = -2 with g != -1, unipotent strata N(xy - yx) = 0) and products of defects along words (NC-N2-02) remain as possible non-classical signals."
     }
   ]
 }

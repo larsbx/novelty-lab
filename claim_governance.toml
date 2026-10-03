@@ -273,6 +273,34 @@ anchor = '| DefectRankLaw |'
 window_lines = 0
 
 [[claim]]
+name = "DefectReflectionFactorization"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectReflectionFactorization"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectReflectionFactorization |'
+window_lines = 0
+
+[[claim]]
+name = "DefectSOClassFinite"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectSOClassFinite"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectSOClassFinite |'
+window_lines = 0
+
+[[claim]]
 name = "DefectSpecialOrthogonal"
 status = "open"
 [[claim.surfaces]]
@@ -466,6 +494,20 @@ expect = "absent"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| RankLawNondegenerate |'
+window_lines = 0
+
+[[claim]]
+name = "WallConjugacy"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"WallConjugacy"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WallConjugacy |'
 window_lines = 0
 
 [[claim]]
