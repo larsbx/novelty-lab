@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-01",
+  "updated": "2026-10-03",
   "obligations": [
     {
       "id": "N1-V01",
@@ -292,6 +292,74 @@
         "experiments/soddy/witt_bridge.py",
         "tests/test_witt_bridge.py"
       ]
+    },
+    {
+      "id": "N5-V01",
+      "candidate": "N5",
+      "class": "structural",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03"
+      ],
+      "description": "Specify the exact ordered testbed, balanced-split convention, multiset/index encoding, minimizer key, half ordering, and canonical tie-break before running the new census. Check the set-product multiset identity and selection under reordered split lists and equivalent inner-class presentations; include unit-order, tied-budget, invalid-index, and altered-multiplicity controls. Stop while the objective or canonical selection is underspecified.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V02",
+      "candidate": "N5",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03"
+      ],
+      "description": "After the N5-V01 specification is fixed, rerun the complete ordered S_6,(2,2,6,6) census under the new minimizer. Commit every canonical inner-class representative and all balanced splits with exact subgroup, intersection, and set-product orders, prime-factor/index multisets, minimizer keys and selected splits, plus replay commands, parameters, code revision, and a canonical complete-result digest. Check completeness and reject missing or tampered records; compare with the old logarithmic census without assuming its class count or five-regime table transfers. Record finite observations in research/ledger.json only after replayable evidence exists.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V03",
+      "candidate": "N5",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03",
+        "N5-H04"
+      ],
+      "description": "Recompute and independently check FixedPoint, PairBlocks (2+2+2), TripleBlocks (3+3), CrossBlocks, and Containment certificates for the newly selected halves, keeping classification labels separate from checking predicates. Replay actual singleton orbits, preserved partitions, different block types for the two halves, and subgroup inclusion as applicable; reject missing or forged payloads and retain Other unless the complete new census rules it out. A changed classification requires revising any old table rather than promoting the earlier logarithmic result.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V04",
+      "candidate": "N5",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H05"
+      ],
+      "description": "Declare the label-preserving Hurwitz move set and commit the full ordered-state-space adjacency list, canonical class identifiers, deterministic BFS traversal, and result digest. Independently replay move closure, quotient canonicalization, and reachable components without assuming transitivity; reject moves that leave the ordered conjugacy labels and missing or tampered edges. Do not infer a full-B_4 orbit theorem on the earlier 12 ordered classes; an enlarged full-B_4 state space needs a separate specification and exhaustive certificate.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V05",
+      "candidate": "N5",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03",
+        "N5-H04",
+        "N5-H05",
+        "N5-H06"
+      ],
+      "description": "Perform a dated prior-art search recording queries, sources, exclusions, nearest results, and the exact delta for Hurwitz actions/Nielsen classes, braid-orbit and component certificates, subgroup-intersection/index invariants, imprimitive/wreath subgroups of symmetric groups, discrete or normalized tuple-overlap observables, and finite-horizon Hurwitz/Nielsen walks. Attribute classical machinery and stop or revise if an equivalent invariant or classification is found. N5 remains a candidate; closing this literature obligation alone does not establish novelty, and any novel-result promotion requires the human review specified in docs/calibration.md.",
+      "evidence": []
     }
   ]
 }

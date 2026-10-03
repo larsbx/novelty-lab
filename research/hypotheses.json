@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-01",
+  "updated": "2026-10-03",
   "statuses": [
     "proposed",
     "pinned",
@@ -266,6 +266,54 @@
       "verified_by": [
         "docs/theorems/witt-soddy-bridge.md#n2-t06"
       ]
+    },
+    {
+      "id": "N5-H01",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "The finite testbed is the ordered Nielsen class Ni(S_6,(2,2,6,6))/S_6, with conjugacy labels, product-one and S_6-generation conditions, simultaneous-conjugacy quotient, canonical inner-class representatives, and admissible balanced splits fixed exactly.",
+      "scope": "N5 degree-6 census and ordered reachability",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H02",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "For every admitted split, A=H_I(g), B=H_J(g), and K=A intersection B are exact finite subgroups; the budget records PF(|A|), PF(|B|), PF(|K|), PF([A:K]), and PF([B:K]) with multiplicities and PF(1) empty. AB denotes the set product, and the identity PF(|K|) multiset-union PF(|AB|)=PF(|A|) multiset-union PF(|B|) uses exact integer arithmetic only, without floats or transcendental primitives.",
+      "scope": "N5 multiset/index budget kernel",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H03",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "A deterministic total order, or a stated partial order with a deterministic tie-break, selects a canonical minimizing balanced split from all admitted budget records; half-ordering conventions and ties are explicit, and selection is independent of enumeration order and the presentation of the same inner class.",
+      "scope": "N5 minimizer specification before any classification",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H04",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "FixedPoint, PairBlocks, TripleBlocks, CrossBlocks, and Containment are predicates on the newly minimizing halves with separate finite certificate checkers and actual fixed-element, block-partition, or containment payloads; Other remains an explicit fallback until exhaustive evidence excludes it. The previous logarithmic five-regime classification is not an assumption of the new census.",
+      "scope": "N5 degree-6 witness classification and certificates",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H05",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "The declared Hurwitz move set preserves the ordered conjugacy labels and acts on the specified inner classes, with canonical class identifiers and deterministic BFS traversal conventions. A full-B_4 action on the earlier 12 ordered classes is not assumed; any full-B_4 claim requires a separately defined and certified enlarged state space.",
+      "scope": "N5 label-preserving ordered-state-space certificate",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H06",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "Any novelty assessment is bounded by a dated, query-recorded prior-art dossier with sources, exclusions, nearest constructions, and an exact delta for the specified budget and certificates; classical Hurwitz/Nielsen machinery remains attributed as classical, and no general wreath/flag forcing or cryptographic hardness claim is inferred from the finite testbed.",
+      "scope": "N5 literature and novelty gate",
+      "verified_by": []
     }
   ]
 }
