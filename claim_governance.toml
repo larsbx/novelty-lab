@@ -237,6 +237,20 @@ anchor = '| DefectCharacteristicPolynomial |'
 window_lines = 0
 
 [[claim]]
+name = "DefectClassGramAndDimQ"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectClassGramAndDimQ"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectClassGramAndDimQ |'
+window_lines = 0
+
+[[claim]]
 name = "DefectClassIsClassical"
 status = "open"
 [[claim.surfaces]]
@@ -270,6 +284,20 @@ window_lines = 0
 [[claim.surfaces]]
 path = "docs/candidates/N2.md"
 anchor = "- `DefectFixesQuaternionSubalgebra`"
+window_lines = 0
+
+[[claim]]
+name = "DefectJordanType"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectJordanType"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectJordanType |'
 window_lines = 0
 
 [[claim]]
@@ -536,6 +564,34 @@ expect = "present"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| WallConjugacy |'
+window_lines = 0
+
+[[claim]]
+name = "WordDefectEquivariance"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"WordDefectEquivariance"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WordDefectEquivariance |'
+window_lines = 0
+
+[[claim]]
+name = "WordDefectG2Data"
+status = "experimental"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"WordDefectG2Data"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WordDefectG2Data |'
 window_lines = 0
 
 [[claim]]

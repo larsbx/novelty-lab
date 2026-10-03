@@ -14,6 +14,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
@@ -58,7 +59,12 @@ polynomial of $\Delta$ is $(X-1)^4(X^2-\tau X+1)^2$ with
 $\tau=2-N(xy-yx)/(N(x)N(y))$, and $\Delta$ is unipotent exactly when $Q$ is not a
 nondegenerate quaternion algebra. Since $2N(xy-yx)$ is the Gram determinant of
 $(1,x,y)$, the similarity class of $\Delta$ is classical quadratic-form data
-whenever $\tau\neq\pm2$. We then describe an
+whenever $\tau\neq\pm2$. We determine every Jordan type of $\Delta$: its
+similarity class is fixed by that Gram matrix together with $\dim Q$, and
+$\dim Q$ is needed. For defects of words of length four the characteristic
+polynomial is not classical. We conjecture, with computational evidence, that
+it is fixed by the $\operatorname{Aut}(\C)$-invariant three- and four-forms of
+the letters. We then describe an
 executable Lean~4 oracle for the five-term associator (Teichm\"uller) identity,
 organized as a pentagon of parenthesizations. Mutation testing shows that the
 closure of that identity is a weak test of an implementation: it is invariant
@@ -111,7 +117,12 @@ certified about it by exact computation. Our results are as follows.
   (Proposition~\ref{prop:f3}) check it independently. The characteristic
   polynomial of $\Delta$ depends only on $\tau=2-N(xy-yx)/(N(x)N(y))$
   (Theorem~\ref{thm:charpoly}), because the Gram determinant of
-  $(1,x,y,xy)$ is $N(xy-yx)^2$ (Lemma~\ref{lem:gram}).
+  $(1,x,y,xy)$ is $N(xy-yx)^2$ (Lemma~\ref{lem:gram}). Its Jordan type is
+  fixed by the Gram matrix of $(1,x,y)$ together with $\dim Q$
+  (Theorem~\ref{thm:jordan}, Corollary~\ref{cor:gram-dimq}). Word defects
+  of length four see the $\operatorname{Aut}(\C)$-invariant forms of their
+  letters (Proposition~\ref{prop:word-four},
+  Conjecture~\ref{conj:g2}).
 \item A Lean~4 oracle recomputes the five edges of the associator pentagon
   from an explicit structure tensor. A mutation analysis
   (Table~\ref{tab:mutants}) shows which checks detect which implementation
@@ -727,7 +738,9 @@ Let $k=\F_q$, $q$ odd, and $\nu\neq0$.
 \begin{enumerate}[label=\textup{(\alph*)}]
 \item The spinor norm of $\Delta(x,y)$ is trivial.
 \item If $N(c)\neq0$ and $\Delta(x,y)$ is semisimple (by
-  Corollary~\ref{cor:classical}, this holds whenever $\tau\neq-2$), then the
+  Corollary~\ref{cor:classical}, this holds whenever $\tau\neq-2$, and for
+  $\tau=-2$ exactly when $T(x)=T(y)=B(x,y)=0$, by
+  Theorem~\ref{thm:jordan}(b)), then the
   conjugacy class of $\Delta(x,y)$ in $\SO(\C,N)$ depends only on $\tau$.
 \end{enumerate}
 \end{corollary}
@@ -762,7 +775,8 @@ $N(y)=N(y')=2$, the same Gram matrix of $(1,x,y)$, and $N(c)=0$, so both
 defects are unipotent. But $\dim Q=4$ for the first pair and $\dim Q=3$ for
 the second, so $\rank(\Delta-I)$ is $4$ and $2$ by Theorem~\ref{thm:rank}, and
 the two defects are not similar. When $B|_Q$ is degenerate, whether $xy$ lies
-in $\spn\{1,x,y\}$ is not determined by the Gram matrix of $(1,x,y)$.
+in $\spn\{1,x,y\}$ is not determined by the Gram matrix of $(1,x,y)$. By
+Corollary~\ref{cor:gram-dimq}, $\dim Q$ is the only such datum.
 \end{remark}
 
 \subsection*{Defects of words}
@@ -840,6 +854,134 @@ Corollary~\ref{cor:class}(a) gives a second proof of
 Theorem~\ref{thm:rank-nondeg}: $\rho-I$ is right multiplication by $g-1$,
 which is invertible because $N(g-1)=N(g)-T(g)+1=2-\tau=N(c)/\nu\neq0$.
 \end{remark}
+
+\subsection*{What the defect class sees}
+Remark~\ref{rem:unipotent} and Proposition~\ref{prop:word-four} locate the
+non-classical defect data. This subsection identifies it: for a single defect
+it is exactly $\dim Q$, and for words it appears to be the
+$\operatorname{Aut}(\C)$-invariant three- and four-forms of the letters.
+
+\begin{theorem}\label{thm:jordan}
+Let $\nu\neq0$ and $A=\Delta(x,y)-I$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $(\Delta-I)(\Delta^2-\tau\Delta+I)=0$.
+\item If $\tau=-2$, then $\Delta$ is semisimple if and only if $xy+yx=0$, which
+  holds if and only if $T(x)=T(y)=B(x,y)=0$. Otherwise $\Delta+I$ has rank $2$
+  and square $0$, so $\Delta$ has two Jordan blocks of size $2$ at $-1$.
+\item If $N(c)=0$, then $A^3=0$, and: $A=0$ if $\dim Q\le2$; $\rank A=2$ and
+  $A^2=0$ if $\dim Q=3$; and $\rank A=4$, $\rank A^2=\rank B|_Q\in\{1,2\}$ if
+  $\dim Q=4$.
+\end{enumerate}
+So the unipotent Jordan types are $1^8$, $2^21^4$, $3^21^2$ (when
+$\rank B|_Q=2$) and $3\,2^2\,1$ (when $\rank B|_Q=1$).
+\end{theorem}
+
+\begin{proof}
+(a) Let $M=\nu\Delta=L_xL_yL_{\conj{xy}}$. Then
+$\nu^3(\Delta-I)(\Delta^2-\tau\Delta+I)=(M-\nu I)(M^2-(2\nu-N(c))M+\nu^2I)$
+is a polynomial in $(x,y)$. As in Lemma~\ref{lem:gram}, it suffices to show
+that it vanishes where $\nu N(c)\neq0$. There, by the proof of
+Theorem~\ref{thm:charpoly}, $M=\nu$ on $Q$, and on $Qv$ it is right
+multiplication by $h$ with $h^2-T(h)h+N(h)=0$, $T(h)=2\nu-N(c)$ and
+$N(h)=\nu^2$.
+
+(b) If $\tau=-2$, then $N(c)=4\nu\neq0$, so Corollary~\ref{cor:class}(a)
+applies: $\Delta=\mathrm{id}_Q\oplus\rho$, and $\rho$ is right multiplication
+by $g$ with $(g+1)^2=g^2+2g+1=(\tau+2)g=0$. If $g=-1$, then $\rho=-I$.
+Otherwise $m=g+1$ is nonzero with $m^2=0$. After extending scalars,
+$Q\cong M_2$, $m$ is a matrix of rank $1$, and right multiplication by $m$ has
+rank $2$ and square $0$. Since $g=(xy)^{-1}yx$, $g=-1$ means $yx=-xy$. Write
+$x=\alpha1+x_0$ and $y=\beta1+y_0$ with $x_0,y_0$ pure. Then $c=x_0y_0-y_0x_0\neq0$,
+so $x_0$ and $y_0$ are linearly independent, and
+$xy+yx=(2\alpha\beta-B(x_0,y_0))1+2\alpha y_0+2\beta x_0$. This vanishes
+exactly when $\alpha=\beta=0$ and $B(x_0,y_0)=0$, that is, when
+$T(x)=T(y)=B(x,y)=0$.
+
+(c) Here $\tau=2$, so (a) gives $A^3=0$. Since
+$L_xL_y-L_{xy}=\varphi_{x,y}$, we have $A=\varphi L_{xy}^{-1}$ with
+$\varphi=\varphi_{x,y}$. So $\ker A=L_{xy}(\ker\varphi)$ and
+$\operatorname{im}A=\operatorname{im}\varphi=(\ker\varphi)^\perp$, by
+Lemma~\ref{lem:skew}. If $\dim Q\le2$, then $\varphi=0$
+(Theorem~\ref{thm:rank}). If $\dim Q=3$, then $\rank A=2$, and in the proof of
+Proposition~\ref{prop:rank-three}, with $(n,t)$ the basis of $Q_0$ chosen
+there, we have $n\C\subseteq\ker\varphi$. As $n\C$ is
+totally isotropic of dimension $4$, $(n\C)^\perp=n\C$, so
+$\operatorname{im}A\subseteq n\C$. Moreover $Q\cdot n\C\subseteq n\C$: indeed
+$n(nz)=n^2z=0$, and linearizing the left alternative law gives
+$t(nz)=-n(tz)+(tn+nt)z=-n(tz)$, since $tn+nt=-B(t,n)1=0$ for
+$n\in Q\cap Q^\perp$. As $L_{xy}^{-1}=\nu^{-1}L_{\conj{xy}}$ with
+$\conj{xy}\in Q$, we get $L_{xy}^{-1}(\operatorname{im}A)\subseteq
+n\C\subseteq\ker\varphi$, so $A^2=0$. If $\dim Q=4$, then $\ker\varphi=Q$
+(Theorem~\ref{thm:rank-four}), so $\operatorname{im}A=Q^\perp$. Also
+$\ker A=L_{xy}Q=Q$, because $Q$ is an associative subalgebra containing $xy$
+and $N(xy)\neq0$. Hence
+$\rank A^2=\dim A(Q^\perp)=4-\dim(Q^\perp\cap Q)=\rank B|_Q$. By the proof of
+Lemma~\ref{lem:assoc}, $Q/(Q\cap Q^\perp)$ is a composition algebra, of
+dimension $1$, $2$ or $4$, and the last is excluded because $B|_Q$ is
+degenerate (Lemma~\ref{lem:gram}). The Jordan types follow from the ranks of
+the powers of $A$.
+\end{proof}
+
+\begin{corollary}\label{cor:gram-dimq}
+Let $\nu\neq0$. The similarity class of $\Delta(x,y)$ depends only on the Gram
+matrix of $(1,x,y)$ and on $\dim Q$. The dimension of $Q$ matters only when
+$N(c)=0$, and there it is not determined by the Gram matrix
+(Remark~\ref{rem:unipotent}).
+\end{corollary}
+
+\begin{proof}
+By Corollary~\ref{cor:classical}, $\tau$ is Gram data. By
+Theorem~\ref{thm:jordan}(b), so is semisimplicity when $\tau=-2$. When
+$N(c)=0$, the Gram matrix of $(1,x,y,xy)$ is Gram data too, since
+$B(1,xy)=B(y,\conj x)=T(x)T(y)-B(x,y)$, $B(x,xy)=N(x)T(y)$,
+$B(y,xy)=N(y)T(x)$ and $B(xy,xy)=2\nu$. So is $\rank B|_Q$ when $\dim Q=4$.
+Theorem~\ref{thm:jordan} lists the classes.
+\end{proof}
+
+So a single defect carries exactly one datum beyond its Gram matrix, namely
+$\dim Q$. For words, the group to compare with is
+$G_2=\operatorname{Aut}(\C)$.
+
+\begin{proposition}\label{prop:equivariant}
+For $g\in\operatorname{Aut}(\C)$ and letters of nonzero norm,
+\[
+  W(ga_1,\dots,ga_n)=g\,W(a_1,\dots,a_n)\,g^{-1}.
+\]
+Hence the characteristic polynomial of a word defect is invariant under
+$\operatorname{Aut}(\C)$. This group fixes $1$ and preserves $B$ and, on
+$1^\perp$, the three-form $\phi(p,q,r)=B(pq,r)$ and the four-form
+$\psi(p,q,r,s)=B(\assoc pqr,s)$.
+\end{proposition}
+
+\begin{proof}
+$gL_ag^{-1}=L_{ga}$, and $g$ maps the left-comb value of the word to that of
+the moved word. Automorphisms preserve $N$, because $N(a)$ is the constant
+term of the minimal polynomial of $a$, and therefore they preserve $B$, $1^\perp$, $\phi$ and
+$\psi$.
+\end{proof}
+
+A rotation of $1^\perp$ preserves $B$ but in general neither form. This
+suggests the following conjecture.
+
+\begin{conjecture}\label{conj:g2}
+The characteristic polynomial of $W(a_1,\dots,a_n)$ depends only on the Gram
+matrix of $(1,a_1,\dots,a_n)$ and on the values of $\phi$ on triples and $\psi$
+on quadruples of the trace-zero parts of the letters.
+\end{conjecture}
+
+The script \texttt{experiments/n2/word\_g2.py} applies random rotations $h$ of
+$1^\perp$ to random words of length $4$ over $\F_3$, $\F_5$ and $\F_7$, and of
+length $5$ over $\F_3$. All $979$ rotations that preserve every value of both
+$\phi$ and $\psi$ also preserve the characteristic polynomial. Neither form
+suffices alone: $344$ of $396$ rotations that preserve $\phi$ but not $\psi$,
+and $202$ of $240$ sampled rotations that preserve $\psi$ but not $\phi$,
+change it. The data file stores one certificate for each case. Over an
+algebraically closed field of characteristic $0$, the conjecture would
+follow from a first fundamental theorem for $G_2$ whose generators are $B$,
+$\phi$ and $\psi$, as in Schwarz~\cite{schwarz1988}. We have not checked that
+statement and do not use it. A word defect therefore sees octonionic data,
+not only orthogonal data, and $\psi$, the form that measures the associator,
+is needed.
 
 \section{The associator pentagon}\label{sec:pentagon}
 
@@ -1030,29 +1172,25 @@ methodology.
 \section{Limitations and open problems}\label{sec:open}
 
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{What the defect class can still carry.} By
-  Theorem~\ref{thm:charpoly} and Corollary~\ref{cor:classical}, the
-  characteristic polynomial of $\Delta$ is determined by
-  $\tau=2-N(xy-yx)/(N(x)N(y))$, a function of the Gram matrix of $(1,x,y)$,
-  and for $\tau\neq\pm2$ so is its similarity class. Over $\F_q$ the same
-  holds for the $\SO(\C,N)$-class of a semisimple defect, and the spinor norm
-  is always trivial (Corollary~\ref{cor:so-class}). Non-semisimple defects
-  are not classical: at $\tau=2$ the rank of $\Delta-I$ is not determined by
-  the Gram matrix (Remark~\ref{rem:unipotent}), and $\tau=-2$ admits distinct
-  Jordan types even for nondegenerate $Q$. Words of length three have
-  classical characteristic polynomials (Proposition~\ref{prop:word-three}),
-  but words of length four do not (Proposition~\ref{prop:word-four}).
-  Non-classical information can therefore sit in non-semisimple single
-  defects and in words of length at least four. Which invariants determine
-  these classes, and whether shell statistics see them, is open. For words
-  we expect invariants of $\operatorname{Aut}(\C)$, such as the associator
-  four-form.
+\item \emph{What the defect class can still carry.} The similarity class
+  of a single defect is the Gram matrix of $(1,x,y)$ together with $\dim Q$
+  (Corollary~\ref{cor:gram-dimq}). Over $\F_q$ the $\SO(\C,N)$-class of a
+  semisimple defect depends only on $\tau$, and the spinor norm is trivial
+  (Corollary~\ref{cor:so-class}). The $\SO(\C,N)$-classes of non-semisimple
+  defects are not determined here. Words of length three have classical
+  characteristic polynomials (Proposition~\ref{prop:word-three}), but words
+  of length four do not (Proposition~\ref{prop:word-four}).
+  Conjecture~\ref{conj:g2} asserts that $G_2$ data suffices. A proof over
+  finite fields, or a reference for the first fundamental theorem it would
+  follow from in characteristic~$0$, is open.
 \item \emph{Defect-stratified statistics.} For navigation words in generators
   drawn from a prime-norm shell modulo $\ell$, do collision moments
   conditioned on the classes of their word defects differ from the
-  unconditioned moments? Only words of length at least four can carry signal
-  (Propositions~\ref{prop:word-three} and~\ref{prop:word-four}). A negative
-  answer would show that the defect is classical bookkeeping only.
+  unconditioned moments? For single defects the only non-classical stratum
+  is $\dim Q$ when $N(xy-yx)=0$. For words of length at least four, the
+  conditioning variables to test are the values of $\phi$ and $\psi$ on the
+  letters. A negative answer would show that the defect is classical
+  bookkeeping, or $G_2$ bookkeeping, only.
 \item \emph{Formal soundness.} The oracle decides finite instances by
   evaluation. A kernel-checked theorem connecting its Boolean checks to the
   composition-algebra structures of Lean's mathematical library is not yet
@@ -1080,6 +1218,8 @@ Rank law (Prop.~\ref{prop:f3}) & \texttt{python experiments/n2/rank\_law.py --ch
 Rank-law lemmas (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_rank\_law*.py'} \\
 Defect class (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_defect\_c*.py'} \\
 Word defects (Prop.~\ref{prop:word-four}) & \texttt{python experiments/n2/word\_defects.py --check} \\
+Jordan types (Thm.~\ref{thm:jordan}) & \texttt{python experiments/n2/defect\_jordan.py --check} \\
+$G_2$ data (Conj.~\ref{conj:g2}) & \texttt{python experiments/n2/word\_g2.py --check} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule
 \end{tabular}

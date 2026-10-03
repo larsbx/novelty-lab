@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:a24194d50f848fe3a4a92750afafa7a40d2dd204bb4a25d0b2a43547cbb9a48a",
+      "id": "sha256:09dbaf734fec06839dd9217e08793fd2d66c76a16ed41e9c229f8eb97a1f9b1b",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; semisimple single defects and the characteristic polynomials of length-3 word defects are classical (DefectClassIsClassical, DefectSOClassFinite, WordDefectLengthThreeClassical), but non-semisimple single defects (paper Remark 3.25) and length-4 word defects (WordDefectNotClassical) are not, so the question survives on those two strata; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; the similarity class of a single defect is a function of the Gram matrix of (1, x, y) and dim Q (DefectClassGramAndDimQ, KILL-11), so single defects can add only dim Q; length-4 word defects are not classical (WordDefectNotClassical) and appear to be fixed by the Aut(C)-invariant forms phi and psi of the letters (WordDefectG2Data), which are the conditioning variables to test; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts"
         ]
       ],
       "tags": []
@@ -783,6 +783,129 @@
         [
           "digest",
           "sha256:e203e35e3d12c2e5794f4ee1ccf6816c5aeb61810db2618488e7c2f0a9b9ef99"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectJordanType": {
+      "id": "sha256:f38acfb57aaa41b25a5bbb9e49cbc4aa35dec5fc093627510d4bd358034c7953",
+      "kind": "pending_dependency",
+      "statement": "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise Delta + I has rank 2 and square 0; if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Theorem 3.29(a) (identity on the dense set, then everywhere)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:a8dd7d5613b22d56437fa910543be98dbae2f3c3239d72fdcd26a89cfb81b795",
+          "if dim Q = 4 then ker [x, y, -] = Q, and if dim Q = 3 then rank [x, y, -] = 2, whether or not B|Q is nondegenerate",
+          "paper/associator-defects/main.tex Theorem 3.29(c) (ker [x, y, -] for dim Q = 3, 4)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:62cceda3e5892ac79bb8d1c21ce93c1069c2c763619e3f9805dea5d16322252a",
+          "every unital associative subalgebra of an octonion algebra has dimension at most 4",
+          "paper/associator-defects/main.tex Theorem 3.29(c) (Q / rad Q is a composition algebra)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Theorem 3.29(b), (c)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Theorem 3.29); awaiting independent review; replayed in tests/test_defect_jordan.py; every stratum sampled over F_3, F_5, F_7, F_11 in data/n2/defect-jordan-v1.json (python experiments/n2/defect_jordan.py --check)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectClassGramAndDimQ": {
+      "id": "sha256:60df9877a8b36ef1520ca1415b11f2314b713395a4e8d4cdd64017e004bd8b9d",
+      "kind": "pending_dependency",
+      "statement": "for N(x)N(y) != 0 the similarity class of Delta(x, y) depends only on the Gram matrix of (1, x, y) and on dim Q; dim Q matters only when N(xy - yx) = 0, where the Gram matrix does not determine it",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:f38acfb57aaa41b25a5bbb9e49cbc4aa35dec5fc093627510d4bd358034c7953",
+          "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise Delta + I has rank 2 and square 0; if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
+          "paper/associator-defects/main.tex Corollary 3.30",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+          "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+          "paper/associator-defects/main.tex Corollary 3.30 (tau is Gram data)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Corollary 3.30 (Gram matrix of (1, x, y, xy))",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.30; necessity of dim Q by the F_3 pair of Remark 3.25); awaiting independent review; Gram identities replayed in tests/test_defect_jordan.py; narrows the single-defect stratum of NC-X-01 to the one datum dim Q"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectEquivariance": {
+      "id": "sha256:467ba4075363bb09a11b76b556d95cd930e509b18c0e93f2d1fc7915be5a7126",
+      "kind": "pending_dependency",
+      "statement": "for g in Aut(C), W(g a1, ..., g an) = g W(a1, ..., an) g^-1; Aut(C) fixes 1 and preserves B, phi(p, q, r) = B(pq, r) and psi(p, q, r, s) = B([p, q, r], s)",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Proposition 3.31",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Proposition 3.31); awaiting independent review; replayed for explicit automorphisms over F_3, F_5, F_7 in tests/test_word_g2.py"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectG2Data": {
+      "id": "sha256:4a3985ee2d6534231d757db9ac89a7509eec43c47c8cd5d2c96e570201d9a73d",
+      "kind": "bounded_experiment",
+      "statement": "for random words of length 4 over F_3, F_5, F_7 and of length 5 over F_3, all 979 sampled rotations of 1-perp that preserve every value of phi and psi on the pure parts of the letters preserve the characteristic polynomial of the word defect, while 344 of 396 rotations preserving phi only and 202 of 240 sampled rotations preserving psi only change it (paper Conjecture 3.32)",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "(ell, length, trials) in {(3, 4, 40000), (3, 5, 20000), (5, 4, 60000), (7, 4, 60000)}; letters of nonzero norm; rotations are products of 2 or 4 reflections in pure anisotropic vectors that move some letter"
+        ],
+        [
+          "replay",
+          "python experiments/n2/word_g2.py --check"
+        ],
+        [
+          "digest",
+          "sha256:2b16a866c0759bb6505f0429d115b1ee32159d51087abaff71966b1dbe9d2077"
         ]
       ],
       "tags": []
