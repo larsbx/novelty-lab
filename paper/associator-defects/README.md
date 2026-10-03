@@ -36,6 +36,8 @@ from source rather than committing them.
 | Cor. 3.30 (similarity class of Δ is Gram data of (1, x, y) plus dim Q) | proved in the paper | ledger `DefectClassGramAndDimQ` (pending review); `tests/test_defect_jordan.py::TestGramOfQ`; retired claim KILL-11 |
 | Prop. 3.31 (word defects are Aut(C)-equivariant) | proved in the paper | ledger `WordDefectEquivariance` (pending review); `tests/test_word_g2.py` (explicit automorphisms over 𝔽₃, 𝔽₅, 𝔽₇) |
 | Conj. 3.32 (characteristic polynomial of a word defect is fixed by Gram data, φ and ψ) | conjecture with bounded evidence | ledger `WordDefectG2Data`; `data/n2/word-g2-v1.json` via `experiments/n2/word_g2.py`; `tests/test_word_g2.py` (certificates that neither form suffices alone) |
+| Cor. 3.33 (anisotropic N: single defects are classical) | proved in the paper | ledger `DefectClassicalAnisotropic` (pending review); `tests/test_h3_integral.py::TestAnisotropic` (over Z⁸) |
+| Sec. 6 item (2), integral H3 pilot | bounded experiment | ledger `H3IntegralPilot`; `data/n2/h3-integral-v1.json` via `experiments/n2/h3_integral.py`; `tests/test_h3_integral.py` |
 | Prop. 5.1 (rank law over 𝔽₃) | verified finite computation | ledger `RankLawExhaustiveF3`; `data/n2/rank-law-v1.json` via `experiments/n2/rank_law.py`; `tests/test_rank_law.py` |
 | (4), Obs. 4.1 | proved (classical) | `research/theorems.json` N2-T04; `docs/theorems/pentagon-boundary.md` |
 | Table 1 | bounded experiment | `data/n2/defect-census-v1.json` via `experiments/n2/defect_census.py` |
@@ -54,7 +56,7 @@ and finite regression checks do not satisfy the human-review checklist below.
 - [ ] Human review of Prop. 3.5, Prop. 3.9, Lemmas 3.10–3.11 with Thm. 3.12, and
       Lemmas 3.13–3.15 with Thm. 3.16 and Prop. 3.17, and Lemma 3.19 with
       Thm. 3.20 and Cor. 3.21–3.22, and Thm. 3.23 with Cor. 3.24, and Prop. 3.26, and Thm. 3.29 with
-      Cor. 3.30 and Prop. 3.31, then promotion of
+      Cor. 3.30, Prop. 3.31 and Cor. 3.33, then promotion of
       the corresponding ledger records.
 - [ ] A dated prior-art search (triality, octonionic loops, defect or
       holonomy constructions), recorded as required by `docs/calibration.md`.

@@ -942,7 +942,8 @@ Theorem~\ref{thm:jordan} lists the classes.
 \end{proof}
 
 So a single defect carries exactly one datum beyond its Gram matrix, namely
-$\dim Q$. For words, the group to compare with is
+$\dim Q$, and Corollary~\ref{cor:anisotropic} below shows that this datum
+appears only when $N$ is isotropic. For words, the group to compare with is
 $G_2=\operatorname{Aut}(\C)$.
 
 \begin{proposition}\label{prop:equivariant}
@@ -985,6 +986,28 @@ $\phi$ and $\psi$, as in Schwarz~\cite{schwarz1988}. We have not checked that
 statement and do not use it. A word defect therefore sees octonionic data,
 not only orthogonal data, and $\psi$, the form that measures the associator,
 is needed.
+
+\begin{corollary}\label{cor:anisotropic}
+If $N$ is anisotropic and $\nu\neq0$, then $N(c)=0$ if and only if
+$\dim Q\le2$, if and only if $\Delta=I$. Hence the similarity class of
+$\Delta(x,y)$ depends only on the Gram matrix of $(1,x,y)$.
+\end{corollary}
+
+\begin{proof}
+If $N$ is anisotropic, $B$ is nondegenerate on every subspace, because a
+nonzero vector $r$ in a radical would satisfy $2N(r)=B(r,r)=0$. If $N(c)=0$,
+then $\dim Q\le3$ or $B|_Q$ is degenerate (Lemma~\ref{lem:gram}), so
+$\dim Q\le3$. The case $\dim Q=3$ forces $B|_Q$ to be degenerate (the
+discussion after Theorem~\ref{thm:rank}), so $\dim Q\le2$ and $\Delta=I$ by
+Theorem~\ref{thm:rank}. Conversely, $\Delta=I$ implies $\dim Q\le2$
+(Theorem~\ref{thm:rank}), and then $N(c)=0$ by Lemma~\ref{lem:gram}. So
+$\dim Q$ is decided by $N(c)$, which is Gram data, and
+Corollary~\ref{cor:gram-dimq} applies.
+\end{proof}
+
+For the definite octonions over $\Q$, and so for integral shells before
+reduction, single defects are therefore classical. Over $\F_\ell$, where every
+octonion algebra is split, $\dim Q$ is not determined by the Gram matrix.
 
 \section{The associator pentagon}\label{sec:pentagon}
 
@@ -1193,7 +1216,15 @@ methodology.
   is $\dim Q$ when $N(xy-yx)=0$. For words of length at least four, the
   conditioning variables to test are the values of $\phi$ and $\psi$ on the
   letters. A negative answer would show that the defect is classical
-  bookkeeping, or $G_2$ bookkeeping, only.
+  bookkeeping, or $G_2$ bookkeeping, only. A pilot on the integral shells
+  $\{x\in\mathbb{Z}^8:N(x)=p\}$, $p\in\{3,5\}$, with exact arithmetic
+  (\texttt{experiments/n2/h3\_integral.py}) shows that the question is
+  delicate. Most collisions of values are collisions of the operators
+  $L_{a_1}\cdots L_{a_4}$, and in three of five configurations all of them
+  are. Where value-only collisions occur, they trace back to sporadic
+  coincidences of length three. There the two words share the characteristic
+  polynomial of their defect in $22$--$50\%$ of pairs, against $7$--$8\%$ for
+  pairs of different values with equal trace and $2$--$4\%$ for random pairs.
 \item \emph{Formal soundness.} The oracle decides finite instances by
   evaluation. A kernel-checked theorem connecting its Boolean checks to the
   composition-algebra structures of Lean's mathematical library is not yet
@@ -1223,6 +1254,7 @@ Defect class (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s te
 Word defects (Prop.~\ref{prop:word-four}) & \texttt{python experiments/n2/word\_defects.py --check} \\
 Jordan types (Thm.~\ref{thm:jordan}) & \texttt{python experiments/n2/defect\_jordan.py --check} \\
 $G_2$ data (Conj.~\ref{conj:g2}) & \texttt{python experiments/n2/word\_g2.py --check} \\
+Integral H3 pilot (Sec.~\ref{sec:open}) & \texttt{python experiments/n2/h3\_integral.py --check} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule
 \end{tabular}

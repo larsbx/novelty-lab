@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:09dbaf734fec06839dd9217e08793fd2d66c76a16ed41e9c229f8eb97a1f9b1b",
+      "id": "sha256:0a2e4646794adf55b718b5b10ecf85e5429c367b2fc9f256760b51d579ae960a",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; the similarity class of a single defect is a function of the Gram matrix of (1, x, y) and dim Q (DefectClassGramAndDimQ, KILL-11), so single defects can add only dim Q; length-4 word defects are not classical (WordDefectNotClassical) and appear to be fixed by the Aut(C)-invariant forms phi and psi of the letters (WordDefectG2Data), which are the conditioning variables to test; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; the similarity class of a single defect is a function of the Gram matrix of (1, x, y) and dim Q (DefectClassGramAndDimQ, KILL-11), so single defects can add only dim Q; length-4 word defects are not classical (WordDefectNotClassical) and appear to be fixed by the Aut(C)-invariant forms phi and psi of the letters (WordDefectG2Data), which are the conditioning variables to test; over definite integral shells single defects are classical (DefectClassicalAnisotropic), and the integral pilot (H3IntegralPilot) finds value-only collisions only in sporadic configurations, where they share word-defect classes well above an equal-trace null; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts"
         ]
       ],
       "tags": []
@@ -906,6 +906,64 @@
         [
           "digest",
           "sha256:2b16a866c0759bb6505f0429d115b1ee32159d51087abaff71966b1dbe9d2077"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectClassicalAnisotropic": {
+      "id": "sha256:22d456d64efd8a88e9f3640049ac68343b5a04e9de0ade620cd4aefab3e114f7",
+      "kind": "pending_dependency",
+      "statement": "if N is anisotropic and N(x)N(y) != 0, then N(xy - yx) = 0 iff dim Q <= 2 iff Delta(x, y) = I, so the similarity class of Delta(x, y) depends only on the Gram matrix of (1, x, y)",
+      "scope": "octonion algebras with anisotropic norm over a field of characteristic not 2, in particular the definite octonions over Q of convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:3f21c6fc50a81d110f451e5b696d1be7de6cd7fcf06040938547ac770871846b",
+          "for N(x)N(y) != 0 the similarity class of Delta(x, y) depends only on the Gram matrix of (1, x, y) and on dim Q; dim Q matters only when N(xy - yx) = 0, where the Gram matrix does not determine it",
+          "paper/associator-defects/main.tex Corollary 3.33",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Corollary 3.33 (Lemma 3.19)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:983f60da617a89d199300d4f26073ff4a1ed101c4ce7408c4bb90fcdce1e70e2",
+          "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
+          "paper/associator-defects/main.tex Corollary 3.33",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.33); awaiting independent review; replayed over Z^8 in tests/test_h3_integral.py; single defects on integral shells are classical before reduction"
+        ]
+      ],
+      "tags": []
+    },
+    "H3IntegralPilot": {
+      "id": "sha256:67fd2852bea57f001178504162d1283718d5fc87c839b7b69fbd65d781904cc8",
+      "kind": "bounded_experiment",
+      "statement": "for reduced length-4 words in m generators of the integral shell {x in Z^8 : N(x) = p} and their conjugates, with exact arithmetic, value-only collisions (equal values, different operators L_a1 ... L_a4) are absent in three of five configurations; in the other two (p = 3, 12 or 14 letters, 195 and 477 pairs) they share the characteristic polynomial of their word defect in 50 and 22 percent of pairs, against 8 and 7 percent for pairs of different values with equal trace and 4 and 2 percent for random pairs",
+      "scope": "definite octonions over Z, convention cayley-dickson/v1 with parameters (-1, -1, -1); characteristic polynomials compared modulo 2^61 - 1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "(p, generators, seed) in {(3, 12, 1), (3, 12, 2), (3, 12, 3), (3, 14, 1), (5, 12, 1)}; all reduced words of length 4; nulls of 300 pairs each"
+        ],
+        [
+          "replay",
+          "python experiments/n2/h3_integral.py --check"
+        ],
+        [
+          "digest",
+          "sha256:767aada98585a616a04fc8fd4631e8c2a79f4f43ad6793096140c9efb4696c5b"
         ]
       ],
       "tags": []
