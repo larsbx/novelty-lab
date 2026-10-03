@@ -4,12 +4,15 @@ EXTENDS NoveltyLedger
 
 Reachable == {
     "ArtinTheorem",
+    "CliffordSpinTrace",
     "CompositionDimensions",
     "CompositionIdentities",
     "HurwitzShellCountFinite",
     "MoufangTheorem",
     "QuaternionDoubling",
     "RankLawExhaustiveF3",
+    "WallConjugacy",
+    "WordDefectNotClassical",
     "ZornPeirce"
 }
 EventuallyReachable == <>(established = Reachable)

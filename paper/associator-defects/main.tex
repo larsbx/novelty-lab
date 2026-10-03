@@ -56,7 +56,9 @@ follows from Moufang's theorem and the fact that every associative subalgebra
 of an octonion algebra has dimension at most~$4$. The characteristic
 polynomial of $\Delta$ is $(X-1)^4(X^2-\tau X+1)^2$ with
 $\tau=2-N(xy-yx)/(N(x)N(y))$, and $\Delta$ is unipotent exactly when $Q$ is not a
-nondegenerate quaternion algebra. We then describe an
+nondegenerate quaternion algebra. Since $2N(xy-yx)$ is the Gram determinant of
+$(1,x,y)$, the similarity class of $\Delta$ is classical quadratic-form data
+whenever $\tau\neq\pm2$. We then describe an
 executable Lean~4 oracle for the five-term associator (Teichm\"uller) identity,
 organized as a pentagon of parenthesizations. Mutation testing shows that the
 closure of that identity is a weak test of an implementation: it is invariant
@@ -661,6 +663,178 @@ cannot be $(X-1)^8$ and $\Delta$ is not unipotent. The dimensional
 equivalence is Lemma~\ref{lem:gram}.
 \end{proof}
 
+\begin{corollary}\label{cor:classical}
+$2N(xy-yx)=\det\bigl(B(u,w)\bigr)_{u,w\in\{1,x,y\}}$. Hence, for $\nu\neq0$,
+\[
+  \tau=2-\frac{\det\bigl(B(u,w)\bigr)_{u,w\in\{1,x,y\}}}{2N(x)N(y)},
+\]
+and the characteristic polynomial of $\Delta(x,y)$ depends only on the Gram
+matrix of $(1,x,y)$. If $\tau\neq\pm2$, then $\Delta(x,y)$ is semisimple, so
+its similarity class in $\mathrm{GL}(\C)$ depends only on that Gram matrix.
+\end{corollary}
+
+\begin{proof}
+Write $x=\tfrac12T(x)1+x_0$ and $y=\tfrac12T(y)1+y_0$ with $x_0,y_0$ pure.
+Then $xy-yx=x_0y_0-y_0x_0=2x_0y_0+B(x_0,y_0)1$, and
+$N(xy-yx)=4N(x_0)N(y_0)+2B(x_0,y_0)B(x_0y_0,1)+B(x_0,y_0)^2
+=4N(x_0)N(y_0)-B(x_0,y_0)^2$, because $B(x_0y_0,1)=B(y_0,\conj{x_0})=-B(x_0,y_0)$.
+This is the Gram determinant of $(x_0,y_0)$. Since $B(1,1)=2$ and $x_0,y_0$ are
+the projections of $x,y$ to $1^\perp$, the Gram determinant of $(1,x,y)$ is
+twice it. If $\tau\neq\pm2$, the polynomial $(X-1)(X^2-\tau X+1)$ has
+distinct roots, and it annihilates $\Delta$: on $Q$ by
+Theorem~\ref{thm:fixed}(a), and on $Qv$ because $g^2-\tau g+1=0$ in $Q$
+(Corollary~\ref{cor:class}(a); note $\tau\neq2$ forces $N(c)\neq0$). A
+matrix annihilated by a polynomial with distinct roots is semisimple, and a
+semisimple matrix is determined up to similarity by its characteristic
+polynomial.
+\end{proof}
+
+\begin{theorem}\label{thm:reflections}
+Let $\nu N(c)\neq0$, and let $v\in Q^\perp$ with $N(v)\neq0$. Write $s_a$ for the
+reflection $z\mapsto z-N(a)^{-1}B(z,a)a$. Then
+\[
+  \Delta(x,y)=s_{xv}\,s_v\,s_{yv}\,s_{(xy)v}.
+\]
+In particular, the spinor norm of $\Delta(x,y)$ is
+$N(xv)N(v)N(yv)N((xy)v)\,k^{\times2}=N(v)^4\nu^2\,k^{\times2}$, which is trivial.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:gram}, $Q$ is a nondegenerate quaternion subalgebra, and
+$\C=Q\oplus Qv$ as in~\ref{F:double}. For $a\in Q$ with $N(a)\neq0$, the
+reflection $s_{av}$ fixes $Q$ pointwise. Since $u\mapsto uv$ is a similitude
+with multiplier $N(v)$, $B(uv,av)=N(v)B(u,a)$, so $s_{av}(uv)=(s_au)v$, where
+on the right $s_a$ is the reflection of $(Q,N)$. In the associative algebra
+$Q$, $s_a(u)=-a\conj u a/N(a)$, and so
+$s_as_b(u)=(a\conj b)\,u\,(\conj ba)/(N(a)N(b))$. Taking $(a,b)=(x,1)$ and
+then $(y,xy)$, and using $y\,\conj{xy}=N(y)\conj x$,
+\[
+  s_xs_1s_ys_{xy}(u)=\frac{x\,(N(y)\conj x)\,u\,(\conj{xy}\,yx)}{N(x)\,N(y)\,\nu}
+  =u\,\frac{\conj{xy}\,yx}{\nu}=ug,
+\]
+with $g=(xy)^{-1}yx$. By Corollary~\ref{cor:class}(a) this is $\Delta$ on
+$Qv$, and both sides are the identity on $Q$. The spinor norm of a product of
+reflections $s_{a_1}\cdots s_{a_r}$ is $\prod N(a_i)$ modulo squares, and
+$N(xv)N(v)N(yv)N((xy)v)=N(v)^4N(x)^2N(y)^2$.
+\end{proof}
+
+Theorem~\ref{thm:reflections} also exhibits $g$ as the group commutator
+$y^{-1}x^{-1}yx$ in $Q^\times$, and $\Delta|_{Qv}$ as the image of that
+commutator under right multiplication.
+
+\begin{corollary}\label{cor:so-class}
+Let $k=\F_q$, $q$ odd, and $\nu\neq0$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item The spinor norm of $\Delta(x,y)$ is trivial.
+\item If $N(c)\neq0$ and $\Delta(x,y)$ is semisimple (by
+  Corollary~\ref{cor:classical}, this holds whenever $\tau\neq-2$), then the
+  conjugacy class of $\Delta(x,y)$ in $\SO(\C,N)$ depends only on $\tau$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) If $N(c)\neq0$, this is Theorem~\ref{thm:reflections}. Otherwise
+$\Delta$ is unipotent by Corollary~\ref{cor:class}(b), so its order is a
+power of the odd characteristic, and its image under the spinor norm, a
+homomorphism to a group of order~$2$, is trivial.
+(b) By Wall's classification~\cite{wall1963}, two semisimple elements of
+$\Ort(\C,N)$ over $\F_q$ are conjugate in $\Ort(\C,N)$ if and only if they
+have the same characteristic polynomial and the restrictions of $N$ to their
+$(+1)$- and $(-1)$-eigenspaces are isometric. Here the characteristic
+polynomial is fixed by $\tau$ (Theorem~\ref{thm:charpoly}). The
+$(+1)$-eigenspace is exactly $Q$, because $N(g-1)=N(c)/\nu\neq0$. Its Gram
+determinant $N(c)^2$ is a nonzero square, and over $\F_q$ a nondegenerate
+quadratic space is determined up to isometry by its dimension and
+discriminant. If $\tau\neq-2$, there is no eigenvalue $-1$. If $\tau=-2$ and
+$\Delta$ is semisimple, the $(-1)$-eigenspace is $Q^\perp$, whose isometry
+class is then fixed by Witt cancellation. So any two such defects with the same
+$\tau$ are conjugate in $\Ort(\C,N)$. Finally, the reflection $s_1$ has
+determinant $-1$ and commutes with $\Delta$: both preserve $Q$ and $Q^\perp$,
+$\Delta$ is the identity on $Q$, and $s_1$ is the identity on
+$Q^\perp\subseteq1^\perp$. Hence $\Ort$-conjugacy implies $\SO$-conjugacy.
+\end{proof}
+
+\begin{remark}\label{rem:unipotent}
+The hypothesis that $\Delta$ is semisimple cannot be dropped. Over $\F_3$, the
+pairs $x=(1,0,2,1,0,1,0,0)$, $y=(0,1,2,2,0,0,2,1)$ and
+$x'=(1,2,2,2,1,2,1,0)$, $y'=(0,2,0,0,2,1,1,1)$ have $N(x)=N(x')=1$,
+$N(y)=N(y')=2$, the same Gram matrix of $(1,x,y)$, and $N(c)=0$, so both
+defects are unipotent. But $\dim Q=4$ for the first pair and $\dim Q=3$ for
+the second, so $\rank(\Delta-I)$ is $4$ and $2$ by Theorem~\ref{thm:rank}, and
+the two defects are not similar. When $B|_Q$ is degenerate, whether $xy$ lies
+in $\spn\{1,x,y\}$ is not determined by the Gram matrix of $(1,x,y)$.
+\end{remark}
+
+\subsection*{Defects of words}
+For letters $a_1,\dots,a_n\in\C$ of nonzero norm, let $v=(\cdots(a_1a_2)\cdots)a_n$
+and define the \emph{word defect}
+$W(a_1,\dots,a_n)=L_{a_1}\cdots L_{a_n}L_v^{-1}$. Thus $W(a,b)=\Delta(a,b)$ and
+$W(a,b,c)=\Delta(a,b)\Delta(ab,c)$. We call a function of the letters
+\emph{classical} if it depends only on the Gram matrix of $(1,a_1,\dots,a_n)$,
+that is, on the orbit data of the letters under the stabilizer of $1$ in
+$\Ort(\C,N)$. Corollaries~\ref{cor:classical} and~\ref{cor:so-class} say that
+the characteristic polynomial of a single defect is classical, and so is its
+class when it is semisimple. Non-semisimple single defects are not classical
+(Remark~\ref{rem:unipotent}). For words, the characteristic polynomial stays
+classical at length three but not at length four.
+
+\begin{proposition}\label{prop:word-three}
+If $\operatorname{char}k=0$ or $\operatorname{char}k>8$, the characteristic
+polynomial of $W(a,b,c)$ is classical.
+\end{proposition}
+
+\begin{proof}
+On $\C\oplus\C$ put $T_x=\left(\begin{smallmatrix}0&L_x\\L_{\conj x}&0\end{smallmatrix}\right)$.
+By~\ref{F:comp} and its polarization, $T_xT_y+T_yT_x=B(x,y)I$, so $x\mapsto T_x$
+makes $\C\oplus\C$ the $16$-dimensional spin module of the Clifford algebra of
+$(\C,N)$. For vectors $x_1,\dots,x_{2m}$, the trace $\tr(T_{x_1}\cdots T_{x_{2m}})$
+is $16$ times the scalar part of $x_1\cdots x_{2m}$, a polynomial in the
+$B(x_i,x_j)$. The grading operator $\varepsilon=\operatorname{diag}(1,-1)$
+anticommutes with every $T_x$, so it is a multiple of the volume element. Hence
+$\tr(\varepsilon T_{x_1}\cdots T_{x_{2m}})=0$ whenever the $x_i$ lie in a subspace
+of dimension less than $8$.
+
+Let $v=(ab)c$ and $X=T_aT_{\conj b}T_cT_v$. Then $X$ is block diagonal with upper
+block $L_aL_bL_cL_{\conj v}=N(v)\,W(a,b,c)$. So
+$\tr W^k=N(v)^{-k}\cdot\tfrac12\tr(X^k)$, a polynomial in the inner products
+of $a$, $\conj b$, $c$ and $v$ (these span at most four dimensions). Each of
+these is classical. This is clear for those not involving $v$, and
+$B(v,v)=2N(a)N(b)N(c)$, $B(c,v)=N(c)T(ab)$, $B(a,v)=N(a)B(\conj c,b)$, and
+\[
+  B(\conj b,v)=T\bigl((bab)c\bigr)=B(a,\conj b)\,T(bc)-N(b)\,T(\conj ac),
+\]
+by the identities before Lemma~\ref{lem:skew}, associativity of the trace,
+and $bab=B(a,\conj b)b-N(b)\conj a$. Thus every power sum of the eigenvalues of
+$W(a,b,c)$ is classical. Newton's identities recover the characteristic
+polynomial when $8!$ is invertible in $k$.
+\end{proof}
+
+The same argument applies to $v=a(bc)$.
+
+\begin{proposition}\label{prop:word-four}
+Over $\F_3$, let $a_1=e_1$, $a_2=e_2$, $a_3=e_3$, $a_4=1+e_4$ in the model
+\eqref{eq:cd}, and $h=s_{e_1}s_{e_1+e_4}$. Then $h\in\SO(\C,N)$ fixes $1$, so
+$(1,ha_1,\dots,ha_4)$ has the same Gram matrix as $(1,a_1,\dots,a_4)$, but
+$W(a_1,\dots,a_4)$ and $W(ha_1,\dots,ha_4)$ have different characteristic
+polynomials. In particular, word defects of length $4$ are not classical.
+\end{proposition}
+
+\begin{proof}
+A direct computation in exact arithmetic
+(\texttt{experiments/n2/word\_defects.py}) gives the characteristic
+polynomials $X^8+2X^6+2X^2+1$ and $X^8+X^4+1$.
+\end{proof}
+
+The same script draws $120$ random words of each length $n\in\{2,3,4,5\}$ over
+$\F_3$, $\F_5$ and $\F_7$, together with a random rotation of $1^\perp$. The
+characteristic polynomial never changes for $n\le3$, and it changes for
+$88$ to $117$ of the $120$ words for each $n\in\{4,5\}$ (data file
+\texttt{data/n2/}\allowbreak\texttt{word-defects-v1.json}). A plausible mechanism is that, from
+length four on, inner products of the letters with the value $v$ involve the
+associator through the four-form $B(\assoc xyz,w)$
+(Lemma~\ref{lem:skew}). That form is invariant under automorphisms of $\C$ but
+not under $\SO(1^\perp)$.
+
 \begin{remark}
 Corollary~\ref{cor:class}(a) gives a second proof of
 Theorem~\ref{thm:rank-nondeg}: $\rho-I$ is right multiplication by $g-1$,
@@ -856,20 +1030,29 @@ methodology.
 \section{Limitations and open problems}\label{sec:open}
 
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Distribution of the characteristic polynomial.} By
-  Theorem~\ref{thm:charpoly}, the characteristic polynomial of $\Delta$ is
-  determined by $\tau=2-N(xy-yx)/(N(x)N(y))$. Equal $\tau$ need not imply
-  conjugacy: at $\tau=2$ the unipotent strata have different ranks, and
-  $\tau=-2$ admits distinct Jordan types even for nondegenerate $Q$.
-  The distribution of $\tau$ on prime-norm shells, and the additional
-  data needed to distinguish conjugacy classes with the same $\tau$,
-  remain open and inform the next question.
+\item \emph{What the defect class can still carry.} By
+  Theorem~\ref{thm:charpoly} and Corollary~\ref{cor:classical}, the
+  characteristic polynomial of $\Delta$ is determined by
+  $\tau=2-N(xy-yx)/(N(x)N(y))$, a function of the Gram matrix of $(1,x,y)$,
+  and for $\tau\neq\pm2$ so is its similarity class. Over $\F_q$ the same
+  holds for the $\SO(\C,N)$-class of a semisimple defect, and the spinor norm
+  is always trivial (Corollary~\ref{cor:so-class}). Non-semisimple defects
+  are not classical: at $\tau=2$ the rank of $\Delta-I$ is not determined by
+  the Gram matrix (Remark~\ref{rem:unipotent}), and $\tau=-2$ admits distinct
+  Jordan types even for nondegenerate $Q$. Words of length three have
+  classical characteristic polynomials (Proposition~\ref{prop:word-three}),
+  but words of length four do not (Proposition~\ref{prop:word-four}).
+  Non-classical information can therefore sit in non-semisimple single
+  defects and in words of length at least four. Which invariants determine
+  these classes, and whether shell statistics see them, is open. For words
+  we expect invariants of $\operatorname{Aut}(\C)$, such as the associator
+  four-form.
 \item \emph{Defect-stratified statistics.} For navigation words in generators
   drawn from a prime-norm shell modulo $\ell$, do collision moments
-  conditioned on the conjugacy class of $\Delta|_{Q^\perp}$ in $\SO(Q^\perp)$
-  differ from the unconditioned moments, beyond what conjugacy data in
-  $\Ort(8,\F_\ell)$ predicts? A negative answer would show that the defect is
-  classical bookkeeping only.
+  conditioned on the classes of their word defects differ from the
+  unconditioned moments? Only words of length at least four can carry signal
+  (Propositions~\ref{prop:word-three} and~\ref{prop:word-four}). A negative
+  answer would show that the defect is classical bookkeeping only.
 \item \emph{Formal soundness.} The oracle decides finite instances by
   evaluation. A kernel-checked theorem connecting its Boolean checks to the
   composition-algebra structures of Lean's mathematical library is not yet
@@ -895,7 +1078,8 @@ Lean oracle & \texttt{lake build \&\& lake exe oracle-selfcheck} \\
 Mutants (Table~\ref{tab:mutants}) & \texttt{python scripts/lean\_mutation\_suite.py --check} \\
 Rank law (Prop.~\ref{prop:f3}) & \texttt{python experiments/n2/rank\_law.py --check} \\
 Rank-law lemmas (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_rank\_law*.py'} \\
-Characteristic polynomial (Thm.~\ref{thm:charpoly}) & \texttt{python -m unittest discover -s tests -p 'test\_defect\_charpoly.py'} \\
+Defect class (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_defect\_c*.py'} \\
+Word defects (Prop.~\ref{prop:word-four}) & \texttt{python experiments/n2/word\_defects.py --check} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule
 \end{tabular}

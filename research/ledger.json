@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:7b32d6799e3a6a884740de1e2c47f5e840a142cc4b67cd00107520132c056b86",
+      "id": "sha256:a24194d50f848fe3a4a92750afafa7a40d2dd204bb4a25d0b2a43547cbb9a48a",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; semisimple single defects and the characteristic polynomials of length-3 word defects are classical (DefectClassIsClassical, DefectSOClassFinite, WordDefectLengthThreeClassical), but non-semisimple single defects (paper Remark 3.25) and length-4 word defects (WordDefectNotClassical) are not, so the question survives on those two strata; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts"
         ]
       ],
       "tags": []
@@ -576,6 +576,213 @@
         [
           "reason",
           "proof written in paper/associator-defects/main.tex (Lemma 3.19, Theorem 3.20, Corollary 3.21) by a polynomial identity checked on the dense set N(x)N(y)N(xy - yx) != 0; awaiting independent review; replayed in tests/test_defect_charpoly.py"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectClassIsClassical": {
+      "id": "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+      "kind": "pending_dependency",
+      "statement": "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Corollary 3.22",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Corollary 3.22",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.22); awaiting independent review; replayed in tests/test_defect_class.py; triggers falsifier 2 of NC-X-01 at the level of similarity classes (KILL-09)"
+        ]
+      ],
+      "tags": []
+    },
+    "WallConjugacy": {
+      "id": "sha256:9b7ff0c461023eab88ba022cb206ed4a38de515a8340ea5bbe06aed105ef6f40",
+      "kind": "imported_theorem",
+      "statement": "over F_q, q odd, two semisimple elements of an orthogonal group O(V) are conjugate in O(V) iff they have the same characteristic polynomial and isometric (+1)- and (-1)-eigenspaces",
+      "scope": "orthogonal groups of nondegenerate quadratic spaces over finite fields of odd characteristic",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "G. E. Wall, On the conjugacy classes in the unitary, symplectic and orthogonal groups, J. Austral. Math. Soc. 3 (1963) 1-62"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied to Delta(x, y) in O(C, N) over F_ell with N(xy - yx) != 0 and Delta semisimple (paper Corollary 3.24)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectReflectionFactorization": {
+      "id": "sha256:05a4921739a492bfc1792d0ad165a1968d1179747ed36779472c2e10a3750cc3",
+      "kind": "pending_dependency",
+      "statement": "if N(x)N(y)N(xy - yx) != 0 and v in Q-perp has N(v) != 0, then Delta(x, y) = s_xv s_v s_yv s_(xy)v, so Delta has trivial spinor norm",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+          "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+          "paper/associator-defects/main.tex Theorem 3.23",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Theorem 3.23 (Lemma 3.19, Corollary 3.21)",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Theorem 3.23); awaiting independent review; replayed in tests/test_defect_class.py"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectSOClassFinite": {
+      "id": "sha256:484257ed36b6de093035cd20f045f8ad8a6d706e3c1e00c3bffc3bee617cb5cc",
+      "kind": "pending_dependency",
+      "statement": "over F_ell with N(x)N(y) != 0: Delta(x, y) has trivial spinor norm, and if N(xy - yx) != 0 and Delta is semisimple its SO(C, N)-conjugacy class depends only on tau",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:05a4921739a492bfc1792d0ad165a1968d1179747ed36779472c2e10a3750cc3",
+          "if N(x)N(y)N(xy - yx) != 0 and v in Q-perp has N(v) != 0, then Delta(x, y) = s_xv s_v s_yv s_(xy)v, so Delta has trivial spinor norm",
+          "paper/associator-defects/main.tex Corollary 3.24(a)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+          "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+          "paper/associator-defects/main.tex Corollary 3.24(b)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:9b7ff0c461023eab88ba022cb206ed4a38de515a8340ea5bbe06aed105ef6f40",
+          "over F_q, q odd, two semisimple elements of an orthogonal group O(V) are conjugate in O(V) iff they have the same characteristic polynomial and isometric (+1)- and (-1)-eigenspaces",
+          "paper/associator-defects/main.tex Corollary 3.24(b)",
+          "scope=orthogonal groups of nondegenerate quadratic spaces over finite fields of odd characteristic",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.24); awaiting independent review; spinor norm replayed on all strata in tests/test_defect_class.py; triggers KILL-10"
+        ]
+      ],
+      "tags": []
+    },
+    "CliffordSpinTrace": {
+      "id": "sha256:7f9c3ba497e407adb6f22efc0cee84f352bff8adb7af77bd513d06ccde61f830",
+      "kind": "imported_theorem",
+      "statement": "on the spin module of the Clifford algebra of a nondegenerate quadratic space of dimension 8, the trace of a product of an even number of vectors is 16 times its scalar part, a polynomial in their pairwise inner products, and the graded trace vanishes when the vectors span less than the whole space",
+      "scope": "Clifford algebras of nondegenerate quadratic spaces over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "C. Chevalley, The Algebraic Theory of Spinors (1954); H. B. Lawson and M.-L. Michelsohn, Spin Geometry (1989), Ch. I"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C + C with x -> T_x = [[0, L_x], [L_conj(x), 0]] is a Clifford module by CompositionIdentities (paper Proposition 3.26)"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectLengthThreeClassical": {
+      "id": "sha256:aebeff3f313146916855b1d609bcf6543de3f62d7656de1a4345af5322e82f4b",
+      "kind": "pending_dependency",
+      "statement": "in characteristic 0 or > 8 the characteristic polynomial of W(a, b, c) = L_a L_b L_c L_((ab)c)^-1 depends only on the Gram matrix of (1, a, b, c)",
+      "scope": "octonion algebras over a field of characteristic 0 or greater than 8",
+      "depends_on": [
+        [
+          "sha256:7f9c3ba497e407adb6f22efc0cee84f352bff8adb7af77bd513d06ccde61f830",
+          "on the spin module of the Clifford algebra of a nondegenerate quadratic space of dimension 8, the trace of a product of an even number of vectors is 16 times its scalar part, a polynomial in their pairwise inner products, and the graded trace vanishes when the vectors span less than the whole space",
+          "paper/associator-defects/main.tex Proposition 3.26",
+          "scope=Clifford algebras of nondegenerate quadratic spaces over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Proposition 3.26",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Proposition 3.26); awaiting independent review; reductions and invariance replayed in tests/test_word_defects.py; also observed over F_3, F_5, F_7 in data/n2/word-defects-v1.json"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectNotClassical": {
+      "id": "sha256:b2d55b34522fc23c0211b7e84bc9a70ad3cd7775d81761805e324432ce3bd96f",
+      "kind": "verified_finite_computation",
+      "statement": "for a1 = e1, a2 = e2, a3 = e3, a4 = 1 + e4 and h = s_e1 s_(e1 + e4) in SO(C, N) fixing 1, the word defects W(a1, ..., a4) and W(h a1, ..., h a4) have different characteristic polynomials",
+      "scope": "split octonions C over F_3, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "replay",
+          "python experiments/n2/word_defects.py --check"
+        ],
+        [
+          "digest",
+          "sha256:986fcbcaf2a21191a98e5c1d01a5d64a14b7daa7a0abe67420af742670b50cc5"
+        ]
+      ],
+      "tags": []
+    },
+    "H3PilotCollisions": {
+      "id": "sha256:77bafb744aac2bed5e650b1d45ac14c0c99efd6bfba2cec6e007e33f7f94a2b7",
+      "kind": "bounded_experiment",
+      "statement": "for reduced length-4 words in norm-1 generators over F_5 and F_7, 95 to 99 percent of value collisions are operator collisions (equal L-products, hence equal word defects); value-only collisions are within a factor 1.6 of the random-target baseline, and share their word-defect class at 1.5 to 2 times the shuffled-label rate on small counts (24 to 546 pairs)",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "(ell, generators) in {(5, 10), (7, 10), (7, 12)}; norm-1 generators with fixed seeds plus their inverses; all reduced words of length 4"
+        ],
+        [
+          "replay",
+          "python experiments/n2/h3_pilot.py --check"
+        ],
+        [
+          "digest",
+          "sha256:e203e35e3d12c2e5794f4ee1ccf6816c5aeb61810db2618488e7c2f0a9b9ef99"
         ]
       ],
       "tags": []

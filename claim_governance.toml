@@ -167,6 +167,20 @@ anchor = '| AssociativeSubalgebraBound |'
 window_lines = 0
 
 [[claim]]
+name = "CliffordSpinTrace"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"CliffordSpinTrace"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| CliffordSpinTrace |'
+window_lines = 0
+
+[[claim]]
 name = "CompositionDimensions"
 status = "imported"
 [[claim.surfaces]]
@@ -223,6 +237,20 @@ anchor = '| DefectCharacteristicPolynomial |'
 window_lines = 0
 
 [[claim]]
+name = "DefectClassIsClassical"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectClassIsClassical"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectClassIsClassical |'
+window_lines = 0
+
+[[claim]]
 name = "DefectFixesQuaternionSubalgebra"
 status = "open"
 [[claim.surfaces]]
@@ -256,6 +284,34 @@ expect = "absent"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| DefectRankLaw |'
+window_lines = 0
+
+[[claim]]
+name = "DefectReflectionFactorization"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectReflectionFactorization"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectReflectionFactorization |'
+window_lines = 0
+
+[[claim]]
+name = "DefectSOClassFinite"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectSOClassFinite"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectSOClassFinite |'
 window_lines = 0
 
 [[claim]]
@@ -298,6 +354,20 @@ expect = "absent"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| DivisionCertificateSoundness |'
+window_lines = 0
+
+[[claim]]
+name = "H3PilotCollisions"
+status = "experimental"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"H3PilotCollisions"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| H3PilotCollisions |'
 window_lines = 0
 
 [[claim]]
@@ -452,6 +522,48 @@ expect = "absent"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| RankLawNondegenerate |'
+window_lines = 0
+
+[[claim]]
+name = "WallConjugacy"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"WallConjugacy"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WallConjugacy |'
+window_lines = 0
+
+[[claim]]
+name = "WordDefectLengthThreeClassical"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"WordDefectLengthThreeClassical"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WordDefectLengthThreeClassical |'
+window_lines = 0
+
+[[claim]]
+name = "WordDefectNotClassical"
+status = "finite-domain"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"WordDefectNotClassical"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WordDefectNotClassical |'
 window_lines = 0
 
 [[claim]]

@@ -10,15 +10,20 @@ EXTENDS ProofArchitecture
 ResultSet == {
     "ArtinTheorem",
     "AssociativeSubalgebraBound",
+    "CliffordSpinTrace",
     "CompositionDimensions",
     "CompositionIdentities",
     "DefectCensus",
     "DefectCharacteristicPolynomial",
+    "DefectClassIsClassical",
     "DefectFixesQuaternionSubalgebra",
     "DefectRankLaw",
+    "DefectReflectionFactorization",
+    "DefectSOClassFinite",
     "DefectSpecialOrthogonal",
     "DefectStratifiedCollisions",
     "DivisionCertificateSoundness",
+    "H3PilotCollisions",
     "HilbertSymbolFormula",
     "HurwitzShellCount",
     "HurwitzShellCountFinite",
@@ -30,6 +35,9 @@ ResultSet == {
     "RankLawDegenerate",
     "RankLawExhaustiveF3",
     "RankLawNondegenerate",
+    "WallConjugacy",
+    "WordDefectLengthThreeClassical",
+    "WordDefectNotClassical",
     "ZeroDivisorCertificateSoundness",
     "ZornPeirce"
 }
@@ -37,15 +45,20 @@ ResultSet == {
 RequiresDef == [r \in ResultSet |->
     CASE r = "ArtinTheorem" -> {}
       [] r = "AssociativeSubalgebraBound" -> {"CompositionIdentities", "CompositionDimensions", "ZornPeirce", "RankLawNondegenerate"}
+      [] r = "CliffordSpinTrace" -> {}
       [] r = "CompositionDimensions" -> {}
       [] r = "CompositionIdentities" -> {}
       [] r = "DefectCensus" -> {}
       [] r = "DefectCharacteristicPolynomial" -> {"CompositionIdentities", "QuaternionDoubling"}
+      [] r = "DefectClassIsClassical" -> {"DefectCharacteristicPolynomial", "CompositionIdentities"}
       [] r = "DefectFixesQuaternionSubalgebra" -> {"CompositionIdentities", "ArtinTheorem"}
       [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra", "RankLawDegenerate"}
+      [] r = "DefectReflectionFactorization" -> {"QuaternionDoubling", "DefectCharacteristicPolynomial"}
+      [] r = "DefectSOClassFinite" -> {"DefectReflectionFactorization", "DefectClassIsClassical", "WallConjugacy"}
       [] r = "DefectSpecialOrthogonal" -> {}
       [] r = "DefectStratifiedCollisions" -> {}
       [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
+      [] r = "H3PilotCollisions" -> {}
       [] r = "HilbertSymbolFormula" -> {}
       [] r = "HurwitzShellCount" -> {}
       [] r = "HurwitzShellCountFinite" -> {}
@@ -57,25 +70,32 @@ RequiresDef == [r \in ResultSet |->
       [] r = "RankLawDegenerate" -> {"MoufangTheorem", "ArtinTheorem", "CompositionIdentities", "AssociativeSubalgebraBound"}
       [] r = "RankLawExhaustiveF3" -> {}
       [] r = "RankLawNondegenerate" -> {"CompositionIdentities", "QuaternionDoubling"}
+      [] r = "WallConjugacy" -> {}
+      [] r = "WordDefectLengthThreeClassical" -> {"CliffordSpinTrace", "CompositionIdentities"}
+      [] r = "WordDefectNotClassical" -> {}
       [] r = "ZeroDivisorCertificateSoundness" -> {}
       [] r = "ZornPeirce" -> {}]
 
 ProvedDef == {
     "HurwitzShellCountFinite",
-    "RankLawExhaustiveF3"
+    "RankLawExhaustiveF3",
+    "WordDefectNotClassical"
 }
 
 ImportedDef == {
     "ArtinTheorem",
+    "CliffordSpinTrace",
     "CompositionDimensions",
     "CompositionIdentities",
     "MoufangTheorem",
     "QuaternionDoubling",
+    "WallConjugacy",
     "ZornPeirce"
 }
 
 BoundedDef == {
     "DefectCensus",
+    "H3PilotCollisions",
     "N3BaselineGrid"
 }
 
@@ -88,15 +108,20 @@ ImportsAssumed == ImportedDef
 (* lists those its assumptions leave unreachable; TLC then checks the closure.  *)
 ArtinTheoremNotEstablished == "ArtinTheorem" \notin established
 AssociativeSubalgebraBoundNotEstablished == "AssociativeSubalgebraBound" \notin established
+CliffordSpinTraceNotEstablished == "CliffordSpinTrace" \notin established
 CompositionDimensionsNotEstablished == "CompositionDimensions" \notin established
 CompositionIdentitiesNotEstablished == "CompositionIdentities" \notin established
 DefectCensusNotEstablished == "DefectCensus" \notin established
 DefectCharacteristicPolynomialNotEstablished == "DefectCharacteristicPolynomial" \notin established
+DefectClassIsClassicalNotEstablished == "DefectClassIsClassical" \notin established
 DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
 DefectRankLawNotEstablished == "DefectRankLaw" \notin established
+DefectReflectionFactorizationNotEstablished == "DefectReflectionFactorization" \notin established
+DefectSOClassFiniteNotEstablished == "DefectSOClassFinite" \notin established
 DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin established
 DefectStratifiedCollisionsNotEstablished == "DefectStratifiedCollisions" \notin established
 DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \notin established
+H3PilotCollisionsNotEstablished == "H3PilotCollisions" \notin established
 HilbertSymbolFormulaNotEstablished == "HilbertSymbolFormula" \notin established
 HurwitzShellCountNotEstablished == "HurwitzShellCount" \notin established
 HurwitzShellCountFiniteNotEstablished == "HurwitzShellCountFinite" \notin established
@@ -108,6 +133,9 @@ QuaternionSplitIffConicNotEstablished == "QuaternionSplitIffConic" \notin establ
 RankLawDegenerateNotEstablished == "RankLawDegenerate" \notin established
 RankLawExhaustiveF3NotEstablished == "RankLawExhaustiveF3" \notin established
 RankLawNondegenerateNotEstablished == "RankLawNondegenerate" \notin established
+WallConjugacyNotEstablished == "WallConjugacy" \notin established
+WordDefectLengthThreeClassicalNotEstablished == "WordDefectLengthThreeClassical" \notin established
+WordDefectNotClassicalNotEstablished == "WordDefectNotClassical" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established
 ZornPeirceNotEstablished == "ZornPeirce" \notin established
 
