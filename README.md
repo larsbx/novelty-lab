@@ -15,8 +15,9 @@ after a literature record, an exact statement, and reproducible evidence exist.
 | N3 | Shell collision multiplicities modulo ℓ | candidate — experimental | unit-orbit-aware Poisson baseline |
 | N2 | Octonionic navigation and finite quotients | candidate — research-grade | literature clearance and well-defined generator model |
 | N4 | Explicit certified shell/golden-gate discrepancy | candidate — dependent | pin an explicit theorem with constants |
+| N5 | Multiset budget signatures for Nielsen witnesses | candidate — exact finite classification | define exact minimizer and rerun the complete S6 census |
 
-The execution order is N1 → N3 → N2 → N4. See
+The execution order is N1 → N3 → N2 → N4 → N5. See
 [the calibration policy](docs/calibration.md) and the per-candidate dossiers in
 [docs/candidates](docs/candidates).
 
