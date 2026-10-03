@@ -23,6 +23,7 @@ ResultSet == {
     "DefectSpecialOrthogonal",
     "DefectStratifiedCollisions",
     "DivisionCertificateSoundness",
+    "H3PilotCollisions",
     "HilbertSymbolFormula",
     "HurwitzShellCount",
     "HurwitzShellCountFinite",
@@ -57,6 +58,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "DefectSpecialOrthogonal" -> {}
       [] r = "DefectStratifiedCollisions" -> {}
       [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
+      [] r = "H3PilotCollisions" -> {}
       [] r = "HilbertSymbolFormula" -> {}
       [] r = "HurwitzShellCount" -> {}
       [] r = "HurwitzShellCountFinite" -> {}
@@ -93,6 +95,7 @@ ImportedDef == {
 
 BoundedDef == {
     "DefectCensus",
+    "H3PilotCollisions",
     "N3BaselineGrid"
 }
 
@@ -118,6 +121,7 @@ DefectSOClassFiniteNotEstablished == "DefectSOClassFinite" \notin established
 DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin established
 DefectStratifiedCollisionsNotEstablished == "DefectStratifiedCollisions" \notin established
 DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \notin established
+H3PilotCollisionsNotEstablished == "H3PilotCollisions" \notin established
 HilbertSymbolFormulaNotEstablished == "HilbertSymbolFormula" \notin established
 HurwitzShellCountNotEstablished == "HurwitzShellCount" \notin established
 HurwitzShellCountFiniteNotEstablished == "HurwitzShellCountFinite" \notin established

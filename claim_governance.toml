@@ -357,6 +357,20 @@ anchor = '| DivisionCertificateSoundness |'
 window_lines = 0
 
 [[claim]]
+name = "H3PilotCollisions"
+status = "experimental"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"H3PilotCollisions"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| H3PilotCollisions |'
+window_lines = 0
+
+[[claim]]
 name = "HilbertSymbolFormula"
 status = "open"
 [[claim.surfaces]]

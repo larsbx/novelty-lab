@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:299e9e9ae352a9135d99f8edee449d73f0d9b4ddd77cf3d5ceb62dad3c9278c8",
+      "id": "sha256:a24194d50f848fe3a4a92750afafa7a40d2dd204bb4a25d0b2a43547cbb9a48a",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; semisimple single defects and the characteristic polynomials of length-3 word defects are classical (DefectClassIsClassical, DefectSOClassFinite, WordDefectLengthThreeClassical), but non-semisimple single defects (paper Remark 3.25) and length-4 word defects (WordDefectNotClassical) are not, so the question survives on those two strata"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; semisimple single defects and the characteristic polynomials of length-3 word defects are classical (DefectClassIsClassical, DefectSOClassFinite, WordDefectLengthThreeClassical), but non-semisimple single defects (paper Remark 3.25) and length-4 word defects (WordDefectNotClassical) are not, so the question survives on those two strata; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts"
         ]
       ],
       "tags": []
@@ -761,6 +761,28 @@
         [
           "digest",
           "sha256:986fcbcaf2a21191a98e5c1d01a5d64a14b7daa7a0abe67420af742670b50cc5"
+        ]
+      ],
+      "tags": []
+    },
+    "H3PilotCollisions": {
+      "id": "sha256:77bafb744aac2bed5e650b1d45ac14c0c99efd6bfba2cec6e007e33f7f94a2b7",
+      "kind": "bounded_experiment",
+      "statement": "for reduced length-4 words in norm-1 generators over F_5 and F_7, 95 to 99 percent of value collisions are operator collisions (equal L-products, hence equal word defects); value-only collisions are within a factor 1.6 of the random-target baseline, and share their word-defect class at 1.5 to 2 times the shuffled-label rate on small counts (24 to 546 pairs)",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "(ell, generators) in {(5, 10), (7, 10), (7, 12)}; norm-1 generators with fixed seeds plus their inverses; all reduced words of length 4"
+        ],
+        [
+          "replay",
+          "python experiments/n2/h3_pilot.py --check"
+        ],
+        [
+          "digest",
+          "sha256:e203e35e3d12c2e5794f4ee1ccf6816c5aeb61810db2618488e7c2f0a9b9ef99"
         ]
       ],
       "tags": []
