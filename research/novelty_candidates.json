@@ -31,7 +31,7 @@
       "core": "Reduce octonionic navigation words modulo ell, stratify collisions by exact associator-defect class, and test expansion and synthesis separately within defect strata.",
       "novel_delta": "This combines non-associative defect geometry with arithmetic collision statistics; no matching construction was found in the bounded initial search.",
       "falsifiers": ["A prior golden-gate or triality construction already uses equivalent defect-stratified quotient statistics.", "Defect strata are determined trivially by existing group conjugacy data and yield no new distributional signal."],
-      "next_gate": "Single defects and length-3 word defects are classical (KILL-09, KILL-10), but length-4 word defects are not (WordDefectNotClassical). Identify the non-classical invariants of word defects and test whether shell collision statistics stratified by them carry signal."
+      "next_gate": "Semisimple single defects are classical up to SO-conjugacy (KILL-09, KILL-10) and length-3 word defects have classical characteristic polynomials, but non-semisimple single defects (paper Remark 3.25: equal Gram data, rank(Delta - I) = 4 versus 2) and length-4 word defects (WordDefectNotClassical) are not. Identify the invariants of these two strata and test whether shell collision statistics stratified by them carry signal."
     },
     {
       "id": "NC-N2-02",

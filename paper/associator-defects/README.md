@@ -30,8 +30,8 @@ from source rather than committing them.
 | Lemma 3.19, Thm. 3.20, Cor. 3.21 (Gram identity, characteristic polynomial of Δ) | proved in the paper | ledger `DefectCharacteristicPolynomial` (pending human review) over imported `QuaternionDoubling`; `tests/test_defect_charpoly.py` (coverage assertions, zero-norm and unipotence boundaries, independent matrix oracle, and conjugacy counterexamples); [independent AI audit](../../docs/audits/defect-charpoly-pr19-2026-10-02.md) |
 | Cor. 3.22 (similarity class of Δ is Gram data of (1, x, y)) | proved in the paper | ledger `DefectClassIsClassical` (pending review); `tests/test_defect_class.py` (2N([x,y]) = det Gram(1,x,y) over 𝔽₃–𝔽₁₃; (Δ − I)(Δ² − τΔ + I) = 0 for τ ≠ ±2); retired claim KILL-09 |
 | Thm. 3.23, Cor. 3.24 (Δ = s_xv s_v s_yv s_(xy)v; trivial spinor norm; SO-class over 𝔽_q fixed by τ) | proved in the paper | ledger `DefectReflectionFactorization`, `DefectSOClassFinite` (pending review) over imported `WallConjugacy`; `tests/test_defect_class.py` (factorization over 𝔽₃–𝔽₁₃; Wall-form spinor norm on all strata over 𝔽₃–𝔽₁₁); retired claim KILL-10 |
-| Prop. 3.25 (length-3 word defects are classical, char 0 or > 8) | proved in the paper | ledger `WordDefectLengthThreeClassical` (pending review) over imported `CliffordSpinTrace`; `tests/test_word_defects.py` (the inner-product reductions over 𝔽₃–𝔽₁₁; invariance sampled over 𝔽₁₁, 𝔽₁₃) |
-| Prop. 3.26 (length-4 word defects are not classical) | verified finite computation | ledger `WordDefectNotClassical`; `data/n2/word-defects-v1.json` via `experiments/n2/word_defects.py`; `tests/test_word_defects.py` |
+| Prop. 3.26 (length-3 word defects are classical, char 0 or > 8) | proved in the paper | ledger `WordDefectLengthThreeClassical` (pending review) over imported `CliffordSpinTrace`; `tests/test_word_defects.py` (the inner-product reductions over 𝔽₃–𝔽₁₁; invariance sampled over 𝔽₁₁, 𝔽₁₃) |
+| Prop. 3.27 (length-4 word defects are not classical) | verified finite computation | ledger `WordDefectNotClassical`; `data/n2/word-defects-v1.json` via `experiments/n2/word_defects.py`; `tests/test_word_defects.py` |
 | Prop. 5.1 (rank law over 𝔽₃) | verified finite computation | ledger `RankLawExhaustiveF3`; `data/n2/rank-law-v1.json` via `experiments/n2/rank_law.py`; `tests/test_rank_law.py` |
 | (4), Obs. 4.1 | proved (classical) | `research/theorems.json` N2-T04; `docs/theorems/pentagon-boundary.md` |
 | Table 1 | bounded experiment | `data/n2/defect-census-v1.json` via `experiments/n2/defect_census.py` |
@@ -49,7 +49,7 @@ and finite regression checks do not satisfy the human-review checklist below.
       for double-blind review.
 - [ ] Human review of Prop. 3.5, Prop. 3.9, Lemmas 3.10–3.11 with Thm. 3.12, and
       Lemmas 3.13–3.15 with Thm. 3.16 and Prop. 3.17, and Lemma 3.19 with
-      Thm. 3.20 and Cor. 3.21–3.22, and Thm. 3.23 with Cor. 3.24, and Prop. 3.25, then promotion of
+      Thm. 3.20 and Cor. 3.21–3.22, and Thm. 3.23 with Cor. 3.24, and Prop. 3.26, then promotion of
       the corresponding ledger records.
 - [ ] A dated prior-art search (triality, octonionic loops, defect or
       holonomy constructions), recorded as required by `docs/calibration.md`.
@@ -61,7 +61,7 @@ and finite regression checks do not satisfy the human-review checklist below.
     Springer–Veldkamp of the Peirce/Zorn normal form at an idempotent (F5);
   - the location of Moufang's theorem and the left Moufang identity in
     Schafer (1966), Ch. III (F4);
-  - a reference for the Clifford trace facts used in Prop. 3.25 (trace of a
+  - a reference for the Clifford trace facts used in Prop. 3.26 (trace of a
     product of vectors on the spin module; vanishing of the graded trace below
     full rank);
   - the exact statement in Wall (1963) used in Cor. 3.24(b): semisimple

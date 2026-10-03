@@ -54,7 +54,7 @@ class TestLengthThreeReductions(unittest.TestCase):
                 self.assertEqual(bil(c, v), C.norm(c, ell) * tr(C.mul(a, b, ell)) % ell)
 
     def test_length_three_defects_are_invariant_over_f11_and_f13(self):
-        """Proposition 3.25 covers characteristic 0 and characteristic > 7; sampled here."""
+        """Proposition 3.26 covers characteristic 0 and characteristic > 8; sampled here."""
         for ell in (11, 13):
             rng = random.Random(100 + ell)
             pure = lambda: (0,) + tuple(rng.randrange(ell) for _ in range(C.DIM - 1))

@@ -114,5 +114,21 @@ class TestReflectionFactorization(unittest.TestCase):
                 self.assertEqual(spinor_class(C.defect(x, y, ell)[0], ell), 1)
 
 
+class TestNonSemisimpleNotClassical(unittest.TestCase):
+    def test_equal_gram_unipotent_defects_with_different_ranks(self):
+        """Paper Remark 3.25: the semisimplicity hypothesis of Corollary 3.22 cannot be dropped."""
+        ell = 3
+        first = ((1, 0, 2, 1, 0, 1, 0, 0), (0, 1, 2, 2, 0, 0, 2, 1))
+        second = ((1, 2, 2, 2, 1, 2, 1, 0), (0, 2, 0, 0, 2, 1, 1, 1))
+        gram = lambda x, y: [[R.bilinear(u, v, ell) for v in (C.BASIS[0], x, y)] for u in (C.BASIS[0], x, y)]
+        self.assertEqual(gram(*first), gram(*second))
+        ranks = []
+        for x, y in (first, second):
+            self.assertEqual(commutator_norm(x, y, ell), 0)
+            d, _ = C.defect(x, y, ell)
+            ranks.append(C.rank([[(d[i][j] - int(i == j)) % ell for j in range(C.DIM)] for i in range(C.DIM)], ell))
+        self.assertEqual(ranks, [4, 2])
+
+
 if __name__ == "__main__":
     unittest.main()

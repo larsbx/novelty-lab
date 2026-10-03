@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:4616f58f189dbc216d70bed3a5155b3654160db49fb379bafc5eecc2bb0c91fa",
+      "id": "sha256:299e9e9ae352a9135d99f8edee449d73f0d9b4ddd77cf3d5ceb62dad3c9278c8",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; single defects and length-3 word defects are classical (DefectClassIsClassical, DefectSOClassFinite, WordDefectLengthThreeClassical), but word defects of length 4 are not (WordDefectNotClassical), so the question survives for words of length at least 4"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; semisimple single defects and the characteristic polynomials of length-3 word defects are classical (DefectClassIsClassical, DefectSOClassFinite, WordDefectLengthThreeClassical), but non-semisimple single defects (paper Remark 3.25) and length-4 word defects (WordDefectNotClassical) are not, so the question survives on those two strata"
         ]
       ],
       "tags": []
@@ -697,7 +697,7 @@
       "tags": []
     },
     "CliffordSpinTrace": {
-      "id": "sha256:c2c251dfa2b065cf47fd6c15aa8aa07972413f1f42d70eaf2dfb237c47415621",
+      "id": "sha256:7f9c3ba497e407adb6f22efc0cee84f352bff8adb7af77bd513d06ccde61f830",
       "kind": "imported_theorem",
       "statement": "on the spin module of the Clifford algebra of a nondegenerate quadratic space of dimension 8, the trace of a product of an even number of vectors is 16 times its scalar part, a polynomial in their pairwise inner products, and the graded trace vanishes when the vectors span less than the whole space",
       "scope": "Clifford algebras of nondegenerate quadratic spaces over a field of characteristic not 2",
@@ -713,28 +713,28 @@
         ],
         [
           "hypotheses",
-          "C + C with x -> T_x = [[0, L_x], [L_conj(x), 0]] is a Clifford module by CompositionIdentities (paper Proposition 3.25)"
+          "C + C with x -> T_x = [[0, L_x], [L_conj(x), 0]] is a Clifford module by CompositionIdentities (paper Proposition 3.26)"
         ]
       ],
       "tags": []
     },
     "WordDefectLengthThreeClassical": {
-      "id": "sha256:ccd2d9ef9853ed7350eb3126a343aa0f066ff9513b538c8fb01ff18ea4c4cc12",
+      "id": "sha256:aebeff3f313146916855b1d609bcf6543de3f62d7656de1a4345af5322e82f4b",
       "kind": "pending_dependency",
       "statement": "in characteristic 0 or > 8 the characteristic polynomial of W(a, b, c) = L_a L_b L_c L_((ab)c)^-1 depends only on the Gram matrix of (1, a, b, c)",
       "scope": "octonion algebras over a field of characteristic 0 or greater than 8",
       "depends_on": [
         [
-          "sha256:c2c251dfa2b065cf47fd6c15aa8aa07972413f1f42d70eaf2dfb237c47415621",
+          "sha256:7f9c3ba497e407adb6f22efc0cee84f352bff8adb7af77bd513d06ccde61f830",
           "on the spin module of the Clifford algebra of a nondegenerate quadratic space of dimension 8, the trace of a product of an even number of vectors is 16 times its scalar part, a polynomial in their pairwise inner products, and the graded trace vanishes when the vectors span less than the whole space",
-          "paper/associator-defects/main.tex Proposition 3.25",
+          "paper/associator-defects/main.tex Proposition 3.26",
           "scope=Clifford algebras of nondegenerate quadratic spaces over a field of characteristic not 2",
           "accepted"
         ],
         [
           "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
           "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
-          "paper/associator-defects/main.tex Proposition 3.25",
+          "paper/associator-defects/main.tex Proposition 3.26",
           "scope=octonion algebras over a field of characteristic not 2",
           "accepted"
         ]
@@ -742,7 +742,7 @@
       "evidence": [
         [
           "reason",
-          "proof written in paper/associator-defects/main.tex (Proposition 3.25); awaiting independent review; reductions and invariance replayed in tests/test_word_defects.py; also observed over F_3, F_5, F_7 in data/n2/word-defects-v1.json"
+          "proof written in paper/associator-defects/main.tex (Proposition 3.26); awaiting independent review; reductions and invariance replayed in tests/test_word_defects.py; also observed over F_3, F_5, F_7 in data/n2/word-defects-v1.json"
         ]
       ],
       "tags": []

@@ -5,7 +5,7 @@ A word's classical data is the orbit of its letters under the stabilizer of 1 in
 particular the Gram matrix of (1, a1, ..., an). For each length n this records how often a random
 rotation h of 1-perp (a product of two reflections in pure anisotropic vectors) changes the
 characteristic polynomial of W when applied to every letter. For n <= 3 it never does (paper
-Corollary 3.22 for n = 2, Proposition 3.25 for n = 3); for n >= 4 it does, and CERTIFICATE is an
+Corollary 3.22 for n = 2, Proposition 3.26 for n = 3); for n >= 4 it does, and CERTIFICATE is an
 explicit instance over F_3.
 
 Usage: word_defects.py [--check]     writes or checks data/n2/word-defects-v1.json
