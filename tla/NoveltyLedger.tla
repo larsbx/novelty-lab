@@ -15,8 +15,10 @@ ResultSet == {
     "CompositionIdentities",
     "DefectCensus",
     "DefectCharacteristicPolynomial",
+    "DefectClassGramAndDimQ",
     "DefectClassIsClassical",
     "DefectFixesQuaternionSubalgebra",
+    "DefectJordanType",
     "DefectRankLaw",
     "DefectReflectionFactorization",
     "DefectSOClassFinite",
@@ -36,6 +38,8 @@ ResultSet == {
     "RankLawExhaustiveF3",
     "RankLawNondegenerate",
     "WallConjugacy",
+    "WordDefectEquivariance",
+    "WordDefectG2Data",
     "WordDefectLengthThreeClassical",
     "WordDefectNotClassical",
     "ZeroDivisorCertificateSoundness",
@@ -50,8 +54,10 @@ RequiresDef == [r \in ResultSet |->
       [] r = "CompositionIdentities" -> {}
       [] r = "DefectCensus" -> {}
       [] r = "DefectCharacteristicPolynomial" -> {"CompositionIdentities", "QuaternionDoubling"}
+      [] r = "DefectClassGramAndDimQ" -> {"DefectJordanType", "DefectClassIsClassical", "CompositionIdentities"}
       [] r = "DefectClassIsClassical" -> {"DefectCharacteristicPolynomial", "CompositionIdentities"}
       [] r = "DefectFixesQuaternionSubalgebra" -> {"CompositionIdentities", "ArtinTheorem"}
+      [] r = "DefectJordanType" -> {"DefectCharacteristicPolynomial", "RankLawDegenerate", "AssociativeSubalgebraBound", "CompositionIdentities"}
       [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra", "RankLawDegenerate"}
       [] r = "DefectReflectionFactorization" -> {"QuaternionDoubling", "DefectCharacteristicPolynomial"}
       [] r = "DefectSOClassFinite" -> {"DefectReflectionFactorization", "DefectClassIsClassical", "WallConjugacy"}
@@ -71,6 +77,8 @@ RequiresDef == [r \in ResultSet |->
       [] r = "RankLawExhaustiveF3" -> {}
       [] r = "RankLawNondegenerate" -> {"CompositionIdentities", "QuaternionDoubling"}
       [] r = "WallConjugacy" -> {}
+      [] r = "WordDefectEquivariance" -> {"CompositionIdentities"}
+      [] r = "WordDefectG2Data" -> {}
       [] r = "WordDefectLengthThreeClassical" -> {"CliffordSpinTrace", "CompositionIdentities"}
       [] r = "WordDefectNotClassical" -> {}
       [] r = "ZeroDivisorCertificateSoundness" -> {}
@@ -96,7 +104,8 @@ ImportedDef == {
 BoundedDef == {
     "DefectCensus",
     "H3PilotCollisions",
-    "N3BaselineGrid"
+    "N3BaselineGrid",
+    "WordDefectG2Data"
 }
 
 WithdrawnDef == {}
@@ -113,8 +122,10 @@ CompositionDimensionsNotEstablished == "CompositionDimensions" \notin establishe
 CompositionIdentitiesNotEstablished == "CompositionIdentities" \notin established
 DefectCensusNotEstablished == "DefectCensus" \notin established
 DefectCharacteristicPolynomialNotEstablished == "DefectCharacteristicPolynomial" \notin established
+DefectClassGramAndDimQNotEstablished == "DefectClassGramAndDimQ" \notin established
 DefectClassIsClassicalNotEstablished == "DefectClassIsClassical" \notin established
 DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
+DefectJordanTypeNotEstablished == "DefectJordanType" \notin established
 DefectRankLawNotEstablished == "DefectRankLaw" \notin established
 DefectReflectionFactorizationNotEstablished == "DefectReflectionFactorization" \notin established
 DefectSOClassFiniteNotEstablished == "DefectSOClassFinite" \notin established
@@ -134,6 +145,8 @@ RankLawDegenerateNotEstablished == "RankLawDegenerate" \notin established
 RankLawExhaustiveF3NotEstablished == "RankLawExhaustiveF3" \notin established
 RankLawNondegenerateNotEstablished == "RankLawNondegenerate" \notin established
 WallConjugacyNotEstablished == "WallConjugacy" \notin established
+WordDefectEquivarianceNotEstablished == "WordDefectEquivariance" \notin established
+WordDefectG2DataNotEstablished == "WordDefectG2Data" \notin established
 WordDefectLengthThreeClassicalNotEstablished == "WordDefectLengthThreeClassical" \notin established
 WordDefectNotClassicalNotEstablished == "WordDefectNotClassical" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established

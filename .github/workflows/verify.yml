@@ -24,3 +24,5 @@ jobs:
       - run: python experiments/n2/rank_law.py --check
       - run: python experiments/n2/word_defects.py --check
       - run: python experiments/n2/h3_pilot.py --check
+      - run: python experiments/n2/defect_jordan.py --check
+      - run: python experiments/n2/word_g2.py --check
