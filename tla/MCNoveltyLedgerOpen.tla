@@ -4,7 +4,8 @@ EXTENDS NoveltyLedger
 
 Reachable == {
     "HurwitzShellCountFinite",
-    "RankLawExhaustiveF3"
+    "RankLawExhaustiveF3",
+    "WordDefectNotClassical"
 }
 EventuallyReachable == <>(established = Reachable)
 ====

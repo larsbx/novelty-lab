@@ -10,6 +10,7 @@ EXTENDS ProofArchitecture
 ResultSet == {
     "ArtinTheorem",
     "AssociativeSubalgebraBound",
+    "CliffordSpinTrace",
     "CompositionDimensions",
     "CompositionIdentities",
     "DefectCensus",
@@ -34,6 +35,8 @@ ResultSet == {
     "RankLawExhaustiveF3",
     "RankLawNondegenerate",
     "WallConjugacy",
+    "WordDefectLengthThreeClassical",
+    "WordDefectNotClassical",
     "ZeroDivisorCertificateSoundness",
     "ZornPeirce"
 }
@@ -41,6 +44,7 @@ ResultSet == {
 RequiresDef == [r \in ResultSet |->
     CASE r = "ArtinTheorem" -> {}
       [] r = "AssociativeSubalgebraBound" -> {"CompositionIdentities", "CompositionDimensions", "ZornPeirce", "RankLawNondegenerate"}
+      [] r = "CliffordSpinTrace" -> {}
       [] r = "CompositionDimensions" -> {}
       [] r = "CompositionIdentities" -> {}
       [] r = "DefectCensus" -> {}
@@ -65,16 +69,20 @@ RequiresDef == [r \in ResultSet |->
       [] r = "RankLawExhaustiveF3" -> {}
       [] r = "RankLawNondegenerate" -> {"CompositionIdentities", "QuaternionDoubling"}
       [] r = "WallConjugacy" -> {}
+      [] r = "WordDefectLengthThreeClassical" -> {"CliffordSpinTrace", "CompositionIdentities"}
+      [] r = "WordDefectNotClassical" -> {}
       [] r = "ZeroDivisorCertificateSoundness" -> {}
       [] r = "ZornPeirce" -> {}]
 
 ProvedDef == {
     "HurwitzShellCountFinite",
-    "RankLawExhaustiveF3"
+    "RankLawExhaustiveF3",
+    "WordDefectNotClassical"
 }
 
 ImportedDef == {
     "ArtinTheorem",
+    "CliffordSpinTrace",
     "CompositionDimensions",
     "CompositionIdentities",
     "MoufangTheorem",
@@ -97,6 +105,7 @@ ImportsAssumed == ImportedDef
 (* lists those its assumptions leave unreachable; TLC then checks the closure.  *)
 ArtinTheoremNotEstablished == "ArtinTheorem" \notin established
 AssociativeSubalgebraBoundNotEstablished == "AssociativeSubalgebraBound" \notin established
+CliffordSpinTraceNotEstablished == "CliffordSpinTrace" \notin established
 CompositionDimensionsNotEstablished == "CompositionDimensions" \notin established
 CompositionIdentitiesNotEstablished == "CompositionIdentities" \notin established
 DefectCensusNotEstablished == "DefectCensus" \notin established
@@ -121,6 +130,8 @@ RankLawDegenerateNotEstablished == "RankLawDegenerate" \notin established
 RankLawExhaustiveF3NotEstablished == "RankLawExhaustiveF3" \notin established
 RankLawNondegenerateNotEstablished == "RankLawNondegenerate" \notin established
 WallConjugacyNotEstablished == "WallConjugacy" \notin established
+WordDefectLengthThreeClassicalNotEstablished == "WordDefectLengthThreeClassical" \notin established
+WordDefectNotClassicalNotEstablished == "WordDefectNotClassical" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established
 ZornPeirceNotEstablished == "ZornPeirce" \notin established
 
