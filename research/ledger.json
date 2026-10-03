@@ -788,9 +788,9 @@
       "tags": []
     },
     "DefectJordanType": {
-      "id": "sha256:f38acfb57aaa41b25a5bbb9e49cbc4aa35dec5fc093627510d4bd358034c7953",
+      "id": "sha256:bef89ea6a8c1d6c169334f9185d84483817c921d10280f9d04bd6a249e312cde",
       "kind": "pending_dependency",
-      "statement": "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise Delta + I has rank 2 and square 0; if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
+      "statement": "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise the restriction of Delta + I to Q-perp has rank 2 and square 0 (so Delta + I and its square have ranks 6 and 4); if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
       "depends_on": [
         [
@@ -831,14 +831,14 @@
       "tags": []
     },
     "DefectClassGramAndDimQ": {
-      "id": "sha256:60df9877a8b36ef1520ca1415b11f2314b713395a4e8d4cdd64017e004bd8b9d",
+      "id": "sha256:3f21c6fc50a81d110f451e5b696d1be7de6cd7fcf06040938547ac770871846b",
       "kind": "pending_dependency",
       "statement": "for N(x)N(y) != 0 the similarity class of Delta(x, y) depends only on the Gram matrix of (1, x, y) and on dim Q; dim Q matters only when N(xy - yx) = 0, where the Gram matrix does not determine it",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
       "depends_on": [
         [
-          "sha256:f38acfb57aaa41b25a5bbb9e49cbc4aa35dec5fc093627510d4bd358034c7953",
-          "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise Delta + I has rank 2 and square 0; if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
+          "sha256:bef89ea6a8c1d6c169334f9185d84483817c921d10280f9d04bd6a249e312cde",
+          "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise the restriction of Delta + I to Q-perp has rank 2 and square 0 (so Delta + I and its square have ranks 6 and 4); if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
           "paper/associator-defects/main.tex Corollary 3.30",
           "same",
           "accepted"
