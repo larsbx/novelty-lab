@@ -399,6 +399,20 @@ anchor = '| DivisionCertificateSoundness |'
 window_lines = 0
 
 [[claim]]
+name = "H3ConditionedIntegral"
+status = "experimental"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"H3ConditionedIntegral"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| H3ConditionedIntegral |'
+window_lines = 0
+
+[[claim]]
 name = "H3IntegralPilot"
 status = "experimental"
 [[claim.surfaces]]

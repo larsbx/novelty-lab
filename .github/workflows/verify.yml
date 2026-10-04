@@ -27,3 +27,5 @@ jobs:
       - run: python experiments/n2/defect_jordan.py --check
       - run: python experiments/n2/word_g2.py --check
       - run: python experiments/n2/h3_integral.py --check
+      - run: python experiments/n2/h3_conditioned.py --check
+      - run: python experiments/n2/h3_conditioned.py --replay
