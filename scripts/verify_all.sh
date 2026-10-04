@@ -3,6 +3,7 @@
 #
 #   scripts/verify_all.sh            all groups
 #   scripts/verify_all.sh python     one group: python | lean | tla
+#   scripts/verify_all.sh fast       the seconds-long subset of python (the commit hook runs it)
 #
 # Exit status: 0 when every selected gate ran and passed; 1 when any gate failed;
 # 3 when none failed but some were skipped (a skipped gate is not a passed gate).
@@ -29,13 +30,18 @@ skip() {   # skip NAME REASON
     skipped=$((skipped + 1))
 }
 
-python_gates() {
-    gate "F3 structure tensor provenance" python scripts/check_f3_table.py
+fast_gates() {
     gate "programme registries" python scripts/check_registry.py
     gate "vendored packages match their pins" python vendor/vendoring/check_vendored_sync.py
+    gate "ESTATE.toml vendoring pins" python tools/estate_pins.py
     gate "ledger surfaces are generated" env PYTHONPATH=vendor \
         python -m proof_records.generate_ledgers research/ledger.json --claims claim_governance.toml --check
     gate "claim governance (incl. test coverage)" env PYTHONPATH=vendor python -m claim_governance.cli
+}
+
+python_gates() {
+    gate "F3 structure tensor provenance" python scripts/check_f3_table.py
+    fast_gates
     gate "unit and regression tests" python -m unittest discover -s tests
     for census in experiments/n2/*.py; do
         grep -q -- '--check' "$census" && gate "census $(basename "$census" .py) is current" python "$census" --check
@@ -68,13 +74,15 @@ tla_gates() {
 for g in "${groups[@]}"; do
     case $g in
         python) python_gates ;;
+        fast) fast_gates ;;
         lean) lean_gates ;;
         tla) tla_gates ;;
         *) echo "unknown gate group: $g" >&2; exit 2 ;;
     esac
 done
 
-echo "estate layout audit: runs in the policy job of .github/workflows/verify.yml (see ARCHITECTURE.md)"
+[ "${groups[*]}" = fast ] ||
+    echo "estate layout audit: runs in the policy job of .github/workflows/verify.yml (see ARCHITECTURE.md)"
 if [ $failed -gt 0 ]; then echo "FAILED: $failed gate(s)"; exit 1; fi
 if [ $skipped -gt 0 ]; then echo "INCOMPLETE: $skipped gate(s) skipped, none failed"; exit 3; fi
 echo "ALL GATES PASSED"

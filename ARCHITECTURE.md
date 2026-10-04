@@ -60,5 +60,6 @@ with its own pull request. When the queue is empty, `layout.status` becomes
 The `finite-math-kernels` `[[dep]]` pin is the audit's digest of the
 `vendored.toml` rows for that repository: each package's name, commit, root,
 and recorded and actual file hashes. Re-vendor and re-pin with
-`vendor/vendoring/check_vendored_sync.py pin NAME COMMIT`, then update that
-`[[dep]]` pin in the same pull request. Otherwise the policy job fails.
+`vendor/vendoring/check_vendored_sync.py pin NAME COMMIT`, then run
+`python tools/estate_pins.py --write` in the same pull request. Otherwise the
+local `ESTATE.toml vendoring pins` gate and the CI policy job fail.

@@ -174,6 +174,24 @@ salvage. What fails closed is the *uncertain* case.
 - A written proof stays `pending` until an independent review is recorded
   (`docs/calibration.md`).
 
+## Hooks
+
+`.claude/settings.json` enforces the mechanical parts of this policy in Claude
+Code sessions opened in this repository. All three hooks are implemented in
+`.claude/hooks/guard.py`.
+
+| Event | What it does | Fail-closed column |
+|---|---|---|
+| SessionStart | `session-start.sh` provisions Python and the pinned Lean toolchain | refuse to proceed: the hook fails, not the first gate |
+| Before Edit or Write | denies hand edits to `vendor/`, `data/`, `tla/`, `docs/ledger-index.md`, `paper/*/tables/`, the generated `[[claim]]` block of `claim_governance.toml`, and a vendored estate audit; the denial names the regeneration command | refuse to proceed |
+| After Edit or Write of `research/ledger.json` | reseals identifiers and regenerates every ledger surface | refuse to proceed: a failure blocks with the generator's output |
+| After Edit or Write of `vendored.toml` or `ESTATE.toml` | checks the vendoring pins (`tools/estate_pins.py`) | refuse to proceed |
+| Before a Bash `git commit` | denies a message containing a model identifier, and runs `scripts/verify_all.sh fast` (a few seconds) and denies the commit on any failure | refuse to proceed |
+
+The hooks are a convenience, not the gate. CI runs the full gates
+regardless, and a contributor without Claude Code runs
+`scripts/verify_all.sh`.
+
 ## Pull requests
 
 Use `.github/PULL_REQUEST_TEMPLATE.md`. Its *What this does not establish*
