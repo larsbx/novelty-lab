@@ -947,15 +947,15 @@
       "tags": []
     },
     "H3IntegralPilot": {
-      "id": "sha256:67fd2852bea57f001178504162d1283718d5fc87c839b7b69fbd65d781904cc8",
+      "id": "sha256:57b89958ee45d0561581cb0b0b349b4a3d6c9b945a3c09477f941bef2e626e09",
       "kind": "bounded_experiment",
-      "statement": "for reduced length-4 words in m generators of the integral shell {x in Z^8 : N(x) = p} and their conjugates, with exact arithmetic, value-only collisions (equal values, different operators L_a1 ... L_a4) are absent in three of five configurations; in the other two (p = 3, 12 or 14 letters, 195 and 477 pairs) they share the characteristic polynomial of their word defect in 50 and 22 percent of pairs, against 8 and 7 percent for pairs of different values with equal trace and 4 and 2 percent for random pairs",
+      "statement": "for reduced length-4 words in m generators of the integral shell {x in Z^8 : N(x) = p} and their conjugates, with exact arithmetic, value-only collisions (equal values, different operators L_a1 ... L_a4) are absent in three of five configurations; in the other two (p = 3, 12 or 14 letters, 195 and 477 pairs) they share the characteristic polynomial of their word defect in 50 and 22 percent of pairs, against 6.8 and 6.2 percent over all pairs of words with different values and equal trace, and 2.7 and 2.1 percent over all pairs of words",
       "scope": "definite octonions over Z, convention cayley-dickson/v1 with parameters (-1, -1, -1); characteristic polynomials compared modulo 2^61 - 1",
       "depends_on": [],
       "evidence": [
         [
           "domain",
-          "(p, generators, seed) in {(3, 12, 1), (3, 12, 2), (3, 12, 3), (3, 14, 1), (5, 12, 1)}; all reduced words of length 4; nulls of 300 pairs each"
+          "(p, generators, seed) in {(3, 12, 1), (3, 12, 2), (3, 12, 3), (3, 14, 1), (5, 12, 1)}; all reduced words of length 4; nulls computed exactly over all pairs"
         ],
         [
           "replay",
@@ -963,7 +963,7 @@
         ],
         [
           "digest",
-          "sha256:767aada98585a616a04fc8fd4631e8c2a79f4f43ad6793096140c9efb4696c5b"
+          "sha256:678333e0a36cd7e8e62be6631eb64bc2273bbf24b0aab9579a36367af1960dea"
         ]
       ],
       "tags": []

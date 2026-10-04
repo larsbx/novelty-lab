@@ -11,8 +11,8 @@ coordinate lifts to an integer of absolute value below 2^40 (checked). A pair of
 same value is an operator collision when the products L_a1 ... L_a4 agree as integer matrices,
 and value-only otherwise. For value-only pairs the record counts how many share the
 characteristic polynomial of their word defect, computed modulo P (different modulo P implies
-different over Q). Two nulls: random pairs of words, and random pairs with different values of
-equal trace (the classical invariant of a value of fixed norm).
+different over Q). Two exact nulls, over all pairs: pairs of words, and pairs of words with
+different values and equal trace (the classical invariant of a value of fixed norm).
 
 By paper Corollary 3.33 single defects are classical over this definite algebra, so only words
 can carry non-classical data here.
@@ -24,7 +24,7 @@ from __future__ import annotations
 import json
 import random
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -36,7 +36,6 @@ import word_defects as WD  # noqa: E402
 OUT = HERE.parents[1] / "data" / "n2" / "h3-integral-v1.json"
 P = (1 << 61) - 1
 CONFIGS = ((3, 6, 1), (3, 6, 2), (3, 6, 3), (3, 7, 1), (5, 6, 1))     # (p, generators before conjugates, seed)
-NULL = 300
 # A value-only collision of length 3 in configuration (3, 6, 1): equal values, different operators.
 CERTIFICATE = {"left": [[1, 0, 0, 0, 0, 1, 0, 1], [1, 0, 1, 0, 0, 1, 0, 0], [-1, 0, 0, 0, -1, 0, 0, -1]],
                "right": [[1, 0, 0, 1, 0, 0, -1, 0], [-1, 0, -1, 0, 0, 0, -1, 0], [1, 0, 1, 0, 0, 1, 0, 0]]}
@@ -75,18 +74,21 @@ def words(p: int, m: int, seed: int):
             yield (*evaluate(letters), letters)
 
 
+def pairs(n: int) -> int:
+    return n * (n - 1) // 2
+
+
+def same_class_pairs(classes) -> int:
+    """Pairs of words in the same class, from an iterable of class labels."""
+    return sum(pairs(n) for n in Counter(classes).values())
+
+
 def row(p: int, m: int, seed: int) -> dict:
-    rows, by_value, by_trace = list(words(p, m, seed)), defaultdict(list), defaultdict(list)
+    rows = [(v, op, C.charpoly(WD.word_defect(letters, P), P)) for v, op, letters in words(p, m, seed)]
+    by_value, by_trace = defaultdict(list), defaultdict(list)
     for r in rows:
         by_value[r[0]].append(r)
         by_trace[r[0][0]].append(r)
-    cache = {}
-
-    def cls(r):
-        key = tuple(map(tuple, r[2]))
-        if key not in cache:
-            cache[key] = C.charpoly(WD.word_defect(r[2], P), P)
-        return cache[key]
     operator = value_only = same = 0
     for group in by_value.values():
         for i, a in enumerate(group):
@@ -95,19 +97,17 @@ def row(p: int, m: int, seed: int) -> dict:
                     operator += 1
                 else:
                     value_only += 1
-                    same += cls(a) == cls(b)
-    rng = random.Random(seed + 1000 * p + m)
-    traces = sorted(t for t, g in by_trace.items() if len({r[0] for r in g}) > 1)
-    trace_same = trace_n = 0
-    while trace_n < NULL:
-        a, b = rng.sample(by_trace[rng.choice(traces)], 2)
-        if a[0] != b[0]:
-            trace_n += 1
-            trace_same += cls(a) == cls(b)
-    random_same = sum(cls(a) == cls(b) for a, b in (rng.sample(rows, 2) for _ in range(NULL)))
+                    same += a[2] == b[2]
+    # Exact nulls over all pairs. Equal trace, different values: pairs within a trace minus pairs
+    # within a value, both for all pairs and for same-class pairs.
+    trace_all = sum(pairs(len(g)) for g in by_trace.values()) - sum(pairs(len(g)) for g in by_value.values())
+    trace_same = sum(same_class_pairs(r[2] for r in g) for g in by_trace.values()) - \
+        sum(same_class_pairs(r[2] for r in g) for g in by_value.values())
     return {"p": p, "generators": 2 * m, "seed": seed, "reduced_words": len(rows), "distinct_values": len(by_value),
+            "defect_classes": len({r[2] for r in rows}),
             "operator_collisions": operator, "value_only_collisions": value_only, "value_only_same_class": same,
-            "null_equal_trace_same_class": f"{trace_same}/{NULL}", "null_random_same_class": f"{random_same}/{NULL}"}
+            "null_equal_trace_same_class": f"{trace_same}/{trace_all}",
+            "null_random_same_class": f"{same_class_pairs(r[2] for r in rows)}/{pairs(len(rows))}"}
 
 
 def certificate() -> dict:
