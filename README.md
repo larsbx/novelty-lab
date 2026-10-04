@@ -21,6 +21,17 @@ The execution order is N1 → N3 → N2 → N4 → N5. See
 [the calibration policy](docs/calibration.md) and the per-candidate dossiers in
 [docs/candidates](docs/candidates).
 
+## Working here
+
+[`AGENTS.md`](AGENTS.md) is the policy and [`CONTRIBUTING.md`](CONTRIBUTING.md)
+lists the gates; both are normative. Together they cover authority before
+language, exactness, shared census primitives, the literature stop/go gate,
+test coverage declarations, and which way "fail closed" points. They adapt the
+disciplines of `larsbx/pisot-substitution-conjecture-research` and
+`larsbx/langlands-lab`. [`ESTATE.toml`](ESTATE.toml) and
+[`ARCHITECTURE.md`](ARCHITECTURE.md) assign every path an authority plane, and
+CI audits the layout against the pinned estate audit.
+
 ## Layout
 
 | Path | Authority |
@@ -37,12 +48,13 @@ The execution order is N1 → N3 → N2 → N4 → N5. See
 ## Reproducible checks
 
 ```sh
-python scripts/check_registry.py
-python vendor/vendoring/check_vendored_sync.py
-PYTHONPATH=vendor python -m proof_records.generate_ledgers research/ledger.json --claims claim_governance.toml --check
-PYTHONPATH=vendor python -m claim_governance.cli
-python -m unittest discover -s tests -v
+scripts/verify_all.sh            # every gate: PASS / FAIL / SKIP per line; exit 0 only if all ran and passed
+scripts/verify_all.sh python     # the gates CI's Python job runs
 ```
+
+The runner covers the registries, vendoring, ledger surfaces, claim governance
+(including test coverage), the unit tests, every census `--check`, the paper
+tables, the Lean oracle and the TLC models (`CONTRIBUTING.md`).
 
 After editing `research/ledger.json`, run `python tools/seal_ledger.py`
 (recomputes the content-addressed record identifiers; an edge may name its
