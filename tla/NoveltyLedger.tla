@@ -17,6 +17,7 @@ ResultSet == {
     "DefectCharacteristicPolynomial",
     "DefectClassGramAndDimQ",
     "DefectClassIsClassical",
+    "DefectClassicalAnisotropic",
     "DefectFixesQuaternionSubalgebra",
     "DefectJordanType",
     "DefectRankLaw",
@@ -25,6 +26,7 @@ ResultSet == {
     "DefectSpecialOrthogonal",
     "DefectStratifiedCollisions",
     "DivisionCertificateSoundness",
+    "H3IntegralPilot",
     "H3PilotCollisions",
     "HilbertSymbolFormula",
     "HurwitzShellCount",
@@ -56,6 +58,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "DefectCharacteristicPolynomial" -> {"CompositionIdentities", "QuaternionDoubling"}
       [] r = "DefectClassGramAndDimQ" -> {"DefectJordanType", "DefectClassIsClassical", "CompositionIdentities"}
       [] r = "DefectClassIsClassical" -> {"DefectCharacteristicPolynomial", "CompositionIdentities"}
+      [] r = "DefectClassicalAnisotropic" -> {"DefectClassGramAndDimQ", "DefectCharacteristicPolynomial", "DefectRankLaw"}
       [] r = "DefectFixesQuaternionSubalgebra" -> {"CompositionIdentities", "ArtinTheorem"}
       [] r = "DefectJordanType" -> {"DefectCharacteristicPolynomial", "RankLawDegenerate", "AssociativeSubalgebraBound", "CompositionIdentities"}
       [] r = "DefectRankLaw" -> {"DefectFixesQuaternionSubalgebra", "RankLawDegenerate"}
@@ -64,6 +67,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "DefectSpecialOrthogonal" -> {}
       [] r = "DefectStratifiedCollisions" -> {}
       [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
+      [] r = "H3IntegralPilot" -> {}
       [] r = "H3PilotCollisions" -> {}
       [] r = "HilbertSymbolFormula" -> {}
       [] r = "HurwitzShellCount" -> {}
@@ -103,6 +107,7 @@ ImportedDef == {
 
 BoundedDef == {
     "DefectCensus",
+    "H3IntegralPilot",
     "H3PilotCollisions",
     "N3BaselineGrid",
     "WordDefectG2Data"
@@ -124,6 +129,7 @@ DefectCensusNotEstablished == "DefectCensus" \notin established
 DefectCharacteristicPolynomialNotEstablished == "DefectCharacteristicPolynomial" \notin established
 DefectClassGramAndDimQNotEstablished == "DefectClassGramAndDimQ" \notin established
 DefectClassIsClassicalNotEstablished == "DefectClassIsClassical" \notin established
+DefectClassicalAnisotropicNotEstablished == "DefectClassicalAnisotropic" \notin established
 DefectFixesQuaternionSubalgebraNotEstablished == "DefectFixesQuaternionSubalgebra" \notin established
 DefectJordanTypeNotEstablished == "DefectJordanType" \notin established
 DefectRankLawNotEstablished == "DefectRankLaw" \notin established
@@ -132,6 +138,7 @@ DefectSOClassFiniteNotEstablished == "DefectSOClassFinite" \notin established
 DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin established
 DefectStratifiedCollisionsNotEstablished == "DefectStratifiedCollisions" \notin established
 DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \notin established
+H3IntegralPilotNotEstablished == "H3IntegralPilot" \notin established
 H3PilotCollisionsNotEstablished == "H3PilotCollisions" \notin established
 HilbertSymbolFormulaNotEstablished == "HilbertSymbolFormula" \notin established
 HurwitzShellCountNotEstablished == "HurwitzShellCount" \notin established

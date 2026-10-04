@@ -265,6 +265,20 @@ anchor = '| DefectClassIsClassical |'
 window_lines = 0
 
 [[claim]]
+name = "DefectClassicalAnisotropic"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"DefectClassicalAnisotropic"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectClassicalAnisotropic |'
+window_lines = 0
+
+[[claim]]
 name = "DefectFixesQuaternionSubalgebra"
 status = "open"
 [[claim.surfaces]]
@@ -382,6 +396,20 @@ expect = "absent"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| DivisionCertificateSoundness |'
+window_lines = 0
+
+[[claim]]
+name = "H3IntegralPilot"
+status = "experimental"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"H3IntegralPilot"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| H3IntegralPilot |'
 window_lines = 0
 
 [[claim]]
