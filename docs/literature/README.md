@@ -45,7 +45,7 @@ same sources.
 
 | Claim | What the note must settle |
 |---|---|
-| Conjecture 3.32 (`WordDefectG2Data`) | the exact form of the first fundamental theorem for G₂ (Schwarz 1988): generators B, φ, ψ, and in which characteristics |
+| ~~Conjecture 3.32~~ Theorem 3.32 (`WordDefectG2Determined`) | **done:** [`g2-invariants-2026-10-05.md`](g2-invariants-2026-10-05.md), decision *proceed, narrowed*; Schwarz (1988) is still read only through Zubkov–Shestakov's account |
 | Corollary 3.24 (`DefectSOClassFinite`) | the exact statement in Wall (1963) of conjugacy for semisimple orthogonal elements over 𝔽_q |
 | Proposition 3.26 (`WordDefectLengthThreeClassical`) | a reference for the Clifford trace facts on the spin module |
 | H3 (`DefectStratifiedCollisions`) | prior work on factorization and recomposition in integral octonions (Conway–Smith), and on collision statistics in non-associative word problems |

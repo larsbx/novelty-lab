@@ -88,7 +88,7 @@
       "status": "killed",
       "claim": "Non-semisimple single defects Delta(x, y) carry similarity-class information beyond the quadratic-form data of (x, y) other than dim Q.",
       "reason": "Theorem 3.29 and Corollary 3.30 of paper/associator-defects: (Delta - I)(Delta^2 - tau Delta + I) = 0 everywhere, the tau = -2 Jordan type is decided by T(x) = T(y) = B(x, y) = 0, and the unipotent Jordan types are fixed by dim Q and rank B|Q, itself Gram data; so the similarity class is a function of the Gram matrix of (1, x, y) and dim Q.",
-      "salvage": "For single defects stratify by dim Q only (and, open, by the SO(C, N)-class of non-semisimple defects); the remaining non-classical signal sits in word defects of length >= 4, conjecturally in the Aut(C)-invariant forms phi and psi of the letters (Conjecture 3.32, WordDefectG2Data)."
+      "salvage": "For single defects stratify by dim Q only (and, open, by the SO(C, N)-class of non-semisimple defects); the remaining non-classical signal sits in word defects of length >= 4, whose characteristic polynomials are fixed by the Aut(C)-invariant forms phi and psi of the letters (paper Theorem 3.32, WordDefectG2Determined)."
     }
   ]
 }

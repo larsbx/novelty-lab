@@ -399,6 +399,20 @@ anchor = '| DivisionCertificateSoundness |'
 window_lines = 0
 
 [[claim]]
+name = "G2FirstFundamentalTheorem"
+status = "imported"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"G2FirstFundamentalTheorem"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G2FirstFundamentalTheorem |'
+window_lines = 0
+
+[[claim]]
 name = "H3IntegralPilot"
 status = "experimental"
 [[claim.surfaces]]
@@ -620,6 +634,20 @@ expect = "absent"
 [[claim.surfaces]]
 path = "docs/ledger-index.md"
 anchor = '| WordDefectG2Data |'
+window_lines = 0
+
+[[claim]]
+name = "WordDefectG2Determined"
+status = "open"
+[[claim.surfaces]]
+path = "tla/NoveltyLedger.tla"
+anchor = '"WordDefectG2Determined"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WordDefectG2Determined |'
 window_lines = 0
 
 [[claim]]

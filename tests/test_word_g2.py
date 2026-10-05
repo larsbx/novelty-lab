@@ -1,7 +1,8 @@
 import json
 import random
 import unittest
-from itertools import product
+from itertools import permutations, product
+from math import gcd
 
 from support import ROOT, load
 
@@ -50,6 +51,28 @@ class TestEquivariance(unittest.TestCase):
                                      C.matmul(g, WD.word_defect(letters, ell), ell))
                     self.assertEqual(G.forms_agree([G.pure(a) for a in letters], [G.pure(a) for a in moved], ell),
                                      (True, True))
+
+
+class TestFourFormNormalization(unittest.TestCase):
+    def test_skew_sum_is_twelve_psi_and_psi_is_nonzero_mod_odd_primes(self):
+        """Theorem 3.32 (proof): over Z, sum_sigma sgn t(((p1 p2) p3) p4) = 12 psi, and sampled integer values of
+        psi have gcd 4, so psi is nonzero mod every odd ell, while the unnormalized skew-sum vanishes mod 3. The
+        proof therefore compares Q' with psi through the dimension of the invariant space, not a normalization."""
+        P = (1 << 61) - 1
+        lift = lambda x: x if x <= P // 2 else x - P
+        trace = lambda x: lift(2 * x[0] % P)
+
+        def sign(perm):
+            return (-1) ** sum(perm[i] > perm[j] for i in range(4) for j in range(i + 1, 4))
+        rng, content = random.Random(4), 0
+        for _ in range(60):
+            ps = [(0,) + tuple(rng.randrange(-3, 4) % P for _ in range(7)) for _ in range(4)]
+            skew = sum(sign(perm) * trace(C.mul(C.mul(C.mul(*(ps[k] for k in perm[:2]), P), ps[perm[2]], P),
+                                                ps[perm[3]], P)) for perm in permutations(range(4)))
+            psi = lift(G.psi(*ps, P))
+            self.assertEqual(skew, 12 * psi)
+            content = gcd(content, psi)
+        self.assertEqual(content, 4)
 
 
 class TestCertificates(unittest.TestCase):
