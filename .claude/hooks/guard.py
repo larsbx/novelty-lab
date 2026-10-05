@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shlex
 import subprocess
 import sys
 from fnmatch import fnmatch
@@ -102,12 +103,96 @@ def post_edit(payload: dict) -> int:
     return 0
 
 
+VALUE_OPTS = {"-m": "message", "--message": "message", "-F": "file", "--file": "file", "-t": "template",
+              "--template": "template", "-C": "commit", "-c": "commit", "--reuse-message": "commit",
+              "--reedit-message": "commit", "--fixup": "commit", "--squash": "commit"}
+
+
+def commit_invocations(command: str):
+    """(cwd override, argv after `commit`) for each `git [-C dir] commit ...` in a shell command."""
+    lexer = shlex.shlex(command, posix=True, punctuation_chars=True)
+    lexer.whitespace_split = True
+    try:
+        tokens = list(lexer)
+    except ValueError:   # unbalanced quotes: let the shell reject it
+        return
+    for i, token in enumerate(tokens):
+        if token != "git":
+            continue
+        j, cwd = i + 1, None
+        while j < len(tokens) and tokens[j].startswith("-"):
+            if tokens[j] == "-C" and j + 1 < len(tokens):
+                cwd, j = tokens[j + 1], j + 2
+            else:
+                j += 1
+        if j < len(tokens) and tokens[j] == "commit":
+            args = []
+            for t in tokens[j + 1:]:
+                if set(t) <= set("();<>|&"):
+                    break
+                args.append(t)
+            yield cwd, args
+
+
+def commit_messages(args: list[str], cwd: Path) -> tuple[list[str], bool]:
+    """(message texts the commit will use, whether the message comes from an editor)."""
+    texts, sourced, amend = [], False, "--amend" in args
+
+    def take(kind: str, value: str) -> None:
+        nonlocal sourced
+        sourced = sourced or kind != "template"   # a template still opens the editor
+        if kind == "message":
+            texts.append(value)
+        elif kind in ("file", "template") and value != "-":   # `-F -` reads stdin: a heredoc in the command text
+            path = (cwd / value).expanduser()
+            texts.append(path.read_text(encoding="utf-8", errors="replace") if path.is_file() else "")
+        elif kind == "commit":
+            texts.append(subprocess.run(["git", "log", "-1", "--format=%B", value], cwd=cwd,
+                                        capture_output=True, text=True).stdout)
+    it = iter(range(len(args)))
+    for k in it:
+        arg = args[k]
+        name, eq, inline = arg.partition("=")
+        if arg.startswith("--") and name in VALUE_OPTS:
+            value = inline if eq else (args[k + 1] if k + 1 < len(args) else "")
+            if not eq:
+                next(it, None)
+            take(VALUE_OPTS[name], value)
+        elif arg.startswith("-") and not arg.startswith("--"):
+            for pos, flag in enumerate(arg[1:], start=1):
+                if f"-{flag}" in VALUE_OPTS:
+                    value = arg[pos + 1:] or (args[k + 1] if k + 1 < len(args) else "")
+                    if not arg[pos + 1:]:
+                        next(it, None)
+                    take(VALUE_OPTS[f"-{flag}"], value)
+                    break
+    if amend and not sourced:
+        texts.append(subprocess.run(["git", "log", "-1", "--format=%B"], cwd=cwd, capture_output=True, text=True).stdout)
+        sourced = "--no-edit" in args
+    return texts, not sourced
+
+
 def pre_bash(payload: dict) -> int:
     command = payload.get("tool_input", {}).get("command", "")
-    if not re.search(r"\bgit\b[^;&|]*\bcommit\b", command):
+    invocations = list(commit_invocations(command))
+    if not invocations:
         return 0
-    if (found := MODEL_ID.search(command)):
-        return deny(f"the commit names a model identifier ({found.group(0)}); keep model identifiers out of commits.")
+    if os.environ.get("CLAUDE_CODE_REMOTE") == "true":
+        status = ROOT / ".claude" / "provision-status"
+        state = status.read_text(encoding="utf-8").strip() if status.is_file() else "missing"
+        if state != "ok":
+            return deny(f"session provisioning did not succeed ({state}); the gates cannot all run here. "
+                        "Rerun .claude/hooks/session-start.sh and fix what it reports before committing.")
+    base = Path(payload.get("cwd") or ROOT)
+    texts = [command]   # inline -m values and heredoc bodies (`-F -`) are in the command text
+    for cwd, args in invocations:
+        found, editor = commit_messages(args, (base / cwd) if cwd else base)
+        if editor:
+            return deny("commit with -m, -F or -C so the message can be checked; an editor-composed message "
+                        "cannot be inspected before it is recorded.")
+        texts += found
+    if (hit := next((m for t in texts if (m := MODEL_ID.search(t))), None)):
+        return deny(f"the commit message names a model identifier ({hit.group(0)}); keep model identifiers out of commits.")
     r = subprocess.run(["scripts/verify_all.sh", "fast"], cwd=ROOT, capture_output=True, text=True)
     if r.returncode:
         return deny("fast gates failed; fix them before committing (scripts/verify_all.sh fast):\n" + r.stdout)

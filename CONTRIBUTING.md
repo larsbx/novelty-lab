@@ -4,8 +4,8 @@ A calibration-first laboratory that turns mathematically plausible ideas into
 auditable research claims.
 
 **Language / toolchain:** Python (canonical), with a Lean oracle and TLA+
-models. **CI:** GitHub Actions, `verify.yml` (policy and Python jobs) and
-`lean-oracle.yml`.
+models. **CI:** GitHub Actions, `verify.yml` (policy, Python and TLC jobs)
+and `lean-oracle.yml`.
 
 Read these first. They are normative, not background:
 

@@ -65,10 +65,16 @@ tla_gates() {
         skip "TLC ledger models" "set TLA2TOOLS to tla2tools.jar and install java"
         return
     fi
+    # TLC resolves EXTENDS from the spec's directory and TLA-Library (absolute), so it runs
+    # inside tla/ with the vendored ProofArchitecture on the library path.
+    local jar lib meta
+    jar=$(realpath "$TLA2TOOLS"); lib=$(realpath vendor/proof_records); meta=$(mktemp -d)
     for cfg in tla/MCNoveltyLedger*.cfg; do
-        gate "TLC $(basename "$cfg" .cfg)" java -DTLA-Library=vendor/proof_records -jar "$TLA2TOOLS" \
-            -config "$cfg" "${cfg%.cfg}.tla"
+        local model; model=$(basename "$cfg" .cfg)
+        gate "TLC $model holds" sh -c 'cd tla && java -XX:+UseParallelGC -DTLA-Library="$1" -cp "$2" tlc2.TLC \
+            -metadir "$3/$4" "$4" | grep -q "No error has been found"' sh "$lib" "$jar" "$meta" "$model"
     done
+    rm -rf "$meta"
 }
 
 for g in "${groups[@]}"; do

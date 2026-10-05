@@ -59,9 +59,10 @@ tables, the Lean oracle and the TLC models (`CONTRIBUTING.md`).
 After editing `research/ledger.json`, run `python tools/seal_ledger.py`
 (recomputes the content-addressed record identifiers; an edge may name its
 target as `@Name`), then drop `--check` from the generator command to
-regenerate its surfaces. The TLC models in `tla/` run with
-`ProofArchitecture.tla` on the library path:
-`java -DTLA-Library=vendor/proof_records -jar tla2tools.jar -config tla/MCNoveltyLedgerOpen.cfg tla/MCNoveltyLedgerOpen.tla`.
+regenerate its surfaces. The TLC models in `tla/` are checked by
+`TLA2TOOLS=path/to/tla2tools.jar scripts/verify_all.sh tla`. That gate runs TLC
+inside `tla/` with the vendored `ProofArchitecture.tla` on an absolute
+`TLA-Library` path. CI pins tla2tools v1.7.4 by SHA-256.
 
 ## Vendored code
 

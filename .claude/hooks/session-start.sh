@@ -11,6 +11,12 @@ set -euo pipefail
 REPO=$(cd "$(dirname "$0")/../.." && pwd -P)
 cd "$REPO"
 
+# A SessionStart hook cannot block the session, so its outcome is recorded instead:
+# guard.py refuses commits in web sessions until this file reads "ok".
+STATUS="$REPO/.claude/provision-status"
+echo "failed: provisioning did not finish (see the SessionStart hook output)" > "$STATUS"
+trap '[ $? -eq 0 ] && echo ok > "$STATUS"' EXIT
+
 # The Python gates use only the standard library, but need tomllib (3.11).
 python3 -c 'import sys; sys.exit(sys.version_info < (3, 11))' ||
     { echo "python3 >= 3.11 is required by the gates" >&2; exit 1; }
