@@ -26,6 +26,7 @@ ResultSet == {
     "DefectSpecialOrthogonal",
     "DefectStratifiedCollisions",
     "DivisionCertificateSoundness",
+    "G2FirstFundamentalTheorem",
     "H3IntegralPilot",
     "H3PilotCollisions",
     "HilbertSymbolFormula",
@@ -42,6 +43,7 @@ ResultSet == {
     "WallConjugacy",
     "WordDefectEquivariance",
     "WordDefectG2Data",
+    "WordDefectG2Determined",
     "WordDefectLengthThreeClassical",
     "WordDefectNotClassical",
     "ZeroDivisorCertificateSoundness",
@@ -67,6 +69,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "DefectSpecialOrthogonal" -> {}
       [] r = "DefectStratifiedCollisions" -> {}
       [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
+      [] r = "G2FirstFundamentalTheorem" -> {}
       [] r = "H3IntegralPilot" -> {}
       [] r = "H3PilotCollisions" -> {}
       [] r = "HilbertSymbolFormula" -> {}
@@ -83,6 +86,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "WallConjugacy" -> {}
       [] r = "WordDefectEquivariance" -> {"CompositionIdentities"}
       [] r = "WordDefectG2Data" -> {}
+      [] r = "WordDefectG2Determined" -> {"WordDefectEquivariance", "G2FirstFundamentalTheorem", "CompositionIdentities"}
       [] r = "WordDefectLengthThreeClassical" -> {"CliffordSpinTrace", "CompositionIdentities"}
       [] r = "WordDefectNotClassical" -> {}
       [] r = "ZeroDivisorCertificateSoundness" -> {}
@@ -99,6 +103,7 @@ ImportedDef == {
     "CliffordSpinTrace",
     "CompositionDimensions",
     "CompositionIdentities",
+    "G2FirstFundamentalTheorem",
     "MoufangTheorem",
     "QuaternionDoubling",
     "WallConjugacy",
@@ -138,6 +143,7 @@ DefectSOClassFiniteNotEstablished == "DefectSOClassFinite" \notin established
 DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin established
 DefectStratifiedCollisionsNotEstablished == "DefectStratifiedCollisions" \notin established
 DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \notin established
+G2FirstFundamentalTheoremNotEstablished == "G2FirstFundamentalTheorem" \notin established
 H3IntegralPilotNotEstablished == "H3IntegralPilot" \notin established
 H3PilotCollisionsNotEstablished == "H3PilotCollisions" \notin established
 HilbertSymbolFormulaNotEstablished == "HilbertSymbolFormula" \notin established
@@ -154,6 +160,7 @@ RankLawNondegenerateNotEstablished == "RankLawNondegenerate" \notin established
 WallConjugacyNotEstablished == "WallConjugacy" \notin established
 WordDefectEquivarianceNotEstablished == "WordDefectEquivariance" \notin established
 WordDefectG2DataNotEstablished == "WordDefectG2Data" \notin established
+WordDefectG2DeterminedNotEstablished == "WordDefectG2Determined" \notin established
 WordDefectLengthThreeClassicalNotEstablished == "WordDefectLengthThreeClassical" \notin established
 WordDefectNotClassicalNotEstablished == "WordDefectNotClassical" \notin established
 ZeroDivisorCertificateSoundnessNotEstablished == "ZeroDivisorCertificateSoundness" \notin established
