@@ -14,7 +14,6 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{observation}[theorem]{Observation}
-\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
@@ -124,7 +123,7 @@ certified about it by exact computation. Our results are as follows.
   (Theorem~\ref{thm:jordan}, Corollary~\ref{cor:gram-dimq}). Word defects
   of length four see the $\operatorname{Aut}(\C)$-invariant forms of their
   letters (Proposition~\ref{prop:word-four},
-  Theorem~\ref{conj:g2}).
+  Theorem~\ref{thm:g2}).
 \item A Lean~4 oracle recomputes the five edges of the associator pentagon
   from an explicit structure tensor. A mutation analysis
   (Table~\ref{tab:mutants}) shows which checks detect which implementation
@@ -972,7 +971,7 @@ characteristic~$0$ it is due to Schwarz~\cite{schwarz1988}. Zubkov and
 Shestakov~\cite[Cor.~7.11, Rem.~7.12]{zubkov-shestakov} prove it over every
 infinite field of odd characteristic.
 
-\begin{theorem}\label{conj:g2}
+\begin{theorem}\label{thm:g2}
 Let $k$ have characteristic $0$ or odd characteristic. The characteristic
 polynomial of $W(a_1,\dots,a_n)$ depends only on the Gram matrix of
 $(1,a_1,\dots,a_n)$ and on the values of $\phi$ on triples and $\psi$ on
@@ -1012,7 +1011,7 @@ $\phi$ and $\psi$ also preserve the characteristic polynomial. Neither form
 suffices alone: $344$ of $396$ rotations that preserve $\phi$ but not $\psi$,
 and $202$ of $240$ sampled rotations that preserve $\psi$ but not $\phi$,
 change it. The data file stores one certificate for each case. So
-Theorem~\ref{conj:g2} cannot be sharpened by dropping either form. A word
+Theorem~\ref{thm:g2} cannot be sharpened by dropping either form. A word
 defect sees octonionic data, not only orthogonal data, and $\psi$, the form
 that measures the associator, is needed. The invariant theory is classical;
 what is specific here is that word defects factor through it. Over~$\mathbb{Z}$
@@ -1241,7 +1240,7 @@ methodology.
   defects are not determined here. Words of length three have classical
   characteristic polynomials (Proposition~\ref{prop:word-three}), but words
   of length four do not (Proposition~\ref{prop:word-four}).
-  By Theorem~\ref{conj:g2}, $G_2$ data of the letters suffices for the
+  By Theorem~\ref{thm:g2}, $G_2$ data of the letters suffices for the
   characteristic polynomial, and both $\phi$ and $\psi$ are needed. Which
   further invariants decide the $\SO$- or $G_2$-class of a word defect is open.
 \item \emph{Defect-stratified statistics.} For navigation words in generators
@@ -1289,7 +1288,7 @@ Rank-law lemmas (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s
 Defect class (Sec.~\ref{sec:defect}) & \texttt{python -m unittest discover -s tests -p 'test\_defect\_c*.py'} \\
 Word defects (Prop.~\ref{prop:word-four}) & \texttt{python experiments/n2/word\_defects.py --check} \\
 Jordan types (Thm.~\ref{thm:jordan}) & \texttt{python experiments/n2/defect\_jordan.py --check} \\
-$G_2$ data (Thm.~\ref{conj:g2}) & \texttt{python experiments/n2/word\_g2.py --check} \\
+$G_2$ data (Thm.~\ref{thm:g2}) & \texttt{python experiments/n2/word\_g2.py --check} \\
 Integral H3 pilot (Sec.~\ref{sec:open}) & \texttt{python experiments/n2/h3\_integral.py --check} \\
 Paper tables & \texttt{python paper/associator-defects/make\_tables.py --check} \\
 \bottomrule

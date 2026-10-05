@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exhaustive test of the defect rank law (Conjecture 3.8 of paper/associator-defects) over F_ell.
+"""Exhaustive test of the defect rank law (Theorem 3.8 of paper/associator-defects) over F_ell.
 
 For x, y in C = A_3 of cayley-dickson/v1 with parameters (-1, -1, -1) over F_ell,
 let phi(z) = [x, y, z] and Q = span{1, x, y, xy}. When N(xy) != 0,
