@@ -991,10 +991,10 @@
       "tags": []
     },
     "WordDefectG2Determined": {
-      "id": "sha256:0ff4fc2b904a9d4b5392aae438523844bca02a65c8f715773458049489e6de4f",
+      "id": "sha256:80139857efbf890836e1cc940270b5efc205a8acdde548513151ef2584a90210",
       "kind": "pending_dependency",
       "statement": "in characteristic 0 or odd characteristic, the characteristic polynomial of W(a1, ..., an) depends only on the Gram matrix of (1, a1, ..., an) and on the values of phi(p, q, r) = B(pq, r) on triples and psi(p, q, r, s) = B([p, q, r], s) on quadruples of the trace-zero parts of the letters",
-      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "scope": "octonion algebras over a field of characteristic 0 or odd characteristic (split or not; the proof passes to the algebraic closure)",
       "depends_on": [
         [
           "sha256:467ba4075363bb09a11b76b556d95cd930e509b18c0e93f2d1fc7915be5a7126",

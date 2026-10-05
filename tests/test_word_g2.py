@@ -2,7 +2,6 @@ import json
 import random
 import unittest
 from itertools import permutations, product
-from math import gcd
 
 from support import ROOT, load
 
@@ -54,25 +53,26 @@ class TestEquivariance(unittest.TestCase):
 
 
 class TestFourFormNormalization(unittest.TestCase):
-    def test_skew_sum_is_twelve_psi_and_psi_is_nonzero_mod_odd_primes(self):
-        """Theorem 3.32 (proof): over Z, sum_sigma sgn t(((p1 p2) p3) p4) = 12 psi, and sampled integer values of
-        psi have gcd 4, so psi is nonzero mod every odd ell, while the unnormalized skew-sum vanishes mod 3. The
-        proof therefore compares Q' with psi through the dimension of the invariant space, not a normalization."""
+    def test_skew_sum_is_twelve_psi_and_psi_has_content_four(self):
+        """Theorem 3.32 (proof), exhaustive over Z. Both sides of sum_sigma sgn t(((p1 p2) p3) p4) = 12 psi are
+        multilinear in (p1, ..., p4) on 1-perp, so checking every quadruple of basis vectors e1..e7 proves it, and
+        the basis values of psi, {0, 4, -4}, give psi content 4: nonzero mod every odd ell, while the unnormalized
+        skew-sum vanishes mod 3. The proof therefore compares Q' with psi through the dimension of the invariant
+        space, not a normalization. Lift: e_i e_j = +-e_k, so over Z every intermediate product is a signed basis
+        vector, |trace| <= 2 and |psi| <= 4, and the centred residue mod P is the integer value."""
         P = (1 << 61) - 1
         lift = lambda x: x if x <= P // 2 else x - P
+        self.assertTrue(all(s in (1, -1) for _, s in C.STRUCTURE.values()))
         trace = lambda x: lift(2 * x[0] % P)
-
-        def sign(perm):
-            return (-1) ** sum(perm[i] > perm[j] for i in range(4) for j in range(i + 1, 4))
-        rng, content = random.Random(4), 0
-        for _ in range(60):
-            ps = [(0,) + tuple(rng.randrange(-3, 4) % P for _ in range(7)) for _ in range(4)]
-            skew = sum(sign(perm) * trace(C.mul(C.mul(C.mul(*(ps[k] for k in perm[:2]), P), ps[perm[2]], P),
-                                                ps[perm[3]], P)) for perm in permutations(range(4)))
+        perms = [(perm, (-1) ** sum(perm[i] > perm[j] for i in range(4) for j in range(i + 1, 4)))
+                 for perm in permutations(range(4))]
+        values = set()
+        for ps in product(C.BASIS[1:], repeat=4):
+            skew = sum(sgn * trace(C.mul(C.mul(C.mul(ps[a], ps[b], P), ps[c], P), ps[d], P)) for (a, b, c, d), sgn in perms)
             psi = lift(G.psi(*ps, P))
-            self.assertEqual(skew, 12 * psi)
-            content = gcd(content, psi)
-        self.assertEqual(content, 4)
+            self.assertEqual(skew, 12 * psi, ps)
+            values.add(psi)
+        self.assertEqual(values, {0, 4, -4})
 
 
 class TestCertificates(unittest.TestCase):

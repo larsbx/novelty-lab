@@ -79,9 +79,10 @@ Read on 2026-10-05.
   - By source 1, Prop. 3.2, Λ⁴(O₀*) is tilting, so it has a good filtration.
     The space of G₂-invariant alternating 4-forms therefore has its
     characteristic-0 dimension, which is 1.
-  - ψ is a nonzero element of that space for every odd ℓ. Sampled integer
-    values of ψ in our model have gcd 4, so they share no odd prime factor
-    (`tests/test_word_g2.py`).
+  - ψ is a nonzero element of that space for every odd ℓ. Its values on
+    quadruples of basis vectors of 1⊥ in our model lie in {0, ±4}, and some
+    are nonzero; since ψ is multilinear, it has content 4 over ℤ and so is
+    nonzero mod every odd prime (exhaustive check in `tests/test_word_g2.py`).
   - Hence Q′ = c·ψ with c ∈ 𝔽̄_ℓ^×.
   - This argument avoids normalization. The unnormalized skew-sum equals 12ψ
     over ℤ, which vanishes mod 3, yet Q′ itself does not vanish mod 3 (source
