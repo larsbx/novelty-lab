@@ -969,7 +969,7 @@
       "tags": []
     },
     "H3ConditionedIntegral": {
-      "id": "sha256:ec13fd169f36f06424bea4dfbd4b83d2ede3e57311a7c1e2c6b7d9ee817afb9b",
+      "id": "sha256:6b8b264644a4bd3c1bb083bde50dc940885a69e1d74cb8066b6872c74b48f3a6",
       "kind": "bounded_experiment",
       "statement": "the exact integral H3 corpus enumerates 1,154,412 reduced words and certifies every one of 182,960 operator-quotiented value-only collision pairs; the four preselected shell samples have 98 quotient pairs and zero Gram-matched collisions, while exploratory norm-3 coordinate panels have 182,512 quotient pairs and panel-dependent descriptive phi/psi sharing against Gram/trace-matched different-value controls; all alias weights, zero-support panels and first/last representative sensitivity are reported, with no significance or theorem claim",
       "scope": "cayley-dickson/v1 (-1,-1,-1) over the coordinate order Z^8; norm-3 and norm-5 shells, norm-one calibration and complex-line negative control; lengths 2, 4 and 5; integer values/operators, rational dim Q; separate prespecified and adaptive exploratory corpora",
@@ -985,7 +985,7 @@
         ],
         [
           "digest",
-          "sha256:8f50c63ca6401c9e8cdf75386f48f8c8e19cc0cbc20040a9edf62b97855ef1f4"
+          "sha256:f7430307945ae956db051283697e660e1fd6a893a2c55b397d85a225c9ef1c9e"
         ],
         [
           "reason",
