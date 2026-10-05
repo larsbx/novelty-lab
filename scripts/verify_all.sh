@@ -45,6 +45,7 @@ python_gates() {
     gate "unit and regression tests" python -m unittest discover -s tests
     for census in experiments/n2/*.py; do
         grep -q -- '--check' "$census" && gate "census $(basename "$census" .py) is current" python "$census" --check
+        grep -q -- '--replay' "$census" && gate "census $(basename "$census" .py) certificates replay" python "$census" --replay
     done
     gate "paper tables are generated" python paper/associator-defects/make_tables.py --check
 }

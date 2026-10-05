@@ -273,7 +273,7 @@
       "tags": []
     },
     "DefectStratifiedCollisions": {
-      "id": "sha256:41060473f6048c33f4c50de1de47cffa2f2024fb56dc1453a796786f593d3348",
+      "id": "sha256:793e30b63b4f7c09a2f395ec7bc19e3a44ad956c7b8c259b37331b383393e2dd",
       "kind": "pending_dependency",
       "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
       "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
@@ -281,7 +281,7 @@
       "evidence": [
         [
           "reason",
-          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; the similarity class of a single defect is a function of the Gram matrix of (1, x, y) and dim Q (DefectClassGramAndDimQ, KILL-11), so single defects can add only dim Q; length-4 word defects are not classical (WordDefectNotClassical) and are fixed by the Aut(C)-invariant forms phi and psi of the letters (WordDefectG2Determined, by the first fundamental theorem for G2), so a word-defect stratification is G2 bookkeeping of the letters and phi, psi are the conditioning variables to test; over definite integral shells single defects are classical (DefectClassicalAnisotropic), and the integral pilot (H3IntegralPilot) finds value-only collisions only in sporadic configurations, where they share word-defect classes well above an equal-trace null; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts"
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; the similarity class of a single defect is a function of the Gram matrix of (1, x, y) and dim Q (DefectClassGramAndDimQ, KILL-11), so single defects can add only dim Q; length-4 word defects are not classical (WordDefectNotClassical) and are fixed by the Aut(C)-invariant forms phi and psi of the letters (WordDefectG2Determined, by the first fundamental theorem for G2), so a word-defect stratification is G2 bookkeeping of the letters and phi, psi are the conditioning variables to test; over definite integral shells single defects are classical (DefectClassicalAnisotropic), and the integral pilot (H3IntegralPilot) finds value-only collisions only in sporadic configurations, where they share word-defect classes well above an equal-trace null; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts; H3ConditionedIntegral uses uniform (value, operator) quotient classes, exact integer arithmetic and Gram/trace-matched controls: the four preselected integral samples lack any Gram-matched collisions, and all five subsequent structured support panels are retained as exploratory evidence with panel-dependent enrichment, constant-label and zero-support controls; historical pilot class-sharing counts retain word alias weights; these dependent-pair counts neither settle H3 nor promote any pending proof"
         ]
       ],
       "tags": []
@@ -964,6 +964,32 @@
         [
           "digest",
           "sha256:678333e0a36cd7e8e62be6631eb64bc2273bbf24b0aab9579a36367af1960dea"
+        ]
+      ],
+      "tags": []
+    },
+    "H3ConditionedIntegral": {
+      "id": "sha256:ec13fd169f36f06424bea4dfbd4b83d2ede3e57311a7c1e2c6b7d9ee817afb9b",
+      "kind": "bounded_experiment",
+      "statement": "the exact integral H3 corpus enumerates 1,154,412 reduced words and certifies every one of 182,960 operator-quotiented value-only collision pairs; the four preselected shell samples have 98 quotient pairs and zero Gram-matched collisions, while exploratory norm-3 coordinate panels have 182,512 quotient pairs and panel-dependent descriptive phi/psi sharing against Gram/trace-matched different-value controls; all alias weights, zero-support panels and first/last representative sensitivity are reported, with no significance or theorem claim",
+      "scope": "cayley-dickson/v1 (-1,-1,-1) over the coordinate order Z^8; norm-3 and norm-5 shells, norm-one calibration and complex-line negative control; lengths 2, 4 and 5; integer values/operators, rational dim Q; separate prespecified and adaptive exploratory corpora",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "four SHA-256 sampled configurations, matching length-two rows, one complex-line control and all five structured exploratory panels; exact contract in docs/experiments/h3-conditioned-shell.md"
+        ],
+        [
+          "replay",
+          "python experiments/n2/h3_conditioned.py --check && python experiments/n2/h3_conditioned.py --replay"
+        ],
+        [
+          "digest",
+          "sha256:8f50c63ca6401c9e8cdf75386f48f8c8e19cc0cbc20040a9edf62b97855ef1f4"
+        ],
+        [
+          "reason",
+          "H3 remains open; Theorem 3.32 (WordDefectG2Determined, pending review) makes phi and psi of the letters determine word-defect characteristic polynomials, so the descriptive form-sharing measured here is G2 bookkeeping of the letters; no characteristic polynomial conditions a statistic; exploratory panels were added after the preselected samples lacked Gram-matched support; every collision fibre is retained in data/n2/h3-conditioned-certificates-v1.json.gz and bound to the summary by a decompressed-content SHA-256"
         ]
       ],
       "tags": []

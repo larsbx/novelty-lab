@@ -27,6 +27,7 @@ ResultSet == {
     "DefectStratifiedCollisions",
     "DivisionCertificateSoundness",
     "G2FirstFundamentalTheorem",
+    "H3ConditionedIntegral",
     "H3IntegralPilot",
     "H3PilotCollisions",
     "HilbertSymbolFormula",
@@ -70,6 +71,7 @@ RequiresDef == [r \in ResultSet |->
       [] r = "DefectStratifiedCollisions" -> {}
       [] r = "DivisionCertificateSoundness" -> {"HilbertSymbolFormula", "QuaternionSplitIffConic"}
       [] r = "G2FirstFundamentalTheorem" -> {}
+      [] r = "H3ConditionedIntegral" -> {}
       [] r = "H3IntegralPilot" -> {}
       [] r = "H3PilotCollisions" -> {}
       [] r = "HilbertSymbolFormula" -> {}
@@ -112,6 +114,7 @@ ImportedDef == {
 
 BoundedDef == {
     "DefectCensus",
+    "H3ConditionedIntegral",
     "H3IntegralPilot",
     "H3PilotCollisions",
     "N3BaselineGrid",
@@ -144,6 +147,7 @@ DefectSpecialOrthogonalNotEstablished == "DefectSpecialOrthogonal" \notin establ
 DefectStratifiedCollisionsNotEstablished == "DefectStratifiedCollisions" \notin established
 DivisionCertificateSoundnessNotEstablished == "DivisionCertificateSoundness" \notin established
 G2FirstFundamentalTheoremNotEstablished == "G2FirstFundamentalTheorem" \notin established
+H3ConditionedIntegralNotEstablished == "H3ConditionedIntegral" \notin established
 H3IntegralPilotNotEstablished == "H3IntegralPilot" \notin established
 H3PilotCollisionsNotEstablished == "H3PilotCollisions" \notin established
 HilbertSymbolFormulaNotEstablished == "HilbertSymbolFormula" \notin established
