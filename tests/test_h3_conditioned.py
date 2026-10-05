@@ -145,7 +145,7 @@ class TestCertificates(unittest.TestCase):
             self.assertEqual(row["generators"], cert["generators"])
             self.assertEqual(row["quotient_value_only_pairs"],
                              sum(H.choose2(len(f["classes"])) for f in cert["collision_fibres"]))
-        self.assertEqual(self.summary["status"], "bounded experiment; H3 open and Conjecture 3.32 experimental")
+        self.assertEqual(self.summary["status"], "bounded experiment; H3 open")
         records = json.loads((ROOT / "research/ledger.json").read_text())["records"]
         self.assertEqual(dict(records["H3ConditionedIntegral"]["evidence"])["digest"],
                          "sha256:" + hashlib.sha256(H.OUT.read_bytes()).hexdigest())

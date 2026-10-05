@@ -417,7 +417,7 @@ def build():
                "experiments/n2/word_g2.py", "experiments/n2/word_defects.py",
                "experiments/n2/rank_law.py", "data/n2/word-g2-v1.json")
     data = {"schema": "novelty-lab/n2-h3-conditioned/v1", "date": "2026-10-04", "base_revision": BASE_REVISION,
-            "status": "bounded experiment; H3 open and Conjecture 3.32 experimental",
+            "status": "bounded experiment; H3 open",
             "arithmetic": "unbounded Python integers; rational rank; B=2 dot product; no modular equality test",
             "runtime_contract": "Python 3.12+ standard library; SHA-256 sampling; no random module or floating point",
             "shell": "Z^8 in cayley-dickson/v1 (-1,-1,-1); standard coordinate order, not an E8/maximal order",

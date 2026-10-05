@@ -1,7 +1,9 @@
 # H3: exact integral shells and operator-quotiented collisions
 
-**Status: bounded experiment. H3 remains open; Conjecture 3.32 remains a
-conjecture supported by bounded experiments.** No statistical significance,
+**Status: bounded experiment. H3 remains open.** Since this experiment was
+written, Conjecture 3.32 has become paper Theorem 3.32 (`WordDefectG2Determined`,
+pending review), so φ and ψ are the complete word-defect data and form-sharing
+here is G₂ bookkeeping of the letters. No statistical significance,
 expansion, synthesis, integral descent, or theorem promotion is claimed.
 
 This follows the integral pilot merged in PR #24, using
@@ -190,7 +192,7 @@ zero quotient value-only collisions.
 The supported result is the reproducible separation of alias effects,
 sample-support failure, and panel-dependent descriptive form enrichment.
 This is not a test of characteristic-polynomial determination over all
-fields, does not prove Conjecture 3.32, and does not settle H3. An extension
+fields (that is paper Theorem 3.32, proved separately), and does not settle H3. An extension
 needs a fresh sampled corpus with nonzero matched support and declared
 representative conventions; the structured panels are not that replication.
 

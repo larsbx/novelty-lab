@@ -90,7 +90,7 @@
         "sampled_Gram_matched_pairs": 0,
         "exploratory_norm3_quotient_pairs": 182512
       },
-      "claim_boundary": "Dependent-pair descriptive comparisons in separate corpora; preselected samples lack matched support; all support-seeking panels remain exploratory. H3 open, Conjecture 3.32 experimental, pending proofs unpromoted.",
+      "claim_boundary": "Dependent-pair descriptive comparisons in separate corpora; preselected samples lack matched support; all support-seeking panels remain exploratory. H3 open; Theorem 3.32 pending review; pending proofs unpromoted.",
       "evidence": [
         "experiments/n2/h3_conditioned.py",
         "data/n2/h3-conditioned-v1.json",

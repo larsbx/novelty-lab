@@ -7,6 +7,7 @@ Reachable == {
     "CliffordSpinTrace",
     "CompositionDimensions",
     "CompositionIdentities",
+    "G2FirstFundamentalTheorem",
     "HurwitzShellCountFinite",
     "MoufangTheorem",
     "QuaternionDoubling",
