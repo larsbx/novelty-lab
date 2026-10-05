@@ -1,7 +1,8 @@
 # G₂-invariants of several octonions: stop/go note
 
-Gate for: promoting paper Conjecture 3.32 (`WordDefectG2Data`) to a theorem,
-and for H3 tests that condition on the φ- and ψ-data of the letters.
+Gate for: promoting paper Conjecture 3.32, with census evidence
+`WordDefectG2Data`, to Theorem 3.32 (`WordDefectG2Determined`), and for H3
+tests that condition on the φ- and ψ-data of the letters.
 
 ## 1. Proposed claim
 
