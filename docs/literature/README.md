@@ -14,6 +14,15 @@ the integrality and quotient conventions of `docs/calibration.md`.
 
 A note is literature clearance, not a novelty finding.
 
+## Candidate-program gates
+
+These notes audit external research candidates under their dossier conventions;
+they do not add mathematical authority or records to this repository's proof ledger.
+
+| Candidate | Gate and evidence | Decision |
+|---|---|---|
+| [N6 — Cartesian graph-product calculus](../candidates/N6.md) | [Gate](n6-cartesian-calculus-2026-10-08.md), [claim/source comparison](n6-prior-art-2026-10-08.md), [search log](n6-search-log-2026-10-08.md), [bibliography](n6-references.bib), read 2026-10-08 | **Redirect:** fiber-capture is Cartesian S-prime; characterization/recognition and abstract algebra are prior art; remaining exact cycle/bridge targets require further gates. |
+
 ## File name and format
 
 `docs/literature/<topic>-<YYYY-MM-DD>.md`, with these sections in order:
