@@ -1,8 +1,8 @@
-"""Exact split quadratic RT over odd prime fields; no Cayley multiplication.
+"""Independent Python RT oracle for differential conformance; no Cayley multiplication.
 
 The norm is N(x) = 2 * sum(x[i] * x[i+4], i=0..3), giving a
 hyperbolic 8-space with B2(e_i, f_j) = 2 delta_ij. This module is a
-conformance kernel for a classical contract, not a novelty or proof claim.
+reference-only oracle for a classical contract, not a novelty or proof claim.
 """
 
 def _prime_odd(p):

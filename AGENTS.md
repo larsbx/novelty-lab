@@ -15,6 +15,17 @@ authority → mathematical concern → language.
 - **Python is the one canonical language.** `kernel/` is the canonical
   executable. Its arithmetic is exact (`int` and `Fraction`), and the
   `exact-kernel` numerics rule of `claim_governance.toml` enforces that.
+- **Reusable mathematical kernels are Mojo-first upstream.** Domain-neutral exact
+  finite-field, projective, tensor and group algorithms belong in the pinned
+  `larsbx/finite-math-kernels` Mojo packages, not in a second Python library
+  here. Preserve upstream `ExactField` and `FpField[p]` checked arithmetic,
+  explicit guards and deterministic MAX reductions. Python in this repository
+  is for consumer-specific acceptance, thin adapters, and independently
+  labelled exact differential oracles; it must not become competing authority
+  for shared arithmetic. Shared kernels are imported only at an immutable
+  provenance-verified pin with test-vector agreement. An upstream Mojo PASS is
+  **not** automatic promotion of a local mathematical claim or a change to
+  Python's existing acceptance role.
 - **`experiments/` is non-authoritative.** A driver there may produce the
   committed data behind a bounded-experiment record. A computation that backs a
   finite-domain record belongs in `kernel/`; `[migration].next` lists the
