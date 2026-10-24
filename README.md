@@ -89,8 +89,10 @@ See [the RT adoption contract](docs/foundations/estate-rt-adoption.md) for
 provenance, guards, MAX CPU execution and source ownership. Reusable mathematics
 belongs in `finite-math-kernels`; local Python is an independent, non-authoritative
 RT oracle and retains this consumer's established certificate-acceptance role.
-These are selected source packages, **not** the whole upstream repository or a
-new local Mojo build pipeline. Other Mojo, Julia and Haskell packages remain
+These are selected source packages, **not** the whole upstream repository.
+The isolated `experiments/rt/pixi.toml` and `smoke.mojo` run an exact
+consumer integration test against the vendored source under a pinned Mojo/MAX
+toolchain; they do not confer claim-acceptance authority. Other Mojo, Julia and Haskell packages remain
 outside this repository until there is a concrete consumer.
 
 N1 certificates (`docs/n1-specification.md`) are searched and checked
