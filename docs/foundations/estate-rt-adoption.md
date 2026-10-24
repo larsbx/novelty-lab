@@ -29,7 +29,7 @@ The upstream implementation has a focused Mojo/MAX CI suite, full CI and indepen
 
 ## Consumer conformance and limits
 
-The native Mojo code is made available as a reproducible source dependency under `vendor/mojo`. It is **not yet executed from novelty-lab's own CI** (which is Python/Lean/TLA+ based). Native Mojo computation and performance remain independently CI-checked upstream, not implicitly certified by the consumer's Python tests.
+The native Mojo code is a reproducible source dependency under `vendor/mojo`. A separate **Mojo/MAX consumer CI** workflow compiles and executes `experiments/rt/smoke.mojo` directly against the pinned source, using the isolated toolchain manifest `experiments/rt/pixi.toml` (matching the source revision's compiler/MAX versions). Its observed result must be reported separately from Python/Lean/TLA proof-state gates; passing the smoke is not a field-generic mathematical proof.
 
 `scripts/verify_all.sh python` checks vendored digests, derived estate pin, local Python tests and the 48-vector replay. It does **not** assert independent Lean proofs of the classical formulas, or performance improvements beyond the proved arithmetic operation counts. Python's existing consumer certificate-acceptance authority is unchanged; an estate decision record would be required to change it.
 
