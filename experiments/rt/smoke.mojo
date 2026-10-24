@@ -16,14 +16,14 @@ from projective_limits.hyperbolic_rt_max import norm_one_count_max
 def nonnull_axis(i: Int) -> List[Fp[3]]:
     var out = List[Fp[3]]()
     for j in range(8):
-        out.append(Fp[3](1 if j == i else (2 if j == i + 4 else 0)))
+        out.append(Fp[3](Int64(1 if j == i else (2 if j == i + 4 else 0))))
     return out^
 
 
 def null_axis(i: Int) -> List[Fp[3]]:
     var out = List[Fp[3]]()
     for j in range(8):
-        out.append(Fp[3](1 if j == i else 0))
+        out.append(Fp[3](Int64(1 if j == i else 0)))
     return out^
 
 
