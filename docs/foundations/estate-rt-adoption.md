@@ -1,52 +1,40 @@
-# Estate integration: split quadratic RT
+# Pinned Mojo rational-trigonometry kernels from the estate
 
-**Status:** integration staged; **not adopted as a pinned dependency yet**.  
-**Upstream owner:** [finite-math-kernels PR #78](https://github.com/larsbx/finite-math-kernels/pull/78), `feature/quadratic-rt-8d-exact`.  
-**Consumer foundation:** [novelty-lab PR #38](https://github.com/larsbx/novelty-lab/pull/38), merged.  
-**Policy:** `AGENTS.md`, `ARCHITECTURE.md`, `vendored.toml`, `ESTATE.toml`. Do not hand-edit pinned vendor copies or claim a passing Mojo gate without its CI result.
+**Scope:** reusable exact split-eight-space rational trigonometry. **Status:** immutable source snapshot vendored for code reuse; consumer verification depends on GitHub CI. No research claim is promoted.
 
-## Authority and code-reuse boundary
+**Source:** `larsbx/finite-math-kernels`, merged [PR #78](https://github.com/larsbx/finite-math-kernels/pull/78), immutable commit `194780a6d314c972c7d066d3da2cae8e21231cba`.
 
-The estate already provides the canonical exact arithmetic and projective rational-trigonometry machinery, rather than starting from a new finite-field arithmetic implementation:
+## Authority boundary
 
-| Mathematical dependency | Shared owner / API | Consumer status |
-| --- | --- | --- |
-| Prime fields, canonical residue and checked scalar inverse | `finite-math-kernels/kernel/finite_exact/fp.mojo`: `Fp[p]`, `FpField[p]` | Existing shared kernel; Mojo-pinned upstream |
-| Exact field abstraction (also \(\mathbb Q\)) | `finite_exact.field.ExactField`, `QField` | Existing shared kernel |
-| Projective points with rejected \([0:0]\) and zero-denominator refusal | `projective_limits.line.P1Over` | Existing shared projective machinery, specialized to \(\mathbb P^1\) |
-| Rotor spread, projective group laws, spread polynomials | `projective_limits.rotor`, `projective_limits.spread_polynomial` | Existing shared 2D RT |
-| Split eight-space norm, doubled polarization, guarded projective spread, reflections and norm-shell transport | `projective_limits.hyperbolic_rt` | **Proposed shared kernel in upstream PR #78**; not yet merged/vendor-pinned |
-| Cayley multiplication and defect witnesses | `experiments/n2/defect_census.py` + repository N2 pinned `cayley-dickson/v1` | Existing independent N2 model; not superseded by quadratic RT |
+Reusable exact finite-field, tensor and projective mathematics is **Mojo-owned in finite-math-kernels**. This repository must not maintain a second generalized field-operations implementation. In this consumer:
 
-The original Python RT kernel has been relocated to `experiments/rt/independent_reference.py` as an **independent, non-authoritative reference oracle**, not an estate-owned reusable numerical primitive. The shared Mojo implementation is canonical in `finite-math-kernels`; this oracle does not substitute for executing the Mojo conformance gate. It must not be generalized as a competing field library or presented as if it calls the shared Mojo implementation. When upstream PR #78 has passing tests and a pinned version, the consumer must reclassify or remove the duplicate quadratic arithmetic under a **separate boundary-first PR**, maintaining the tests as independent Python differential oracles if needed. Because `AGENTS.md` currently assigns Python the consumer's canonical acceptance role and Mojo no role here, any change to *acceptance authority* needs the repository's decision-record process; importing a shared computational oracle alone cannot silently change this policy.
+- `vendor/mojo/finite_exact` supplies `ExactField`, `FpField[p]` and their exact number substrate;
+- `vendor/mojo/projective_limits` supplies hyperbolic norm/polarization, guarded spreads, reflections, one-inversion spread batches and their scalar reference path;
+- `vendor/mojo/parallel_fold` supplies MAX's deterministic CPU-thread-pool map-fold used by the exact shell census;
+- `experiments/rt/independent_reference.py` is a **non-authoritative Python oracle**, not the canonical mathematical implementation;
+- `tests/fixtures/hyperbolic_rt_v1.txt` is byte-identical to the upstream 48-case corpus at the pinned source commit; `tests/test_mojo_rt_estate.py` checks its SHA and replays every row through the independent Python oracle.
 
-## Optimized shared implementation and evidence
+Only selected named modules and their transitive dependencies are vendored, not the upstream repository's entire implementation or CI toolchain. Each copied byte is SHA-256 pinned in `vendored.toml`. The existing Python policy and proof-record packages retain their earlier pins; new Mojo packages are all sourced from the single immutable revision above. The combined estate digest is derived by `tools/estate_pins.py` and checked in CI.
 
-The upstream estate implementation now additionally includes:
+## Algorithm contract
 
-- `hyperbolic_rt_batch.spreads_batched`: field-generic prefix-product batch inversion, **one guarded inverse** for many spreads with individual null refusal.
-- `hyperbolic_rt_max.norm_one_count_max`: MAX deterministic multicore exact norm-shell enumeration through the existing `parallel_fold.map_fold` kernel, bounded at 1,000,000 input vectors and checked against the independently proved hyperbolic shell formula. It uses only exact field arithmetic, not MAX floating-point Tensor/GPU operations.
-- `docs/theorems/hyperbolic-rt-contract.md`: five explicit mathematical statements and elementary proofs, with no novelty or independent-review claim.
-- `conformance/hyperbolic_rt_v1.txt`: 48 generated fixed F3/F5/F7 vectors with corresponding Python regeneration and canonical Mojo replay.
-- `reference/hyperbolic_rt_reference.py`, `tools/make_hyperbolic_rt_vectors.py`: exact independent oracle and drift checker.
+The shared upstream source carries named theorem/guard statements and exact conformance:
+- split hyperbolic norm \(N(x)=2\sum_{i=0}^{3}x_ix_{i+4}\) and doubled polarization;
+- projective spread \(s=1-B_2(x,y)^2/[4N(x)N(y)]\), defined only for non-null rays;
+- at most two guarded orthogonal reflections to transport vectors of equal nonzero norm;
+- one-inversion exact batch spread using Montgomery's prefix/backward trick;
+- deterministic MAX-backed CPU enumeration of norm-one shells: \(q^3(q^4-1)\) elements for the nonzero shell in the split eight-space.
 
-This is an **unmerged upstream draft until its CI succeeds**. The consumers must distinguish: a mathematical proof, independent oracle vector and parallel performance assertion are not interchangeable. No accelerator performance result has been established without an exact benchmark.
+The upstream implementation has a focused Mojo/MAX CI suite, full CI and independent dataset checks at its release commit. It makes **no** float/GPU numerical approximation or new-theorem/novelty claim.
 
-## Adoption gates (fail closed)
+## Consumer conformance and limits
 
-1. **Upstream validation:** run and pass the pinned Mojo suite `pixi run test-projective-limits`, including `test_hyperbolic_rt.mojo`; independently review its field-generic boundary. Tests over F3/F5/F7 and the F3 norm-one shell check implementation conformance only.
-2. **Cross-language conformance:** pin a published set of exact contract vectors (valid rays, null rays, two-reflection exceptional cases, planar triple spread and the independent 8D counterexample), and compare shared Mojo with an independent Python oracle. Do not derive expected values from the same implementation.
-3. **Vendor with provenance:** use `vendor/vendoring/check_vendored_sync.py` and the existing estate `tools/estate_pins.py` generator. Never hand-edit vendored files, pinned digests, or a generated surface. The shared Mojo package's transitive imports (`finite_exact.field`, `finite_exact.fp`, `finite_exact.rat_q`, etc.) must be vendored consistently.
-4. **Decide consumer authority:** `novelty-lab` is presently Python canonical, Lean/TLA+ supporting; an external Mojo runtime is not automatically a replacement for Python acceptance. An upstream field kernel may be a pinned, independently tested **oracle** without changing the existing governance.
-5. **Remove duplicate authority:** after cross-checks, keep at most an explicitly labelled independent Python oracle or a thin adapter. No locally replicated group-wide finite field arithmetic, projective spread polynomial engine, or unguarded inverse.
-6. **Run full verification:** `scripts/verify_all.sh`, estate audit and the upstream Mojo gate; record PASS/FAIL/SKIP without interpreting a skip as a pass.
+The native Mojo code is made available as a reproducible source dependency under `vendor/mojo`. It is **not yet executed from novelty-lab's own CI** (which is Python/Lean/TLA+ based). Native Mojo computation and performance remain independently CI-checked upstream, not implicitly certified by the consumer's Python tests.
 
-## Scope and non-promotions
+`scripts/verify_all.sh python` checks vendored digests, derived estate pin, local Python tests and the 48-vector replay. It does **not** assert independent Lean proofs of the classical formulas, or performance improvements beyond the proved arithmetic operation counts. Python's existing consumer certificate-acceptance authority is unchanged; an estate decision record would be required to change it.
 
-This integration does **not** establish new RT, Moufang, Artin, tensor, Aschbacher or spread-complex theorems, nor prove novelty. No N1–N5 ledger or N2 candidate status changes. The research extensions remain dossier-level questions. A field-generic polynomial identity must still be proved symbolically; finite-field enumeration alone cannot certify it.
+## Future extensions without duplicate kernels
 
-## Recommended next edit after upstream passes
+For Grassmannians, Aschbacher geometric subgroups, tensor stabilizers, Cayley multiplication and spread-controlled 2-complexes, first specify a narrow exact reusable mathematical primitive, implement it once **upstream in Mojo**, and add an independent downstream test/verification consumer only where needed. Existing N2 `cayley-dickson/v1` is deliberately not overwritten. A proposed new theorem requires a separate literature stop/go note before promotion.
 
-- Pin `projective_limits.hyperbolic_rt` at the accepted immutable upstream commit and add contract vectors.
-- Reconcile the temporary Python kernel with the common exact arithmetic boundary while preserving independent oracle testability.
-- Delete or demote redundant primitive implementations in a narrowly scoped follow-up, without changing generated files or claim status.
+**No manually maintained mathematical implementation is authoritative merely because it exists in this consumer.**
