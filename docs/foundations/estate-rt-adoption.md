@@ -20,6 +20,18 @@ The estate already provides the canonical exact arithmetic and projective ration
 
 The existing local `kernel/rt_foundations.py` was introduced before identifying the upstream extension point. It is a **temporary consumer-specific Python conformance implementation**, not an estate-owned reusable numeric primitive. It must not be generalized as a competing field library or presented as if it calls the shared Mojo implementation. When upstream PR #78 has passing tests and a pinned version, the consumer must reclassify or remove the duplicate quadratic arithmetic under a **separate boundary-first PR**, maintaining the tests as independent Python differential oracles if needed. Because `AGENTS.md` currently assigns Python the consumer's canonical acceptance role and Mojo no role here, any change to *acceptance authority* needs the repository's decision-record process; importing a shared computational oracle alone cannot silently change this policy.
 
+## Optimized shared implementation and evidence
+
+The upstream estate implementation now additionally includes:
+
+- `hyperbolic_rt_batch.spreads_batched`: field-generic prefix-product batch inversion, **one guarded inverse** for many spreads with individual null refusal.
+- `hyperbolic_rt_max.norm_one_count_max`: MAX deterministic multicore exact norm-shell enumeration through the existing `parallel_fold.map_fold` kernel, bounded at 1,000,000 input vectors and checked against the independently proved hyperbolic shell formula. It uses only exact field arithmetic, not MAX floating-point Tensor/GPU operations.
+- `docs/theorems/hyperbolic-rt-contract.md`: five explicit mathematical statements and elementary proofs, with no novelty or independent-review claim.
+- `conformance/hyperbolic_rt_v1.txt`: 48 generated fixed F3/F5/F7 vectors with corresponding Python regeneration and canonical Mojo replay.
+- `reference/hyperbolic_rt_reference.py`, `tools/make_hyperbolic_rt_vectors.py`: exact independent oracle and drift checker.
+
+This is an **unmerged upstream draft until its CI succeeds**. The consumers must distinguish: a mathematical proof, independent oracle vector and parallel performance assertion are not interchangeable. No accelerator performance result has been established without an exact benchmark.
+
 ## Adoption gates (fail closed)
 
 1. **Upstream validation:** run and pass the pinned Mojo suite `pixi run test-projective-limits`, including `test_hyperbolic_rt.mojo`; independently review its field-generic boundary. Tests over F3/F5/F7 and the F3 norm-one shell check implementation conformance only.
