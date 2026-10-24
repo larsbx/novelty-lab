@@ -2,7 +2,7 @@
 
 **Research state:** a narrowed classical-foundation contract; **no new theorem promoted**, no existing N1–N5 status changed.  
 **Gate:** [bounded literature audit](../literature/split-cayley-rt-foundations-2026-10-24.md).  
-**Executable:** [exact quadratic kernel](../../kernel/rt_foundations.py) and [negative-control tests](../../tests/test_rt_foundations.py).
+**Executable:** [exact quadratic kernel](../../experiments/rt/independent_reference.py) and [negative-control tests](../../tests/test_rt_foundations.py).
 
 This file is an **audit dossier**, not an independent proof review or a novelty claim. It separates elementary calculations, established imported theorems, disproved formulations and open extensions.
 
@@ -18,7 +18,7 @@ s([x],[y])=1-\frac{B_2(x,y)^2}{4N(x)N(y)}.
 \]
 **Equivalent polynomial certificate on the guard:** \(4N(x)N(y)(1-s)=B_2(x,y)^2\). Clearing denominators without retaining the guard is not logically equivalent.
 
-The executable model is \(F=\mathbb F_p\) (odd prime), \(V=F^8\),
+The independent Python reference model is \(F=\mathbb F_p\) (odd prime), \(V=F^8\),
 \[
 N(x)=2\sum_{i=0}^{3}x_i x_{i+4}.
 \]
