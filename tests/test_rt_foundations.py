@@ -1,13 +1,13 @@
 """Exact RT foundations, guarded normalization, and planar counterexamples.
 
-Checks the split hyperbolic norm, reflection transport and RT kernel by an
+Checks independent exact Python reference semantics (not a canonical RT kernel): split norm, reflection transport by an
 independent arithmetic replay. The 8D noncoplanar triple is a negative control.
 """
 
 import itertools
 import unittest
 
-from kernel.rt_foundations import SplitQuadratic8, triple_spread_defect
+from experiments.rt.independent_reference import SplitQuadratic8, triple_spread_defect
 
 GUARDS_CONTRACT = "Split Cayley RT quadratic-layer foundation: guards, reflections, planar triple-spread scope"
 
