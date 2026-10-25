@@ -52,7 +52,7 @@ root = "vendor"
 [[package]]
 name = "finite_exact"
 repository = "larsbx/finite-math-kernels"
-commit = "194780a6d314c972c7d066d3da2cae8e21231cba"
+commit = "734f60a04a6cf8a68fab74367acc6b33d0e02cd9"
 root = "vendor/mojo"
 
 [package.files]
@@ -65,19 +65,20 @@ root = "vendor/mojo"
 [[package]]
 name = "projective_limits"
 repository = "larsbx/finite-math-kernels"
-commit = "194780a6d314c972c7d066d3da2cae8e21231cba"
+commit = "734f60a04a6cf8a68fab74367acc6b33d0e02cd9"
 root = "vendor/mojo"
 
 [package.files]
-"projective_limits/__init__.mojo" = "f782528d0da4e27533ab0b1f69ed5b9fcd1c244920c44bc05b0857e47d546a2d"
+"projective_limits/__init__.mojo" = "3cdae4d898ac7b873595e01c7aea34358722fb77466e25d6c03b25eb949a328b"
 "projective_limits/hyperbolic_rt_batch.mojo" = "1329f9fd72c8e23c052f2bac3448236ac1357d864fea813ce5de525fe5a45a31"
 "projective_limits/hyperbolic_rt_max.mojo" = "81a88e366033af06393b2133e65530e2e2f01ae9ca21ed5986bee5c7207e9dd1"
 "projective_limits/hyperbolic_rt.mojo" = "3df493828e0a20fac19e268577f4a2c040de6bc393c8c62be14088986d969099"
 
+"projective_limits/gram_geometry.mojo" = "06fa40baaa9e43125787bff9b8caaf04e220f51412aaf1fcc9ee1de2df04478a"
 [[package]]
 name = "parallel_fold"
 repository = "larsbx/finite-math-kernels"
-commit = "194780a6d314c972c7d066d3da2cae8e21231cba"
+commit = "734f60a04a6cf8a68fab74367acc6b33d0e02cd9"
 root = "vendor/mojo"
 
 [package.files]

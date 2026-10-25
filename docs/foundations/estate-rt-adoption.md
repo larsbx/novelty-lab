@@ -38,3 +38,11 @@ The native Mojo code is a reproducible source dependency under `vendor/mojo`. A 
 For Grassmannians, Aschbacher geometric subgroups, tensor stabilizers, Cayley multiplication and spread-controlled 2-complexes, first specify a narrow exact reusable mathematical primitive, implement it once **upstream in Mojo**, and add an independent downstream test/verification consumer only where needed. Existing N2 `cayley-dickson/v1` is deliberately not overwritten. A proposed new theorem requires a separate literature stop/go note before promotion.
 
 **No manually maintained mathematical implementation is authoritative merely because it exists in this consumer.**
+
+## Gram/exterior geometry extension (pinned)
+
+The estate's [Gram geometry contract](https://github.com/larsbx/finite-math-kernels/blob/734f60a04a6cf8a68fab74367acc6b33d0e02cd9/docs/theorems/gram-minor-rt-contract.md) and exact `projective_limits.gram_geometry` module are pinned at `734f60a04a6cf8a68fab74367acc6b33d0e02cd9`.
+
+The new reusable kernel supplies 2x2 and 3x3 Gram determinants, guarded normalized Gram ratios, and **56 coordinate 3-minors** to decide when three vectors lie in a genuine 2-plane, rather than incorrectly inferring planarity from a degenerate Gram matrix. The corpus `tests/fixtures/gram_geometry_v1.txt` is byte-identical to the upstream 18-case fixture and is replayed by the **independent** Python consumer test, while `experiments/rt/smoke.mojo` exercises the pinned Mojo implementation directly. It includes a non-planar 3-space with Gram determinant zero (isotropic radical) and a line tangent to the absolute whose ordinary two-reference-point cross-ratio is not defined.
+
+No mathematical claim is promoted. The statement `Gram determinant zero ⇒ rank≤2` is **false** over the split form; the exterior-minor API is the faithful guard. The consumer retains its pre-existing claim governance and Cayley–Dickson model; the shared numerical implementation remains upstream in Mojo.
