@@ -14,3 +14,5 @@ mojo-compiler = "==1.1.0.dev2026090805"
 
 [tasks]
 smoke = "mojo run -I ../../vendor/mojo smoke.mojo"
+vectors = "mojo run -I ../../vendor/mojo replay_vectors.mojo"
+conformance = { depends-on = ["vectors", "smoke"] }
