@@ -30,8 +30,8 @@ pin = "sha256:412a64dea58d709aae21e5a0315b8e7e96488c310a9d999267927ba3d8146a30"
 # file hashes (the audit's vendored digest). Re-pin whenever vendored.toml changes.
 [[dep]]
 id = "finite-math-kernels"
-rev = "68ea134126e0d1863977e9bb1cca47465fd7bdb8"
-pin = "sha256:fc2a2c89eda38dbcc87a0ce4ccd7defaa91e80cb4ee2e91dd1b5f1383a475863"
+rev = "194780a6d314c972c7d066d3da2cae8e21231cba"
+pin = "sha256:abcceaebb780dfddba6180cacf456e59638f76baffedcdead1b3c0f0574d9c2e"
 
 [exports]
 names = []

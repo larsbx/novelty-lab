@@ -1,0 +1,16 @@
+[workspace]
+name = "novelty-lab-rt-mojo-conformance"
+channels = ["https://conda.modular.com/max-nightly/", "conda-forge"]
+platforms = ["linux-64"]
+
+# Reproduce exactly the ABI/toolchain versions used by finite-math-kernels
+# at the immutable source revision in vendored.toml.
+[dependencies]
+modular = "==26.6.0.dev2026090805"
+max = "==26.6.0.dev2026090805"
+max-core = "==26.6.0.dev2026090805"
+mojo = "==1.1.0.dev2026090805"
+mojo-compiler = "==1.1.0.dev2026090805"
+
+[tasks]
+smoke = "mojo run -I ../../vendor/mojo smoke.mojo"

@@ -78,12 +78,22 @@ a vendored file locally; fix it upstream and re-vendor.
 | `proof_records` (Python files and `ProofArchitecture.tla`) | `larsbx/finite-math-kernels` `kernel/proof_records` | record identity, closure, ledger generation |
 | `claim_governance` | `larsbx/finite-math-kernels` `tools/claim_governance` | enforces `claim_governance.toml` |
 | `vendoring` | `larsbx/finite-math-kernels` `tools/vendoring` | the checker above |
+| `finite_exact` (selected Mojo modules) | `larsbx/finite-math-kernels` `kernel/finite_exact` | field-generic exact arithmetic `FpField[p]`, `ExactField` |
+| `projective_limits` (RT modules) | `larsbx/finite-math-kernels` `kernel/projective_limits` | guarded split-eight-space spread, reflections and exact batch inversion |
+| `parallel_fold` (Mojo/MAX) | `larsbx/finite-math-kernels` `kernel/parallel_fold` | deterministic exact parallel shell census |
 
-The Mojo kernels in `finite-math-kernels` (`finite_exact`, `quadratic_orbit`,
-…), the Julia oracles in `julia-oracle-lab`, and the Haskell `meta_test`
-framework are not vendored. Nothing here is written in those languages, and
-exact ℚ arithmetic is Python's `int`/`Fraction`. Vendor one only when a
-consumer in this repository exists.
+Selected **Mojo-first mathematical kernels** are now vendored byte-for-byte
+under `vendor/mojo/` from an immutable estate revision, together with an
+independently replayed [48-case finite-field fixture](tests/fixtures/hyperbolic_rt_v1.txt).
+See [the RT adoption contract](docs/foundations/estate-rt-adoption.md) for
+provenance, guards, MAX CPU execution and source ownership. Reusable mathematics
+belongs in `finite-math-kernels`; local Python is an independent, non-authoritative
+RT oracle and retains this consumer's established certificate-acceptance role.
+These are selected source packages, **not** the whole upstream repository.
+The isolated `experiments/rt/pixi.toml` and `smoke.mojo` run an exact
+consumer integration test against the vendored source under a pinned Mojo/MAX
+toolchain; they do not confer claim-acceptance authority. Other Mojo, Julia and Haskell packages remain
+outside this repository until there is a concrete consumer.
 
 N1 certificates (`docs/n1-specification.md`) are searched and checked
 separately:

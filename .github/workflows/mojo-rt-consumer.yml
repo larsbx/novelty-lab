@@ -1,0 +1,34 @@
+name: Pinned Mojo/MAX RT consumer
+
+on:
+  pull_request:
+    paths:
+      - "vendor/mojo/**"
+      - "experiments/rt/smoke.mojo"
+      - "experiments/rt/pixi.toml"
+      - "vendored.toml"
+      - "ESTATE.toml"
+      - ".github/workflows/mojo-rt-consumer.yml"
+  push:
+    branches: [main]
+    paths:
+      - "vendor/mojo/**"
+      - "experiments/rt/smoke.mojo"
+      - "experiments/rt/pixi.toml"
+      - "vendored.toml"
+      - "ESTATE.toml"
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.9.1
+        with:
+          run-install: false
+      - name: Check immutable estate vendoring and dependency pin
+        run: |
+          python vendor/vendoring/check_vendored_sync.py
+          python tools/estate_pins.py
+      - name: Compile and execute vendored RT in Mojo with MAX
+        run: pixi run --manifest-path experiments/rt/pixi.toml smoke

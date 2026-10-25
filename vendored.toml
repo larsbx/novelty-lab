@@ -48,3 +48,38 @@ root = "vendor"
 "claim_governance/policy.py" = "7b7f34419d9436ecf818c7e64093a504de7d924d8abe80de047c54e50c236095"
 "claim_governance/repo.py" = "11a603c0288f9030ec0c5990d260f2c3f593b7e44a2b86d49f13920f84348dd3"
 "claim_governance/runner.py" = "86c48c3dc677e3cacf515b852382dfc459c30bc12d8220d6171efa22a84bef89"
+
+[[package]]
+name = "finite_exact"
+repository = "larsbx/finite-math-kernels"
+commit = "194780a6d314c972c7d066d3da2cae8e21231cba"
+root = "vendor/mojo"
+
+[package.files]
+"finite_exact/__init__.mojo" = "97e07962648a1ff270483ecbd59c8c65d4ed1049b5a11f79e48ce86e877511a5"
+"finite_exact/bigint_z.mojo" = "d02a0c033042661161a24f0b31f1e89fbf3ed908ccc86e42b5b80b8df4240df1"
+"finite_exact/field.mojo" = "0df44aa51aaf0ad4f352761041ba2d521c00f0e10cbca5b640e62b31a41da54e"
+"finite_exact/fp.mojo" = "7d216ce1f213b9a3049f4bff230338d7130c77fd44c5b0cb1048f5169802f7a6"
+"finite_exact/rat_q.mojo" = "d7f8cc3a3879d76bfc242304a13d4f2c9d4cf2cdeeba586fa4af95980a4b9fa6"
+
+[[package]]
+name = "projective_limits"
+repository = "larsbx/finite-math-kernels"
+commit = "194780a6d314c972c7d066d3da2cae8e21231cba"
+root = "vendor/mojo"
+
+[package.files]
+"projective_limits/__init__.mojo" = "f782528d0da4e27533ab0b1f69ed5b9fcd1c244920c44bc05b0857e47d546a2d"
+"projective_limits/hyperbolic_rt_batch.mojo" = "1329f9fd72c8e23c052f2bac3448236ac1357d864fea813ce5de525fe5a45a31"
+"projective_limits/hyperbolic_rt_max.mojo" = "81a88e366033af06393b2133e65530e2e2f01ae9ca21ed5986bee5c7207e9dd1"
+"projective_limits/hyperbolic_rt.mojo" = "3df493828e0a20fac19e268577f4a2c040de6bc393c8c62be14088986d969099"
+
+[[package]]
+name = "parallel_fold"
+repository = "larsbx/finite-math-kernels"
+commit = "194780a6d314c972c7d066d3da2cae8e21231cba"
+root = "vendor/mojo"
+
+[package.files]
+"parallel_fold/__init__.mojo" = "23c5b90db3b3cf3f9df0e06f4872e959a477ab89b7a0132915e0efedd285733d"
+"parallel_fold/map_fold.mojo" = "21dd242726563dc4f71f8f68e2540d3b7e690a2f6d09481df4e0879f6df15d5b"
