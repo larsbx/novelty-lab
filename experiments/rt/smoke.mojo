@@ -7,10 +7,11 @@ the finite-math-kernels package and its tests own the mathematical contract.
 from std.testing import assert_true, assert_false, assert_equal
 from finite_exact.fp import Fp, FpField
 from projective_limits.hyperbolic_rt import (
-    norm8, polar8, spread8, norm_shell_transport8, equal8,
+    norm8, polar8, spread8, norm_shell_transport8, equal8, add8,
 )
 from projective_limits.hyperbolic_rt_batch import spreads_batched
 from projective_limits.hyperbolic_rt_max import norm_one_count_max
+from projective_limits.gram_geometry import (gram2_determinant8, gram3_determinant8, rank_le_two8, planar_triple_spread_defect8)
 
 
 def nonnull_axis(i: Int) -> List[Fp[3]]:
@@ -46,4 +47,16 @@ def main() raises:
     assert_true(results[0] == Fp[3](1))
     assert_false(results[1].accepted())
     assert_equal(norm_one_count_max[3](2), 2160)
-    print("[PASS] vendored exact Mojo RT + batch spread + MAX shell census")
+    # Planar incidence is an exterior-rank test, not a Gram-null test.
+    var z = nonnull_axis(2)
+    var xy = add8[FpField[3]](x, y)
+    assert_true(rank_le_two8[FpField[3]](x, y, xy) == Fp[3](1))
+    assert_true(planar_triple_spread_defect8[FpField[3]](x, y, xy).is_zero())
+    assert_true(gram3_determinant8[FpField[3]](x, y, z) == Fp[3](1))
+    var radical = add8[FpField[3]](xy, null_axis(2))
+    assert_true(gram3_determinant8[FpField[3]](x, y, radical).is_zero())
+    assert_true(rank_le_two8[FpField[3]](x, y, radical) == Fp[3](0))
+    assert_false(planar_triple_spread_defect8[FpField[3]](x, y, radical).accepted())
+    var tangent = add8[FpField[3]](x, null_axis(2))
+    assert_true(gram2_determinant8[FpField[3]](x, tangent).is_zero())
+    print("[PASS] vendored Mojo RT, exterior Gram guard, batch spread and MAX census")
