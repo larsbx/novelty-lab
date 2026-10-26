@@ -11,7 +11,7 @@ from math import factorial, comb
 import json
 
 from experiments.rt.rank_lift_pilot import F, rank2_spread
-from experiments.rt.p5_full_coherence import FullP5
+from experiments.rt.p5_full_coherence import FullP5, rank_f5
 
 N = 6
 LABELS = tuple(range(N))
@@ -187,8 +187,8 @@ class DemandP6:
                 number += 1
         return number
 
-    def admit(self, allowed_edges):
-        """Recursively admit faces only when their entire facet closure passes."""
+    def admitted_profile(self, allowed_edges):
+        """Effect-gated subcomplex and exact F5 cellular ranks, no float."""
         allowed = set(allowed_edges)
         yes, counts = {}, [0] * N
         for face in sorted(self.boundaries, key=lambda f: (dimension(f), f)):
@@ -203,7 +203,16 @@ class DemandP6:
                 good = all(yes[child] for child in self.boundaries[face])
             yes[face] = good
             counts[d] += good
-        return tuple(counts)
+        selected = {d: tuple(f for f in self.boundaries
+                              if dimension(f) == d and yes[f])
+                    for d in range(N)}
+        ranks = {d: rank_f5(self.boundaries[f] for f in selected[d])
+                 for d in range(1, N)}
+        betti = tuple(counts[d] - ranks.get(d, 0) - ranks.get(d + 1, 0)
+                      for d in range(N))
+        return {"admitted_cells": tuple(counts),
+                "boundary_ranks_F5": tuple(ranks[d] for d in range(1, N)),
+                "betti_F5": betti}
 
 
 def directions():
@@ -317,10 +326,10 @@ def experiment():
     comparisons = {}
     for mode in MODES:
         details, allowed = audit_updates(mode)
-        details["admitted_cells"] = p.admit(allowed)
+        details.update(p.admitted_profile(allowed))
         comparisons[mode] = details
     rank2, allowed2 = audit_updates("translations", direction_rank=2)
-    rank2["admitted_cells"] = p.admit(allowed2)
+    rank2.update(p.admitted_profile(allowed2))
     comparisons["grassmann_rank2"] = rank2
     full = (720, 1800, 1560, 540, 62, 1)
     partial = (720, 1680, 1320, 390, 32, 0)
@@ -328,7 +337,15 @@ def experiment():
         comparisons["grassmann_rank2"]["admitted_cells"] != full or
         comparisons["scalar_coupled"]["admitted_cells"] != partial or
         comparisons["null_defect"]["admitted_cells"] != partial or
-        comparisons["null_defect"]["nonzero_null_residuals"] != 120):
+        comparisons["null_defect"]["nonzero_null_residuals"] != 120 or
+        comparisons["translations"]["boundary_ranks_F5"] !=
+            (719, 1081, 479, 61, 1) or
+        comparisons["translations"]["betti_F5"] !=
+            (1, 0, 0, 0, 0, 0) or
+        comparisons["scalar_coupled"]["boundary_ranks_F5"] !=
+            (718, 962, 358, 32, 0) or
+        comparisons["scalar_coupled"]["betti_F5"] !=
+            (2, 0, 0, 0, 0, 0)):
         raise AssertionError("P6 effect-gated comparison differs")
     return {"status": "bounded-experiment", "field": "F5",
             "coherence_labels": N, "top_cell_dimension": N - 1,
