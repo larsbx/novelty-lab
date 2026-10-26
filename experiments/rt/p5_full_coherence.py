@@ -175,10 +175,18 @@ class FullP5:
         for d in range(2, N):
             for face in self.cells[d]:
                 accepted[face] = all(accepted[facet] for facet in self.boundary[face])
+        # Every promoted higher cell has all facets, so the selected cells
+        # form a genuine cellular subcomplex. Compute its F5 Betti numbers.
+        selected = {0: self.cells[0]}
+        for d in range(1, N):
+            selected[d] = tuple(face for face in self.cells[d] if accepted[face])
+        ranks = {d: rank_f5(self.boundary[face] for face in selected[d])
+                 for d in range(1, N)}
         return {
-            "admitted_cell_counts": tuple(
-                len(self.cells[0]) if d == 0 else
-                sum(accepted[face] for face in self.cells[d])
+            "admitted_cell_counts": tuple(len(selected[d]) for d in range(N)),
+            "admitted_boundary_ranks_F5": tuple(ranks[d] for d in range(1, N)),
+            "admitted_betti_F5": tuple(
+                len(selected[d]) - ranks.get(d, 0) - ranks.get(d + 1, 0)
                 for d in range(N)),
             "top_admitted": accepted[self.cells[4][0]],
         }
