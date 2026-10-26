@@ -109,7 +109,7 @@ class P6LiftTest(unittest.TestCase):
             ("scalar_coupled", (720, 1680, 1320, 390, 32, 0),
              (718, 962, 358, 32, 0), (2, 0, 0, 0, 0, 0)),
             ("null_defect", (720, 1680, 1320, 390, 32, 0),
-             (718, 962, 358, 32, 0), (2, 0, 0, 0, 0))):
+             (718, 962, 358, 32, 0), (2, 0, 0, 0, 0, 0))):
             with self.subTest(mode=mode):
                 _, edges = audit_updates(mode)
                 result = p.admitted_profile(edges)
