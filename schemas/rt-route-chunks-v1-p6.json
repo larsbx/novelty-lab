@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/larsbx/novelty-lab/blob/main/schemas/rt-route-chunks-v1-p6.json",
+  "title": "Canonical bounded chunked P6 route replay frame",
+  "description": "Structural schema for one canonical ASCII JSON+LF frame. Exact bytes, chain/order, pin, record replay and terminal EOF are checked by chunked_replay_p6.py; hash fields do not imply authorship.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/header"
+    },
+    {
+      "$ref": "#/$defs/chunk"
+    },
+    {
+      "$ref": "#/$defs/seal"
+    }
+  ],
+  "$defs": {
+    "sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "header": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "version",
+        "spec",
+        "spec_sha256",
+        "requests",
+        "chunk_size",
+        "expected_edges"
+      ],
+      "properties": {
+        "kind": {
+          "const": "header"
+        },
+        "version": {
+          "const": "rt-route-chunks/v1-p6"
+        },
+        "spec": {
+          "$ref": "./rt-route-stream-v2-p6.json#/$defs/spec"
+        },
+        "spec_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "requests": {
+          "$ref": "./rt-route-stream-v2-p6.json#/properties/requests"
+        },
+        "chunk_size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "expected_edges": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        }
+      }
+    },
+    "chunk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "sequence",
+        "previous_sha256",
+        "records",
+        "sha256"
+      ],
+      "properties": {
+        "kind": {
+          "const": "chunk"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1799
+        },
+        "previous_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "items": {
+            "$ref": "./rt-route-stream-v2-p6.json#/$defs/record"
+          }
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha"
+        }
+      }
+    },
+    "seal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "chunks",
+        "records",
+        "previous_sha256",
+        "summary",
+        "sha256"
+      ],
+      "properties": {
+        "kind": {
+          "const": "seal"
+        },
+        "chunks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "records": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "previous_sha256": {
+          "$ref": "#/$defs/sha"
+        },
+        "summary": {
+          "$ref": "./rt-route-stream-v2-p6.json#/$defs/summary"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha"
+        }
+      }
+    }
+  }
+}
