@@ -97,6 +97,24 @@ class P5CertificateLazyTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "untrusted program"):
             CertificateDemandedP5().admit(make_envelope(spec), "0"*64, (self.top,))
 
+    def test_single_face_receipt_admits_only_local_closure(self):
+        from experiments.rt.p5_certificate_lazy import _edge_of
+        spec = sample_spec(5, "translations")
+        probe = CertificateDemandedP5()
+        probe.require((self.square,))
+        pairs = sorted(_edge_of(face, boundary)
+                       for face, boundary in probe.boundaries.items()
+                       if len(face) == 4)
+        self.assertEqual(len(pairs), 4)
+        requests = [[list(a), list(b)] for a, b in pairs]
+        lazy = CertificateDemandedP5()
+        result = lazy.admit(make_envelope(spec, requests),
+                            digest(spec), (self.square,))
+        self.assertTrue(result["requested_admitted"])
+        self.assertEqual(result["admitted_counts"], (4, 4, 1, 0, 0))
+        self.assertEqual(result["replayed_edges"], 4)
+        self.assertFalse(result["P5_top_admitted"])
+
     def test_partial_evidence_cannot_promote_entire_top(self):
         spec = sample_spec(5, "translations")
         edges = [[list(a), list(b)] for a, b in all_edges(5)[:2]]
