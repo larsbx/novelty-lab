@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/larsbx/novelty-lab/blob/main/schemas/rt-route-stream-v2-p6.json",
+  "title": "Finite F5 six-influence route receipts (v2-p6)",
+  "description": "Bounded structural contract only; exact replay, SHA pin, canonical JSON and P6 face admissibility are enforced by event_stream_v2_p6.py. SHA digest is not a signature.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "spec",
+    "spec_sha256",
+    "requests",
+    "records",
+    "records_sha256",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "rt-route-stream/v2-p6"
+    },
+    "spec": {
+      "$ref": "#/$defs/spec"
+    },
+    "spec_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "requests": {
+      "oneOf": [
+        {
+          "const": "all"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/edgeRequest"
+          }
+        }
+      ]
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "records_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    }
+  },
+  "$defs": {
+    "coordinate": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "vector": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/coordinate"
+      },
+      "minItems": 8,
+      "maxItems": 8
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "update": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "offset",
+        "gain",
+        "probe",
+        "shear"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "offset": {
+          "$ref": "#/$defs/vector"
+        },
+        "gain": {
+          "$ref": "#/$defs/coordinate"
+        },
+        "probe": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "shear": {
+          "$ref": "#/$defs/vector"
+        }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "initial",
+        "updates",
+        "direction_rank",
+        "gate",
+        "semantics"
+      ],
+      "properties": {
+        "field": {
+          "const": 5
+        },
+        "initial": {
+          "$ref": "#/$defs/vector"
+        },
+        "updates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/update"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "direction_rank": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "gate": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/coordinate"
+          }
+        },
+        "semantics": {
+          "const": "F5-affine-vector-update/v1"
+        }
+      }
+    },
+    "permutation": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 5
+      }
+    },
+    "edgeRequest": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/permutation"
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "target",
+        "position",
+        "prefix",
+        "after_a",
+        "after_b",
+        "after_ab",
+        "after_ba",
+        "directions",
+        "spreads",
+        "residual",
+        "geometric_pass",
+        "effect_equal",
+        "admitted"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/permutation"
+        },
+        "target": {
+          "$ref": "#/$defs/permutation"
+        },
+        "position": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "prefix": {
+          "$ref": "#/$defs/vector"
+        },
+        "after_a": {
+          "$ref": "#/$defs/vector"
+        },
+        "after_b": {
+          "$ref": "#/$defs/vector"
+        },
+        "after_ab": {
+          "$ref": "#/$defs/vector"
+        },
+        "after_ba": {
+          "$ref": "#/$defs/vector"
+        },
+        "directions": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/vector"
+          }
+        },
+        "spreads": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/coordinate"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "residual": {
+          "$ref": "#/$defs/vector"
+        },
+        "geometric_pass": {
+          "type": "boolean"
+        },
+        "effect_equal": {
+          "type": "boolean"
+        },
+        "admitted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "labels",
+        "direction_rank",
+        "potential_swaps",
+        "audited_swaps",
+        "geometric_passes",
+        "effect_equal",
+        "admitted_swaps",
+        "blocked_effects",
+        "nonzero_null_residuals",
+        "scope"
+      ],
+      "properties": {
+        "labels": {
+          "const": 6
+        },
+        "direction_rank": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "potential_swaps": {
+          "const": 1800
+        },
+        "audited_swaps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "geometric_passes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "effect_equal": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "admitted_swaps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "blocked_effects": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "nonzero_null_residuals": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1800
+        },
+        "scope": {
+          "enum": [
+            "complete",
+            "requested-only"
+          ]
+        }
+      }
+    }
+  }
+}
