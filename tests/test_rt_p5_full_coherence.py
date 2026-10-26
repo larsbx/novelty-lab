@@ -39,6 +39,12 @@ class P5Test(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.p.requested_closure((((0,1,2,3,4),(0,)),))
 
+    def test_hexagonal_prism_and_hexagon_closure(self):
+        hexagon = next(f for f in self.p.cells[2] if len(self.p.boundary[f]) == 6)
+        prism = next(f for f in self.p.cells[3] if len(self.p.boundary[f]) == 8)
+        self.assertEqual(self.p.requested_closure((hexagon,)), (6,6,1,0,0))
+        self.assertEqual(self.p.requested_closure((prism,)), (12,18,8,1,0))
+
     def test_cube_comparison(self):
         self.assertEqual(cube_fvector(5), (32,80,80,40,10,1))
         self.assertNotEqual(cube_fvector(5), self.p.face_fvector())
