@@ -56,6 +56,12 @@ class P5Test(unittest.TestCase):
             spec=sample_spec(5,mode)
             outcome=audit_receipt(self.p,make_envelope(spec),digest(spec))
             self.assertEqual(outcome["admitted_cell_counts"],expected)
+            self.assertEqual(outcome["admitted_betti_F5"],
+                             (1,0,0,0,0) if mode=="translations"
+                             else (2,0,0,0,0))
+            self.assertEqual(outcome["admitted_boundary_ranks_F5"],
+                             (119,121,29,1) if mode=="translations"
+                             else (118,98,16,0))
             self.assertEqual(outcome["top_admitted"],mode=="translations")
             self.assertEqual(outcome["geometric_passes"],240)
 
