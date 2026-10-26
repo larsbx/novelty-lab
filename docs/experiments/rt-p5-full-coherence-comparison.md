@@ -27,7 +27,7 @@ The source first calls the existing rt-route-stream/v1 verifier with an independ
 | Frozen translations, Grassmann direction rank 2 | 240 | 240 | 150 | 30 | **Yes** |
 | Frozen translations, 2 requested edges only | 2 checked | 2 | 0 | 0 | **No** |
 
-The 24 failing swaps do not disappear when lifting to 4-dimensional coherence: they prevent attachment of **36 two-faces, 14 three-faces, and the top four-cell**. The null-vector defect is a crucial negative control: Q(residual)=0 can hold with residual != 0, so a scalar quadratic norm is not an effect equality certificate.
+The 24 failing swaps do not disappear when lifting to 4-dimensional coherence: they prevent attachment of **36 two-faces, 14 three-faces, and the top four-cell**. This has a visible homological consequence: the full frozen-additive complex has **H0 dimension 1** and no positive-dimensional F5 homology, while the state-coupled and null-defect admitted subcomplexes have **H0 dimension 2** and again no positive-dimensional F5 homology. The 24 barred swaps divide the 120 routes into two certified-commutation components (distinguished by whether influence 0 precedes influence 1). Their differential ranks are **(118,98,16,0)**, compared with **(119,121,29,1)** for the filled object. The null-vector defect is a crucial negative control: Q(residual)=0 can hold with residual != 0, so a scalar quadratic norm is not an effect equality certificate.
 
 **Separate knobs:** coherence rank is 5 influences, CW top dimension is 4, Grassmann direction rank can be 1 or 2, and materialized certificate scope is independently chosen. This is a demonstration of their non-equivalence, not an engineering speedup.
 
