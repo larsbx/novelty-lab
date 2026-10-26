@@ -17,7 +17,7 @@ VERSION = "rt-route-chunks/v1-p6"
 MAX_CHUNK_RECORDS = 32
 MAX_FRAME_BYTES = 256_000
 MAX_STREAM_BYTES = 16_000_000
-MAX_FRAMES = 128
+MAX_FRAMES = 1802  # header + up to 1800 one-record chunks + seal
 
 _HEADER_FIELDS = frozenset({
     "kind", "version", "spec", "spec_sha256", "requests",
