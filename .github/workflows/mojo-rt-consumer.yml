@@ -6,7 +6,8 @@ on:
       - "vendor/mojo/**"
       - "experiments/rt/**"
       - "tests/fixtures/hyperbolic_rt_v1.txt"
-      - "tests/test_mojo_rt_estate.py"
+      - "tests/fixtures/gram_geometry_v1.txt"
+      - "tests/test_mojo_rt*estate.py"
       - "vendored.toml"
       - "ESTATE.toml"
       - ".github/workflows/mojo-rt-consumer.yml"
@@ -16,7 +17,8 @@ on:
       - "vendor/mojo/**"
       - "experiments/rt/**"
       - "tests/fixtures/hyperbolic_rt_v1.txt"
-      - "tests/test_mojo_rt_estate.py"
+      - "tests/fixtures/gram_geometry_v1.txt"
+      - "tests/test_mojo_rt*estate.py"
       - "vendored.toml"
       - "ESTATE.toml"
       - ".github/workflows/mojo-rt-consumer.yml"
@@ -33,7 +35,7 @@ jobs:
         run: |
           python vendor/vendoring/check_vendored_sync.py
           python tools/estate_pins.py
-      - name: Replay the same 48 vectors through independent Python
-        run: python -m unittest discover -s tests -p test_mojo_rt_estate.py -v
+      - name: Replay RT, Gram and route fixtures through independent Python
+        run: python -m unittest discover -s tests -p 'test_mojo_rt*estate.py' -v
       - name: Compile and execute vendored RT in Mojo with MAX
         run: pixi run --manifest-path experiments/rt/pixi.toml conformance

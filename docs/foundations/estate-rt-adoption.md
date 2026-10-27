@@ -1,8 +1,8 @@
 # Pinned Mojo rational-trigonometry kernels from the estate
 
-**Scope:** reusable exact split-eight-space rational trigonometry. **Status:** immutable source snapshot vendored for code reuse; consumer verification depends on GitHub CI. No research claim is promoted.
+**Scope:** reusable exact split-eight-space rational trigonometry. **Status:** immutable source snapshot vendored for code reuse; see the dated consumer evidence below. No research claim is promoted.
 
-**Source:** `larsbx/finite-math-kernels`, merged [PR #78](https://github.com/larsbx/finite-math-kernels/pull/78), immutable commit `194780a6d314c972c7d066d3da2cae8e21231cba`.
+**Current Mojo source:** `larsbx/finite-math-kernels`, merged [PR #84](https://github.com/larsbx/finite-math-kernels/pull/84), immutable commit `3bb94d317b8f0712591b33f9657cf3a0e54207cd`. Earlier release reviews below retain their historical pins.
 
 ## Authority boundary
 
@@ -10,6 +10,7 @@ Reusable exact finite-field, tensor and projective mathematics is **Mojo-owned i
 
 - `vendor/mojo/finite_exact` supplies `ExactField`, `FpField[p]` and their exact number substrate;
 - `vendor/mojo/projective_limits` supplies hyperbolic norm/polarization, guarded spreads, reflections, one-inversion spread batches and their scalar reference path;
+- `vendor/mojo/projective_limits/rt_route.mojo` supplies affine eight-vector steps, whole-vector swap residual/equality, guarded ray/rank-two geometry and prefix-local certificate admission;
 - `vendor/mojo/parallel_fold` supplies MAX's deterministic CPU-thread-pool map-fold used by the exact shell census;
 - `experiments/rt/independent_reference.py` is a **non-authoritative Python oracle**, not the canonical mathematical implementation;
 - `tests/fixtures/hyperbolic_rt_v1.txt` is byte-identical to the upstream 48-case corpus at the pinned source commit; `tests/test_mojo_rt_estate.py` checks its SHA and replays every row through the independent Python oracle.
@@ -67,8 +68,58 @@ For Grassmannians, Aschbacher geometric subgroups, tensor stabilizers, Cayley mu
 
 ## Gram/exterior geometry extension (pinned)
 
-The estate's [Gram geometry contract](https://github.com/larsbx/finite-math-kernels/blob/734f60a04a6cf8a68fab74367acc6b33d0e02cd9/docs/theorems/gram-minor-rt-contract.md) and exact `projective_limits.gram_geometry` module are pinned at `734f60a04a6cf8a68fab74367acc6b33d0e02cd9`.
+The estate's [Gram geometry contract](https://github.com/larsbx/finite-math-kernels/blob/734f60a04a6cf8a68fab74367acc6b33d0e02cd9/docs/theorems/gram-minor-rt-contract.md) and exact `projective_limits.gram_geometry` module were introduced here at `734f60a04a6cf8a68fab74367acc6b33d0e02cd9`. The current pin above preserves those module bytes and the 18-case fixture unchanged.
 
 The new reusable kernel supplies 2x2 and 3x3 Gram determinants, guarded normalized Gram ratios, and **56 coordinate 3-minors** to decide when three vectors lie in a genuine 2-plane, rather than incorrectly inferring planarity from a degenerate Gram matrix. The corpus `tests/fixtures/gram_geometry_v1.txt` is byte-identical to the upstream 18-case fixture and is replayed by the **independent** Python consumer test, while `experiments/rt/smoke.mojo` exercises the pinned Mojo implementation directly. It includes a non-planar 3-space with Gram determinant zero (isotropic radical) and a line tangent to the absolute whose ordinary two-reference-point cross-ratio is not defined.
 
 No mathematical claim is promoted. The statement `Gram determinant zero ⇒ rank≤2` is **false** over the split form; the exterior-minor API is the faithful guard. The consumer retains its pre-existing claim governance and Cayley–Dickson model; the shared numerical implementation remains upstream in Mojo.
+
+## October 27 RT route consumer increment
+
+The three existing Mojo packages are re-pinned together at the accepted #84
+merge. Only the public `projective_limits/rt_route.mojo` is added, with the
+already selected transitive dependencies. Sources are copied from the commit,
+re-pinned with `vendor/vendoring/check_vendored_sync.py pin`, and the estate
+digest is regenerated with `tools/estate_pins.py --write`. No `finite_graph`
+package or unmerged #85 source is imported. Historical Python policy package
+pins remain as recorded.
+
+`experiments/rt/route_vectors.py` adapts the **existing**
+`event_stream_v2_p6.sample_spec` and `event_stream_v1.compute_record` oracle to
+temporary differential fixtures. It adds no field arithmetic. The native
+`route_smoke.mojo` replays each actual common prefix and calls upstream
+`affine_step8`, `swap_residual8`, `swap_equal8`, ray/Gram spreads and
+`certified_swap8`. It compares each eight-coordinate residual, spread and
+admission against Python, and checks all 720 whole-route endpoints. Four
+cases each exhaust all 1,800 adjacent swaps:
+
+| Update model | Direction rank | Geometric passes | Exact equal effects / admitted | Nonzero null residuals |
+| --- | ---: | ---: | ---: | ---: |
+| translations | 1 | 1,800 | 1,800 | 0 |
+| scalar_coupled | 1 | 1,800 | 1,680 | 0 |
+| null_defect | 1 | 1,800 | 1,680 | 120 |
+| translations | 2 | 1,800 | 1,800 | 0 |
+
+These are the exact oracle expectations, checked by the Python tests; actual
+native execution evidence is recorded in
+[`docs/experiments/mojo-rt-route-consumer.md`](../experiments/mojo-rt-route-consumer.md).
+The native gate also refuses altered prefix/residual/admission expectations,
+duplicate contexts and truncated fixtures. Fixture bytes are temporary test
+inputs, not a new canonical receipt encoding or an authenticated transport.
+
+Run `pixi run --manifest-path experiments/rt/pixi.toml conformance` for the
+native replay together with the prior vector and MAX shell gates. The existing
+Mojo/MAX workflow runs all four-case comparisons and native negative checks;
+the Python suite independently cross-checks fixture coverage and pilot census
+agreement. Lean, TLC and estate-policy jobs continue to verify their existing
+proof, dependency and provenance contracts; they do not thereby prove the
+Mojo compiler or the geometry-to-effect implication.
+
+Geometric admissibility alone never admits an operational edge. Exact
+whole-vector equality at the actual prefix is also required. Higher cells
+still require all signed boundary certificates, under the existing Python
+consumer. P6 signed incidence, sparse square closure, full f-vector and
+`boundary²=0` native integration remain separate tasks under issue #52 after
+upstream #85 acceptance. Canonical JSON, SHA-256, chunk seals and receipt
+replay remain Python-owned. No full P6 port, generic permutohedral theorem,
+optimizer equivalence or finite-field-to-real training result is asserted.
