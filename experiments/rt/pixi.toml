@@ -12,7 +12,12 @@ max-core = "==26.6.0.dev2026090805"
 mojo = "==1.1.0.dev2026090805"
 mojo-compiler = "==1.1.0.dev2026090805"
 
+[activation.env]
+# Supported toolchain opt-out; verification requires no telemetry export.
+MODULAR_TELEMETRY_ENABLED = "0"
+
 [tasks]
 smoke = "mojo run -I ../../vendor/mojo smoke.mojo"
 vectors = "mojo run -I ../../vendor/mojo replay_vectors.mojo"
-conformance = { depends-on = ["vectors", "smoke"] }
+routes = "python route_vectors.py --native"
+conformance = { depends-on = ["vectors", "smoke", "routes"] }

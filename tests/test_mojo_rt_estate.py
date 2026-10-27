@@ -19,7 +19,7 @@ GUARDS_CONTRACT = "Mojo RT estate source pin and independent 48-vector exact con
 ROOT = pathlib.Path(__file__).parents[1]
 FIXTURE = ROOT / "tests/fixtures/hyperbolic_rt_v1.txt"
 UPSTREAM_FIXTURE_SHA1 = "9dc55c38af391e71deb2f2b2f0c898e7084c8cad"
-UPSTREAM_COMMIT = "734f60a04a6cf8a68fab74367acc6b33d0e02cd9"
+UPSTREAM_COMMIT = "3bb94d317b8f0712591b33f9657cf3a0e54207cd"
 
 
 class TestMojoEstateRT(unittest.TestCase):

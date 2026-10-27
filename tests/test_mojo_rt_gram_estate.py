@@ -15,7 +15,7 @@ from experiments.rt.independent_reference import SplitQuadratic8, triple_spread_
 GUARDS_CONTRACT = "Immutable Mojo Gram/minor source and 18-case exact differential vectors"
 
 ROOT=pathlib.Path(__file__).parents[1]
-SOURCE="734f60a04a6cf8a68fab74367acc6b33d0e02cd9"
+SOURCE="3bb94d317b8f0712591b33f9657cf3a0e54207cd"
 FIXTURE=ROOT/"tests/fixtures/gram_geometry_v1.txt"
 FIXTURE_BLOB="bd33bd5b82077a7a70a5a65f372809ea54a1f6ce"
 
