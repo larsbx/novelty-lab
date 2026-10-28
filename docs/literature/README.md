@@ -23,6 +23,10 @@ they do not add mathematical authority or records to this repository's proof led
 |---|---|---|
 | [N6 — Cartesian graph-product calculus](../candidates/N6.md) | [Gate](n6-cartesian-calculus-2026-10-08.md), [claim/source comparison](n6-prior-art-2026-10-08.md), [search log](n6-search-log-2026-10-08.md), [bibliography](n6-references.bib), read 2026-10-08 | **Redirect:** fiber-capture is Cartesian S-prime; characterization/recognition and abstract algebra are prior art; remaining exact cycle/bridge targets require further gates. |
 
+## Cross-disciplinary context surveys
+
+The [RT/tensor route-auditing survey](../surveys/rt-tensor-route-auditing-context-2026-10-28.md) (2026-10-28) consolidates quadratic/Cayley foundations, semilinear and tensor geometry, exact P3–P6 route coherence, persistent homology/leader selection and training-audit limits. Its [bounded stop/go gate](rt-tensor-route-audit-context-2026-10-28.md) records **redirect / narrowed continuation**. The survey is contextual research, **not** a literature-clearance substitute for new theorem-facing experiments, an accepted proof, or a novelty finding.
+
 ## File name and format
 
 `docs/literature/<topic>-<YYYY-MM-DD>.md`, with these sections in order:
