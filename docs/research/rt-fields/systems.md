@@ -6,7 +6,7 @@
 
 **Object:** an existing `F5^8` null-defect P4 swap certificate, selected deterministically from the 36 contexts, then mutated by setting the nonzero residual to the zero vector and changing effect booleans. SHA-256 is applied to a deterministic local JSON test representation of the certificate.
 
-**Hypothesis/negative control:** original certificate passes deterministic recomputation; forged certificate fails despite the attacker being able to calculate a completely valid SHA-256 digest of the forged bytes. The independently pinned original digest also differs. A hash is not a signature and cannot attest trusted execution.
+**Hypothesis/negative controls:** original certificate passes deterministic recomputation; forged certificate fails despite the attacker being able to calculate a completely valid SHA-256 digest of the forged bytes. The independently pinned original digest also differs. A 35-of-36 requested-only trace also passes replay for every included record but is rejected if asserted to be a *complete* P4 audit. A hash is not a signature and cannot attest trusted execution.
 
 **Literature:** [RT route receipt replay gate](../../literature/rt-route-stream-replay-2026-10-26.md), [bounded field pilot gate](../../literature/rt-field-bounded-pilots-2026-10-28.md); NIST FIPS 180-4 provides the hash algorithm, not the claimed provenance model.
 
