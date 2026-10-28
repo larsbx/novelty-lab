@@ -15,7 +15,7 @@ Selected closest works; bibliographic locators were inspected in previous reposi
 
 | Primary source | Locator | Relation / boundary |
 | --- | --- | --- |
-| N. J. Wildberger, *Rational Trigonometry in Higher Dimensions and a Diagonal Rule* (2017) | KoG 21, Theorems 4–5; https://master.grad.hr/hdgg/kog_stranica/kog21/KoG21.pdf | Quadratic spread and planar triple-spread; arbitrary 8D triples are not covered. |
+| N. J. Wildberger, *Rational Trigonometry in Higher Dimensions and a Diagonal Rule for 2-planes in Four-dimensional Space* (2017) | KoG 21, Theorems 4–5 **and §“Cross matrices, cross and det-cross”**; https://doi.org/10.31896/k.21.2 | Planar triple-spread does not extend unrestrictedly to 8D; **higher-rank normalized trace cross/spread and determinant cross are already defined in this primary source**, so a normalized Gram determinant ratio is not original. |
 | R. D. Schafer, *An Introduction to Nonassociative Algebras* (1966) | Ch. III; https://www.math.uci.edu/~brusso/Schaferbook.pdf | Alternativity, Artin and Moufang are classical; erroneous in-thread associator lemma must not be reused. |
 | A. Postnikov, *Permutohedra, Associahedra, and Beyond* (2009) | Props. 2.5–2.6; https://math.mit.edu/~apost/papers/permutohedron_full.pdf | Finite ordered-partition face posets already known; dimensions and incidences are not new. |
 | P. Godefroid, *Partial-Order Methods for the Verification of Concurrent Systems* (1996) | Chs. 3–4; https://doi.org/10.1007/3-540-60761-7 | Operational independence must be shown; geometric spread alone does not permit swap equality. |
@@ -40,7 +40,7 @@ A **guarded spread** is a rational invariant of non-null projective rays. **Semi
 2. Same-sign Zorn cross-product multiplication fails norm composition under the circulated convention.
 3. Nonzero null swap residuals must fail whole-vector equality.
 4. Spread gate passing does not imply update operators commute or that output distributions are unchanged.
-5. A single Gram determinant ratio does not fully classify pairs of higher-rank planes.
+5. A single Gram determinant ratio does not fully classify pairs of higher-rank planes; Wildberger's **det-cross** is prior art, distinct from his normalized-trace higher-rank spread (trace requires invertible rank in the field).
 6. A witness-hit constraint does not necessarily remove every representative of a homology class.
 7. A quantized or finite-field projected ML trace cannot by itself establish properties of the original floating execution.
 
