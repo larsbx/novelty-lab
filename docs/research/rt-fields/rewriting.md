@@ -10,7 +10,7 @@
 
 **Literature:** [state-dependent coherence gate](../../literature/state-dependent-rt-coherence-2026-10-26.md), [P4 primary-source gate](../../literature/p4-permutohedral-coherence-2026-10-26.md), [bounded field pilot gate](../../literature/rt-field-bounded-pilots-2026-10-28.md). Trace independence (Mazurkiewicz/Godefroid) and higher rewrite coherence are not claimed anew.
 
-**Procedure:** reuse `P4.d1d2_zero`, `d2d3_zero`, and `state_dependent_coherence_pilot.audit` without a second general incidence implementation. Report actual counts independently of the mathematics pilot.
+**Procedure:** reuse `P4.d1d2_zero`, `d2d3_zero`, and `state_dependent_coherence_pilot.audit` without a second general incidence implementation. The **new prefix-stability falsifier** uses U0(x)=x+(2+x1²)d0 and U1(x)=x+d1: over F5 they commute at a prefix with x1=2, but not at the origin x1=0, even though both transported projective direction spreads equal zero and are non-null. This is a bounded prefix-conditioned witness, not a general confluence theorem.
 
 **Reproduce:** `python -m experiments.rt.field_pilots` and the `test_theoretical_cs_geometry_does_not_authorize_swap` contract test.
 
