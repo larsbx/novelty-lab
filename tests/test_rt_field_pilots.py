@@ -35,6 +35,10 @@ class TestFieldSeparatedRTPilots(unittest.TestCase):
         self.assertEqual(out["state_dependent"]["certified_edges"], 30)
         self.assertEqual(out["state_dependent"]["blocked_effect_edges"], 6)
         self.assertFalse(out["state_dependent"]["top_3_cell"])
+        self.assertFalse(out["prefix_dependent"]["base"]["equal"])
+        self.assertTrue(out["prefix_dependent"]["shifted"]["equal"])
+        self.assertEqual(out["prefix_dependent"]["base"]["spread"], 0)
+        self.assertEqual(out["prefix_dependent"]["shifted"]["spread"], 0)
 
     def test_topology_witness_hit_is_not_class_elimination(self):
         out = topology.run()
@@ -50,6 +54,7 @@ class TestFieldSeparatedRTPilots(unittest.TestCase):
         out = systems.run()
         self.assertTrue(out["genuine_replayed"])
         self.assertTrue(out["forged_rejected"])
+        self.assertTrue(out["incomplete_trace_rejected"])
         self.assertTrue(out["forged_can_recompute_untrusted_digest"])
         self.assertTrue(out["independently_pinned_digest_mismatch"])
 
