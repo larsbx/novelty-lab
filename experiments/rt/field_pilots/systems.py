@@ -20,6 +20,13 @@ def digest(cert):
 def run():
     mode, gate, direction = "null_defect", frozenset((0, 3)), DirectionModel("ray", (0,))
     all_certs = certificates(P4(), mode, gate, direction)
+    # Present-only replay is not evidence of a complete 36-edge P4 audit.
+    kept = dict(list(all_certs.items())[1:])
+    presented_valid = all(verify_swap(cert, mode, gate, direction)
+                          for cert in kept.values())
+    incomplete_rejected = presented_valid and len(kept) != len(P4().edge_list)
+    if not incomplete_rejected:
+        raise AssertionError("missing edge wrongly certified as complete")
     victim = next((c for c in all_certs.values()
                    if c.geometric_pass and c.residual != ORIGIN and F.norm(c.residual) == 0), None)
     if victim is None or not verify_swap(victim, mode, gate, direction):
@@ -30,7 +37,7 @@ def run():
     if verify_swap(forged, mode, gate, direction) or own_hash == expected:
         raise AssertionError("forged certificate accepted")
     return {"discipline": "software-verification-security", "status": "bounded-experiment",
-            "field": "F5", "tested_certificates": 2, "genuine_replayed": True,
+            "field": "F5", "tested_certificates": 2, "genuine_replayed": True, "incomplete_trace_rejected": incomplete_rejected,
             "forged_rejected": True, "nonzero_isotropic_residual": True,
             "forged_can_recompute_untrusted_digest": len(own_hash) == 64,
             "independently_pinned_digest_mismatch": own_hash != expected,
