@@ -4,6 +4,10 @@
 **Scope:** odd-characteristic finite quadratic spaces, spread-controlled route complexes, semilinear/tensor refinements, deterministic replay, homology-based leader selection, and possible training-dynamics consumers.  
 **Provenance:** adapted from the 2026-10-28 Deep Research report *RT and Tensor Route-Auditing Literature Review*, cross-checked against this repository's dated literature gates. The original report is exploratory; statements and bibliography below have been tightened, with known incorrect or unsupported claims explicitly withheld. This is **not a complete priority search** or independent review of every cited proof.
 
+## Discipline boundaries (field-specific evidence)
+
+This document is an **interdisciplinary bibliography**, not a shared verification ladder. The constituent claims have been separated into [discipline-specific research notes](fields/README.md): [mathematics](fields/mathematics.md), [theoretical CS and topology](fields/theoretical-cs-topology.md), [systems verification and security](fields/systems-verification.md), [stochastic processes and finite control](fields/stochastic-control.md), [empirical machine learning](fields/machine-learning.md), and [cross-field bridge contracts](fields/bridges.md). A mathematical theorem may be established without proving a particular program correct; a bounded software/system result may be established without proving every conjectural tensor theorem; empirical training findings need their own measurement evidence. **None automatically inherits another field's proof status.**
+
 ## 1. Program and evidence boundary
 
 The prospective interface is a finite quadratic space \((V,Q)\) over \(\mathbb F_q\), \(q\) odd. Write \(B_2(x,y)=Q(x+y)-Q(x)-Q(y)\). On non-null rays, define
