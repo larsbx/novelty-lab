@@ -92,17 +92,34 @@ class TestOrderedIntersection(unittest.TestCase):
     """Independent enumeration checks the finite contracts in the survey."""
 
     def test_raw_witness_fails_with_ties(self):
+        """Count one labelled edge versus three raw and one charged witnesses.
+
+        Three identical intervals give raw counts (1, 1, 1) and charged counts
+        (1, 0, 0), pinning the tie counterexample and smallest-index repair.
+        This single fixture does not establish a universal witness identity.
+        """
         families = [[(1, 2)]] * 3
         self.assertEqual(len(hyperedges(families)), 1)
         self.assertEqual(lambda_raw(families), (1, 1, 1))
         self.assertEqual(lambda_charged(families), (1, 0, 0))
 
     def test_witness_distinct_anchor(self):
+        """Compare raw and charged counts with (0, 1, 0) for one triple.
+
+        The unique maximum left endpoint is in part 1; this fixture guards
+        agreement of the two witness rules when that anchor has no tie.
+        """
         families = [[(0, 5)], [(2, 4)], [(1, 3)]]
         self.assertEqual(lambda_raw(families), (0, 1, 0))
         self.assertEqual(lambda_charged(families), (0, 1, 0))
 
     def test_charged_identity_exhaustive(self):
+        """Compare summed charged witnesses with enumerated labelled edges.
+
+        Exhaust all closed intervals on {1, 2}, allowing repeated labels,
+        for sizes (1, 1), (2, 2), (1, 2, 1) and (2, 2, 2). Equality guards
+        the tie-broken counting identity on precisely these finite domains.
+        """
         # Exhaustive, including repeated labelled intervals from a 2-point order.
         choices = [(1, 1), (1, 2), (2, 2)]
         for sizes in ((1, 1), (2, 2), (1, 2, 1), (2, 2, 2)):
@@ -115,6 +132,13 @@ class TestOrderedIntersection(unittest.TestCase):
                                  len(hyperedges(families)), (sizes, flat))
 
     def test_tagged_auxiliary_bijection_exhaustive(self):
+        """Compare flattened auxiliary edges with original labelled triples.
+
+        Exhaust size-(2, 2, 2) families on {1, 2}; equality of edge sets
+        guards the tagged-intersection bijection on this finite domain.
+        A repeated-interval fixture also checks that two tags survive even
+        when their geometric intersections coincide.
+        """
         choices = [(1, 1), (1, 2), (2, 2)]
         for flat in product(choices, repeat=6):
             families = [flat[:2], flat[2:4], flat[4:]]
@@ -124,6 +148,12 @@ class TestOrderedIntersection(unittest.TestCase):
         self.assertEqual(len(tagged_intersections([[(1, 2), (1, 2)], [(1, 2)]])), 2)
 
     def test_tensor_cannot_preserve_small_forbidden_clique(self):
+        """Compute four original edges, no K(2,2,2), and an auxiliary K(2,2).
+
+        This explicit interval fixture guards a counterexample to transferring
+        the same forbidden-clique threshold through naive tensor grouping;
+        it does not reject tagged grouping with a separately justified bound.
+        """
         # A K2,2 after grouping the first two parts does not force K2,2,2.
         families = [[(1, 1), (2, 2)], [(1, 2), (4, 4)],
                     [(1, 2), (1, 3)]]
@@ -135,6 +165,12 @@ class TestOrderedIntersection(unittest.TestCase):
                             for tag in ((0, 0), (0, 1)) for i in (0, 1)))
 
     def test_box_helly_two_exact(self):
+        """Compare pairwise box intersection with common triple intersection.
+
+        Exhaust the 8,436 unordered triples with repetition from all 36 boxes
+        over the order {1, 2, 3} squared. Boolean equality guards Helly-2 for
+        these triples only; it is not a proof for arbitrary box families.
+        """
         intervals = [(a, b) for a in range(1, 4) for b in range(a, 4)]
         boxes = tuple(product(intervals, repeat=2))
         self.assertEqual(len(boxes), 36)
@@ -147,6 +183,13 @@ class TestOrderedIntersection(unittest.TestCase):
         self.assertEqual(n, 8436)
 
     def test_small_interval_bound_only(self):
+        """Compare K(2,...,2)-free edge counts with 4**(r-1)*2*Sigma(sizes).
+
+        Exhaust labelled interval families on {1, 2} with sizes (2, 2),
+        (2, 2, 2) and (3, 3), and require strict inequality only when no
+        forbidden clique exists. This is a bounded inequality sanity check,
+        not an exact counting identity or proof of an asymptotic bound.
+        """
         # A finite sanity check, not a tight asymptotic bound.
         choices = [(1, 1), (1, 2), (2, 2)]
         for sizes in ((2, 2), (2, 2, 2), (3, 3)):

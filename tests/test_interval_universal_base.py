@@ -40,7 +40,12 @@ def sigma(sizes):
 class TestIntervalUniversalBase(unittest.TestCase):
 
     def test_point_interval_lopsided_with_ties(self):
-        """All point configurations (incl. ties), interval labels, s/t up to 3."""
+        """Compare point-interval edges with m*(t-1)+3*n*(s-1) when K(s,t)-free.
+
+        Exhaust labelled positions on {0, 1, 2}, m=1..3, n=1..2 and s,t=1..3,
+        including ties and repeated intervals. This bounds the enumerated
+        incidence graphs only; it does not prove the unbounded base lemma.
+        """
         count = 0
         for m in range(1, 4):
             for n in range(1, 3):
@@ -62,7 +67,12 @@ class TestIntervalUniversalBase(unittest.TestCase):
         self.assertGreater(count, 1000)
 
     def test_interval_endpoint_double_count(self):
-        """Every intersecting labelled pair has two tagged endpoint witnesses."""
+        """Compare both tagged endpoint incidence counts with twice the edges.
+
+        Exhaust two intervals in each part over {0, 1, 2}, including repeats
+        and degenerate intervals; their summed count must be at least 2*e.
+        This finite inequality guards endpoint doubling, not exact equality.
+        """
         for aa in product(INTERVALS, repeat=2):
             for bb in product(INTERVALS, repeat=2):
                 edges = {(i, j) for i, A in enumerate(aa)
@@ -74,7 +84,12 @@ class TestIntervalUniversalBase(unittest.TestCase):
                 self.assertGreaterEqual(ga + gb, 2 * len(edges))
 
     def test_interval_interval_kst_bound(self):
-        """Endpoint-lifted base lemma for all 2x2 labelled interval choices."""
+        """Compare interval edges with 4*(2*(t-1)+2*(s-1)) when K(s,t)-free.
+
+        Exhaust size-(2, 2) labelled families over {0, 1, 2} and s,t=1..3.
+        This is a bounded regression of the endpoint-lifted inequality,
+        not an unbounded proof or a sharpness claim.
+        """
         for aa in product(INTERVALS, repeat=2):
             for bb in product(INTERVALS, repeat=2):
                 edges = {(i, j) for i, A in enumerate(aa)
@@ -86,7 +101,14 @@ class TestIntervalUniversalBase(unittest.TestCase):
                                                  4*(2*(t-1)+2*(s-1)))
 
     def test_induction_threshold_monotonicity(self):
-        """The exact r-1 threshold dominates every restricted part-size tuple."""
+        """Compute B=4**(r-2)*(t-1)*Sigma(prefix), T=B+1 and induction bounds.
+
+        For r=3..5, t=2,3 and part sizes 1..3, exhaust positive restricted
+        prefixes and check B>=1, B>=B_restricted, T>B_restricted and
+        4*((t-1)*prod(prefix)+n_last*(T-1))<=4**(r-1)*(t-1)*Sigma(sizes).
+        Retain the earlier B-1 comparison as well. These finite arithmetic
+        checks guard the strict clique-forcing threshold and bookkeeping only.
+        """
         for r in (3, 4, 5):
             for t in (2, 3):
                 for sizes in product(range(1, 4), repeat=r):
@@ -96,12 +118,25 @@ class TestIntervalUniversalBase(unittest.TestCase):
                     for restricted in product(*(range(1, n+1) for n in prefix)):
                         self.assertGreaterEqual(
                             threshold, 4**(r-2)*(t-1)*sigma(restricted))
+                        self.assertGreater(
+                            threshold+1, 4**(r-2)*(t-1)*sigma(restricted))
                     left = 4*((t-1)*prod(prefix) + sizes[-1]*(threshold-1))
                     right = 4**(r-1)*(t-1)*sigma(sizes)
                     self.assertLessEqual(left, right)
+                    # The non-strict induction bound needs clique threshold
+                    # T=B+1, hence T-1=B in the interval-incidence estimate.
+                    corrected_left = 4*((t-1)*prod(prefix) + sizes[-1]*threshold)
+                    self.assertLessEqual(corrected_left, right)
 
     def test_unbalanced_matching_lower_construction(self):
-        """K-free construction realizes at least Sigma_r/r, not a global novelty claim."""
+        """Compare constructed edges with q*prod(other sizes) and Sigma(sizes)/r.
+
+        For the four listed size tuples and t=2,3,5, choose a smallest part
+        and q=min(n_min,t-1). Enumerated edges must equal the displayed
+        product and satisfy r*e>=Sigma; q<t guards the construction's clique
+        obstruction. These fixtures establish neither a general lower-bound
+        theorem nor novelty.
+        """
         for sizes in ((1, 2), (1, 7, 3), (2, 3, 5), (1, 4, 9, 2)):
             for t in (2, 3, 5):
                 k = sizes.index(min(sizes))

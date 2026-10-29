@@ -1,6 +1,6 @@
 # Universal interval-intersection hypergraph bound: complete finite-order derivation
 
-**Status: written mathematical proof, pending independent review.** This is a
+**Status:** written mathematical proof, pending independent review. This is a
 self-contained rederivation of Appendix A of Chao–Dong–Liu–Shu–Wang,
 *arXiv:2604.20815v1* (2026-04-22), with an explicit finite-linear-order and
 tied-endpoint argument, and an elementary refinement replacing the published
@@ -150,6 +150,7 @@ keep the pair
 \]
 Even if \(J_\alpha=J_\beta\), different tags \(\alpha\ne\beta\) are different
 vertices of \(C\). Let \(M=|C|\le\prod_{i<r}n_i\).
+If \(M=0\), then \(e(H)=0\) and (U) is immediate; hence assume \(M\ge1\).
 Build an ordinary bipartite interval intersection graph \(G\) between
 \(C\) and \(A_r\).
 
@@ -160,8 +161,11 @@ The maps \((\alpha,I_r)\mapsto(I_1,\ldots,I_r)\) and its inverse prove
 
 Set the integer threshold
 \[
- T=4^{r-2}(t-1)\Sigma_{r-1}(n_1,\ldots,n_{r-1}). \tag{4}
+ T=1+4^{r-2}(t-1)\Sigma_{r-1}(n_1,\ldots,n_{r-1}). \tag{4}
 \]
+The extra one is essential: the induction hypothesis bounds the edge count
+by a non-strict inequality, so forcing a clique requires strictly exceeding
+that bound.
 
 **Claim: \(G\) has no \(K_{T,t}\).**
 Suppose instead that \(T\) distinct tagged intersections \(J_{\alpha}\)
@@ -173,7 +177,7 @@ For each \(i<r\), let \(A_i'\subseteq A_i\) be the set of original
 tuple edges. Thus
 \[
  e(H')\ge T
- \ge4^{r-2}(t-1)\Sigma_{r-1}(n'_1,\ldots,n'_{r-1}), \tag{5}
+ >4^{r-2}(t-1)\Sigma_{r-1}(n'_1,\ldots,n'_{r-1}), \tag{5}
 \]
 by coordinatewise monotonicity of \(\Sigma_{r-1}\).
 
@@ -251,8 +255,9 @@ not an independent novelty claim.
    lemma to \(2m\) and \(2n\) endpoints, not \(m,n\), gives corrected
    point-incidence factors.
 5. **Source repair (Proposition A.3).** The inductive threshold is
-   \(4^{r-2}t\Sigma_{r-1}\) in the published version (or
-   \(4^{r-2}(t-1)\Sigma_{r-1}\) above); the paper's later
+   \(4^{r-2}t\Sigma_{r-1}\) in the published strict-bound version. For
+   the non-strict refined bound above it is
+   \(1+4^{r-2}(t-1)\Sigma_{r-1}\); the paper's later
    \(4^{r-1}\)-threshold comparison does not follow as written.
 6. The step from \(t\) to \(t-1\) here is the direct integer refinement
    of the same block-counting proof and should not be represented as a
