@@ -260,8 +260,8 @@ not an independent novelty claim.
 
 **Reproduce finite controls:**
 
-    python3 -m unittest tests.test_ordered_intersection -v
-    python3 -m unittest tests.test_interval_universal_base -v
+    python3 -m unittest discover -s tests -p 'test_ordered_intersection.py' -v
+    python3 -m unittest discover -s tests -p 'test_interval_universal_base.py' -v
 
 The controls cover finite configurations only; the displayed proofs are
 mathematical text **pending an independent proof audit**.
