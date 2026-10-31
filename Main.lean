@@ -1,3 +1,4 @@
+import NoveltyLab.IntervalBound
 import NoveltyLab.SelfCheck
 import NoveltyLab.IntrinsicSelectionF7
 import NoveltyLab.FourierPlacementF7

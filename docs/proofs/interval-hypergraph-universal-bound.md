@@ -9,6 +9,15 @@ induction architecture is new. The coefficient refinement is **not** a
 novelty claim or an independently reviewed theorem. Literature gate:
 [2026-10-29](../literature/hypergraph-intersections-2026-10-29.md).
 
+## Independent audit supplement (2026-10-31)
+
+The [independent reconstruction and finite/Lean evidence](../audits/interval-bound-independent-2026-10-31.md)
+records no defect in the stated bound, validates the `t-1` counting and
+`B+1` threshold, and gives a separate sliding-window strengthening pending
+further review. It states exactly which finite combinatorial interfaces Lean
+checks and which links in the arbitrary-r induction remain written proofs.
+This does not assert human referee certification, novelty, or ledger promotion.
+
 ## Definitions and main statement
 
 Let \(L\) be a nonempty finite totally ordered set. An **interval** is
@@ -269,4 +278,5 @@ not an independent novelty claim.
     python3 -m unittest discover -s tests -p 'test_interval_universal_base.py' -v
 
 The controls cover finite configurations only; the displayed proofs are
-mathematical text **pending an independent proof audit**.
+mathematical text; the linked independent audit records its verdict and
+remaining formalization and review limits.
