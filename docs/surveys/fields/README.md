@@ -14,6 +14,10 @@ This program contains different disciplines, not one escalating proof ladder. **
 | [Machine learning and empirical training](machine-learning.md) | optimizer order, measured performance, reproduction, generalization and robustness | transparent experimental design, hardware/software provenance, statistical reporting and independent replication | a training-performance theorem from a finite-field surrogate |
 | [Interdisciplinary interface contracts](bridges.md) | transfers between the above representations | separate bridge statement with explicit assumptions and targeted evidence | importing the strongest verification label from either side |
 
+## First SOP-scaffolded empirical packets (2026-10-28)
+
+The [per-field research packets](../../research/rt-fields/README.md) now hold seven independent, **bounded** consumer pilots: guarded Gram defects, formal versus operational P4 rewriting, a three-square homology cylinder, forged receipt rejection, exact rational scheduling, order-dependent rational optimizers, and a nonfaithful mod-5 bridge falsifier. The [literature stop/go gate](../../literature/rt-field-bounded-pilots-2026-10-28.md) precedes the code. The runnable fixture suite is `python -m experiments.rt.field_pilots` with `tests/test_rt_field_pilots.py`. These results have separate evidential ceilings, not one global proof ranking.
+
 ## Independent promotion and reporting
 
 Every claim states **field, object, scope, method, evidence and limitations**. A classical mathematical statement may be proved and cited while a corresponding Mojo function remains untested; conversely, a finite-route program may pass exhaustive regression for a fixed implementation without proving a general theorem. Neither conclusion is internally contradictory. A CS correctness theorem is possible and valuable when a formal specification is fixed; **CS is not categorically unprovable**. Empirical ML hypotheses generally require observations, not a forced mathematical proof.
