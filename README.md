@@ -21,6 +21,21 @@ The execution order is N1 → N3 → N2 → N4 → N5. See
 [the calibration policy](docs/calibration.md) and the per-candidate dossiers in
 [docs/candidates](docs/candidates).
 
+## Arithmetic research candidates
+
+| ID | Direction | Status | First gate |
+|---|---|---|---|
+| [N7](docs/candidates/N7.md) | Set-valued, multiset-valued and framed projective arithmetic | candidate | Compare the three contracts on shared finite-field fixtures |
+| [N8](docs/candidates/N8.md) | Deontic evidence and duty arithmetic | candidate | Specify scoped evidence merge, conflict handling and duty identity |
+| [N9](docs/candidates/N9.md) | Subspace arithmetic | candidate | Audit span, intersection and exterior witness contracts |
+| [N10](docs/candidates/N10.md) | Relation arithmetic | candidate | Define finite action composition and intermediate witnesses |
+| [N11](docs/candidates/N11.md) | Certificate arithmetic | candidate | Specify typed replay and composition boundaries |
+
+Each direction starts with a dated prior-art check. Future replay
+receipts record the exact finite domain, revision, command and output
+digest. N8 stages a publication workflow combining evidence from N8,
+effects from N10 and certificate replay from N11.
+
 ## Working here
 
 [`AGENTS.md`](AGENTS.md) is the policy and [`CONTRIBUTING.md`](CONTRIBUTING.md)

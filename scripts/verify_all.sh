@@ -56,6 +56,8 @@ lean_gates() {
         return
     fi
     gate "Lean oracle builds and self-checks" sh -c 'lake build && lake exe oracle-selfcheck'
+    gate "Lean N7 export matches the independent Python fixture" bash -o pipefail -c \
+        'lake exe n7-oracle | python -m experiments.n7 --lean-export /dev/stdin'
     gate "oracle mutation suite" python scripts/lean_mutation_suite.py --check
     gate "Lean F3 export matches the Python table" sh -c \
         'lake exe export-f3 > /tmp/novelty-f3.json && python scripts/check_f3_table.py --lean-export /tmp/novelty-f3.json'
