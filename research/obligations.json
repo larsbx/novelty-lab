@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-03",
+  "updated": "2026-11-07",
   "obligations": [
     {
       "id": "N1-V01",
@@ -359,6 +359,166 @@
         "N5-H06"
       ],
       "description": "Perform a dated prior-art search recording queries, sources, exclusions, nearest results, and the exact delta for Hurwitz actions/Nielsen classes, braid-orbit and component certificates, subgroup-intersection/index invariants, imprimitive/wreath subgroups of symmetric groups, discrete or normalized tuple-overlap observables, and finite-horizon Hurwitz/Nielsen walks. Attribute classical machinery and stop or revise if an equivalent invariant or classification is found. N5 remains a candidate; closing this literature obligation alone does not establish novelty, and any novel-result promotion requires the human review specified in docs/calibration.md.",
+      "evidence": []
+    },
+    {
+      "id": "N7-V01",
+      "candidate": "N7",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N7-H01",
+        "N7-H02",
+        "N7-H03"
+      ],
+      "description": "Record the dated stop/go comparison of quotient hyperfields, orbit convolution and framed arithmetic.",
+      "evidence": []
+    },
+    {
+      "id": "N7-V02",
+      "candidate": "N7",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N7-H01"
+      ],
+      "description": "Compare the incidence rule with projected representative sums and exact joins on the declared line and plane fixtures.",
+      "evidence": []
+    },
+    {
+      "id": "N7-V03",
+      "candidate": "N7",
+      "class": "formal",
+      "status": "open",
+      "depends_on": [
+        "N7-H01",
+        "N7-H02"
+      ],
+      "description": "Derive the associative fixed-output orbit counts and nonzero multiplicative distributivity. Replay all F7 fixture triples, including raw-count and zero-multiplier controls.",
+      "evidence": []
+    },
+    {
+      "id": "N7-V04",
+      "candidate": "N7",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N7-H01",
+        "N7-H03"
+      ],
+      "description": "Check affine field agreement, representative invariance, transported frames and undefined homogeneous outputs.",
+      "evidence": []
+    },
+    {
+      "id": "N8-V01",
+      "candidate": "N8",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N8-H01",
+        "N8-H02"
+      ],
+      "description": "Record the dated stop/go comparison with deontic action algebra, four-valued evidence and explicit policy combination.",
+      "evidence": []
+    },
+    {
+      "id": "N8-V02",
+      "candidate": "N8",
+      "class": "formal",
+      "status": "open",
+      "depends_on": [
+        "N8-H01"
+      ],
+      "description": "Specify the four evidence states and verify scoped merge, replay idempotence and the initial admission rule on the finite release and hold fixture.",
+      "evidence": []
+    },
+    {
+      "id": "N8-V03",
+      "candidate": "N8",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N8-H02"
+      ],
+      "description": "Replay duty creation and discharge, contrasting duplicate delivery with separately identified duties.",
+      "evidence": []
+    },
+    {
+      "id": "N8-V04",
+      "candidate": "N8",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N8-H01",
+        "N8-H02"
+      ],
+      "description": "After N10-V02 and N11-V02, replay a joint effect and admission trace, including an enabled publication that conflicts with its hold.",
+      "evidence": []
+    },
+    {
+      "id": "N9-V01",
+      "candidate": "N9",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N9-H01"
+      ],
+      "description": "Record the dated stop/go comparison of subspace lattices, exterior coordinates and pinned exact kernels.",
+      "evidence": []
+    },
+    {
+      "id": "N9-V02",
+      "candidate": "N9",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N9-H01"
+      ],
+      "description": "Independently replay finite span and meet witnesses and check the dimension identity, dependent inputs and the non-distributive control.",
+      "evidence": []
+    },
+    {
+      "id": "N10-V01",
+      "candidate": "N10",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N10-H01"
+      ],
+      "description": "Record the dated stop/go comparison with relation algebra, Boolean matrix computation and the existing route audit.",
+      "evidence": []
+    },
+    {
+      "id": "N10-V02",
+      "candidate": "N10",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N10-H01"
+      ],
+      "description": "Check finite composition laws and independently replay intermediate states for the ordered publication example.",
+      "evidence": []
+    },
+    {
+      "id": "N11-V01",
+      "candidate": "N11",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N11-H01"
+      ],
+      "description": "Record the dated stop/go comparison with compositional proof objects, finite replay and the pinned proof records.",
+      "evidence": []
+    },
+    {
+      "id": "N11-V02",
+      "candidate": "N11",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N11-H01"
+      ],
+      "description": "Use the N10-V02 fixture to replay typed traces and reject altered endpoints, witnesses, rule IDs and context versions.",
       "evidence": []
     }
   ]

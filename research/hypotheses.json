@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-03",
+  "updated": "2026-11-07",
   "statuses": [
     "proposed",
     "pinned",
@@ -313,6 +313,70 @@
       "status": "proposed",
       "statement": "Any novelty assessment is bounded by a dated, query-recorded prior-art dossier with sources, exclusions, nearest constructions, and an exact delta for the specified budget and certificates; classical Hurwitz/Nielsen machinery remains attributed as classical, and no general wreath/flag forcing or cryptographic hardness claim is inferred from the finite testbed.",
       "scope": "N5 literature and novelty gate",
+      "verified_by": []
+    },
+    {
+      "id": "N7-H01",
+      "candidate": "N7",
+      "status": "proposed",
+      "statement": "A finite vector space F_q^n has q>2 and n>=2. Nonzero classes are scalar orbits, with a separate singleton zero orbit.",
+      "scope": "Incidence support and exact projective fixture domains",
+      "verified_by": []
+    },
+    {
+      "id": "N7-H02",
+      "candidate": "N7",
+      "status": "proposed",
+      "statement": "Each multiset coefficient counts ordered representative pairs summing to one fixed output representative. Multiplication uses a declared identification with F_(q^n).",
+      "scope": "Natural-number multiplicities and the distinction between zero and nonzero scalar pushforward",
+      "verified_by": []
+    },
+    {
+      "id": "N7-H03",
+      "candidate": "N7",
+      "status": "proposed",
+      "statement": "On the projective line, an ordered triple of distinct classes fixes the 0, 1, infinity frame. A zero homogeneous output pair is undefined.",
+      "scope": "Framed arithmetic and simultaneous frame transport",
+      "verified_by": []
+    },
+    {
+      "id": "N8-H01",
+      "candidate": "N8",
+      "status": "proposed",
+      "statement": "The synthetic actor, action, resource and policy snapshot are finite. Applicable permission and prohibition items have stable identities, validated scopes and explicit validity conditions.",
+      "scope": "Conflict-preserving evidence merge and explicit admission",
+      "verified_by": []
+    },
+    {
+      "id": "N8-H02",
+      "candidate": "N8",
+      "status": "proposed",
+      "statement": "Duties have stable identities and explicit creation, deadline and discharge data in a finite event history.",
+      "scope": "Deduplication of deliveries and distinct duty lifecycles",
+      "verified_by": []
+    },
+    {
+      "id": "N9-H01",
+      "candidate": "N9",
+      "status": "proposed",
+      "statement": "Subspaces lie in one declared finite vector space F_q^n and are represented by exact canonical bases.",
+      "scope": "Span, intersection, dimension and optional exterior witnesses",
+      "verified_by": []
+    },
+    {
+      "id": "N10-H01",
+      "candidate": "N10",
+      "status": "proposed",
+      "statement": "Effects are relations on a common finite state carrier. Sequencing uses a compatible intermediate state.",
+      "scope": "Alternative and ordered effect composition",
+      "verified_by": []
+    },
+    {
+      "id": "N11-H01",
+      "candidate": "N11",
+      "status": "proposed",
+      "statement": "A finite step witness has typed endpoints, a declared context, and a rule interpreted by an independent checker.",
+      "scope": "Composition of compatible certified steps and exact replay",
       "verified_by": []
     }
   ]

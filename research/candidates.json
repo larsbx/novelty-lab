@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-02",
+  "updated": "2026-11-07",
   "ledger": "research/ledger.json",
   "policy": "docs/calibration.md",
   "candidates": [
@@ -96,6 +96,86 @@
         "The previous logarithmic five-regime classification does not transfer automatically; the complete S6 census must be rerun under the new minimizer.",
         "Only the label-preserving ordered-state-space reachability claim is in scope until a larger full-B4 state space is separately defined and certified.",
         "Reduction-calculus semantics are out of scope for this candidate and remain consumer-owned rather than shared-kernel claims."
+      ]
+    },
+    {
+      "id": "N7",
+      "title": "Finite projective arithmetic",
+      "status": "candidate",
+      "novelty_mode": "artifact",
+      "priority": 6,
+      "dependencies": [],
+      "gates": [
+        "projective-arithmetic-prior-art",
+        "exact-incidence-and-orbit-sum-comparison",
+        "framed-field-covariance"
+      ],
+      "claims": [
+        "Compare set, multiset and framed projective arithmetic on shared exact fixtures.",
+        "Orbit convolution, quotient hyperfields and framed coordinatization are known baselines."
+      ]
+    },
+    {
+      "id": "N8",
+      "title": "Scoped deontic evidence arithmetic",
+      "status": "candidate",
+      "novelty_mode": "artifact",
+      "priority": 7,
+      "dependencies": [],
+      "gates": [
+        "deontic-evidence-prior-art",
+        "scope-and-identity-controls",
+        "duty-lifecycle",
+        "effect-and-certificate-integration"
+      ],
+      "claims": [
+        "Model permission and prohibition evidence with identity-aware merge in a fixed scope.",
+        "The synthetic admission profile and duty ledger are candidate specifications."
+      ]
+    },
+    {
+      "id": "N9",
+      "title": "Finite subspace arithmetic",
+      "status": "candidate",
+      "novelty_mode": "effective-certification",
+      "priority": 8,
+      "dependencies": [],
+      "gates": [
+        "subspace-and-exterior-prior-art",
+        "exact-span-and-intersection-replay"
+      ],
+      "claims": [
+        "Compare exact span and intersection with canonical bases and finite witnesses."
+      ]
+    },
+    {
+      "id": "N10",
+      "title": "Finite relation arithmetic",
+      "status": "candidate",
+      "novelty_mode": "artifact",
+      "priority": 9,
+      "dependencies": [],
+      "gates": [
+        "relation-algebra-prior-art",
+        "exact-composition-and-intermediate-witnesses"
+      ],
+      "claims": [
+        "Study explicit state witnesses for the classical union and composition operations."
+      ]
+    },
+    {
+      "id": "N11",
+      "title": "Composable arithmetic certificates",
+      "status": "candidate",
+      "novelty_mode": "effective-certification",
+      "priority": 10,
+      "dependencies": [],
+      "gates": [
+        "certificate-composition-prior-art",
+        "typed-replay-and-tamper-controls"
+      ],
+      "claims": [
+        "Specify finite step certificates with independently checked boundaries and witnesses."
       ]
     }
   ]
